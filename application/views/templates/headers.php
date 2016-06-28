@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="helpDesk" >
     <head>
-       
+       <?php
+            include (APPPATH. '/libraries/ChromePhp.php')
+       ?>
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/materialize.min.css"  media="screen,projection"/>
         <!--Import custom style.css -->
@@ -15,8 +17,13 @@
         <script src="https://use.fontawesome.com/4330ea9880.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <!--<script type="text/javascript" src="<?//php echo base_url(); ?>js/utils.js"></script>-->
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular-route.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>bower_components/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/dist/sweetalert.css">
+</head>
+<body ng-view>
+    
+</body>
