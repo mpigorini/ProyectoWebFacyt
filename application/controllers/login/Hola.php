@@ -16,7 +16,6 @@ class Hola extends CI_Controller {
         $user->setLastName('pigorini');
         $user->setType('0');
         
-        $em->persist($user);
-        $em->flush();
+        
     }
 }

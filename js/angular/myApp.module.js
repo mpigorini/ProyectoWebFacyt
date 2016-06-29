@@ -1,18 +1,18 @@
-var helpDesk = angular.module("helpDesk", ["ngRoute"]);
+var helpDesk = angular.module("helpDesk", ["ngRoute", "helpDesk.login"]);
     
 helpDesk.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
  $routeProvider
     .when('/', {
         templateUrl: function(params) {
-            // return 'index.php/login/Halo'
-            return 'index.php/MainController'
+            return 'index.php/login/Halo';
+            
         }
     })
     .when('/hola', {
-    templateUrl: function(params){
-        return 'index.php/login/Hola';
-    }, 
-    controller : ''
+        templateUrl: function(params){
+            return 'index.php/login/Hola';
+        }, 
+        controller : 'UserController'
     })
       
           

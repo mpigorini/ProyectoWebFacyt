@@ -19,10 +19,14 @@
         <!--<script type="text/javascript" src="<?//php echo base_url(); ?>js/utils.js"></script>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>bower_components/angular/angular.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>bower_components/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/login.module.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
+        
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/dist/sweetalert.css">
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script> 
 </head>
 <body>
     <header>
@@ -37,5 +41,5 @@
             </div>
         </nav>
     </header>
-    <!-- <div ng-view class="container"></div> -->
+    <div ng-view></div>
 </body>
