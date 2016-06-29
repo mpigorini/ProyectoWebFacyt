@@ -1,0 +1,104 @@
+[28-Jun-2016 03:59:32 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 03:59:32 UTC] PHP Stack trace:
+[28-Jun-2016 03:59:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 03:59:32 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 03:59:32 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 03:59:32 UTC] PHP Stack trace:
+[28-Jun-2016 03:59:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 03:59:32 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:01:34 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:01:34 UTC] PHP Stack trace:
+[28-Jun-2016 04:01:34 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:01:34 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:01:34 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:01:34 UTC] PHP Stack trace:
+[28-Jun-2016 04:01:34 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:01:34 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:01:51 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:01:51 UTC] PHP Stack trace:
+[28-Jun-2016 04:01:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:01:51 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:01:51 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:01:51 UTC] PHP Stack trace:
+[28-Jun-2016 04:01:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:01:51 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:02:21 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/libraries//libraries/Doctrine.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:02:21 UTC] PHP Stack trace:
+[28-Jun-2016 04:02:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:02:21 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:02:21 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/libraries//libraries/Doctrine.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:02:21 UTC] PHP Stack trace:
+[28-Jun-2016 04:02:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:02:21 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:02:46 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:02:46 UTC] PHP Stack trace:
+[28-Jun-2016 04:02:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:02:46 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:02:46 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:02:46 UTC] PHP Stack trace:
+[28-Jun-2016 04:02:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:02:46 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:04:52 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:04:52 UTC] PHP Stack trace:
+[28-Jun-2016 04:04:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:04:52 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:04:52 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:04:52 UTC] PHP Stack trace:
+[28-Jun-2016 04:04:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:04:52 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:05:23 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/libraries//libraries/Doctrine.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:05:23 UTC] PHP Stack trace:
+[28-Jun-2016 04:05:23 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:05:23 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:05:23 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/libraries//libraries/Doctrine.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:05:23 UTC] PHP Stack trace:
+[28-Jun-2016 04:05:23 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:05:23 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:06:14 UTC] PHP Warning:  require_once(/home/ubuntu/workspace/application/libraries/libraries/Doctrine/ORM/Tools/Setup.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/Doctrine.php on line 13
+[28-Jun-2016 04:06:14 UTC] PHP Stack trace:
+[28-Jun-2016 04:06:14 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:06:14 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:06:14 UTC] PHP   3. Doctrine->__construct() /home/ubuntu/workspace/application/libraries/doctrine.php:17
+[28-Jun-2016 04:06:14 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/ubuntu/workspace/application/libraries/libraries/Doctrine/ORM/Tools/Setup.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/Doctrine.php on line 13
+[28-Jun-2016 04:06:14 UTC] PHP Stack trace:
+[28-Jun-2016 04:06:14 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:06:14 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:06:14 UTC] PHP   3. Doctrine->__construct() /home/ubuntu/workspace/application/libraries/doctrine.php:17
+[28-Jun-2016 04:06:39 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/libraries/config/database.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/Doctrine.php on line 17
+[28-Jun-2016 04:06:39 UTC] PHP Stack trace:
+[28-Jun-2016 04:06:39 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:06:39 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:06:39 UTC] PHP   3. Doctrine->__construct() /home/ubuntu/workspace/application/libraries/doctrine.php:17
+[28-Jun-2016 04:06:39 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/libraries/config/database.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/Doctrine.php on line 17
+[28-Jun-2016 04:06:39 UTC] PHP Stack trace:
+[28-Jun-2016 04:06:39 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:06:39 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:06:39 UTC] PHP   3. Doctrine->__construct() /home/ubuntu/workspace/application/libraries/doctrine.php:17
+[28-Jun-2016 04:07:28 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:07:28 UTC] PHP Stack trace:
+[28-Jun-2016 04:07:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:07:28 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:07:28 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/libraries/libraries/Doctrine.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/doctrine.php on line 8
+[28-Jun-2016 04:07:28 UTC] PHP Stack trace:
+[28-Jun-2016 04:07:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:07:28 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:07:49 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/libraries/config/database.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/Doctrine.php on line 17
+[28-Jun-2016 04:07:49 UTC] PHP Stack trace:
+[28-Jun-2016 04:07:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:07:49 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:07:49 UTC] PHP   3. Doctrine->__construct() /home/ubuntu/workspace/application/libraries/doctrine.php:17
+[28-Jun-2016 04:07:49 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/libraries/config/database.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/Doctrine.php on line 17
+[28-Jun-2016 04:07:49 UTC] PHP Stack trace:
+[28-Jun-2016 04:07:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:07:49 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:07:49 UTC] PHP   3. Doctrine->__construct() /home/ubuntu/workspace/application/libraries/doctrine.php:17
+[28-Jun-2016 04:09:00 UTC] PHP Warning:  require(/home/ubuntu/workspace/application/librariesconfig/database.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/Doctrine.php on line 17
+[28-Jun-2016 04:09:00 UTC] PHP Stack trace:
+[28-Jun-2016 04:09:00 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:09:00 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:09:00 UTC] PHP   3. Doctrine->__construct() /home/ubuntu/workspace/application/libraries/doctrine.php:17
+[28-Jun-2016 04:09:00 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/application/librariesconfig/database.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/application/libraries/Doctrine.php on line 17
+[28-Jun-2016 04:09:00 UTC] PHP Stack trace:
+[28-Jun-2016 04:09:00 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:09:00 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:09:00 UTC] PHP   3. Doctrine->__construct() /home/ubuntu/workspace/application/libraries/doctrine.php:17

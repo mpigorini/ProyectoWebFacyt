@@ -1,0 +1,172 @@
+[28-Jun-2016 04:18:06 UTC] PHP Warning:  mkdir(): Not a directory in /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php on line 330
+[28-Jun-2016 04:18:06 UTC] PHP Stack trace:
+[28-Jun-2016 04:18:06 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:18:06 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:18:06 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 04:18:06 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 04:18:06 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 04:18:06 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 04:18:06 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 04:18:06 UTC] PHP   8. Doctrine\ORM\Tools\EntityGenerator->generate() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:152
+[28-Jun-2016 04:18:06 UTC] PHP   9. Doctrine\ORM\Tools\EntityGenerator->writeEntityClass() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php:313
+[28-Jun-2016 04:18:06 UTC] PHP  10. mkdir() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php:330
+[28-Jun-2016 04:18:06 UTC] PHP Warning:  file_put_contents(/home/ubuntu/workspace/application/models/Entity/Users.php/Entity/User.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php on line 350
+[28-Jun-2016 04:18:06 UTC] PHP Stack trace:
+[28-Jun-2016 04:18:06 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:18:06 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:18:06 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 04:18:06 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 04:18:06 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 04:18:06 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 04:18:06 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 04:18:06 UTC] PHP   8. Doctrine\ORM\Tools\EntityGenerator->generate() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:152
+[28-Jun-2016 04:18:06 UTC] PHP   9. Doctrine\ORM\Tools\EntityGenerator->writeEntityClass() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php:313
+[28-Jun-2016 04:18:06 UTC] PHP  10. file_put_contents() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php:350
+[28-Jun-2016 04:18:44 UTC] PHP Warning:  mkdir(): Not a directory in /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php on line 330
+[28-Jun-2016 04:18:44 UTC] PHP Stack trace:
+[28-Jun-2016 04:18:44 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:18:44 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:18:44 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 04:18:44 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 04:18:44 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 04:18:44 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 04:18:44 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 04:18:44 UTC] PHP   8. Doctrine\ORM\Tools\EntityGenerator->generate() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:152
+[28-Jun-2016 04:18:44 UTC] PHP   9. Doctrine\ORM\Tools\EntityGenerator->writeEntityClass() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php:313
+[28-Jun-2016 04:18:44 UTC] PHP  10. mkdir() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php:330
+[28-Jun-2016 04:18:44 UTC] PHP Warning:  file_put_contents(/home/ubuntu/workspace/application/models/Entity/Users.php/Entity/User.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php on line 350
+[28-Jun-2016 04:18:44 UTC] PHP Stack trace:
+[28-Jun-2016 04:18:44 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:18:44 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:18:44 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 04:18:44 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 04:18:44 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 04:18:44 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 04:18:44 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 04:18:44 UTC] PHP   8. Doctrine\ORM\Tools\EntityGenerator->generate() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:152
+[28-Jun-2016 04:18:44 UTC] PHP   9. Doctrine\ORM\Tools\EntityGenerator->writeEntityClass() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php:313
+[28-Jun-2016 04:18:44 UTC] PHP  10. file_put_contents() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/EntityGenerator.php:350
+[28-Jun-2016 04:20:19 UTC] PHP Fatal error:  Cannot redeclare class Entity\User in /home/ubuntu/workspace/application/models/Entity/User.php on line 11
+[28-Jun-2016 04:20:19 UTC] PHP Stack trace:
+[28-Jun-2016 04:20:19 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:20:19 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:20:19 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 04:20:19 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 04:20:19 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 04:20:19 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 04:20:19 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 04:20:19 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[28-Jun-2016 04:20:19 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[28-Jun-2016 04:20:19 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[28-Jun-2016 04:21:17 UTC] PHP Fatal error:  Cannot redeclare class Entity\User in /home/ubuntu/workspace/application/models/Entity/User.php on line 11
+[28-Jun-2016 04:21:17 UTC] PHP Stack trace:
+[28-Jun-2016 04:21:17 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:21:17 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:21:17 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 04:21:17 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 04:21:17 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 04:21:17 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 04:21:17 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\InfoCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 04:21:17 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/InfoCommand.php:57
+[28-Jun-2016 04:21:17 UTC] PHP   9. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[28-Jun-2016 04:33:21 UTC] PHP Warning:  mkdir(): File exists in /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/ConvertMappingCommand.php on line 131
+[28-Jun-2016 04:33:21 UTC] PHP Stack trace:
+[28-Jun-2016 04:33:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:33:21 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:33:21 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 04:33:21 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 04:33:21 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 04:33:21 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 04:33:21 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\ConvertMappingCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 04:33:21 UTC] PHP   8. mkdir() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/ConvertMappingCommand.php:131
+[28-Jun-2016 04:33:48 UTC] PHP Warning:  mkdir(): File exists in /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/ConvertMappingCommand.php on line 131
+[28-Jun-2016 04:33:48 UTC] PHP Stack trace:
+[28-Jun-2016 04:33:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:33:48 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:33:48 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 04:33:48 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 04:33:48 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 04:33:48 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 04:33:48 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\ConvertMappingCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 04:33:48 UTC] PHP   8. mkdir() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/ConvertMappingCommand.php:131
+[28-Jun-2016 04:34:01 UTC] PHP Warning:  mkdir(): File exists in /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/ConvertMappingCommand.php on line 131
+[28-Jun-2016 04:34:01 UTC] PHP Stack trace:
+[28-Jun-2016 04:34:01 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 04:34:01 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 04:34:01 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 04:34:01 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 04:34:01 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 04:34:01 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 04:34:01 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\ConvertMappingCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 04:34:01 UTC] PHP   8. mkdir() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/ConvertMappingCommand.php:131
+[28-Jun-2016 05:08:15 UTC] PHP Fatal error:  Cannot redeclare class Entity\Users in /home/ubuntu/workspace/application/models/Users.php on line 15
+[28-Jun-2016 05:08:15 UTC] PHP Stack trace:
+[28-Jun-2016 05:08:15 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 05:08:15 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 05:08:15 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 05:08:15 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 05:08:15 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 05:08:15 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 05:08:15 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 05:08:15 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[28-Jun-2016 05:08:15 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[28-Jun-2016 05:08:15 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[28-Jun-2016 05:17:22 UTC] PHP Fatal error:  Cannot redeclare class Symfony\Component\Console\Command\Command in /home/ubuntu/workspace/application/models/Doctrine/Symfony/Component/Console/Command/Command.php on line 30
+[28-Jun-2016 05:17:22 UTC] PHP Stack trace:
+[28-Jun-2016 05:17:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 05:17:22 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 05:17:22 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 05:17:22 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 05:17:22 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 05:17:22 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 05:17:22 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 05:17:22 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[28-Jun-2016 05:17:22 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[28-Jun-2016 05:17:22 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[28-Jun-2016 05:18:17 UTC] PHP Fatal error:  Cannot redeclare class Entity\Users in /home/ubuntu/workspace/application/models/Users.php on line 15
+[28-Jun-2016 05:18:17 UTC] PHP Stack trace:
+[28-Jun-2016 05:18:17 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 05:18:17 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 05:18:17 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 05:18:17 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 05:18:17 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 05:18:17 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 05:18:17 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 05:18:17 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[28-Jun-2016 05:18:17 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[28-Jun-2016 05:18:17 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[28-Jun-2016 05:18:29 UTC] PHP Fatal error:  Cannot redeclare class Entity\User in /home/ubuntu/workspace/application/models/User.php on line 11
+[28-Jun-2016 05:18:29 UTC] PHP Stack trace:
+[28-Jun-2016 05:18:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 05:18:29 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 05:18:29 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 05:18:29 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 05:18:29 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 05:18:29 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 05:18:29 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 05:18:29 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[28-Jun-2016 05:18:29 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[28-Jun-2016 05:18:29 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[28-Jun-2016 05:18:41 UTC] PHP Fatal error:  Cannot redeclare class Entity\User in /home/ubuntu/workspace/application/models/User.php on line 11
+[28-Jun-2016 05:18:41 UTC] PHP Stack trace:
+[28-Jun-2016 05:18:41 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 05:18:41 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 05:18:41 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 05:18:41 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 05:18:41 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 05:18:41 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 05:18:41 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 05:18:41 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[28-Jun-2016 05:18:41 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[28-Jun-2016 05:18:41 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[28-Jun-2016 19:50:30 UTC] PHP Fatal error:  Cannot redeclare class Users in /home/ubuntu/workspace/application/models/Users.php on line 14
+[28-Jun-2016 19:50:30 UTC] PHP Stack trace:
+[28-Jun-2016 19:50:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/doctrine:0
+[28-Jun-2016 19:50:30 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/doctrine:4
+[28-Jun-2016 19:50:30 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/doctrine.php:25
+[28-Jun-2016 19:50:30 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[28-Jun-2016 19:50:30 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[28-Jun-2016 19:50:30 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[28-Jun-2016 19:50:30 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\InfoCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[28-Jun-2016 19:50:30 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/InfoCommand.php:57
+[28-Jun-2016 19:50:30 UTC] PHP   9. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194

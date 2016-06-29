@@ -1,57 +1,46 @@
 <?php
 use Doctrine\Common\ClassLoader,
-    Doctrine\ORM\Configuration,
-    Doctrine\ORM\EntityManager,
-    Doctrine\Common\Cache\ArrayCache,
-    Doctrine\DBAL\Logging\EchoSQLLogger;
- 
-class Doctrine {
- 
-    public $em = null;
- 
+    Doctrine\ORM\Tools\Setup,
+    Doctrine\ORM\EntityManager;
+
+class Doctrine
+{
+
+    public $em;
+
     public function __construct()
     {
-        //cargamos la configuración de base de datos de codeigniter
-        require APPPATH . "config/database.php";
- 
-        //utilizamos el namespace Entities para mapear el directorio models
-        $entitiesClassLoader = new ClassLoader('Entities', rtrim(APPPATH . "models" ));
-        $entitiesClassLoader->register();
- 
-        //utilizamos el namespace Proxies para mapear el directorio models/proxies
-        $proxiesClassLoader = new ClassLoader('Proxies', APPPATH.'models/proxies');
-        $proxiesClassLoader->register();
- 
-        // Configuración y chaché
-        $config = new Configuration;
-        $cache = new ArrayCache;
-        $config->setMetadataCacheImpl($cache);
-        $driverImpl = $config->newDefaultAnnotationDriver(array(APPPATH.'models/entities'));
-        $config->setMetadataDriverImpl($driverImpl);
-        $config->setQueryCacheImpl($cache);
- 
-        $config->setQueryCacheImpl($cache);
- 
-        // Configuración Proxy
-        $config->setProxyDir(APPPATH.'/models/proxies');
-        $config->setProxyNamespace('Proxies');
- 
-        // Habilitar el logger para obtener información de cada proceso
-        $logger = new EchoSQLLogger;
-        //$config->setSQLLogger($logger);
- 
-        $config->setAutoGenerateProxyClasses( TRUE );
- 
-        //configuramos la conexión con la base de datos utilizando las credenciales de nuestra app
-        $connectionOptions = array(
-            'driver' => 'pdo_mysql',
-            'user' =>     $db["default"]["username"],
-            'password' => $db["default"]["password"],
-            'host' =>     $db["default"]["hostname"],
-            'dbname' =>   $db["default"]["database"]
+        require_once __DIR__ . '/Doctrine/ORM/Tools/Setup.php';
+        Setup::registerAutoloadDirectory(__DIR__);
+
+        // Carga la configuración de la base de datos desde CodeIgniter
+        require __DIR__ . '/../config/database.php';
+
+        $connection_options = array(
+            'driver'        => 'pdo_mysql',
+            'user'          => $db['default']['username'],
+            'password'      => $db['default']['password'],
+            'host'          => $db['default']['hostname'],
+            'dbname'        => $db['default']['database'],
+            'charset'       => $db['default']['char_set'],
+            'driverOptions' => array(
+                'charset'   => $db['default']['char_set'],
+            ),
         );
- 
-        // Creamos el EntityManager
-        $this->em = EntityManager::create($connectionOptions, $config);
+
+        // Con esta configuración, tus archivos del modelo necesitan estar en application/models/Entity
+        // Ejemplo: Al crear un nuevo Entity\User cargamos la clase desde application/models/Entity/User.php
+        $models_namespace = 'Entity';
+        $models_path = APPPATH . 'models';
+        $proxies_dir = APPPATH . 'models/Proxies';
+        $metadata_paths = array(APPPATH . 'models');
+
+        // Establezca $ dev_mode = TRUE para deshabilitar el almacenamiento en caché mientras desarrollas
+        $config = Setup::createAnnotationMetadataConfiguration($metadata_paths, $dev_mode = true, $proxies_dir);
+        $this->em = EntityManager::create($connection_options, $config);
+
+        $loader = new ClassLoader($models_namespace, $models_path);
+        $loader->register();
     }
+
 }
