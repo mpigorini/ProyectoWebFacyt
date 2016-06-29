@@ -10,6 +10,7 @@ class Doctrine
 
     public function __construct()
     {
+        //adsadsadsadsa
         require_once __DIR__ . '/Doctrine/ORM/Tools/Setup.php';
         Setup::registerAutoloadDirectory(__DIR__);
 
