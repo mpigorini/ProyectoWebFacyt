@@ -4,7 +4,8 @@ helpDesk.config(['$routeProvider', '$locationProvider', function ($routeProvider
  $routeProvider
     .when('/', {
         templateUrl: function(params) {
-            return 'index.php/login/Halo'
+            // return 'index.php/login/Halo'
+            return 'index.php/MainController'
         }
     })
     .when('/hola', {

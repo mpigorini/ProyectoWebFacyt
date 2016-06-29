@@ -24,6 +24,18 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/dist/sweetalert.css">
 </head>
-<body ng-view>
-    
+<body>
+    <header>
+        <nav class="teal accent-4">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center">Help Desk</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="active"><a href="#">Nuevo ticket</a></li>
+                    <li><a href="#">Mi perfil</a></li>
+                    <li><a href="#">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- <div ng-view class="container"></div> -->
 </body>

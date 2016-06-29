@@ -10,6 +10,6 @@ class MainController extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('templates/headers');
-		//$this->load->view('welcome_message');
+		// $this->load->view('welcome_message');
 	}
 }
