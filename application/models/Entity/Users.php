@@ -8,7 +8,7 @@ namespace Entity;
  * Users
  *
  * @Table(name="users", schema="core")
- * @Entity
+ * @Entity(repositoryClass="UserRepository")
  */
 class Users
 {

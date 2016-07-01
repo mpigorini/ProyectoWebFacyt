@@ -17,10 +17,12 @@
         <script src="https://use.fontawesome.com/4330ea9880.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <!--<script type="text/javascript" src="<?//php echo base_url(); ?>js/utils.js"></script>-->
-        <script type="text/javascript" src="<?php echo base_url(); ?>bower_components/angular/angular.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>bower_components/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular-route.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/cookies.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/login.module.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/UserController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/authenticate.factory.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/LoginController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         
         <!-- Sweet Alert load -->
@@ -29,14 +31,14 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script> 
 </head>
 <body>
-    <header>
+    <header ng-controller="MainController">
         <nav class="teal accent-4">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo center">Help Desk</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="active"><a href="#">Nuevo ticket</a></li>
                     <li><a href="#">Mi perfil</a></li>
-                    <li><a href="#">Cerrar Sesión</a></li>
+                    <li><a ng-click="logout()"  >Cerrar Sesión</a></li>
                 </ul>
             </div>
         </nav>
