@@ -10,18 +10,19 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
             $http.get('index.php/login/LoginController/authenticate', {params:{username: username , password:password}})
                 .then(function(response) {
                     console.log(response);
-                    if(response.data === "success") {
+                    if(response.data.message === "success") {
                         var timeToExpire =  new Date();
                         timeToExpire.setDate(timeToExpire.getDate() + 7 );
                          //creamos la cookie
-                        $cookies.put('session', {username: username , password:password}, {
+                        $cookies.putObject('session', {username: username , password:password, id:response.data.id}, {
                             expires : timeToExpire
                         });
                         //mandamos a la home
                         $location.path("/home");
                         
                     }
-                   $rootScope.model.errorLogin =  response.data;
+                    var obj = $cookies.getObject("session");
+                   $rootScope.model.errorLogin =  response.data.message;
                    $rootScope.loading=false;
                 }, function (response){
                     
@@ -65,5 +66,6 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
             }
             return false;
         }
+        
     }
 });
