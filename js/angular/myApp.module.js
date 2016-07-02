@@ -1,4 +1,4 @@
-var helpDesk = angular.module("helpDesk", ["ngRoute", "helpDesk.login", "helpDesk.MostrarPerfil"]);
+var helpDesk = angular.module("helpDesk", ["ngRoute", "helpDesk.login"]);
     
 angular.module('helpDesk').controller('MainController', 
     ['$rootScope','$scope', 'auth',
@@ -18,7 +18,7 @@ helpDesk.config(['$routeProvider', '$locationProvider', function ($routeProvider
  $routeProvider
     .when('/home', {
         templateUrl: function(params) {
-            return 'index.php/login/Halo';
+            return 'index.php/HomeController';
         },
         controller: 'MainController'
     })
@@ -31,8 +31,10 @@ helpDesk.config(['$routeProvider', '$locationProvider', function ($routeProvider
     .when('/profile', {
         templateUrl: function(params) {
             return 'index.php/user/UserController'
-        }
+        },
+        controller: 'UserController'
     })
+    
           
 }]); 
 
