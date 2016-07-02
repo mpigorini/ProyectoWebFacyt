@@ -7,8 +7,6 @@ angular.module('helpDesk').controller('MainController',
             $rootScope.model = {};
             $rootScope.model.errorLogin = "";
             $scope.logout = function (){
-                console.log('sadsadsdas');
-                console.log($rootScope.model);
                 auth.logout();
             };
            
@@ -28,6 +26,11 @@ helpDesk.config(['$routeProvider', '$locationProvider', function ($routeProvider
             return 'index.php/login/LoginController';
         }, 
         controller : 'LoginController'
+    })
+    .when('/profile', {
+        templateUrl: function(params) {
+            return 'index.php/user/UserController'
+        }
     })
       
           

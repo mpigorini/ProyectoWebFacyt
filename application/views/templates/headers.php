@@ -23,6 +23,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/login.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/authenticate.factory.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/LoginController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         
         <!-- Sweet Alert load -->
@@ -34,16 +35,15 @@
     <header ng-controller="MainController">
         <nav class="teal accent-4">
             <ul id="opProfile" class="dropdown-content">
-              <li><a href="#/miPerfil">Mi perfil</a></li>
+              <li><a href="#/profile">Mi perfil</a></li>
               <li class="divider"></li>
               <li><a href="#">Editar Perfil</a></li>
               <li class="divider"></li>
-              <li><a href="#">Cerrar Sesión</a></li>
+              <li><a href="#" ng-click="logout()">Cerrar Sesión</a></li>
             </ul>
             <div class=" container nav-wrapper">
                 <a href="#" class="brand-logo">Company name help Desk<i class="material-icons left">supervisor_account</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a ng-click="logout()"  >Cerrar Sesión</a></li>
                     <li class="active"><a class="waves-effect waves-light yellow darken-4 btn" href="#">Nuevo ticket</a></li>
                     <li><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
                 </ul>

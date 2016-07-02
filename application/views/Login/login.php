@@ -25,8 +25,21 @@
 					        </div>
 				        </div>
 				        <div class="col s12 center red-text"  >
-					      <span ng-bind="model.errorLogin" ng-show ="model.errorLogin != ''"></span>
+					      <span ng-bind="model.errorLogin" ng-show ="model.errorLogin != 'success'"></span>
 				        </div>
+				        <div class="row col s6 offset-s3 center">
+					        <div class="preloader-wrapper active" ng-show="loading">
+							    <div class="spinner-layer spinner-blue-only">
+							      <div class="circle-clipper left">
+							        <div class="circle"></div>
+							      </div><div class="gap-patch">
+							        <div class="circle"></div>
+							      </div><div class="circle-clipper right">
+							        <div class="circle"></div>
+							      </div>
+							    </div>
+							</div>
+						</div>	
 				       	<a class="btn col s6 offset-s3 waves-effect waves-light center"  name="login" ng-click="login()">Iniciar sesión</a>
 					</form>
 		        </div>

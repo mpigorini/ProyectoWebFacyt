@@ -22,6 +22,7 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                         
                     }
                    $rootScope.model.errorLogin =  response.data;
+                   $rootScope.loading=false;
                 }, function (response){
                     
                 })

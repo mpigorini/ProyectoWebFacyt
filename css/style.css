@@ -3,3 +3,8 @@
     width: 50%;
 
 }
+#profile-card {
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+}
