@@ -33,12 +33,19 @@
 <body>
     <header ng-controller="MainController">
         <nav class="teal accent-4">
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo center">Help Desk</a>
+            <ul id="opProfile" class="dropdown-content">
+              <li><a href="#/miPerfil">Mi perfil</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Editar Perfil</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Cerrar Sesión</a></li>
+            </ul>
+            <div class=" container nav-wrapper">
+                <a href="#" class="brand-logo">Company name help Desk<i class="material-icons left">supervisor_account</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li class="active"><a href="#">Nuevo ticket</a></li>
-                    <li><a href="#">Mi perfil</a></li>
                     <li><a ng-click="logout()"  >Cerrar Sesión</a></li>
+                    <li class="active"><a class="waves-effect waves-light yellow darken-4 btn" href="#">Nuevo ticket</a></li>
+                    <li><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
                 </ul>
             </div>
         </nav>
