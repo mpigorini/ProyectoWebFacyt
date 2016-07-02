@@ -7,15 +7,4 @@ class UserController extends CI_Controller {
     public function index() {
         $this->load->view('user/main');
     }
-    
-    public function save($user) {
-        $em = $this->doctrine->em;
-        
-        try{
-            $oldUser = $em->finOneBy(array('login'=> 'mpigorini'));
-            
-        }catch(Execption $e){
-            
-        }
-    }
 }
