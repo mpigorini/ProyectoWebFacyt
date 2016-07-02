@@ -15,21 +15,22 @@ class LoginController extends CI_Controller {
            $user = $em->getRepository('\Entity\Users')->findOneBy(array("login"=>$_GET['username']));
            if($user !== null){
                if($user->getPassword() === $_GET['password']) {
-                   $result ="success";
+                   $result['message'] ="success";
+                   $result['id']= $user->getId();
                }
                else {
-                   $result = "Error en password";
+                   $result['message'] = "Error en password";
                }
            }
            else {
-               $result = "Error en login";
+               $result['message'] = "Error en login";
            }
            
        }catch(Exception $e){
            \ChromePhp::log($e);
-           $result = "Error";
+           $result['message'] = "Error";
        }
         
-       echo $result;
+       echo json_encode($result);
     }
 }
