@@ -1,4 +1,4 @@
-var helpDesk = angular.module("helpDesk", ["ngRoute", "helpDesk.login"]);
+var helpDesk = angular.module("helpDesk", ["ngRoute", "helpDesk.login", "helpDesk.MostrarPerfil"]);
     
 angular.module('helpDesk').controller('MainController', 
     ['$rootScope','$scope', 'auth',
@@ -13,6 +13,7 @@ angular.module('helpDesk').controller('MainController',
         }
     ]
 );
+
 helpDesk.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
  $routeProvider
     .when('/home', {
@@ -22,19 +23,19 @@ helpDesk.config(['$routeProvider', '$locationProvider', function ($routeProvider
         controller: 'MainController'
     })
     .when('/login', {
-        templateUrl: function(params){
-            return 'index.php/login/LoginController';
-        }, 
-        controller : 'LoginController'
+        templateUrl: function(params) {
+            return 'index.php/login/LoginController'
+        } ,  
+        controller: 'LoginController'
     })
     .when('/profile', {
         templateUrl: function(params) {
             return 'index.php/user/UserController'
         }
     })
-      
           
 }]); 
+
 angular.module('helpDesk')
      .run(['$rootScope', '$location', 'auth', function ($rootScope, $location, auth) {
         $rootScope.$on('$routeChangeStart', function (event) {
@@ -51,3 +52,7 @@ angular.module('helpDesk')
         }
   });
 }])
+
+  
+
+

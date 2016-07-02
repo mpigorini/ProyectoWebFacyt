@@ -37,8 +37,6 @@
             <ul id="opProfile" class="dropdown-content">
               <li><a href="#/profile">Mi perfil</a></li>
               <li class="divider"></li>
-              <li><a href="#">Editar Perfil</a></li>
-              <li class="divider"></li>
               <li><a href="#" ng-click="logout()">Cerrar Sesión</a></li>
             </ul>
             <div class=" container nav-wrapper">
