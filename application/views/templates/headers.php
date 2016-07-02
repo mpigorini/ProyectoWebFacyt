@@ -21,6 +21,10 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>bower_components/angular-route/angular-route.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/login.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/UserController.js"></script>
+
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/perfil.module.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/UserInfoController.js"></script>
+
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         
         <!-- Sweet Alert load -->
@@ -32,9 +36,9 @@
     <header>
         <nav class="teal accent-4">
             <ul id="opProfile" class="dropdown-content">
-              <li><a href="#/miPerfil">Mi perfil</a></li>
+              <li><a href="#/MostrarPerfil">Mi perfil</a></li>
               <li class="divider"></li>
-              <li><a href="#">Editar Perfil</a></li>
+              <li><a href="#/hola">Editar Perfil</a></li>
               <li class="divider"></li>
               <li><a href="#">Cerrar Sesión</a></li>
             </ul>
