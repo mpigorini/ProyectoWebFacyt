@@ -38,7 +38,6 @@ class UserController extends CI_Controller {
                 $user->setLastName( $_GET['lastname'] );
                 $user->setType( $_GET['type'] );
                 $result['message'] = "";
-                \ChromePhp::log($user);
                 $em->merge($user);
                 $em->persist($user);
                 $em->flush($user);
