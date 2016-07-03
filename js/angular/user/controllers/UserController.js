@@ -11,6 +11,7 @@ angular.module('helpDesk').controller('UserController',
                     console.log("response.data.name: " + response.data.name)
                     console.log("response.data.lastname: " + response.data.lastname)
                     console.log("response.data.type: " + response.data.type)
+                    $scope.edit.id =id;
                     $scope.edit.login = response.data.login;
                     $scope.edit.password = response.data.password;
                     $scope.edit.username = response.data.name;
@@ -44,9 +45,8 @@ angular.module('helpDesk').controller('UserController',
 	                			console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
 	                			swal.showInputError("Contraseña incorrecta");
 	                		}else{
-								$http.get('index.php/user/UserController/editUserInfo', {params:
-									{id: id, login: $scope.edit.login, password: $scope.edit.password, 
-										username: $scope.edit.username, lastname: $scope.edit.lastname, type: $scope.edit.type}})
+								$http.get('index.php/user/UserController/editUserInfo', {params: $scope.edit
+									})
 			                		.then(function(response) {
 										if(response.data.message != "Error") {
 											$scope.label = $scope.edit.username;
