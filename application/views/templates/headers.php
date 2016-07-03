@@ -15,7 +15,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Utils are important for page functionality so load before showing content -->
         <script src="https://use.fontawesome.com/4330ea9880.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-2.2.4.js"></script>
         <!--<script type="text/javascript" src="<?//php echo base_url(); ?>js/utils.js"></script>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular-route.min.js"></script>

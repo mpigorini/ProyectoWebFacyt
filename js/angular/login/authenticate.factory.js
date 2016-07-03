@@ -9,7 +9,7 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
         {
             $http.get('index.php/login/LoginController/authenticate', {params:{username: username , password:password}})
                 .then(function(response) {
-                    console.log(response);
+                    console.log("response: " + response);
                     if(response.data.message === "success") {
                         var timeToExpire =  new Date();
                         timeToExpire.setDate(timeToExpire.getDate() + 7 );
