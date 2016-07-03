@@ -15,7 +15,7 @@ class Users
     /**
      * @var integer
      *
-     * @Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=true)
      * @Id
      * @GeneratedValue(strategy="IDENTITY")
      */
