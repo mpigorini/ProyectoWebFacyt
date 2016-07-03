@@ -7,7 +7,9 @@ angular.module('helpDesk').controller('UserController',
             	.then(function(response) {
             		//Este monton de console son para estar al tanto de los valores del perfil
                     console.log("response.data.login: " + response.data.login)
+                    console.log("$cookies.getObject('session').username: " + $cookies.getObject('session').username)
                     console.log("response.data.password: " + response.data.password)
+                    console.log("$cookies.getObject('session').password: " + $cookies.getObject('session').password)
                     console.log("response.data.name: " + response.data.name)
                     console.log("response.data.lastname: " + response.data.lastname)
                     console.log("response.data.type: " + response.data.type)
@@ -50,6 +52,7 @@ angular.module('helpDesk').controller('UserController',
 			                		.then(function(response) {
 										if(response.data.message != "Error") {
 											$scope.label = $scope.edit.username;
+											$cookies.putObject('session', {username: $scope.edit.login , password:$scope.edit.password, id:id});
 					                    	swal("Actualizado!", "Los cambios en tu información personal se han guardado exitosamente.", "success");
 					                    }else{
 					                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
