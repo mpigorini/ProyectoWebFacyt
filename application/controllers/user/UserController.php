@@ -18,6 +18,7 @@ class UserController extends CI_Controller {
                 $result['name']= $user->getName();
                 $result['lastname']= $user->getLastName();
                 $result['type']= $user->getType();
+                $result['message'] = "";
            }
        }catch(Exception $e){
            \ChromePhp::log($e);

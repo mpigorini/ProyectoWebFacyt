@@ -9,7 +9,7 @@
         <div class="row">
             <div class="profile-settings col s6">
                 <h5>
-                    Login: <input type="text" ng-model="edit.login" required>
+                    Login: <input type="text" ng-model="edit.login" readonly>
                 </h5>
             </div>    
             <div class="profile-settings col s6">
@@ -33,7 +33,7 @@
         <div class="row">
             <div class="profile-settings col s12">
                 <h5 center-align>
-                    Tipo de usuario: {{ edit.type }}
+                    Tipo de usuario: <input class="center-align" type="text" ng-model="edit.type" readonly>
                 </h5>
             </div>
         </div> 
