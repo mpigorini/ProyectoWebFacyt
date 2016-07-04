@@ -68,4 +68,3 @@
         </nav>
     </header>
     <div ng-view></div>
-</body>
