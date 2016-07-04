@@ -1,1 +1,1 @@
-angular.module('helpDesk.login', []);
+angular.module('helpDesk.login', ['ngCookies']);
