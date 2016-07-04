@@ -22,6 +22,13 @@ class Users
     private $id;
 
     /**
+     * @var integer
+     *
+     * @Column(name="cedula", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $cedula;
+
+    /**
      * @var string
      *
      * @Column(name="login", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
@@ -52,9 +59,28 @@ class Users
     /**
      * @var integer
      *
+     * @Column(name="phone", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $phone;
+
+    /**
+     * @var integer
+     *
      * @Column(name="type", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $type;
+
+    /**
+     * @ManyToOne(targetEntity="Position")
+     * @JoinColumn(name="position_id", referencedColumnName="id")
+     */
+    private $position;
+
+    /**
+     * @ManyToOne(targetEntity="Department")
+     * @JoinColumn(name="department_id", referencedColumnName="id")
+     */
+    private $department;
 
 
     /**
@@ -65,6 +91,16 @@ class Users
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get cedula
+     *
+     * @return integer 
+     */
+    public function getCedula()
+    {
+        return $this->cedula;
     }
 
     /**
@@ -160,6 +196,29 @@ class Users
     }
 
     /**
+     * Get phone
+     *
+     * @return integer 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param integer $phone
+     * @return Users
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    
+        return $this;
+    }
+
+    /**
      * Set type
      *
      * @param integer $type
@@ -180,5 +239,49 @@ class Users
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set position
+     *
+     * @param Position $position
+     * @return Users
+     */
+    public function setPosition(Position $position = null)
+    {
+        $this->position = $position;
+    
+        return $this;
+    }
+    /**
+     * Get position
+     *
+     * @return Position 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set department
+     *
+     * @param Department $department
+     * @return Users
+     */
+    public function setDepartment(Department $department = null)
+    {
+        $this->department = $department;
+    
+        return $this;
+    }
+    /**
+     * Get department
+     *
+     * @return Department 
+     */
+    public function getDepartment()
+    {
+        return $this->department;
     }
 }

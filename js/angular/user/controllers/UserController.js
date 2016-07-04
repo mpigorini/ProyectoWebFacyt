@@ -1,6 +1,6 @@
 angular.module('helpDesk').controller('UserController', 
-    ['$scope', '$rootScope', '$cookies', '$http', 'auth',
-        function($scope, $rootScope, $cookies, $http, auth) {
+    ['$scope', '$cookies', '$http',
+        function($scope, $cookies, $http) {
             var id = $cookies.getObject("session").id;
             console.log("$cookies.getObject('session').id: " + id)
             $http.get('index.php/user/UserController/userInfo', {params:{id: id}})
@@ -30,7 +30,7 @@ angular.module('helpDesk').controller('UserController',
             $scope.edit = function (element){
             	console.log("Editar User")
             	if( ($scope.edit.login==undefined) || ($scope.edit.password==undefined) ){
-            		sweetAlert("Oops...", "Los campos de Login y Contraseña no pueden estar vacios", "error");
+            		sweetAlert("Oops...", "El campo de Contraseña no puede estar vacio", "error");
             	}else{
 	                swal({
 	                	title: "¿Estas Seguro?",   
