@@ -16,18 +16,18 @@
         <!-- Utils are important for page functionality so load before showing content -->
         <script src="https://use.fontawesome.com/4330ea9880.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-2.2.4.js"></script>
-        <!--<script type="text/javascript" src="<?//php echo base_url(); ?>js/utils.js"></script>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular-route.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/cookies.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/login.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/authenticate.factory.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/LoginController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
-<<<<<<< HEAD
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script> 
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicket.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/coordinador/controllers/CoordinadorController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script> 
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
@@ -69,36 +69,4 @@
             </div>
         </nav>
     </header>
-    <div ng-view></div>
-=======
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/coordinador/controllers/CoordinadorController.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-        <!--<script type="text/javascript" src="<?php echo base_url(); ?>js/angular/coordinador/main.js"></script>-->
-
-        <!-- Sweet Alert load -->
-        <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/dist/sweetalert.css">
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script>
-</head>
-<body>
-    <header ng-controller="MainController">
-      <div class="navbar-fixed">
-          <nav class="teal accent-4">
-              <ul id="opProfile" class="dropdown-content">
-                <li><a ui-sref="profile">Mi perfil</a></li>
-                <li class="divider"></li>
-                <li><a href="#" ng-click="logout()">Cerrar Sesión</a></li>
-              </ul>
-              <div class=" container nav-wrapper">
-                  <a href="#" class="brand-logo">Company name help Desk<i class="material-icons left">supervisor_account</i></a>
-                  <ul id="nav-mobile" class="right hide-on-med-and-down">
-                      <li><a class="waves-effect waves-light yellow darken-4 btn" href="#">Nuevo ticket</a></li>
-                      <li><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
-                  </ul>
-              </div>
-          </nav>
-      </div>
-    </header>
     <div ui-view></div>
-</body>
->>>>>>> 7eb1ed098423cdc16dc49363abc5e21bde0570a9

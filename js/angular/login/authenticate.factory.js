@@ -18,7 +18,6 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                             expires : timeToExpire
                         });
                         //mandamos a la home
-<<<<<<< HEAD
                         $location.path("/home");
                         
                     }
@@ -34,21 +33,6 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
         logout : function()
         {
             //al hacer logout eliminamos la cookie 
-=======
-                        $location.path("/coordinador");
-                    }
-                    var obj = $cookies.getObject("session");
-                   $rootScope.model.errorLogin =  response.data.message;
-                   $rootScope.loading=false;
-                }, function (response){
-
-                })
-
-        },
-        logout : function()
-        {
-            //al hacer logout eliminamos la cookie
->>>>>>> 7eb1ed098423cdc16dc49363abc5e21bde0570a9
             $cookies.remove('session');
             //mandamos al login
             $location.path("/login");
@@ -67,16 +51,10 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                 $location.path("/home");
             }
         },
-<<<<<<< HEAD
-        isLoggedIn : function() 
-        {
-            return typeof $cookies.get('session') !== "undefined" ;   
-=======
         isLoggedIn : function()
         {
             console.log($cookies.get('session'));
             return typeof $cookies.get('session') !== "undefined" ;
->>>>>>> 7eb1ed098423cdc16dc49363abc5e21bde0570a9
         },
         in_array : function(needle, haystack)
         {
@@ -90,12 +68,6 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
             }
             return false;
         }
-<<<<<<< HEAD
         
     }
 });
-=======
-
-    }
-});
->>>>>>> 7eb1ed098423cdc16dc49363abc5e21bde0570a9
