@@ -1,66 +1,79 @@
-var helpDesk = angular.module("helpDesk", ["ngRoute", "helpDesk.login"]);
-    
-angular.module('helpDesk').controller('MainController', 
+var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login"]);
+
+angular.module('helpDesk').controller('MainController',
     ['$rootScope','$scope', 'auth',
         function($rootScope,$scope, auth) {
-            
+
             $rootScope.model = {};
             $rootScope.model.errorLogin = "";
             $scope.logout = function (){
                 auth.logout();
             };
-           
+
         }
     ]
 );
 
-helpDesk.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
- $routeProvider
-    .when('/home', {
-        templateUrl: function(params) {
-            return 'index.php/HomeController';
-        },
+helpDesk.config(function($stateProvider, $urlRouterProvider) {
+ $stateProvider
+
+    .state('home', {
+        url: '/home',
+        module: 'private',
+        templateUrl: 'index.php/HomeController',
         controller: 'MainController'
     })
-    .when('/login', {
-        templateUrl: function(params) {
-            return 'index.php/login/LoginController'
-        } ,  
+    .state('login', {
+        url: '/login',
+        module: 'public',
+        templateUrl: 'index.php/login/LoginController',
         controller: 'LoginController'
     })
-    .when('/profile', {
-        templateUrl: function(params) {
-            return 'index.php/user/UserController'
-        },
+    .state('profile', {
+        url: '/profile',
+        module: 'private',
+        templateUrl: 'index.php/user/UserController',
         controller: 'UserController'
     })
-    .when('/new-ticket', {
-        templateUrl: function(params) {
-            return 'index.php/tickets/NewTicket'
-        },
+    .state('new-ticket', {
+        url: '/new-ticket',
+        module: 'private',
+        templateUrl: 'index.php/tickets/NewTicket',
         controller: 'NewTicket'
     })
-    
-          
-}]); 
+    .state('coordinador', {
+        url: '/coordinador',
+        module: 'private',
+        templateUrl: 'index.php/coordinador/CoordinadorController',
+        controller:  'MainController'
+    })
+    .state('coordinador.tickets', {
+        url: '/tickets',
+        module: 'private',
+        templateUrl: 'index.php/coordinador/TicketsController',
+    })
+    .state('coordinador.administracion', {
+        url: '/administracion',
+        module: 'private',
+        templateUrl: 'index.php/coordinador/AdministracionController',
+    })
+});
 
 angular.module('helpDesk')
-     .run(['$rootScope', '$location', 'auth', function ($rootScope, $location, auth) {
-        $rootScope.$on('$routeChangeStart', function (event) {
-
+     .run(['$rootScope', '$location','$state','auth', function ($rootScope, $location, $state,auth) {
+        $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
         console.log(auth.isLoggedIn());
-        if (!auth.isLoggedIn() && $location.url() !== '/login') {
+        if (!auth.isLoggedIn() && toState.module == 'private') {
           console.log('DENY : Redirecting to Login');
-          event.preventDefault();
-          $location.path('/login');
+          e.preventDefault();
+          $state.go('login');
+          //$location.path('/login');
           console.log($location.url());
         }
-        else {
+        else if(auth.isLoggedIn() && toState.module == 'public'){
           console.log('ALLOW');
+          e.preventDefault();
+          $state.go('coordinador');
         }
   });
 }])
-
-  
-
-
