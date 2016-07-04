@@ -9,7 +9,11 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
         {
             $http.get('index.php/login/LoginController/authenticate', {params:{username: username , password:password}})
                 .then(function(response) {
+<<<<<<< HEAD
                     console.log(response);
+=======
+                    console.log("response: " + response);
+>>>>>>> af59cbb6f86203ab7caab5c534cbe00bb0fffa27
                     if(response.data.message === "success") {
                         var timeToExpire =  new Date();
                         timeToExpire.setDate(timeToExpire.getDate() + 7 );
@@ -22,6 +26,10 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                         
                     }
                     var obj = $cookies.getObject("session");
+<<<<<<< HEAD
+=======
+                    console.log(obj);
+>>>>>>> af59cbb6f86203ab7caab5c534cbe00bb0fffa27
                    $rootScope.model.errorLogin =  response.data.message;
                    $rootScope.loading=false;
                 }, function (response){
