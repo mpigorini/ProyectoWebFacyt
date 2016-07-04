@@ -2,57 +2,57 @@
 
 namespace Entity;
 
-//use Doctrine\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Users
  *
- * @Table(name="users", schema="core")
- * @Entity(repositoryClass="UserRepository")
+ * @ORM\Table(name="users")
+ * @ORM\Entity(repositoryClass="Entity\UserRepository")
  */
 class Users
 {
     /**
      * @var integer
      *
-     * @Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=true)
-     * @Id
-     * @GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=true)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @Column(name="login", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="login", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $login;
 
     /**
      * @var string
      *
-     * @Column(name="password", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="password", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $password;
 
     /**
      * @var string
      *
-     * @Column(name="name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @Column(name="last_name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="last_name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $lastName;
 
     /**
      * @var integer
      *
-     * @Column(name="type", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="type", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $type;
 

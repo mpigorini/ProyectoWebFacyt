@@ -2,80 +2,80 @@
 
 namespace Entity;
 
-//use Doctrine\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Users
+ * TicketType
  *
- * @Table(name="ticket_type", schema="core")
- * @Entity(repositoryClass="TicketTypeRepository")
+ * @ORM\Table(name="ticket_type")
+ * @ORM\Entity(repositoryClass="Entity\TicketTypeRepository")
  */
 class TicketType
 {
     /**
      * @var integer
      *
-     * @Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=true)
-     * @Id
-     * @GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=true)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @Column(name="name", type="string", length=255, nullable=false, unique=false)
+     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $name;
 
-     /**
-     * @var string
-     *
-     * @Column(name="states", type="string", length=255, nullable=false, unique=false)
-     */
-    private $states;
-    
     /**
      * @var string
      *
-     * @Column(name="types", type="string", length=255, nullable=false, unique=false)
+     * @ORM\Column(name="states", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $states;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="types", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $types;
 
     /**
      * @var string
      *
-     * @Column(name="levels", type="string", length=255, nullable=false, unique=false)
+     * @ORM\Column(name="levels", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $levels;
-    
+
     /**
      * @var string
      *
-     * @Column(name="priorities", type="string", length=255, nullable=false, unique=false)
+     * @ORM\Column(name="priorities", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $priorities;
-    
-      /**
+
+    /**
      * @var string
      *
-     * @Column(name="answer_time", type="string", length=255, nullable=false, unique=false)
+     * @ORM\Column(name="answer_time", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $answerTimes;
-    
-     /**
+
+    /**
      * @var string
      *
-     * @Column(name="quality_of_services", type="string", length=255, nullable=false, unique=false)
+     * @ORM\Column(name="quality_of_services", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $qualityOfServices;
-    
+
     /**
-     * @var bool
-     * 
-     * @Column(name="default", type="boolean", nullable=false)
+     * @var boolean
+     *
+     * @ORM\Column(name="default", type="boolean", precision=0, scale=0, nullable=false, unique=false)
      */
-     private $default;
+    private $default;
 
 
     /**
@@ -248,22 +248,27 @@ class TicketType
     {
         return $this->qualityOfServices;
     }
-    
-    
+
     /**
-     * SetDefault 
-     * @params bool $default
-    */
-    public function setDefault($default){
-        $this->default = $default;
-    }
-    
-    /**
-     * Get defalt
-     * @return bool
+     * Set default
+     *
+     * @param boolean $default
+     * @return TicketType
      */
-     public function getDefault(){
-         return $this->default;
-     }
-     
+    public function setDefault($default)
+    {
+        $this->default = $default;
+    
+        return $this;
+    }
+
+    /**
+     * Get default
+     *
+     * @return boolean 
+     */
+    public function getDefault()
+    {
+        return $this->default;
+    }
 }
