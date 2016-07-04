@@ -16,7 +16,6 @@
         <!-- Utils are important for page functionality so load before showing content -->
         <script src="https://use.fontawesome.com/4330ea9880.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!--<script type="text/javascript" src="<?//php echo base_url(); ?>js/utils.js"></script>-->
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular-route.min.js"></script>
@@ -27,6 +26,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script> 
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/dist/sweetalert.css">
@@ -43,12 +43,12 @@
             <div class="container nav-wrapper">
                 <a class="brand-logo">Company name help Desk<i class="material-icons left">supervisor_account</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="waves-effect waves-light yellow darken-4 btn" href="#">Nuevo ticket</a></li>
+                    <li><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
                     <li><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
                 </ul>
                 <!-- Mobile nav-bar -->
 				<ul id="nav-mobile" class="side-nav">
-                    <li><a href="#" class="waves-effect waves-teal"><i class="material-icons right">fiber_new</i>Nuevo ticket</a></li>
+                    <li><a href="#/new-ticket" class="waves-effect waves-teal"><i class="material-icons right">fiber_new</i>Nuevo ticket</a></li>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
                             <li>

@@ -34,6 +34,12 @@ helpDesk.config(['$routeProvider', '$locationProvider', function ($routeProvider
         },
         controller: 'UserController'
     })
+    .when('/new-ticket', {
+        templateUrl: function(params) {
+            return 'index.php/tickets/NewTicket'
+        },
+        controller: 'NewTicket'
+    })
     
           
 }]); 
