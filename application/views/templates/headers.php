@@ -36,7 +36,7 @@
     <header ng-controller="MainController">
         <nav class="teal accent-4">
             <ul id="opProfile" class="dropdown-content">
-              <li><a href="#/profile">Mi perfil</a></li>
+              <li><a href="#/profile">Editar perfil</a></li>
               <li class="divider"></li>
               <li><a href="#" ng-click="logout()">Cerrar Sesión</a></li>
             </ul>
@@ -48,8 +48,21 @@
                 </ul>
                 <!-- Mobile nav-bar -->
 				<ul id="nav-mobile" class="side-nav">
-                    <li><a href="#"><i class="material-icons right">fiber_new</i>Nuevo ticket</a></li>
-                    <li><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>				</ul>
+                    <li><a href="#" class="waves-effect waves-teal"><i class="material-icons right">fiber_new</i>Nuevo ticket</a></li>
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header waves-effect waves-teal">Mi perfil<i class="material-icons right">perm_identity</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="#/profile" class="waves-effect waves-teal">Editar perfil</a></li>
+                                        <li><a href="#" class="waves-effect waves-teal" ng-click="logout()">Cerrar Sesión</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
 				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
         </nav>
