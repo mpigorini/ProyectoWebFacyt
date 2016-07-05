@@ -43,13 +43,14 @@
               <li><a href="#" ng-click="logout()">Cerrar Sesión</a></li>
             </ul>
             <div class="container nav-wrapper">
-                <a class="brand-logo">Company name help Desk<i class="material-icons left">supervisor_account</i></a>
+                <a ng-show="isLoggedIn()" class="brand-logo">Company name help Desk<i class="material-icons left">supervisor_account</i></a>
+                <a ng-show="!isLoggedIn()" class="brand-logo center">Company name help Desk<i class="material-icons left">supervisor_account</i></a>
                 <ul class="right hide-on-med-and-down" ng-show="isLoggedIn()">
                     <li><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
                     <li><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
                 </ul>
                 <!-- Mobile nav-bar -->
-				<ul id="nav-mobile" class="side-nav">
+				<ul id="nav-mobile" class="side-nav" ng-show="isLoggedIn()">
                     <li><a href="#/new-ticket" class="waves-effect waves-teal"><i class="material-icons right">fiber_new</i>Nuevo ticket</a></li>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
@@ -65,7 +66,7 @@
                         </ul>
                     </li>
                 </ul>
-				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+				<a ng-show="isLoggedIn()" href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
         </nav>
     </header>

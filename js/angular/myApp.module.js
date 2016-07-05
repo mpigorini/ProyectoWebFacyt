@@ -18,6 +18,7 @@ angular.module('helpDesk').controller('Navbar',function($scope,auth){
     return(auth.isLoggedIn());
   };
 });
+
 helpDesk.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
                   .otherwise('login');
