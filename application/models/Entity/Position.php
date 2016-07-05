@@ -40,7 +40,7 @@ class Position
      *
      * @ORM\ManyToOne(targetEntity="Entity\Department", inversedBy="positions")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="department_id", referencedColumnName="id", nullable=true)
      * })
      */
     private $department;
