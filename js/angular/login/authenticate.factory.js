@@ -25,6 +25,8 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                     console.log(obj);
                    $rootScope.model.errorLogin =  response.data.message;
                    $rootScope.loading=false;
+                   // Always show tickets page after login
+                   $rootScope.choice = 1;
                 }, function (response){
 
             })

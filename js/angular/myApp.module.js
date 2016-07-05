@@ -9,14 +9,21 @@ angular.module('helpDesk').controller('MainController',
             $scope.logout = function () {
                 auth.logout();
             };
+            $rootScope.choice = 1;
         }
     ]
 );
 
-angular.module('helpDesk').controller('Navbar',function($scope,auth){
+angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth){
   $scope.isLoggedIn = function() {
     return(auth.isLoggedIn());
   };
+  $scope.select = function(selection) {
+      $rootScope.choice = selection;
+  };
+  $scope.isSelected = function(selection) {
+      return ($rootScope.choice == selection);
+  }
 });
 
 helpDesk.config(function($stateProvider, $urlRouterProvider) {
