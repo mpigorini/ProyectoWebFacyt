@@ -75,7 +75,7 @@ angular.module('helpDesk')
         else if(auth.isLoggedIn() && toState.module == 'public') {
           console.log('ALLOW');
           e.preventDefault();
-          $state.go('home');
+          $state.go('tickets');
         }
   });
 }])

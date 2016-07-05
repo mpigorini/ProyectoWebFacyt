@@ -48,7 +48,7 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
             //en el caso de que intente acceder al login y ya haya iniciado sesión lo mandamos a la home
             if(this.in_array("/login",rutasPrivadas) && typeof($cookies.username) != "undefined")
             {
-                $location.path("/home");
+                $location.path("/tickets");
             }
         },
         isLoggedIn : function()
