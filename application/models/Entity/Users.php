@@ -24,7 +24,7 @@ class Users
     /**
      * @var integer
      *
-     * @Column(name="cedula", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="cedula", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $cedula;
 
@@ -59,26 +59,26 @@ class Users
     /**
      * @var integer
      *
-     * @Column(name="phone", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="phone", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $phone;
 
     /**
      * @var integer
      *
-     * @Column(name="type", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="type", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $type;
 
     /**
-     * @ManyToOne(targetEntity="Position")
-     * @JoinColumn(name="position_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Position")
+     * @ORM\JoinColumn(name="position_id", referencedColumnName="id")
      */
     private $position;
 
     /**
-     * @ManyToOne(targetEntity="Department")
-     * @JoinColumn(name="department_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Department")
+     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
      */
     private $department;
 
@@ -244,10 +244,10 @@ class Users
     /**
      * Set position
      *
-     * @param Position $position
+     * @param \Entity\Position $position
      * @return Users
      */
-    public function setPosition(Position $position = null)
+    public function setPosition(\Entity\Position $position = null)
     {
         $this->position = $position;
     
@@ -256,7 +256,7 @@ class Users
     /**
      * Get position
      *
-     * @return Position 
+     * @return \Entity\Position 
      */
     public function getPosition()
     {
@@ -266,10 +266,10 @@ class Users
     /**
      * Set department
      *
-     * @param Department $department
+     * @param \Entity\Department $department
      * @return Users
      */
-    public function setDepartment(Department $department = null)
+    public function setDepartment(\Entity\Department $department = null)
     {
         $this->department = $department;
     
@@ -278,7 +278,7 @@ class Users
     /**
      * Get department
      *
-     * @return Department 
+     * @return \Entity\Department 
      */
     public function getDepartment()
     {
