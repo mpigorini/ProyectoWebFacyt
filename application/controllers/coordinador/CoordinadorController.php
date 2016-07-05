@@ -5,7 +5,7 @@ class CoordinadorController extends CI_Controller {
 
 
 	/**
-	 * Load Home
+	 * Load coordinator main view
 	 */
 	public function index()
 	{

@@ -5,7 +5,7 @@ class AdministracionController extends CI_Controller {
 
 
 	/**
-	 * Load Headers
+	 * Load administration view
 	 */
 	public function index()
 	{

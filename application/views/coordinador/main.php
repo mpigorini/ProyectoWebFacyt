@@ -1,4 +1,3 @@
-<div ng-app="coordinadorRouting">
 <nav>
     <div class="nav-wrapper #1de9b6 teal accent-3">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -14,5 +13,4 @@
     <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
     <div ui-view></div>
 
-</div>
 </div>

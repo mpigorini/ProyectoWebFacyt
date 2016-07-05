@@ -5,7 +5,7 @@ class TicketsController extends CI_Controller {
 
 
 	/**
-	 * Load Headers
+	 * Load ticket administration view
 	 */
 	public function index()
 	{

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 include (APPPATH. '/libraries/ChromePhp.php');
 class LoginController extends CI_Controller {
     
-    public function index(){
+    public function index() {
         $this->load->view('login/main');
     }
     
