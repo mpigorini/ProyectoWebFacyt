@@ -238,9 +238,11 @@ class Users
      */
     public function getType()
     {
-        return $this->type;
-    }
-
+        $type = $this->type;
+        // Translate integer user type to it's corresponding string
+        return ($type == 1 ? "Gerente" : ($type == 2 ? "Coordinador de sistema" : ($type == 3 ? "Técnico" : "Solicitante")));
+    }    
+     
     /**
      * Set position
      *
