@@ -1,9 +1,9 @@
 var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login"]);
 
+
 angular.module('helpDesk').controller('MainController',
     ['$rootScope','$scope', 'auth',
         function($rootScope,$scope, auth) {
-
             $rootScope.model = {};
             $rootScope.model.errorLogin = "";
             $scope.logout = function (){
@@ -13,9 +13,15 @@ angular.module('helpDesk').controller('MainController',
     ]
 );
 
+angular.module('helpDesk').controller('Navbar',function($scope,auth){
+  $scope.isLoggedIn = function(){
+    return(auth.isLoggedIn());
+  };
+});
 helpDesk.config(function($stateProvider, $urlRouterProvider) {
- $stateProvider
- 
+  $urlRouterProvider
+                  .otherwise('login');
+  $stateProvider
     .state('login', {
         url: '/login',
         module: 'public',
@@ -64,16 +70,16 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
 angular.module('helpDesk')
      .run(['$rootScope', '$location','$state','auth', function ($rootScope, $location, $state,auth) {
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-        console.log(auth.isLoggedIn());
+        //console.log(auth.isLoggedIn());
         if (!auth.isLoggedIn() && toState.module == 'private') {
-          console.log('DENY : Redirecting to Login');
+          //console.log('DENY : Redirecting to Login');
           e.preventDefault();
           $state.go('login');
           //$location.path('/login');
-          console.log($location.url());
+          //console.log($location.url());
         }
         else if(auth.isLoggedIn() && toState.module == 'public') {
-          console.log('ALLOW');
+          //console.log('ALLOW');
           e.preventDefault();
           $state.go('tickets');
         }
