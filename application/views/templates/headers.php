@@ -26,7 +26,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicket.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script> 
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
@@ -34,6 +34,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/themes/google/google.css">
 </head>
 <body>
+  <div ng-controller="Navbar">
     <header ng-controller="MainController">
         <nav class="teal accent-4">
             <ul id="opProfile" class="dropdown-content">
@@ -43,7 +44,7 @@
             </ul>
             <div class="container nav-wrapper">
                 <a class="brand-logo">Company name help Desk<i class="material-icons left">supervisor_account</i></a>
-                <ul class="right hide-on-med-and-down">
+                <ul class="right hide-on-med-and-down" ng-show="isLoggedIn()">
                     <li><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
                     <li><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
                 </ul>
@@ -69,7 +70,7 @@
         </nav>
     </header>
     <!-- Main menu -->
-    <nav>
+    <nav ng-show="isLoggedIn()">
         <div class="nav-wrapper #1de9b6 teal accent-3">
             <!-- Configuration dropdown menu -->
             <ul id="configMenu" class="dropdown-content">
@@ -91,4 +92,5 @@
             </ul>
         </div>
     </nav>
+    </div>
     <div ui-view autoscroll="false"></div>

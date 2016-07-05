@@ -19,20 +19,20 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                         });
                         //mandamos a la home
                         $location.path("/tickets");
-                        
+
                     }
                     var obj = $cookies.getObject("session");
                     console.log(obj);
                    $rootScope.model.errorLogin =  response.data.message;
                    $rootScope.loading=false;
                 }, function (response){
-                    
+
                 })
-        
+
         },
         logout : function()
         {
-            //al hacer logout eliminamos la cookie 
+            //al hacer logout eliminamos la cookie
             $cookies.remove('session');
             //mandamos al login
             $location.path("/login");
@@ -53,7 +53,7 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
         },
         isLoggedIn : function()
         {
-            console.log($cookies.get('session'));
+            //console.log($cookies.get('session'));
             return typeof $cookies.get('session') !== "undefined" ;
         },
         in_array : function(needle, haystack)
@@ -68,6 +68,6 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
             }
             return false;
         }
-        
+
     }
 });

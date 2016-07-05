@@ -1,4 +1,4 @@
-angular.module('helpDesk.login').controller('LoginController', 
+angular.module('helpDesk.login').controller('LoginController',
     ['$scope', '$rootScope', 'auth',
         function($scope, $rootScope, auth) {
             $rootScope.loading=false;
@@ -6,6 +6,11 @@ angular.module('helpDesk.login').controller('LoginController',
             $scope.login = function (element){
                 $rootScope.loading=true;
                 auth.login($scope.model.login, $scope.model.password);
+                $rootScope.model = {};
+                $rootScope.model.errorLogin = "";
+            };
+            $scope.logout = function (){
+                auth.logout();
             };
         }
     ]
