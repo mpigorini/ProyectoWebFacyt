@@ -1,16 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MainController extends CI_Controller {
+class AdministracionController extends CI_Controller {
 
 
 	/**
-	 * Load Headers
+	 * Load administration view
 	 */
 	public function index()
 	{
-		$this->load->view('templates/headers');
+		$this->load->view('coordinador/administracion/administracion');
 		// $this->load->view('welcome_message');
-		$this->load->view('templates/footer');
 	}
 }

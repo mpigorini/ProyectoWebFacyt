@@ -9,6 +9,17 @@
     margin-top: 20px;
 }
 
+body {
+	background-color:#F5F5F5;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+      
 #profile-card .profile-settings {
 	font-weight: bold;
 	background-color: #eeeeee;

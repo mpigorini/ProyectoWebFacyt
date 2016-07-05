@@ -9,18 +9,18 @@
 				    <img id="login-img" class="responsive-img center " src="<?php echo base_url()?>images/icon-profile.png">
 				</div>
 				<div class="row" style="padding-bottom: 10px;">
-          			<fom>
+          			<form>
 						<div class="col s6 offset-s3">
 							<div class="input-field">
 								<i class="material-icons prefix">account_circle</i>
-						        <input id="username" name="username" type="text" class="validate" ng-model="model.login">
+						        <input id="username" name="username" type="text" class="validate" ng-model="model.login" ng-keyup="$event.keyCode == 13 && login()">
 						        <label for="username">Usuario</label>
 					        </div>
 				        </div>
 						<div class="col s6 offset-s3">
 					        <div class="input-field">
 								<i class="material-icons prefix">lock</i>
-						        <input id="password" name="password" type="password" class="validate" ng-model="model.password">
+						        <input id="password" name="password" type="password" class="validate" ng-model="model.password" ng-keyup="$event.keyCode == 13 && login()">
 						        <label for="password">Contraseña</label>
 					        </div>
 				        </div>

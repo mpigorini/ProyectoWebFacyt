@@ -18,7 +18,7 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                             expires : timeToExpire
                         });
                         //mandamos a la home
-                        $location.path("/home");
+                        $location.path("/coordinador");
                         
                     }
                     var obj = $cookies.getObject("session");
@@ -51,9 +51,10 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                 $location.path("/home");
             }
         },
-        isLoggedIn : function() 
+        isLoggedIn : function()
         {
-            return typeof $cookies.get('session') !== "undefined" ;   
+            console.log($cookies.get('session'));
+            return typeof $cookies.get('session') !== "undefined" ;
         },
         in_array : function(needle, haystack)
         {

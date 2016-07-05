@@ -170,3 +170,267 @@
 [28-Jun-2016 19:50:30 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\InfoCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
 [28-Jun-2016 19:50:30 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/InfoCommand.php:57
 [28-Jun-2016 19:50:30 UTC] PHP   9. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[02-Jul-2016 18:58:20 UTC] PHP Fatal error:  Cannot redeclare class Entity\Users in /home/ubuntu/workspace/application/models/Entity/Users.php on line 14
+[02-Jul-2016 18:58:20 UTC] PHP Stack trace:
+[02-Jul-2016 18:58:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[02-Jul-2016 18:58:20 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[02-Jul-2016 18:58:20 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[02-Jul-2016 18:58:20 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[02-Jul-2016 18:58:20 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[02-Jul-2016 18:58:20 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[02-Jul-2016 18:58:20 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[02-Jul-2016 18:58:20 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[02-Jul-2016 18:58:20 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[02-Jul-2016 18:58:20 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[02-Jul-2016 18:59:51 UTC] PHP Fatal error:  Cannot redeclare class Entity\Users in /home/ubuntu/workspace/application/models/Entity/Users.php on line 14
+[02-Jul-2016 18:59:51 UTC] PHP Stack trace:
+[02-Jul-2016 18:59:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[02-Jul-2016 18:59:51 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[02-Jul-2016 18:59:51 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[02-Jul-2016 18:59:51 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[02-Jul-2016 18:59:51 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[02-Jul-2016 18:59:51 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[02-Jul-2016 18:59:51 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[02-Jul-2016 18:59:51 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[02-Jul-2016 18:59:51 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[02-Jul-2016 18:59:51 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:25:53 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:25:53 UTC] PHP Stack trace:
+[03-Jul-2016 22:25:53 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:25:53 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:25:53 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:25:53 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:25:53 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:25:53 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:25:53 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:25:53 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[03-Jul-2016 22:25:53 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:25:53 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:26:40 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:26:40 UTC] PHP Stack trace:
+[03-Jul-2016 22:26:40 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:26:40 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:26:40 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:26:40 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:26:40 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:26:40 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:26:40 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:26:40 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[03-Jul-2016 22:26:40 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:26:40 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:30:30 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:30:30 UTC] PHP Stack trace:
+[03-Jul-2016 22:30:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:30:30 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:30:30 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:30:30 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:30:30 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:30:30 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:30:30 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:30:30 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[03-Jul-2016 22:30:30 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:30:30 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:36:24 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:36:24 UTC] PHP Stack trace:
+[03-Jul-2016 22:36:24 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:36:24 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:36:24 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:36:24 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:36:24 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:36:24 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:36:24 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:36:24 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[03-Jul-2016 22:36:24 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:36:24 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:37:26 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:37:26 UTC] PHP Stack trace:
+[03-Jul-2016 22:37:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:37:26 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:37:26 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:37:26 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:37:26 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:37:26 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:37:26 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:37:26 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[03-Jul-2016 22:37:26 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:37:26 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:37:45 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:37:45 UTC] PHP Stack trace:
+[03-Jul-2016 22:37:45 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:37:45 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:37:45 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:37:45 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:37:45 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:37:45 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:37:45 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:37:45 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[03-Jul-2016 22:37:45 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:37:45 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:37:51 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:37:51 UTC] PHP Stack trace:
+[03-Jul-2016 22:37:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:37:51 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:37:51 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:37:51 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:37:51 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:37:51 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:37:51 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:37:51 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[03-Jul-2016 22:37:51 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:37:51 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:38:04 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:38:04 UTC] PHP Stack trace:
+[03-Jul-2016 22:38:04 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:38:04 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:38:04 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:38:04 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:38:04 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:38:04 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:38:04 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:38:04 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[03-Jul-2016 22:38:04 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:38:04 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:39:15 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:39:15 UTC] PHP Stack trace:
+[03-Jul-2016 22:39:15 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:39:15 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:39:15 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:39:15 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:39:15 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:39:15 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:39:15 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:39:15 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[03-Jul-2016 22:39:15 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:39:15 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:43:56 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:43:56 UTC] PHP Stack trace:
+[03-Jul-2016 22:43:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:43:56 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:43:56 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:43:56 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:43:56 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:43:56 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:43:56 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:43:56 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[03-Jul-2016 22:43:56 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:43:56 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:44:37 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:44:37 UTC] PHP Stack trace:
+[03-Jul-2016 22:44:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:44:37 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:44:37 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:44:37 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:44:37 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:44:37 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:44:37 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:44:37 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[03-Jul-2016 22:44:37 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:44:37 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:54:10 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:54:10 UTC] PHP Stack trace:
+[03-Jul-2016 22:54:10 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:54:10 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:54:10 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:54:10 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:54:10 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:54:10 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:54:10 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:54:10 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[03-Jul-2016 22:54:10 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:54:10 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:54:12 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:54:12 UTC] PHP Stack trace:
+[03-Jul-2016 22:54:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:54:12 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:54:12 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:54:12 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:54:12 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:54:12 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:54:12 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:54:12 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[03-Jul-2016 22:54:12 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:54:12 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[03-Jul-2016 22:56:47 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[03-Jul-2016 22:56:47 UTC] PHP Stack trace:
+[03-Jul-2016 22:56:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[03-Jul-2016 22:56:47 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[03-Jul-2016 22:56:47 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[03-Jul-2016 22:56:47 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[03-Jul-2016 22:56:47 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[03-Jul-2016 22:56:47 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[03-Jul-2016 22:56:47 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[03-Jul-2016 22:56:47 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[03-Jul-2016 22:56:47 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[03-Jul-2016 22:56:47 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[04-Jul-2016 02:00:47 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[04-Jul-2016 02:00:47 UTC] PHP Stack trace:
+[04-Jul-2016 02:00:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[04-Jul-2016 02:00:47 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[04-Jul-2016 02:00:47 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[04-Jul-2016 02:00:47 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[04-Jul-2016 02:00:47 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[04-Jul-2016 02:00:47 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[04-Jul-2016 02:00:47 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[04-Jul-2016 02:00:47 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[04-Jul-2016 02:00:47 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[04-Jul-2016 02:00:47 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[04-Jul-2016 02:01:05 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/Entity/TicketType.php on line 11
+[04-Jul-2016 02:01:05 UTC] PHP Stack trace:
+[04-Jul-2016 02:01:05 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[04-Jul-2016 02:01:05 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[04-Jul-2016 02:01:05 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[04-Jul-2016 02:01:05 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[04-Jul-2016 02:01:05 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[04-Jul-2016 02:01:05 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[04-Jul-2016 02:01:05 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[04-Jul-2016 02:01:05 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[04-Jul-2016 02:01:05 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[04-Jul-2016 02:01:05 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[05-Jul-2016 04:59:34 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/TicketType.php on line 14
+[05-Jul-2016 04:59:34 UTC] PHP Stack trace:
+[05-Jul-2016 04:59:34 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[05-Jul-2016 04:59:34 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[05-Jul-2016 04:59:34 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[05-Jul-2016 04:59:34 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[05-Jul-2016 04:59:34 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[05-Jul-2016 04:59:34 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[05-Jul-2016 04:59:34 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[05-Jul-2016 04:59:34 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[05-Jul-2016 04:59:34 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[05-Jul-2016 04:59:34 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[05-Jul-2016 05:00:15 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/TicketType.php on line 14
+[05-Jul-2016 05:00:15 UTC] PHP Stack trace:
+[05-Jul-2016 05:00:15 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[05-Jul-2016 05:00:15 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[05-Jul-2016 05:00:15 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[05-Jul-2016 05:00:15 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[05-Jul-2016 05:00:15 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[05-Jul-2016 05:00:15 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[05-Jul-2016 05:00:15 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[05-Jul-2016 05:00:15 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/GenerateEntitiesCommand.php:115
+[05-Jul-2016 05:00:15 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[05-Jul-2016 05:00:15 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[05-Jul-2016 05:01:05 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/TicketType.php on line 14
+[05-Jul-2016 05:01:05 UTC] PHP Stack trace:
+[05-Jul-2016 05:01:05 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[05-Jul-2016 05:01:05 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[05-Jul-2016 05:01:05 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[05-Jul-2016 05:01:05 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[05-Jul-2016 05:01:05 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[05-Jul-2016 05:01:05 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[05-Jul-2016 05:01:05 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[05-Jul-2016 05:01:05 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[05-Jul-2016 05:01:05 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[05-Jul-2016 05:01:05 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194
+[05-Jul-2016 05:02:43 UTC] PHP Fatal error:  Cannot redeclare class Entity\TicketType in /home/ubuntu/workspace/application/models/Entity/TicketType.php on line 14
+[05-Jul-2016 05:02:43 UTC] PHP Stack trace:
+[05-Jul-2016 05:02:43 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[05-Jul-2016 05:02:43 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[05-Jul-2016 05:02:43 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[05-Jul-2016 05:02:43 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[05-Jul-2016 05:02:43 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[05-Jul-2016 05:02:43 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[05-Jul-2016 05:02:43 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[05-Jul-2016 05:02:43 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[05-Jul-2016 05:02:43 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[05-Jul-2016 05:02:43 UTC] PHP  10. require_once() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/Driver/AnnotationDriver.php:194

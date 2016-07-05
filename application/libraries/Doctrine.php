@@ -37,7 +37,8 @@ class Doctrine
         $metadata_paths = array(APPPATH . 'models');
 
         // Establezca $ dev_mode = TRUE para deshabilitar el almacenamiento en caché mientras desarrollas
-        $config = Setup::createAnnotationMetadataConfiguration($metadata_paths, $dev_mode = true, $proxies_dir);
+        // 5th param = false will force Doctrine to use the not-simple AnnotationReader which can handle our models now.
+        $config = Setup::createAnnotationMetadataConfiguration($metadata_paths, $dev_mode = true, $proxies_dir, null, false);
         $this->em = EntityManager::create($connection_options, $config);
 
         $loader = new ClassLoader($models_namespace, $models_path);
