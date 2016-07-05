@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include (APPPATH. '/libraries/ChromePhp.php');
 class LoginController extends CI_Controller {
     
     public function index() {
@@ -27,7 +26,6 @@ class LoginController extends CI_Controller {
            }
            
        }catch(Exception $e){
-           \ChromePhp::log($e);
            $result['message'] = "Error";
        }
         

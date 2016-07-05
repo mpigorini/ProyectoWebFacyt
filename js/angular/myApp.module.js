@@ -41,21 +41,30 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'index.php/tickets/NewTicket',
         controller: 'NewTicket'
     })
-    .state('coordinador', {
-        url: '/coordinador',
-        module: 'private',
-        templateUrl: 'index.php/coordinador/CoordinadorController',
-        controller:  'MainController'
-    })
-    .state('coordinador.tickets', {
+    .state('tickets', {
         url: '/tickets',
         module: 'private',
-        templateUrl: 'index.php/coordinador/TicketsController',
+        templateUrl: 'index.php/tickets/Tickets',
     })
-    .state('coordinador.administracion', {
-        url: '/administracion',
+    .state('tickets-administration', {
+        url: '/tickets-administration',
         module: 'private',
-        templateUrl: 'index.php/coordinador/AdministracionController',
+        templateUrl: 'index.php/administration/TicketsAdministration',
+    })
+    .state('users-administration', {
+        url: '/users-administration',
+        module: 'private',
+        templateUrl: 'index.php/administration/UsersAdministration',
+    })
+    .state('tickets-config', {
+        url: '/tickets-config',
+        module: 'private',
+        templateUrl: 'index.php/configuration/TicketsConfiguration',
+    })
+    .state('organization-config', {
+        url: '/organization-config',
+        module: 'private',
+        templateUrl: 'index.php/configuration/OrganizationConfiguration',
     })
 });
 
@@ -70,10 +79,10 @@ angular.module('helpDesk')
           //$location.path('/login');
           console.log($location.url());
         }
-        else if(auth.isLoggedIn() && toState.module == 'public'){
+        else if(auth.isLoggedIn() && toState.module == 'public') {
           console.log('ALLOW');
           e.preventDefault();
-          $state.go('coordinador');
+          $state.go('home');
         }
   });
 }])
