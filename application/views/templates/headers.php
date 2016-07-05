@@ -26,7 +26,6 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicket.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/coordinador/controllers/CoordinadorController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script> 
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
@@ -69,4 +68,27 @@
             </div>
         </nav>
     </header>
-    <div ui-view></div>
+    <!-- Main menu -->
+    <nav>
+        <div class="nav-wrapper #1de9b6 teal accent-3">
+            <!-- Configuration dropdown menu -->
+            <ul id="configMenu" class="dropdown-content">
+                <li><a href="#/tickets-config" class="waves-effect waves-teal">Tickets</a></li>
+                <li class="divider"></li>
+                <li><a href="#/organization-config" class="waves-effect waves-teal">Organización</a></li>
+            </ul>
+            <!-- Administration dropdown menu -->
+            <ul id="administrationMenu" class="dropdown-content">
+                <li><a href="#/tickets-administration" class="waves-effect waves-teal">Tickets</a></li>
+                <li class="divider"></li>
+                <li><a href="#/users-administration" class="waves-effect waves-teal">Usuarios</a></li>
+            </ul>
+            <!-- Actual menu -->
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="#/tickets">Tickets</a></li>
+                <li><a class="dropdown-button" href="#" data-activates="administrationMenu">Administración</a></li>
+                <li><a class="dropdown-button" href="#" data-activates="configMenu">Configuración</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div ui-view autoscroll="false"></div>

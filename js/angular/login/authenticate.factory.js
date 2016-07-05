@@ -18,7 +18,7 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                             expires : timeToExpire
                         });
                         //mandamos a la home
-                        $location.path("/coordinador");
+                        $location.path("/tickets");
                         
                     }
                     var obj = $cookies.getObject("session");

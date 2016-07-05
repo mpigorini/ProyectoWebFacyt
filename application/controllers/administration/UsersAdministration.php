@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TicketsController extends CI_Controller {
+class UsersAdministration extends CI_Controller {
 
 
 	/**
-	 * Load ticket administration view
+	 * Load user administration view
 	 */
 	public function index()
 	{
-		$this->load->view('coordinador/tickets/tickets');
+		$this->load->view('administration/manageUsers');
 		// $this->load->view('welcome_message');
 	}
 }
