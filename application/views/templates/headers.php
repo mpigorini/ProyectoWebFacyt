@@ -67,6 +67,7 @@
                         </ul>
                     </li>
                     <li class="divider"></li>
+                    <li><a href="#/tickets"><i class="material-icons right">mail_outline</i>Tickets</a></li>
                     <!-- Administration -->
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
