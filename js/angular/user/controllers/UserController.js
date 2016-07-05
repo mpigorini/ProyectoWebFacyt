@@ -12,6 +12,10 @@ angular.module('helpDesk').controller('UserController',
                     console.log("$cookies.getObject('session').password: " + $cookies.getObject('session').password)
                     console.log("response.data.name: " + response.data.name)
                     console.log("response.data.lastname: " + response.data.lastname)
+                    console.log("response.data.cedula: " + response.data.cedula)
+                    console.log("response.data.phone: " + response.data.phone)
+                    console.log("response.data.position: " + response.data.position)
+                    console.log("response.data.department: " + response.data.department)
                     console.log("response.data.type: " + response.data.type)
                     if(response.data.message != "Error") {
                     	$scope.edit.id = id;
@@ -19,6 +23,10 @@ angular.module('helpDesk').controller('UserController',
 	                    $scope.edit.password = response.data.password;
 	                    $scope.edit.username = response.data.name;
 	                    $scope.edit.lastname = response.data.lastname;
+	                    $scope.edit.cedula = response.data.cedula;
+	                    $scope.edit.phone = response.data.phone;
+	                    $scope.edit.position = response.data.position;
+	                    $scope.edit.department = response.data.department;
 	                    $scope.edit.type = response.data.type;
 	                    $scope.label = response.data.name;
                     }else{

@@ -59,7 +59,7 @@ class Users
     /**
      * @var integer
      *
-     * @ORM\Column(name="phone", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="phone", type="bigint", precision=0, scale=0, nullable=false, unique=false)
      */
     private $phone;
 
