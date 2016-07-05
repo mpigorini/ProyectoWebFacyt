@@ -6,7 +6,7 @@ angular.module('helpDesk').controller('MainController',
         function($rootScope,$scope, auth) {
             $rootScope.model = {};
             $rootScope.model.errorLogin = "";
-            $scope.logout = function (){
+            $scope.logout = function () {
                 auth.logout();
             };
         }
@@ -14,7 +14,7 @@ angular.module('helpDesk').controller('MainController',
 );
 
 angular.module('helpDesk').controller('Navbar',function($scope,auth){
-  $scope.isLoggedIn = function(){
+  $scope.isLoggedIn = function() {
     return(auth.isLoggedIn());
   };
 });
@@ -68,6 +68,7 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
     })
 });
 
+
 angular.module('helpDesk')
      .run(['$rootScope', '$location','$state','auth', function ($rootScope, $location, $state,auth) {
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
@@ -83,6 +84,6 @@ angular.module('helpDesk')
           //console.log('ALLOW');
           e.preventDefault();
           $state.go('tickets');
-        }
+        } 
   });
 }])

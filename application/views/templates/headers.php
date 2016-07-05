@@ -43,8 +43,8 @@
               <li><a href="#" ng-click="logout()">Cerrar Sesión</a></li>
             </ul>
             <div class="container nav-wrapper">
-                <a ng-show="isLoggedIn()" class="brand-logo">Company name help Desk<i class="material-icons left">supervisor_account</i></a>
-                <a ng-show="!isLoggedIn()" class="brand-logo center">Company name help Desk<i class="material-icons left">supervisor_account</i></a>
+                <a ng-show="isLoggedIn()" class="brand-logo"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
+                <a ng-show="!isLoggedIn()" class="brand-logo center"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
                 <ul class="right hide-on-med-and-down" ng-show="isLoggedIn()">
                     <li><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
                     <li><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
@@ -52,6 +52,7 @@
                 <!-- Mobile nav-bar -->
 				<ul id="nav-mobile" class="side-nav" ng-show="isLoggedIn()">
                     <li><a href="#/new-ticket" class="waves-effect waves-teal"><i class="material-icons right">fiber_new</i>Nuevo ticket</a></li>
+                    <!-- My Profile -->
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
                             <li>
@@ -65,13 +66,42 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="divider"></li>
+                    <!-- Administration -->
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header waves-effect waves-teal">Administración<i class="material-icons right">business</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="#/tickets-administration" class="waves-effect waves-teal">Tickets</a></li>
+                                        <li><a href="#/users-administration" class="waves-effect waves-teal">Usuarios</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Configuration -->
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header waves-effect waves-teal">Configuración<i class="material-icons right">settings</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="#/tickets-config" class="waves-effect waves-teal">Tickets</a></li>
+                                        <li><a href="#/organization-config" class="waves-effect waves-teal">Organización</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
 				<a ng-show="isLoggedIn()" href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
         </nav>
     </header>
     <!-- Main menu -->
-    <nav ng-show="isLoggedIn()">
+    <nav ng-show="isLoggedIn()" class="hide-on-med-and-down">
         <div class="nav-wrapper #1de9b6 teal accent-3">
             <!-- Configuration dropdown menu -->
             <ul id="configMenu" class="dropdown-content">
@@ -86,7 +116,7 @@
                 <li><a href="#/users-administration" class="waves-effect waves-teal">Usuarios</a></li>
             </ul>
             <!-- Actual menu -->
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <ul class="left">
                 <li><a href="#/tickets">Tickets</a></li>
                 <li><a class="dropdown-button" href="#" data-activates="administrationMenu">Administración</a></li>
                 <li><a class="dropdown-button" href="#" data-activates="configMenu">Configuración</a></li>
