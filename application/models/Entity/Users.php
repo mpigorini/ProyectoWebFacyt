@@ -22,6 +22,13 @@ class Users
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="cedula", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $cedula;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
@@ -52,9 +59,28 @@ class Users
     /**
      * @var integer
      *
+     * @ORM\Column(name="phone", type="bigint", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $phone;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="type", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Position")
+     * @ORM\JoinColumn(name="position_id", referencedColumnName="id")
+     */
+    private $position;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Department")
+     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     */
+    private $department;
 
 
     /**
@@ -65,6 +91,16 @@ class Users
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get cedula
+     *
+     * @return integer 
+     */
+    public function getCedula()
+    {
+        return $this->cedula;
     }
 
     /**
@@ -160,6 +196,29 @@ class Users
     }
 
     /**
+     * Get phone
+     *
+     * @return integer 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param integer $phone
+     * @return Users
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    
+        return $this;
+    }
+
+    /**
      * Set type
      *
      * @param integer $type
@@ -179,6 +238,52 @@ class Users
      */
     public function getType()
     {
-        return $this->type;
+        $type = $this->type;
+        // Translate integer user type to it's corresponding string
+        return ($type == 1 ? "Gerente" : ($type == 2 ? "Coordinador de sistema" : ($type == 3 ? "Técnico" : "Solicitante")));
+    }    
+     
+    /**
+     * Set position
+     *
+     * @param \Entity\Position $position
+     * @return Users
+     */
+    public function setPosition(\Entity\Position $position = null)
+    {
+        $this->position = $position;
+    
+        return $this;
+    }
+    /**
+     * Get position
+     *
+     * @return \Entity\Position 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set department
+     *
+     * @param \Entity\Department $department
+     * @return Users
+     */
+    public function setDepartment(\Entity\Department $department = null)
+    {
+        $this->department = $department;
+    
+        return $this;
+    }
+    /**
+     * Get department
+     *
+     * @return \Entity\Department 
+     */
+    public function getDepartment()
+    {
+        return $this->department;
     }
 }

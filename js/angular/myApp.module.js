@@ -6,7 +6,7 @@ angular.module('helpDesk').controller('MainController',
         function($rootScope,$scope, auth) {
             $rootScope.model = {};
             $rootScope.model.errorLogin = "";
-            $scope.logout = function (){
+            $scope.logout = function () {
                 auth.logout();
             };
         }
@@ -14,10 +14,11 @@ angular.module('helpDesk').controller('MainController',
 );
 
 angular.module('helpDesk').controller('Navbar',function($scope,auth){
-  $scope.isLoggedIn = function(){
+  $scope.isLoggedIn = function() {
     return(auth.isLoggedIn());
   };
 });
+
 helpDesk.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
                   .otherwise('login');
@@ -67,21 +68,25 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
     })
 });
 
+// $routeChangeStart changed for $locationChangeStart because event.preventDefault was
+// NOT being fired, thus breaking angular when .otherwise('login') is triggered and
+// user was already logged in.
+// $locationChangeStart does not provide $state information so can't really use it at all.
 angular.module('helpDesk')
      .run(['$rootScope', '$location','$state','auth', function ($rootScope, $location, $state,auth) {
-        $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-        //console.log(auth.isLoggedIn());
-        if (!auth.isLoggedIn() && toState.module == 'private') {
-          //console.log('DENY : Redirecting to Login');
+        $rootScope.$on("$locationChangeStart", function(e, toState, toParams, fromState, fromParams) {
+            
+        if (!auth.isLoggedIn() && $location.url() != "/login") {
+          // console.log('DENY : Redirecting to Login');
           e.preventDefault();
           $state.go('login');
           //$location.path('/login');
-          //console.log($location.url());
+          // console.log($location.url());
         }
-        else if(auth.isLoggedIn() && toState.module == 'public') {
-          //console.log('ALLOW');
+        else if(auth.isLoggedIn() && $location.url() == "/login") {
+          // console.log('ALLOW');
           e.preventDefault();
           $state.go('tickets');
-        }
+        } 
   });
 }])

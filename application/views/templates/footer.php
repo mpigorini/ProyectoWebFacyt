@@ -1,4 +1,4 @@
-    <footer class="page-footer teal accent-4">
+    <footer class="page-footer teal darken-1">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">

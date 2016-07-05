@@ -27,13 +27,15 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                    $rootScope.loading=false;
                 }, function (response){
 
-                })
+            })
 
         },
         logout : function()
         {
             //al hacer logout eliminamos la cookie
             $cookies.remove('session');
+            //cerramos automáticamente el mobile sideNav
+            $('.button-collapse').sideNav('hide');
             //mandamos al login
             $location.path("/login");
         },
@@ -48,7 +50,9 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
             //en el caso de que intente acceder al login y ya haya iniciado sesión lo mandamos a la home
             if(this.in_array("/login",rutasPrivadas) && typeof($cookies.username) != "undefined")
             {
-                $location.path("/tickets");
+                //HOLA
+                console.log("holaaaaaaaa");
+                //$location.path("/tickets");
             }
         },
         isLoggedIn : function()
