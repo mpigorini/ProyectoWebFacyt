@@ -26,7 +26,6 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicket.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/coordinador/controllers/CoordinadorController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script> 
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
@@ -92,4 +91,4 @@
             </ul>
         </div>
     </nav>
-    <div ui-view></div>
+    <div ui-view autoscroll="false"></div>

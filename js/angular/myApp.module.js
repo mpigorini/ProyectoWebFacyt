@@ -9,20 +9,13 @@ angular.module('helpDesk').controller('MainController',
             $scope.logout = function (){
                 auth.logout();
             };
-
         }
     ]
 );
 
 helpDesk.config(function($stateProvider, $urlRouterProvider) {
  $stateProvider
-
-    .state('home', {
-        url: '/home',
-        module: 'private',
-        templateUrl: 'index.php/HomeController',
-        controller: 'MainController'
-    })
+ 
     .state('login', {
         url: '/login',
         module: 'public',
