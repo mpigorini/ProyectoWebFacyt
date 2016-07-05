@@ -1,6 +1,8 @@
 angular.module('helpDesk').controller('UserController', 
-    ['$scope', '$cookies', '$http',
-        function($scope, $cookies, $http) {
+    ['$rootScope','$scope', '$cookies', '$http',
+        function($rootScope, $scope, $cookies, $http) {
+			// show my profile option as active
+		    $rootScope.select(5);
             var id = $cookies.getObject("session").id;
             console.log("$cookies.getObject('session').id: " + id)
             $http.get('index.php/user/UserController/userInfo', {params:{id: id}})
