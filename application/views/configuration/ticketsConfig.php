@@ -1,2 +1,6 @@
 <h1 class="center">Configuración de los Tickets</h1>
-<p class="center">Aquí se configurarán los parámetros de los tickets</p>
+<p class="center">Aquí se configurarán los parámetros de los tickes</p>
+<div class="ticket-config-card container card">
+    <span>HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span>
+    
+</div>
