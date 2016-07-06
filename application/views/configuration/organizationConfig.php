@@ -3,6 +3,7 @@
 	<br>
         <h5 class="center-align" style="font-weight:300">Configuración de la Organización</h5>
     <br>
+    <!-- Departments -->
 	<div class="row">
 	    <div class="col s12 m5 card-panel blue-grey darken-1">
 	        <p class="white-text">
@@ -32,8 +33,9 @@
         </div>
 	</div>
 	<br/>
+	<!-- Selected department's detail -->
     <div class="row" style="margin-left:20px; margin-right:20px">
-        <h5 style="font-weight:300">Detalles del departamento</h5>
+        <h5 style="font-weight:300">Detalles del departamento {{department.name}}</h5>
         <form>
             <div id="department-details" class ="row card-panel">
                 <div ng-show="editDepartment" class="input-field col s12">
@@ -62,34 +64,63 @@
         </form>
     </div>
     <br/>
- <div ng-show="(department.positions != null)" id="positions-table" class="row" style="margin-left:20px; margin-right:20px">
-        <h5 style="font-weight:300">Cargos dentro del departamento {{department.name}}</h5>
+    <!-- Positions -->
+    <div ng-show="(department.positions != null)" class="row">
+        <div class="col s12 m6 card-panel">
+            <p class="center">Cargos dentro del departamento {{department.name}}</p>
+            <table style="width:80%;margin:auto">
+                <thead>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <!--
+                    <tr ng-repeat="pos in department.positions">
+                        <td>{{$index+1}}</td>
+                        <td>{{pos.name}}</td>
+                        <td><a class="btn-floating waves-effect waves-light" ng-click="loadPosition($index)"><i class="material-icons">send</i></a></td>
+                        <td><a class="btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></a></td>
+                    </tr>-->
+                </tbody>
+            </table>
+        </div>
+	    <div class="col s12 m5 offset-m1 card-panel blue-grey darken-1">
+	        <p class="right-align white-text">
+    	        A su izquierda se muestran todos los cargos existentes dentro del departamento.<br/>
+    	        Para editar un cargo, haga click en <i class="material-icons">send</i> del cargo de su elección.<br/>
+    	        Para crear un cargo nuevo para el departamento de {{department.name}}, haga click en "nuevo".
+	        </p>
+	    </div>
+	</div>
+	<!-- Selected position's detail -->
+    <div ng-show="(department.positions != null)" id="positions-table" class="row" style="margin-left:20px; margin-right:20px">
+        <h5 style="font-weight:300">Detalles del cargo {{position.name}}</h5>
         <form>
-            <div id="department-details" class ="row card-panel">
-                <!-- 
-                <div ng-show="editDepartment" class="input-field col s12">
-                    <input id="name" ng-model="department.name" type="text">
-                    <label for="name" ng-class="{active:isDepartmentLoaded()}">Nombre del departamento</label>
+            <div class ="row card-panel">
+                <div ng-show="editPosition" class="input-field col s12">
+                    <input id="name" ng-model="position.name" type="text">
+                    <label for="name" ng-class="{active:isPositionLoaded()}">Nombre del cargo</label>
                 </div>
-                <div ng-show="!editDepartment" class="input-field col s12">
-                    <input id="name" ng-model="department.name" disabled type="text">
-                    <label for="name" ng-class="{active:isDepartmentLoaded()}">Nombre del departamento</label>
+                <div ng-show="!editPosition" class="input-field col s12">
+                    <input id="name" ng-model="position.name" disabled type="text">
+                    <label for="name" ng-class="{active:isPositionLoaded()}">Nombre del cargo</label>
                 </div>
-                <div ng-show="editDepartment" class="input-field col s12">
-                    <textarea id="description" ng-model="department.description" class="materialize-textarea"></textarea>
-                    <label for="description" ng-class="{active:isDepartmentLoaded()}">Descripción del departamento</label>
+                <div ng-show="editPosition" class="input-field col s12">
+                    <textarea id="description" ng-model="position.description" class="materialize-textarea"></textarea>
+                    <label for="description" ng-class="{active:isPositionLoaded()}">Descripción del cargo</label>
                 </div>
-                <div ng-show="!editDepartment" class="input-field col s12">
-                    <textarea id="description" ng-model="department.description" disabled class="materialize-textarea"></textarea>
-                    <label for="description" ng-class="{active:isDepartmentLoaded()}">Descripción del departamento</label>
+                <div ng-show="!editPosition" class="input-field col s12">
+                    <textarea id="description" ng-model="position.description" disabled class="materialize-textarea"></textarea>
+                    <label for="description" ng-class="{active:isPositionLoaded()}">Descripción del cargo</label>
                 </div>
                 <div class="row right-align">
-                    <a class="btn waves-effect waves-light" ng-click="newDepartment()" ng-show="!editDepartment">Nuevo</a>
-                    <a class="btn" ng-click="departmentEditMode()" ng-show="!editDepartment && (department.name != null || department.description != null)">Editar</a>
-                    <a class="btn waves-effect waves-light" ng-click="saveDepartment()" ng-show="editDepartment">Guardar</a>
-                    <a class="btn" ng-click="departmentViewMode()" ng-show="editDepartment">Cancelar</a>
+                    <a class="btn waves-effect waves-light" ng-click="newPosition()" ng-show="!editPosition">Nuevo</a>
+                    <a class="btn" ng-click="positionEditMode()" ng-show="!editPosition && (position.name != null || position.description != null)">Editar</a>
+                    <a class="btn waves-effect waves-light" ng-click="savePosition()" ng-show="editPosition">Guardar</a>
+                    <a class="btn" ng-click="positionViewMode()" ng-show="editPosition">Cancelar</a>
                 </div>
-                -->
             </div>
         </form>
     </div>
