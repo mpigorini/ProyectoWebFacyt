@@ -70,7 +70,9 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
         url: '/tickets-config',
         module: 'private',
         templateUrl: 'index.php/configuration/TicketsConfiguration',
-        controller: 'TicketsConfiguration'
+        controller: 'TicketConfigController'
+
+
     })
     .state('organization-config', {
         url: '/organization-config',
