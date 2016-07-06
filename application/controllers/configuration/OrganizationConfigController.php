@@ -66,6 +66,8 @@ class OrganizationConfigController extends CI_Controller {
     
     public function savePosition() {
         try {
+            \ChromePhp::log("holaaaaasas");
+            \ChromePhp::log($_GET);
             
             $em = $this->doctrine->em;
             if(isset($_GET['id']) ) {
@@ -81,7 +83,7 @@ class OrganizationConfigController extends CI_Controller {
                 $position->setName( $_GET['name']);
                 $position->setDescription($_GET['description']);
                 $department = $em->find('\Entity\Department', $_GET['department']);
-                $position->setDespartment($department);
+                $position->setDepartment($department);
                 $department->addPosition($position);
                 $em->persist($position);
                 $em->merge($department);

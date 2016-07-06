@@ -98,6 +98,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
                 showLoaderOnConfirm: true,
                 
             }, function() {
+                $scope.position.department = $scope.department.id;
                     $http.get('index.php/configuration/OrganizationConfigController/savePosition',{params:$scope.position})
                         .then(function(response) {
                             console.log(response)
