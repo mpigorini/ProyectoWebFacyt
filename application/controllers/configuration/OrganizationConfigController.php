@@ -66,6 +66,30 @@ class OrganizationConfigController extends CI_Controller {
         echo json_encode($result);
     }
     
+    public function getAllPositions() {
+        try {
+            \ChromePhp::log("ID del departamento: ");
+            \ChromePhp::log($_GET['department']);
+            $em = $this->doctrine->em;
+            $department = $em->find('\Entity\Department', $_GET['department']);
+            \ChromePhp::log("Departamento: ");
+            \ChromePhp::log($department->getName());
+            $positions = $department->getPositions();
+            foreach ($positions as $key=>$position) {
+                $result['data'][$key]['id'] = $position->getId();
+                $result['data'][$key]['name'] = $position->getName();
+                $result['data'][$key]['description'] = $position->getDescription();
+            }
+            
+            $result['message'] = "success";
+       } catch(Exception $e) {
+           \ChromePhp::log($e);
+           $result['message'] = "Error";
+       }
+
+        echo json_encode($result);
+    }
+    
     public function savePosition() {
         try {
             \ChromePhp::log("holaaaaasas");

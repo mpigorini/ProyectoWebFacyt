@@ -8,8 +8,9 @@
 	    <div class="col s12 m5 card-panel blue-grey darken-1">
 	        <p class="white-text">
     	        A su derecha se muestran todos los departamentos existentes.<br/>
-    	        Para editar un departamento, haga click en <i class="material-icons">send</i> del departamento de su elección.<br/>
-    	        Para crear un nuevo departamento, haga click en "nuevo".
+    	        Para editar un departamento, haga click en <i class="material-icons">send</i> del departamento de su elección.
+    	        Para eliminar, click en <i class="material-icons">delete</i><br/>
+    	        Para crear un nuevo departamento, haga click en "nuevo" al final de Detalles del departamento.
 	        </p>
 	    </div>
         <div class="col s12 m6 offset-m1 card-panel">
@@ -88,9 +89,10 @@
         </div>
 	    <div class="col s12 m5 offset-m1 card-panel blue-grey darken-1">
 	        <p class="right-align white-text">
-    	        A su izquierda se muestran todos los cargos existentes dentro del departamento.<br/>
-    	        Para editar un cargo, haga click en <i class="material-icons">send</i> del cargo de su elección.<br/>
-    	        Para crear un cargo nuevo para el departamento de {{department.name}}, haga click en "nuevo".
+    	        A su izquierda se muestran todos los cargos existentes dentro del departamento {{department.name}}.<br/>
+    	        Para editar un cargo, haga click en <i class="material-icons">send</i> del cargo de su elección.
+    	        Para eliminarlo, haga click en <i class="material-icons">delete</i><br/>
+    	        Para crear un cargo nuevo para el departamento de {{department.name}}, haga click en "nuevo" al final de Detalles del cargo.
 	        </p>
 	    </div>
 	</div>

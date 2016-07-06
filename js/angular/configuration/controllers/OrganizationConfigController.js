@@ -31,12 +31,11 @@ function organizationConfiguration($scope, $rootScope, $http) {
     }
     
     $scope.loadPosition = function(id) {
-        var obj = $scope.departments[id].positions;
+        var obj = $scope.department.positions[id];
         $scope.position = {};
         $scope.position.id = obj.id;
         $scope.position.name = obj.name;
         $scope.position.description = obj.description;
-        $scope.position.department = $scope.departments[id].id;
     }
     
     $scope.saveDepartment = function() {
@@ -107,10 +106,10 @@ function organizationConfiguration($scope, $rootScope, $http) {
                                     $scope.editPosition = false;
                                     $scope.position = {};
                                     // refresh the data
-                                    $http.get('index.php/configuration/OrganizationConfigController/getAllPositions')
+                                    $http.get('index.php/configuration/OrganizationConfigController/getAllPositions',{params:{department : $scope.department.id}})
                                     	.then(function(response) {
                                             if(response.data.message == "success") {
-                                                $scope.departments = response.data.data;
+                                                $scope.department.positions = response.data.data;
                                                 console.log("response: " + response);
                                                 swal("Cargo creado", "Su nuevo departamento ha sido creado exitosamente.", "success");
                                             } else {
