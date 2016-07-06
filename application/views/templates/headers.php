@@ -108,8 +108,8 @@
         </nav>
     </header>
     <!-- Main menu -->
-    <nav ng-show="isLoggedIn()" class="hide-on-med-and-down">
-        <div class="nav-wrapper #1de9b6 orange lighten-3">
+    <nav ng-show="isLoggedIn()" class="hide-on-med-and-down #1de9b6 orange lighten-3">
+        <div class="container nav-wrapper #1de9b6 orange lighten-3">
             <!-- Configuration dropdown menu -->
             <ul id="configMenu" class="dropdown-content">
                 <li><a href="#/tickets-config" class="waves-effect waves-teal">Tickets</a></li>
