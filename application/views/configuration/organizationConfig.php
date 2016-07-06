@@ -62,10 +62,11 @@
         </form>
     </div>
     <br/>
- <div id="positions-table" class="row" style="margin-left:20px; margin-right:20px">
+ <div ng-show="(department.positions != null)" id="positions-table" class="row" style="margin-left:20px; margin-right:20px">
         <h5 style="font-weight:300">Cargos dentro del departamento {{department.name}}</h5>
         <form>
             <div id="department-details" class ="row card-panel">
+                <!-- 
                 <div ng-show="editDepartment" class="input-field col s12">
                     <input id="name" ng-model="department.name" type="text">
                     <label for="name" ng-class="{active:isDepartmentLoaded()}">Nombre del departamento</label>
@@ -88,6 +89,7 @@
                     <a class="btn waves-effect waves-light" ng-click="saveDepartment()" ng-show="editDepartment">Guardar</a>
                     <a class="btn" ng-click="departmentViewMode()" ng-show="editDepartment">Cancelar</a>
                 </div>
+                -->
             </div>
         </form>
     </div>
