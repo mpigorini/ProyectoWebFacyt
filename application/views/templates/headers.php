@@ -25,12 +25,12 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/LoginController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicket.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/Tickets.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/TicketsAdministration.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/UsersAdministration.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicketController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/TicketsController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/TicketsAdminController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/UsersAdminController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/TicketConfigController.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/OrganizationConfiguration.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/OrganizationConfigController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->

@@ -1,6 +1,6 @@
 angular
     .module('helpDesk')
-    .controller('TicketsAdministration', ticketsAdministration);
+    .controller('TicketsAdminController', ticketsAdministration);
 
 ticketsAdministration.$inject = ['$scope', '$rootScope'];
 

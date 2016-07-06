@@ -45,31 +45,31 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
     .state('new-ticket', {
         url: '/new-ticket',
         module: 'private',
-        templateUrl: 'index.php/tickets/NewTicket',
-        controller: 'NewTicket'
+        templateUrl: 'index.php/tickets/NewTicketController',
+        controller: 'NewTicketController'
     })
     .state('tickets', {
         url: '/tickets',
         module: 'private',
-        templateUrl: 'index.php/tickets/Tickets',
-        controller: 'Tickets'
+        templateUrl: 'index.php/tickets/TicketsController',
+        controller: 'TicketsController'
     })
     .state('tickets-administration', {
         url: '/tickets-administration',
         module: 'private',
-        templateUrl: 'index.php/administration/TicketsAdministration',
-        controller: 'TicketsAdministration'
+        templateUrl: 'index.php/administration/TicketsAdminController',
+        controller: 'TicketsAdminController'
     })
     .state('users-administration', {
         url: '/users-administration',
         module: 'private',
-        templateUrl: 'index.php/administration/UsersAdministration',
-        controller: 'UsersAdministration'
+        templateUrl: 'index.php/administration/UsersAdminController',
+        controller: 'UsersAdminController'
     })
     .state('tickets-config', {
         url: '/tickets-config',
         module: 'private',
-        templateUrl: 'index.php/configuration/TicketsConfiguration',
+        templateUrl: 'index.php/configuration/TicketsConfigController',
         controller: 'TicketConfigController'
 
 
@@ -77,8 +77,8 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
     .state('organization-config', {
         url: '/organization-config',
         module: 'private',
-        templateUrl: 'index.php/configuration/OrganizationConfiguration',
-        controller: 'OrganizationConfiguration'
+        templateUrl: 'index.php/configuration/OrganizationConfigController',
+        controller: 'OrganizationConfigController'
     })
 });
 
