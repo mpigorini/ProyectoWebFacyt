@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 include (APPPATH. '/libraries/ChromePhp.php');
 
-class TicketsConfiguration extends CI_Controller {
+class TicketsConfigController extends CI_Controller {
     
     public function index() {
         $this->load->view('configuration/ticketsConfig');
@@ -69,11 +69,11 @@ class TicketsConfiguration extends CI_Controller {
                 $em->persist($ticketType);
                 $em->flush();
             }
-            
-            
+            $result['message'] = "success";
         }catch(Exception $e){
              $result['message'] = "error";
             \ChromePhp::log($e);
         }
+        echo json_encode($result);
     }
 }

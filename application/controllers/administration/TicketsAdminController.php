@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tickets extends CI_Controller {
+class TicketsAdminController extends CI_Controller {
 
 
 	/**
@@ -9,7 +9,7 @@ class Tickets extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('tickets/tickets');
+		$this->load->view('administration/manageTickets');
 		// $this->load->view('welcome_message');
 	}
 }

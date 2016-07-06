@@ -1,6 +1,6 @@
 angular
     .module('helpDesk')
-    .controller('UsersAdministration', usersAdministration);
+    .controller('UsersAdminController', usersAdministration);
 
 usersAdministration.$inject = ['$scope', '$rootScope'];
 

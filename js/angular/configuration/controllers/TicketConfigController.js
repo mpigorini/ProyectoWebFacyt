@@ -1,13 +1,15 @@
 angular.module('helpDesk').controller('TicketConfigController',
     ['$scope', '$rootScope','$http',
         function($scope, $rootScope, $http) {
+            // show configuration option as active
+            $rootScope.select(3);
             $scope.edit = false;
             $scope.model =null;
-            $http.get('index.php/configuration/TicketsConfiguration/getTicketTypes')
+            $http.get('index.php/configuration/TicketsConfigController/getTicketTypes')
                 .then(function(response){
                     if(response.data.message === "success"){
                         $scope.ticketTypes = response.data.data;
-                        console.log($scope.ticketTypes);
+                        console.log("tickets type:" + $scope.ticketTypes);
                     }
                 })
             
@@ -26,10 +28,49 @@ angular.module('helpDesk').controller('TicketConfigController',
             }
             
             $scope.save = function() {
-                $http.get('index.php/configuration/TicketsConfiguration/save',{params:$scope.model})
-                    .then(function(response) {
-                        console.log(response)
-                    })
+                if ($scope.model.name == null ||
+                    $scope.model.states == null ||
+                    $scope.model.types == null ||
+                    $scope.model.priorities == null ||
+                    $scope.model.levels == null ||
+                    $scope.model.answerTimes == null) {
+                        swal("Falta información", "Debe proveer toda la información solicitada", "error");
+                } else {
+                    swal({
+                        title: "Confirmación",
+                        text: "Su nueva configuración de solicitud será creada. ¿Desea proceder?",
+                        type: "info",
+                        confirmButtonText: "Sí",
+                        cancelButtonText: "No",
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        animation: "slide-from-top",
+                        showLoaderOnConfirm: true,
+                        
+                    }, function(){
+                            $http.get('index.php/configuration/TicketsConfigController/save',{params:$scope.model})
+                                .then(function(response) {
+                                    console.log(response)
+                                    if (response.data.message == "success") {
+                                        $scope.edit = false;
+                                        $scope.model =null;
+                                        $http.get('index.php/configuration/TicketsConfigController/getTicketTypes')
+                                            .then(function(response){
+                                                if(response.data.message === "success"){
+                                                    $scope.ticketTypes = response.data.data;
+                                                    console.log("tickets type:" + $scope.ticketTypes);
+                                                    swal("Configuración creada", "Su nueva configuración para tickets ha sido creada exitosamente.", "success");
+                                                } else {
+                                                    swal("Oops!", "Su solicitud fue procesada, pero ha ocurrido un error actualizando los datos.", "error");
+                                                }
+                                            });
+                                    } else {
+                                        swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
+                                    }
+                            }) 
+    
+                    });
+                }
             }
             
             $scope.newTicketType = function(){

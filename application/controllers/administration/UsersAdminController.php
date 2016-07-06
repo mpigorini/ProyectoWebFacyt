@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UsersAdministration extends CI_Controller {
+class UsersAdminController extends CI_Controller {
 
 
 	/**
