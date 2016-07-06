@@ -66,16 +66,16 @@ class TicketType
     /**
      * @var string
      *
-     * @ORM\Column(name="quality_of_services", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="quality_of_services", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
     private $qualityOfServices;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="default", type="boolean", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="active", type="boolean", precision=0, scale=0, nullable=false, unique=false)
      */
-    private $default;
+    private $active;
 
 
     /**
@@ -250,25 +250,25 @@ class TicketType
     }
 
     /**
-     * Set default
+     * Set Active
      *
-     * @param boolean $default
+     * @param boolean $active
      * @return TicketType
      */
-    public function setDefault($default)
+    public function setActive($active)
     {
-        $this->default = $default;
+        $this->active = $active;
     
         return $this;
     }
 
     /**
-     * Get default
+     * Get Active
      *
      * @return boolean 
      */
-    public function getDefault()
+    public function getactive()
     {
-        return $this->default;
+        return $this->active;
     }
 }
