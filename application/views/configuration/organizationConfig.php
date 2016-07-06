@@ -76,13 +76,13 @@
                     <th></th>
                 </thead>
                 <tbody>
-                    <!--
+                    
                     <tr ng-repeat="pos in department.positions">
                         <td>{{$index+1}}</td>
                         <td>{{pos.name}}</td>
                         <td><a class="btn-floating waves-effect waves-light" ng-click="loadPosition($index)"><i class="material-icons">send</i></a></td>
                         <td><a class="btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></a></td>
-                    </tr>-->
+                    </tr>
                 </tbody>
             </table>
         </div>

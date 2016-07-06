@@ -10,7 +10,9 @@ class OrganizationConfigController extends CI_Controller {
     }
     
     public function getAllDepartments() {
+             \ChromePhp::log("inicio");
         try {
+            
             $em = $this->doctrine->em;
             $departments = $em->getRepository('\Entity\Department')->findAll();
             
@@ -18,13 +20,13 @@ class OrganizationConfigController extends CI_Controller {
                 $result['data'][$key]['id'] = $department->getId();
                 $result['data'][$key]['name'] = $department->getName();
                 $result['data'][$key]['description'] = $department->getDescription();
-                $result['data'][$key]['positions'] = $department->getPositions();
-                /*
+                //$result['data'][$key]['positions'] = $department->getPositions();
+                $positions = $department->getPositions();
                 foreach ($positions as $pkey=>$position) {
                     $result['data'][$key]['positions'][$pkey]['id'] = $position->getId();
                     $result['data'][$key]['positions'][$pkey]['name'] = $position->getName();
                     $result['data'][$key]['positions'][$pkey]['description'] = $position->getDescription();
-                }*/
+                }
             }
             
             $result['message'] = "success";
