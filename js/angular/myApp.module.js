@@ -9,11 +9,18 @@ angular.module('helpDesk').controller('MainController',
             $scope.logout = function () {
                 auth.logout();
             };
+            $rootScope.choice = 1;
+            $rootScope.select = function(selection) {
+                $rootScope.choice = selection;
+            };
+            $rootScope.isSelected = function(selection) {
+              return ($rootScope.choice == selection);
+            }
         }
     ]
 );
 
-angular.module('helpDesk').controller('Navbar',function($scope,auth){
+angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth){
   $scope.isLoggedIn = function() {
     return(auth.isLoggedIn());
   };
@@ -45,27 +52,33 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
         url: '/tickets',
         module: 'private',
         templateUrl: 'index.php/tickets/Tickets',
+        controller: 'Tickets'
     })
     .state('tickets-administration', {
         url: '/tickets-administration',
         module: 'private',
         templateUrl: 'index.php/administration/TicketsAdministration',
+        controller: 'TicketsAdministration'
     })
     .state('users-administration', {
         url: '/users-administration',
         module: 'private',
         templateUrl: 'index.php/administration/UsersAdministration',
+        controller: 'UsersAdministration'
     })
     .state('tickets-config', {
         url: '/tickets-config',
         module: 'private',
         templateUrl: 'index.php/configuration/TicketsConfiguration',
         controller: 'TicketConfigController'
+
+
     })
     .state('organization-config', {
         url: '/organization-config',
         module: 'private',
         templateUrl: 'index.php/configuration/OrganizationConfiguration',
+        controller: 'OrganizationConfiguration'
     })
 });
 
@@ -88,6 +101,6 @@ angular.module('helpDesk')
           // console.log('ALLOW');
           e.preventDefault();
           $state.go('tickets');
-        } 
+        }
   });
 }])
