@@ -43,8 +43,8 @@
               <li><a href="#" ng-click="logout()">Cerrar Sesión</a></li>
             </ul>
             <div class="container nav-wrapper">
-                <a ng-show="isLoggedIn()" class="brand-logo"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
-                <a ng-show="!isLoggedIn()" class="brand-logo center"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
+                <a ng-show="isLoggedIn()" class="brand-logo" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
+                <a ng-show="!isLoggedIn()" class="brand-logo center" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
                 <ul class="right hide-on-med-and-down" ng-show="isLoggedIn()">
                     <li><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
                     <li><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
@@ -103,7 +103,7 @@
     </header>
     <!-- Main menu -->
     <nav ng-show="isLoggedIn()" class="hide-on-med-and-down">
-        <div class="nav-wrapper #1de9b6 teal accent-3">
+        <div class="nav-wrapper #1de9b6 orange lighten-3">
             <!-- Configuration dropdown menu -->
             <ul id="configMenu" class="dropdown-content">
                 <li><a href="#/tickets-config" class="waves-effect waves-teal">Tickets</a></li>
@@ -117,11 +117,13 @@
                 <li><a href="#/users-administration" class="waves-effect waves-teal">Usuarios</a></li>
             </ul>
             <!-- Actual menu -->
-            <ul class="left">
-                <li><a href="#/tickets">Tickets</a></li>
-                <li><a class="dropdown-button" href="#" data-activates="administrationMenu">Administración</a></li>
-                <li><a class="dropdown-button" href="#" data-activates="configMenu">Configuración</a></li>
-            </ul>
+            <div class="container">
+                <ul class="left">
+                    <li><a href="#/tickets" class="blue-grey-text text-darken-4">Tickets</a></li>
+                    <li><a class="dropdown-button blue-grey-text text-darken-4" href="#" data-activates="administrationMenu">Administración</a></li>
+                    <li><a class="dropdown-button blue-grey-text text-darken-4" href="#" data-activates="configMenu">Configuración</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     </div>

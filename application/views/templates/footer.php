@@ -9,7 +9,7 @@
             <h5 class="white-text">Contribuyentes</h5>
             <ul>
               <li><a class="grey-text text-lighten-3" href="#!">Marioandre Pigorini</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Génesis Jiménez</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Genessis Jiménez</a></li>
               <li><a class="grey-text text-lighten-3" href="#!">Kristopher Perdomo</a></li>
               <li><a class="grey-text text-lighten-3" href="#!">Hernán Hernández</a></li>
               <li><a class="grey-text text-lighten-3" href="#!">Oscar Pérez</a></li>
@@ -17,10 +17,10 @@
           </div>
         </div>
       </div>
-      <div class="footer-copyright">
-        <div class="container">
+      <div class="footer-copyright orange lighten-3 blue-grey-text text-darken-4">
+        <div class="container" style="font-weight: bold; cursor: default;">
         © 2016 Copyright
-        <a class="grey-text text-lighten-4 right" href="http://www.facyt.uc.edu.ve" target="_blank">FaCyT</a>
+        <a class="blue-grey-text text-darken-4 right" href="http://www.facyt.uc.edu.ve" target="_blank">FaCyT</a>
         </div>
       </div>
     </footer>
