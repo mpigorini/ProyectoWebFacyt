@@ -26,6 +26,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicket.js"></script>
+            <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/ListTicket.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/Tickets.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/TicketsAdministration.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/UsersAdministration.js"></script>
