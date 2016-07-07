@@ -76,4 +76,20 @@ class TicketsConfigController extends CI_Controller {
         }
         echo json_encode($result);
     }
+    
+    public function delete() {
+       
+       try{
+           
+           $em = $this->doctrine->em;
+           $entity = $em->find('\Entity\TicketType', $_GET['id']);
+           $em->remove($entity);
+           $em->flush();
+           $result['message']="success";
+       }catch(Exception $e) {
+           \ChromePhp::log($e);
+        $result['message'] = "error";
+       }
+        echo json_encode($result);
+    }
 }

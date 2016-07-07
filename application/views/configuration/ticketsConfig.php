@@ -1,9 +1,9 @@
 <h1 class="center">Configuración de los Tickets</h1>
-<p class="center">Aquí se configurarán los parámetros de los tickes</p>
+    <br>
+        <h5 class="container" style="font-weight:300">Lista de Configuraciones</h5>
+    <br>
 <div class="ticket-config-card container card">
-   <h5 style="padding-top:20px; margin-left:20px"><strong >Lista de configuraciones</strong></h5>
-    
-    <br/>
+   
     
     <table style="width:80%;margin:auto">
         <thead>
@@ -17,16 +17,21 @@
                 
                 <td>{{$index}}</td>
                 <td>{{ticketType.name}}</td>
-                <td><a class="btn" ng-click="loadTicketType($index)">Ver</a></td>
-                <td><a class="btn">Eliminar</a></td>
+                <td><a class="btn-floating waves-effect waves-light" ng-click="loadTicketType($index)"><i class="fa fa-arrow-down" aria-hidden="true"></i></a></td>
+                <td><a class="btn-floating waves-effect waves-light red" ng-click="delete($index)"><i class="material-icons">delete</i></a></td>
             </tr>
         </tbody>
     </table>
     <br/>
+</div>
+ 
+    <br>
+        <h5 class="container" style="font-weight:300">Configuracion Seleccionada</h5>
+    <br>
+
+<div class="ticket-config-card container card">
+      
     
-    <h5 style="padding-top:20px; margin-left:20px"><strong >Configuracion Seleccionada</strong></h5>
-    
-    <br/>
     <div class="row" style="margin-left:20px; margin-right:20px">
         <form>
             <div class="row valign-wrapper ">
