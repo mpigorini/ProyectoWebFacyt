@@ -70,10 +70,13 @@ class Ticket
      */
     private $qualityOfService;
 
-    /**
-     * @var string
+      /**
+     * @var \Entity\Users
      *
-     * @ORM\Column(name="user_reporter", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\ManyToOne(targetEntity="Entity\Users", inversedBy="tickets")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * })
      */
     private $userReporter;
 
