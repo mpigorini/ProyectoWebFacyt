@@ -27,7 +27,6 @@ function organizationConfiguration($scope, $rootScope, $http) {
         $scope.department.name = obj[id].name;
         $scope.department.description = obj[id].description;
         $scope.department.positions = obj[id].positions;
-        
     }
     
     $scope.loadPosition = function(id) {
