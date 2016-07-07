@@ -27,7 +27,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicketController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/TicketsController.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/ListTicket.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/ListTicketController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/TicketsAdminController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/UsersAdminController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/TicketConfigController.js"></script>
@@ -49,8 +49,8 @@
               <li><a href="#" ng-click="logout()">Cerrar Sesión</a></li>
             </ul>
             <div class="container nav-wrapper">
-                <a ng-show="isLoggedIn()" class="brand-logo"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
-                <a ng-show="!isLoggedIn()" class="brand-logo center"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
+                <a ng-show="isLoggedIn()" class="brand-logo" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
+                <a ng-show="!isLoggedIn()" class="brand-logo center" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
                 <ul class="right hide-on-med-and-down" ng-show="isLoggedIn()">
                     <li ng-class="{active:isSelected(4)}"><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
                     <li ng-class="{active:isSelected(5)}"><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
@@ -108,8 +108,8 @@
         </nav>
     </header>
     <!-- Main menu -->
-    <nav ng-show="isLoggedIn()" class="hide-on-med-and-down">
-        <div class="nav-wrapper #1de9b6 teal accent-3">
+    <nav ng-show="isLoggedIn()" class="hide-on-med-and-down #1de9b6 orange lighten-3">
+        <div class="container nav-wrapper #1de9b6 orange lighten-3">
             <!-- Configuration dropdown menu -->
             <ul id="configMenu" class="dropdown-content">
                 <li><a href="#/tickets-config" class="waves-effect waves-teal">Tickets</a></li>

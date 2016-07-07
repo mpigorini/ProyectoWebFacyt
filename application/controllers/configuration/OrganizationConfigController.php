@@ -10,7 +10,9 @@ class OrganizationConfigController extends CI_Controller {
     }
     
     public function getAllDepartments() {
+             \ChromePhp::log("inicio");
         try {
+            
             $em = $this->doctrine->em;
             $departments = $em->getRepository('\Entity\Department')->findAll();
             
@@ -18,13 +20,13 @@ class OrganizationConfigController extends CI_Controller {
                 $result['data'][$key]['id'] = $department->getId();
                 $result['data'][$key]['name'] = $department->getName();
                 $result['data'][$key]['description'] = $department->getDescription();
-                $result['data'][$key]['positions'] = $department->getPositions();
-                /*
+                //$result['data'][$key]['positions'] = $department->getPositions();
+                $positions = $department->getPositions();
                 foreach ($positions as $pkey=>$position) {
                     $result['data'][$key]['positions'][$pkey]['id'] = $position->getId();
                     $result['data'][$key]['positions'][$pkey]['name'] = $position->getName();
                     $result['data'][$key]['positions'][$pkey]['description'] = $position->getDescription();
-                }*/
+                }
             }
             
             $result['message'] = "success";
@@ -61,6 +63,30 @@ class OrganizationConfigController extends CI_Controller {
              $result['message'] = "error";
             \ChromePhp::log($e);
         }
+        echo json_encode($result);
+    }
+    
+    public function getAllPositions() {
+        try {
+            \ChromePhp::log("ID del departamento: ");
+            \ChromePhp::log($_GET['department']);
+            $em = $this->doctrine->em;
+            $department = $em->find('\Entity\Department', $_GET['department']);
+            \ChromePhp::log("Departamento: ");
+            \ChromePhp::log($department->getName());
+            $positions = $department->getPositions();
+            foreach ($positions as $key=>$position) {
+                $result['data'][$key]['id'] = $position->getId();
+                $result['data'][$key]['name'] = $position->getName();
+                $result['data'][$key]['description'] = $position->getDescription();
+            }
+            
+            $result['message'] = "success";
+       } catch(Exception $e) {
+           \ChromePhp::log($e);
+           $result['message'] = "Error";
+       }
+
         echo json_encode($result);
     }
     
