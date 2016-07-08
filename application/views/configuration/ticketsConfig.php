@@ -38,29 +38,29 @@
             <div class="row valign-wrapper ">
                 <div class="col s2 right-align valign "><strong>Nombre :</strong></div>
                 <div class="col s3" ng-show="edit"><input ng-model="model.name"></div>
-                <div class="col s3" ng-show="!edit"><input disabled ng-model="model.name"></div>
+                <div class="col s3" ng-show="!edit"><input readonly ng-model="model.name"></div>
                 <div class="col s2"></div>
                 <div class="col s2 right-align valign"><strong>Estados :</strong></div>
                <div class="col s3" ng-show="edit"><textarea class="materialize-textarea" ng-model="model.states"></textarea></div>
-                <div class="col s3" ng-show="!edit"><textarea disabled class="materialize-textarea" ng-model="model.states"></textarea></div>
+                <div class="col s3" ng-show="!edit"><textarea readonly class="materialize-textarea" ng-model="model.states"></textarea></div>
             </div>
             <div class="row teal lighten-5 valign-wrapper">
                 <div class="col s2 right-align valign "><strong>Tipos :</strong></div>
                 <div class="col s3" ng-show="edit"><textarea class="materialize-textarea" ng-model="model.types"></textarea></div>
-                <div class="col s3" ng-show="!edit"><textarea disabled class="materialize-textarea" ng-model="model.types"></textarea></div>
+                <div class="col s3" ng-show="!edit"><textarea readonly class="materialize-textarea" ng-model="model.types"></textarea></div>
                 <div class="col s2"></div>
                 <div class="col s2 right-align valign"><strong>Niveles :</strong></div>
                 <div class="col s3" ng-show="edit"><textarea class="materialize-textarea" ng-model="model.levels"></textarea></div>
-                <div class="col s3" ng-show="!edit"><textarea disabled class="materialize-textarea" ng-model="model.levels"></textarea></div>
+                <div class="col s3" ng-show="!edit"><textarea readonly class="materialize-textarea" ng-model="model.levels"></textarea></div>
             </div>
               <div class="row valign-wrapper ">
                 <div class="col s2 right-align valign "><strong>Prioridades :</strong></div>
                 <div class="col s3" ng-show="edit"><textarea class="materialize-textarea" ng-model="model.priorities"></textarea></div>
-                <div class="col s3" ng-show="!edit"><textarea disabled class="materialize-textarea" ng-model="model.priorities"></textarea></div>
+                <div class="col s3" ng-show="!edit"><textarea readonly class="materialize-textarea" ng-model="model.priorities"></textarea></div>
                 <div class="col s2"></div>
                 <div class="col s2 right-align valign"><strong>Timepo de Respuestas :</strong></div>
                <div class="col s3" ng-show="edit"><textarea class="materialize-textarea" ng-model="model.answerTimes"></textarea></div>
-                <div class="col s3" ng-show="!edit"><textarea disabled class="materialize-textarea" ng-model="model.answerTimes"></textarea></div>
+                <div class="col s3" ng-show="!edit"><textarea readonly class="materialize-textarea" ng-model="model.answerTimes"></textarea></div>
             </div>
               
         </form>

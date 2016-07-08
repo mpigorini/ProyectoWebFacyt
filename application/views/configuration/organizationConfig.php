@@ -1,5 +1,5 @@
 <title>Configuración de Organización</title>
-<div class="col s12 z-depth-1">
+<div class="z-depth-1">
       <ul class="tabs" >
         <li class="tab"><a href="#departmentsContainer">Departamentos</a></li>
         <li class="tab tooltipped" ng-class="{disabled:(department.positions == null)}" data-position="bottom" data-delay="50" data-tooltip="Seleccione un departamento primero"><a href="#positionsContainer">Cargos</a></li>

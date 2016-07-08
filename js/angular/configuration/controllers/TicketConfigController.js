@@ -33,12 +33,18 @@ angular.module('helpDesk').controller('TicketConfigController',
                     $scope.model.types == null ||
                     $scope.model.priorities == null ||
                     $scope.model.levels == null ||
-                    $scope.model.answerTimes == null) {
+                    $scope.model.answerTimes == null ||
+                    $scope.model.name == "" ||
+                    $scope.model.states == "" ||
+                    $scope.model.types == "" ||
+                    $scope.model.priorities == "" ||
+                    $scope.model.levels == "" ||
+                    $scope.model.answerTimes == "") {
                         swal("Falta información", "Debe proveer toda la información solicitada", "error");
                 } else {
                     swal({
                         title: "Confirmación",
-                        text: $scope.model.id === "undefined" ? "Su nueva configuración de solicitud será creada. ¿Desea proceder?" : "Se actualizara la configuracion "+$scope.model.name+". ¿Desea proceder?",
+                        text: typeof $scope.model.id === "undefined" ? "Su nueva configuración de solicitud será creada. ¿Desea proceder?" : "Se actualizara la configuracion "+$scope.model.name+". ¿Desea proceder?",
                         type: "info",
                         confirmButtonText: "Sí",
                         cancelButtonText: "No",

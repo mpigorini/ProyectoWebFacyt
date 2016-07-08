@@ -49,7 +49,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
         } else {
             swal({
                 title: "Confirmación",
-                text: "Su nuevo departamento será creado. ¿Desea proceder?",
+                text: typeof $scope.department.id === "undefined" ? "Su nuevo departamento será creado. ¿Desea proceder?" : "El departamento \"" + $scope.department.name + "\" será actualizado. ¿Desea proceder?",
                 type: "info",
                 confirmButtonText: "Sí",
                 cancelButtonText: "No",
@@ -95,7 +95,8 @@ function organizationConfiguration($scope, $rootScope, $http) {
         } else {
             swal({
                 title: "Confirmación",
-                text: "El cargo " + $scope.position.name + " será agregado al Departamento de " + $scope.department.name + ". ¿Desea proceder?",
+                text: typeof $scope.position.id === "undefined" ? "El cargo " + $scope.position.name + " será agregado al Departamento de " + $scope.department.name + ". ¿Desea proceder?" :
+                    "El cargo " + $scope.position.name + " será actualizado. ¿Desea proceder?",
                 type: "info",
                 confirmButtonText: "Sí",
                 cancelButtonText: "No",
