@@ -17,7 +17,8 @@
                 
                 <td>{{$index}}</td>
                 <td>{{ticketType.name}}</td>
-                <td><a class="btn-floating waves-effect waves-light" ng-click="loadTicketType($index)"><i class="fa fa-arrow-down" aria-hidden="true"></i></a></td>
+                <td><a class="btn-floating waves-effect waves-light" ng-click="loadTicketType($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
+                <!--<td><a class="btn-floating waves-effect waves-light" ng-click="loadTicketType($index)"><i class="material-icons">arrow_downward</i></a></td>-->
                 <td><a class="btn-floating waves-effect waves-light red" ng-click="delete($index)"><i class="material-icons">delete</i></a></td>
             </tr>
         </tbody>
