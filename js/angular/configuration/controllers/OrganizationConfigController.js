@@ -12,6 +12,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
     $scope.editPosition = false;
     $scope.department = {};
     $scope.position = {};
+    $('.tooltipped').tooltip({delay: 50});
     $http.get('index.php/configuration/OrganizationConfigController/getAllDepartments')
     	.then(function(response) {
             if(response.data.message == "success") {
@@ -30,7 +31,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
         if ($scope.department.positions == null) {
             $scope.department.positions = {};
         }
-        
+        $('.tooltipped').tooltip('remove');
     }
     
     $scope.loadPosition = function(id) {
@@ -66,6 +67,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
                                     $scope.editPosition = false;
                                     $scope.department = {};
                                     $scope.position = {};
+                                    $('.tooltipped').tooltip({delay: 50});
                                     // refresh the data
                                     $http.get('index.php/configuration/OrganizationConfigController/getAllDepartments')
                                     	.then(function(response) {
@@ -192,6 +194,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
                             $scope.editPosition = false;
                             $scope.department = {};
                             $scope.position = {};
+                            $('.tooltipped').tooltip({delay: 50});
                             // refresh the data
                             $http.get('index.php/configuration/OrganizationConfigController/getAllDepartments')
                             	.then(function(response) {

@@ -48,3 +48,21 @@ main {
 .ticket-config-card{
     margin:auto;
 }
+
+.tabs .indicator {
+	color: #00bfa5;
+    background-color: #00bfa5;
+    z-index:1
+}
+.tabs .tab a {
+    color: #00bfa5;
+}
+
+.tabs .tab a:hover {
+  color: #00796B;
+}
+
+.tabs .tab.disabled a {
+  color: #BDBDBD;
+  cursor: default;
+}

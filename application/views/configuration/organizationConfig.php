@@ -1,5 +1,11 @@
 <title>Configuración de Organización</title>
-<div class="container">
+<div class="col s12 z-depth-1">
+      <ul class="tabs" >
+        <li class="tab"><a href="#departmentsContainer">Departamentos</a></li>
+        <li class="tab tooltipped" ng-class="{disabled:(department.positions == null)}" data-position="bottom" data-delay="50" data-tooltip="Seleccione un departamento primero"><a href="#positionsContainer">Cargos</a></li>
+      </ul>
+</div>
+<div id="departmentsContainer" class="container">
 	<br>
         <h5 class="center-align" style="font-weight:300">Configuración de la Organización</h5>
     <br>
@@ -64,9 +70,13 @@
             </div>
         </form>
     </div>
-    <br/>
+</div>
+<div id="positionsContainer" class="container">
+	<br>
+        <h5 class="center-align" style="font-weight:300">Configuración de la Organización</h5>
+    <br>
     <!-- Positions -->
-    <div ng-show="(department.positions != null)" class="row">
+    <div class="row">
         <div class="col s12 m6 card-panel">
             <p class="center">Lista de cargos dentro del departamento {{department.name}}</p>
             <table style="width:80%;margin:auto">
@@ -97,7 +107,7 @@
 	    </div>
 	</div>
 	<!-- Selected position's detail -->
-    <div ng-show="(department.positions != null)" id="positions-table" class="row" style="margin-left:20px; margin-right:20px">
+    <div id="positions-table" class="row" style="margin-left:20px; margin-right:20px">
         <h5 style="font-weight:300">Detalles del cargo {{position.name}}</h5>
         <form>
             <div class ="row card-panel">
@@ -127,3 +137,8 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
