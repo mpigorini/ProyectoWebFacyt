@@ -7,7 +7,7 @@
 </div>
 <div id="departmentsContainer" class="container">
 	<br>
-        <h5 class="center-align" style="font-weight:300">Configuración de la Organización</h5>
+        <h5 class="center-align" style="font-weight:300">Configuración de Departamentos de la Organización</h5>
     <br>
     <!-- Departments -->
 	<div class="row">
@@ -73,7 +73,7 @@
 </div>
 <div id="positionsContainer" class="container">
 	<br>
-        <h5 class="center-align" style="font-weight:300">Configuración de la Organización</h5>
+        <h5 class="center-align" style="font-weight:300">Configuración de Cargos de {{department.name}}</h5>
     <br>
     <!-- Positions -->
     <div class="row">

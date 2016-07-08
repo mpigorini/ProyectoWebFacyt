@@ -224,6 +224,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
     
     $scope.newDepartment = function() {
         $scope.department = {};
+        $('.tooltipped').tooltip({delay: 50});
         $scope.editDepartment = true;
     }
     
