@@ -14,19 +14,25 @@
             </div>    
             <div class="profile-settings col s6">
                 <h5>
-                    Contraseña: <input type="password" ng-model="edit.password" required>
+                    Contraseña:
+                    <input type="password" ng-model="edit.password" ng-show="mode">
+                    <input type="password" ng-model="edit.password" ng-show="!mode" readonly>
                 </h5>
             </div>
         </div>
         <div class="row">
             <div class="profile-settings col s6">
                 <h5>
-                    Nombre: <input type="text" ng-model="edit.username">
+                    Nombre:
+                    <input type="text" ng-model="edit.username" ng-show="mode">
+                    <input type="text" ng-model="edit.username" ng-show="!mode" readonly>
                 </h5>
             </div>
             <div class="profile-settings col s6">
                 <h5>
-                    Apellido: <input type="text" ng-model="edit.lastname">
+                    Apellido:
+                    <input type="text" ng-model="edit.lastname" ng-show="mode">
+                    <input type="text" ng-model="edit.lastname" ng-show="!mode" readonly>
                 </h5>
             </div>
         </div>
@@ -38,7 +44,9 @@
             </div>
             <div class="profile-settings col s6">
                 <h5>
-                    Teléfono: <input type="text" ng-model="edit.phone">
+                    Teléfono:
+                    <input type="text" ng-model="edit.phone" ng-show="mode">
+                    <input type="text" ng-model="edit.phone" ng-show="!mode" readonly>
                 </h5>
             </div>
         </div>
@@ -62,7 +70,9 @@
             </div>
         </div> 
         <div class="row">   
-            <button class="btn col s4 offset-s4 waves-effect waves-light  yellow darken-4"  name="edit" ng-click="edit()">Actualizar información</button>
+            <button class="btn col s4 offset-s4 waves-effect waves-light  yellow darken-4"  name="edit" ng-click="editMode()" ng-show="!mode">Actualizar información</button>
+            <button class="btn col s4 offset-s4 waves-effect waves-light  yellow darken-4"  name="save" ng-click="save()" ng-show="mode" style="margin-bottom: 20px;">Guardar</button>
+            <button class="btn col s4 offset-s4 waves-effect waves-light  yellow darken-4"  name="cancel" ng-click="viewMode()" ng-show="mode">Cancelar</button>  
         </div>    
     </div>
 </div>

@@ -38,7 +38,7 @@ class Department
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Entity\Position", mappedBy="deparment")
+     * @ORM\OneToMany(targetEntity="Entity\Position", mappedBy="department")
      */
     private $positions;
 

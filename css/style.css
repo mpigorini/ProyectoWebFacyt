@@ -42,3 +42,9 @@ main {
 #profile-card input, #profile-card label {
     float:left;
 }
+
+
+
+.ticket-config-card{
+    margin:auto;
+}

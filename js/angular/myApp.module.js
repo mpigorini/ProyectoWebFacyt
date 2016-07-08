@@ -9,11 +9,18 @@ angular.module('helpDesk').controller('MainController',
             $scope.logout = function () {
                 auth.logout();
             };
+            $rootScope.choice = 1;
+            $rootScope.select = function(selection) {
+                $rootScope.choice = selection;
+            };
+            $rootScope.isSelected = function(selection) {
+              return ($rootScope.choice == selection);
+            }
         }
     ]
 );
 
-angular.module('helpDesk').controller('Navbar',function($scope,auth){
+angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth){
   $scope.isLoggedIn = function() {
     return(auth.isLoggedIn());
   };
@@ -38,33 +45,40 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
     .state('new-ticket', {
         url: '/new-ticket',
         module: 'private',
-        templateUrl: 'index.php/tickets/NewTicket',
-        controller: 'NewTicket'
+        templateUrl: 'index.php/tickets/NewTicketController',
+        controller: 'NewTicketController'
     })
     .state('tickets', {
         url: '/tickets',
         module: 'private',
-        templateUrl: 'index.php/tickets/Tickets',
+        templateUrl: 'index.php/tickets/TicketsController',
+        controller: 'TicketsController'
     })
     .state('tickets-administration', {
         url: '/tickets-administration',
         module: 'private',
-        templateUrl: 'index.php/administration/TicketsAdministration',
+        templateUrl: 'index.php/administration/TicketsAdminController',
+        controller: 'TicketsAdminController'
     })
     .state('users-administration', {
         url: '/users-administration',
         module: 'private',
-        templateUrl: 'index.php/administration/UsersAdministration',
+        templateUrl: 'index.php/administration/UsersAdminController',
+        controller: 'UsersAdminController'
     })
     .state('tickets-config', {
         url: '/tickets-config',
         module: 'private',
-        templateUrl: 'index.php/configuration/TicketsConfiguration',
+        templateUrl: 'index.php/configuration/TicketsConfigController',
+        controller: 'TicketConfigController'
+
+
     })
     .state('organization-config', {
         url: '/organization-config',
         module: 'private',
-        templateUrl: 'index.php/configuration/OrganizationConfiguration',
+        templateUrl: 'index.php/configuration/OrganizationConfigController',
+        controller: 'OrganizationConfigController'
     })
 });
 
@@ -87,6 +101,6 @@ angular.module('helpDesk')
           // console.log('ALLOW');
           e.preventDefault();
           $state.go('tickets');
-        } 
+        }
   });
 }])

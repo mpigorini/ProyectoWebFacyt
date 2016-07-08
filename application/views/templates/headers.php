@@ -25,7 +25,13 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/LoginController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicket.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicketController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/TicketsController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/ListTicket.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/TicketsAdminController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/UsersAdminController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/TicketConfigController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/OrganizationConfigController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
@@ -46,8 +52,8 @@
                 <a ng-show="isLoggedIn()" class="brand-logo" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
                 <a ng-show="!isLoggedIn()" class="brand-logo center" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
                 <ul class="right hide-on-med-and-down" ng-show="isLoggedIn()">
-                    <li><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
-                    <li><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
+                    <li ng-class="{active:isSelected(4)}"><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
+                    <li ng-class="{active:isSelected(5)}"><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
                 </ul>
                 <!-- Mobile nav-bar -->
 				<ul id="nav-mobile" class="side-nav" ng-show="isLoggedIn()">
@@ -117,13 +123,11 @@
                 <li><a href="#/users-administration" class="waves-effect waves-teal">Usuarios</a></li>
             </ul>
             <!-- Actual menu -->
-            <div class="container">
-                <ul class="left">
-                    <li><a href="#/tickets" class="blue-grey-text text-darken-4">Tickets</a></li>
-                    <li><a class="dropdown-button blue-grey-text text-darken-4" href="#" data-activates="administrationMenu">Administración</a></li>
-                    <li><a class="dropdown-button blue-grey-text text-darken-4" href="#" data-activates="configMenu">Configuración</a></li>
-                </ul>
-            </div>
+            <ul class="left">
+                <li ng-class="{active:isSelected(1)}"><a href="#/tickets">Tickets</a></li>
+                <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu">Administración</a></li>
+                <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu">Configuración</a></li>
+            </ul>
         </div>
     </nav>
     </div>
