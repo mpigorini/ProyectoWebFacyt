@@ -17,10 +17,10 @@ function newTicket($scope, $rootScope, $http, $cookies) {
             }
     });
     
-    $http.get('index.php/tickets/NewTicketController/getConfig')
+    $http.get('index.php/tickets/NewTicketController/getConfiguration')
         .then(function(response) {
             if (response.data.message == "success") {
-               $scope.config = response.data.data;
+               $scope.config = response.data;
             }
     });
     

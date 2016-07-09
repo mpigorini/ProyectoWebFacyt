@@ -8,6 +8,35 @@ class NewTicketController extends CI_Controller {
         $this->load->view('tickets/newTicket');
     }
     
+    public function getConfiguration() {
+        
+        try{
+            $em = $this->doctrine->em;
+            $config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));
+
+            if($config != null){
+                // Only need these three to create a new ticket.
+                foreach(explode(',', $config->getTypes()) as $key=>$type){
+                    $result['types'][$key] = $type;
+                }
+                foreach(explode(',', $config->getLevels()) as $key=>$level){
+                    $result['levels'][$key] = $type;
+                }
+                foreach(explode(',', $config->getPriorities()) as $key=>$priority){
+                    $result['priorities'][$key] = $priority;
+                }
+                $result['message'] = "success";
+                
+            }            
+            
+        }catch(Exception $e){
+            \ChromePhp::log($e);
+             $result['message']="error";
+        }
+        
+        echo json_encode($result);
+    }
+
     public function getAllDepartments() {
         try {
             $em = $this->doctrine->em;
@@ -27,10 +56,8 @@ class NewTicketController extends CI_Controller {
         echo json_encode($result);
     }
     
-    public function getConfig() {
+    /*public function getConfig() {
         try {
-            /*$em = $this->doctrine->em;
-            $ticketType = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>"1"));*/
             $result['data']['priority'][0] = "Baja";
             $result['data']['priority'][1] = "Normal";
             $result['data']['priority'][2] = "Alta";
@@ -44,7 +71,7 @@ class NewTicketController extends CI_Controller {
            $result['message'] = "error";
        }
         echo json_encode($result);
-    }
+    }*/
     
     public function saveTicket() {
         \ChromePhp::log("Ticket subject: ");

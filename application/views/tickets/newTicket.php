@@ -24,13 +24,13 @@
     <div class ="row">
         <div class="input-field col s12 m3">
             <select ng-model="ticket.type" material-select watch>
-                <option ng-repeat="type in config.type">{{type}}</option>
+                <option ng-repeat="type in config.types track by $index">{{type}}</option>
             </select>
             <label>Tipo de incidente</label>
         </div>
         <div class="input-field col s12 m3">
             <select ng-model="ticket.level" material-select watch>
-                <option ng-repeat="level in config.level">{{level}}</option>
+                <option ng-repeat="level in config.levels">{{level}}</option>
             </select>
             <label>Nivel</label>
         </div>
@@ -42,7 +42,7 @@
         </div>
         <div class="input-field col s12 m3">
             <select ng-model="ticket.priority" material-select watch>
-                <option ng-repeat="priority in config.priority">{{priority}}</option>
+                <option ng-repeat="priority in config.priorities">{{priority}}</option>
             </select>
             <label>Prioridad</label>
         </div>
