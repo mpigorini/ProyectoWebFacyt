@@ -23,6 +23,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/login.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/authenticate.factory.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/LoginController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular-materialize.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicketController.js"></script>
@@ -32,7 +34,6 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/UsersAdminController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/TicketConfigController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/OrganizationConfigController.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>

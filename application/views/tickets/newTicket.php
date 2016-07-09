@@ -23,49 +23,31 @@
     
     <div class ="row">
         <div class="input-field col s12 m3">
-            <select>
-              <option value="" disabled selected>Elija el tipo de incidente</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+            <select ng-model="ticket.type" material-select watch>
+                <option ng-repeat="type in config.type" value="{{$index}}">{{type}}</option>
             </select>
             <label>Tipo de incidente</label>
         </div>
         <div class="input-field col s12 m3">
-            <select>
-                  <option value="" disabled selected>Elija el nivel del incidente</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
+            <select ng-model="ticket.level" material-select watch>
+                <option ng-repeat="level in config.level" value="{{$index}}">{{level}}</option>
             </select>
             <label>Nivel</label>
         </div>
         <div class="input-field col s12 m3">
-            <select>
-                  <option value="" disabled selected>Elija el departamento de origen del incidente</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
+            <select ng-model="ticket.department" material-select watch>
+                <option ng-repeat="department in departments" value="{{$index}}">{{department.name}}</option>
             </select>
             <label>Departamento</label>
         </div>
         <div class="input-field col s12 m3">
-            <select>
-                  <option value="" disabled selected>Elija la prioridad del incidente</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
+            <select ng-model="ticket.priority" material-select watch>
+                <option ng-repeat="priority in config.priority" value="{{$index}}">{{priority}}</option>
             </select>
             <label>Prioridad</label>
         </div>
     </div>
     <div class="row">
-        <a class="col s4 offset-s4 m2 offset-m5 waves-effect waves-light yellow darken-4 btn">Enviar</a>
+        <a class="col s4 offset-s4 m2 offset-m5 waves-effect waves-light yellow darken-4 btn" ng-click="saveTicket()">Enviar</a>
    	</div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('select').material_select();
-    $('input#subject, textarea#description').characterCounter();
-});
-</script>
