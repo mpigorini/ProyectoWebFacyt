@@ -16,7 +16,15 @@
         <!-- Utils are important for page functionality so load before showing content -->
         <script src="https://use.fontawesome.com/4330ea9880.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-2.2.4.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.css">
+        <!-- Angular Material requires Angular.js Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+        
+        <!-- Angular Material Library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular-route.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/cookies.min.js"></script>

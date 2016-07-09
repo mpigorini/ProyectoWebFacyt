@@ -20,6 +20,7 @@ class TicketsConfigController extends CI_Controller {
                             ->getQuery()
                             ->getResult()
                             ;
+            // TODO: If tycketTypes is empty (no ticketTypes), load default configuration
             foreach($ticketTypes as $key=>$ticketType){
                 $result['data'][$key]['id'] = $ticketType->getId();
                 $result['data'][$key]['name'] = $ticketType->getName();
@@ -91,5 +92,28 @@ class TicketsConfigController extends CI_Controller {
         $result['message'] = "error";
        }
         echo json_encode($result);
+    }
+    
+    public function setAsActive() {
+        try{
+            $em = $this->doctrine->em;
+            // Set selected config as active
+            $ticketType = $em->find('\Entity\TicketType', $_GET['id']);   
+            $ticketType->setActive(true);
+            // Set previous config as unactive
+            $oldTicketType = $em->find('\Entity\TicketType', $_GET['oldId']); 
+            $oldTicketType->setActive(false);
+            // Persist changes
+            $em->merge($ticketType);
+            $em->persist($ticketType);
+            $em->merge($oldTicketType);
+            $em->persist($oldTicketType);
+            $em->flush();
+            $result['message'] = "success";
+        }catch(Exception $e){
+             $result['message'] = "error";
+            \ChromePhp::log($e);
+        }
+        echo json_encode($result);        
     }
 }

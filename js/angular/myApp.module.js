@@ -1,4 +1,4 @@
-var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize"]);
+var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial"]);
 
 
 angular.module('helpDesk').controller('MainController',
