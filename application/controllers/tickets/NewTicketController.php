@@ -20,7 +20,7 @@ class NewTicketController extends CI_Controller {
                     $result['types'][$key] = $type;
                 }
                 foreach(explode(',', $config->getLevels()) as $key=>$level){
-                    $result['levels'][$key] = $type;
+                    $result['levels'][$key] = $level;
                 }
                 foreach(explode(',', $config->getPriorities()) as $key=>$priority){
                     $result['priorities'][$key] = $priority;
@@ -55,23 +55,6 @@ class NewTicketController extends CI_Controller {
 
         echo json_encode($result);
     }
-    
-    /*public function getConfig() {
-        try {
-            $result['data']['priority'][0] = "Baja";
-            $result['data']['priority'][1] = "Normal";
-            $result['data']['priority'][2] = "Alta";
-            $result['data']['level'][0] = "Especialista";
-            $result['data']['level'][1] = "General";
-            $result['data']['type'][0] = "Hardware";
-            $result['data']['type'][1] = "Software";
-            $result['message'] = "success";
-        } catch(Exception $e) {
-           \ChromePhp::log($e);
-           $result['message'] = "error";
-       }
-        echo json_encode($result);
-    }*/
     
     public function saveTicket() {
         \ChromePhp::log("Ticket subject: ");

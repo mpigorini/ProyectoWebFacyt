@@ -24,7 +24,7 @@
     <div class ="row">
         <div class="input-field col s12 m3">
             <select ng-model="ticket.type" material-select watch>
-                <option ng-repeat="type in config.types track by $index">{{type}}</option>
+                <option ng-repeat="type in config.types">{{type}}</option>
             </select>
             <label>Tipo de incidente</label>
         </div>

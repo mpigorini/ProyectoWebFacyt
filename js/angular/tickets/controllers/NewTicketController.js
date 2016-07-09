@@ -14,6 +14,10 @@ function newTicket($scope, $rootScope, $http, $cookies) {
     	.then(function(response) {
             if(response.data.message == "success") {
                 $scope.departments = response.data.data;
+               // There must be at least one value for each parameters,
+               // which will be used to initialize the dropdown and avoid
+               // empty option.
+               $scope.ticket.department = $scope.departments[0];
             }
     });
     
@@ -21,6 +25,12 @@ function newTicket($scope, $rootScope, $http, $cookies) {
         .then(function(response) {
             if (response.data.message == "success") {
                $scope.config = response.data;
+               // There must be at least one value for each parameters,
+               // which will be used to initialize the dropdown and avoid
+               // empty option.
+               $scope.ticket.type = $scope.config.types[0];
+               $scope.ticket.priority = $scope.config.priorities[0];
+               $scope.ticket.level = $scope.config.levels[0];
             }
     });
     
