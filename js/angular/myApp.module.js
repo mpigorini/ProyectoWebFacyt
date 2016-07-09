@@ -26,7 +26,7 @@ angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth)
   };
 });
 
-helpDesk.config(function($stateProvider, $urlRouterProvider) {
+helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
   $urlRouterProvider
                   .otherwise('login');
   $stateProvider
@@ -80,6 +80,10 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'index.php/configuration/OrganizationConfigController',
         controller: 'OrganizationConfigController'
     })
+    // Application theme
+    $mdThemingProvider.theme('default')
+        .primaryPalette('teal')
+        .accentPalette('deep-orange');
 });
 
 // $routeChangeStart changed for $locationChangeStart because event.preventDefault was

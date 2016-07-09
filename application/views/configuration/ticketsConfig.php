@@ -115,11 +115,19 @@
     <div class="row" style="margin-left:20px; margin-right:20px">
         <div layout="row">
             <!-- Name section -->
-            <div flex="50">
-                <md-content class="md-padding" layout="column">
+            <div flex="50" ng-show="edit">
+                <md-content layout="column">
                 <p>Nombre de la configuración</p>
                     <md-input-container>
                         <input aria-label="name" ng-model="model.name">
+                    </md-input-container>
+                </md-content>
+            </div>
+            <div flex="50" ng-hide="edit">
+                <md-content layout="column">
+                <p>Nombre de la configuración</p>
+                <md-input-container class="md-block">
+                    <input aria-label="name" ng-model="model.name" readonly>
                     </md-input-container>
                 </md-content>
             </div>
@@ -127,9 +135,11 @@
             <div flex="50">
                 <md-content class="md-padding" layout="column">
                 <p>Opciones para Tipos de incidente</p>
-                <md-chips
-                    ng-model="typesArray"
-                    md-separator-keys="customKeys"></md-chips>
+                    <md-chips
+                        readonly="!edit"
+                        ng-model="model.types"
+                        md-separator-keys="customKeys">
+                    </md-chips>
                 </md-content>
             </div>
         </div>
@@ -139,9 +149,15 @@
             <div flex="50">
                 <md-content class="md-padding" layout="column">
                 <p>Opciones para Estados de la solicitud</p>
-                <md-chips
-                    ng-model="statesArray"
-                    md-separator-keys="customKeys"></md-chips>
+                    <md-chips
+                        readonly
+                        ng-model="defaultStates">
+                    </md-chips>
+                    <md-chips
+                        readonly="!edit"
+                        ng-model="model.states"
+                        md-separator-keys="customKeys">
+                    </md-chips>
                 </md-content>
             </div>
             <!-- Levels section -->
@@ -149,7 +165,8 @@
                 <md-content class="md-padding" layout="column">
                 <p>Opciones para Niveles del incidente</p>
                 <md-chips
-                    ng-model="levelsArray"
+                    readonly="!edit"
+                    ng-model="model.levels"
                     md-separator-keys="customKeys"></md-chips>
                 </md-content>
             </div>
@@ -161,7 +178,8 @@
                 <md-content class="md-padding" layout="column">
                 <p>Opciones para Prioridades</p>
                 <md-chips
-                    ng-model="prioritiesArray"
+                    readonly="!edit"
+                    ng-model="model.priorities"
                     md-separator-keys="customKeys"></md-chips>
                 </md-content>
             </div>
@@ -170,16 +188,17 @@
                 <md-content class="md-padding" layout="column">
                 <p>Opciones para Tiempos de respuesta</p>
                 <md-chips
-                    ng-model="answerTimesArray"
+                    readonly="!edit"
+                    ng-model="model.answerTimes"
                     md-separator-keys="customKeys"></md-chips>
                 </md-content>
             </div>
         </div>
         <div class="row right-align" >
-            <a class="btn" ng-click="newTicketType()" ng-show="!edit">Nuevo</a>
-            <a class="btn" ng-click="editMode()" ng-show="!edit && (model.name != null)">Editar</a>
-            <a class="btn" ng-click="save()" ng-show="edit">Guardar</a>
-            <a class="btn" ng-click="viewMode()" ng-show="edit">Cancelar</a>
+            <md-button ng-click="newTicketType()" ng-hide="edit" class="md-primary md-raised">Nuevo</md-button>
+            <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
+            <md-button ng-click="save()" ng-show="edit" class="md-primary md-raised">Guardar</md-button>
+            <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
         </div>
     </div>
 </div>

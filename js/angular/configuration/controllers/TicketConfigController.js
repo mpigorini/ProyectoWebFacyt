@@ -24,32 +24,42 @@ angular.module('helpDesk').controller('TicketConfigController',
             // Any key code can be used to create a custom separator
             var semicolon = 186;
             $scope.customKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, semicolon];
-            $scope.statesArray = [];
-            $scope.typesArray = [];
-            $scope.levelsArray = [];
-            $scope.prioritiesArray = [];
-            $scope.answerTimesArray = []
+            // initialize chips containers
+            initializeChipsContainers();
     
             $scope.loadTicketType = function(id){
                 var obj = $scope.ticketTypes;
                 $scope.model={};
                 $scope.model.id = obj[id].id;
                 $scope.model.name = obj[id].name;
-                $scope.model.states = obj[id].states;
-                console.log(obj[id].states.split(','));
-                $scope.statesArray = obj[id].states.split(',');
-                $scope.model.types = obj[id].types;
-                $scope.typesArray = obj[id].types.split(',');
-                $scope.model.priorities = obj[id].priorities;
-                $scope.prioritiesArray = obj[id].priorities.split(',');
-                $scope.model.levels = obj[id].levels;
-                $scope.levelsArray = obj[id].levels.split(',');
+                $scope.model.states = obj[id].states.split(',');
+                $scope.model.types = obj[id].types.split(',');
+                $scope.model.priorities = obj[id].priorities.split(',');
+                $scope.model.levels = obj[id].levels.split(',');
+                $scope.model.answerTimes = obj[id].answerTimes.split(',');
+                // default state array for loaded tickets will always be first and last index.
+                $scope.defaultStates = [$scope.model.states[0], $scope.model.states[$scope.model.states.length-1]]
                 $scope.model.active = obj[id].active;
-                $scope.model.answerTimes = obj[id].answerTimes;
-                $scope.answerTimesArray = obj[id].answerTimes.split(',');
+            }
+            
+            // helper function that initializes chip containers
+            function initializeChipsContainers() {
+                $scope.model = {};
+                $scope.model.states = [];
+                $scope.model.types = [];
+                $scope.model.levels = [];
+                $scope.model.priorities = [];
+                $scope.model.answerTimes = [];
+                // default states array
+                $scope.defaultStates = ["En espera", "Cerrado"];
+            }
+            
+            $scope.check = function(id) {
+                console.log("Checked chip index: " + id);
             }
             
             $scope.save = function() {
+                console.log($scope.model.states);
                 if ($scope.model.name == null ||
                     $scope.model.states == null ||
                     $scope.model.types == null ||
@@ -80,6 +90,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                                             .then(function(response){
                                                 if(response.data.message === "success"){
                                                     $scope.ticketTypes = response.data.data;
+                                                    initializeChipsContainers();
                                                     // Look for active one.
                                                     for (var i = 0; i < $scope.ticketTypes.length; i++) {
                                                         if ($scope.ticketTypes[i].active) {
@@ -121,6 +132,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                                     .then(function(response){
                                         if(response.data.message === "success") {
                                             $scope.ticketTypes = response.data.data;
+                                            initializeChipsContainers();
                                            // Look for active one.
                                             for (var i = 0; i < $scope.ticketTypes.length; i++) {
                                                 if ($scope.ticketTypes[i].active) {
@@ -140,8 +152,10 @@ angular.module('helpDesk').controller('TicketConfigController',
             
             $scope.setAsActive = function(id) {
                 // switch off the previous config and switch on selected one
-                $scope.ticketTypes[$scope.active].active = false
+                $scope.ticketTypes[$scope.active].active = false;
+                console.log("Disabling config ID: " + $scope.active);
                 $scope.ticketTypes[id].active = true;
+                console.log("Enabling config ID: " + id);
                 swal({
                     title: "Confirmación",
                     text: "¿La configuración de sus tickets será cambiada por \"" + $scope.ticketTypes[id].name + "\". ¿Desea proceder?",
@@ -160,14 +174,21 @@ angular.module('helpDesk').controller('TicketConfigController',
                                 console.log(response)
                                 if (response.data.message == "success") {
                                    $http.get('index.php/configuration/TicketsConfigController/getTicketTypes')
-                                    .then(function(response){
+                                    .then(function(response) {
                                         if(response.data.message === "success") {
+                                            $scope.active = id;
                                             $scope.ticketTypes = response.data.data;
                                         }
                                     })
                                     swal("Configuración cambiada", "La configuración de los tickets ha sido cambiada exitosamente", "success");
+                                    
                                 } else {
                                     swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
+                                    // revert back switching
+                                    $scope.ticketTypes[$scope.active].active = true;
+                                    $scope.ticketTypes[id].active = false;
+                                    // refresh
+                                    $scope.$apply();
                                 }
                         })
                     } else {
@@ -186,7 +207,7 @@ angular.module('helpDesk').controller('TicketConfigController',
             }
             
             $scope.newTicketType = function(){
-                $scope.model={};
+                initializeChipsContainers();
                 $scope.edit=true;
             }
             $scope.viewMode = function() {
@@ -194,6 +215,16 @@ angular.module('helpDesk').controller('TicketConfigController',
             }
             $scope.editMode = function(){
                 $scope.edit =true;
+            }
+            
+            $scope.noUserInput = function() {
+                return (
+                    ($scope.model.name == null || $scope.model.name == "")
+                    && $scope.model.states.length == 0
+                    && $scope.model.types.length == 0
+                    && $scope.model.levels.length == 0
+                    && $scope.model.priorities.length == 0
+                    && $scope.model.answerTimes.length == 0);
             }
             
         }
