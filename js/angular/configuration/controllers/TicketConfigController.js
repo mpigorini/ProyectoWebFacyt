@@ -9,7 +9,6 @@ angular.module('helpDesk').controller('TicketConfigController',
                 .then(function(response){
                     if(response.data.message === "success"){
                         $scope.ticketTypes = response.data.data;
-                        console.log("tickets type:" + $scope.ticketTypes);
                     }
                 })
             
@@ -33,18 +32,12 @@ angular.module('helpDesk').controller('TicketConfigController',
                     $scope.model.types == null ||
                     $scope.model.priorities == null ||
                     $scope.model.levels == null ||
-                    $scope.model.answerTimes == null ||
-                    $scope.model.name == "" ||
-                    $scope.model.states == "" ||
-                    $scope.model.types == "" ||
-                    $scope.model.priorities == "" ||
-                    $scope.model.levels == "" ||
-                    $scope.model.answerTimes == "") {
+                    $scope.model.answerTimes == null) {
                         swal("Falta información", "Debe proveer toda la información solicitada", "error");
                 } else {
                     swal({
                         title: "Confirmación",
-                        text: typeof $scope.model.id === "undefined" ? "Su nueva configuración de solicitud será creada. ¿Desea proceder?" : "Se actualizara la configuracion "+$scope.model.name+". ¿Desea proceder?",
+                        text: $scope.model.id === "undefined" ? "Su nueva configuración de solicitud será creada. ¿Desea proceder?" : "Se actualizara la configuracion "+$scope.model.name+". ¿Desea proceder?",
                         type: "info",
                         confirmButtonText: "Sí",
                         cancelButtonText: "No",
@@ -96,8 +89,12 @@ angular.module('helpDesk').controller('TicketConfigController',
                                 .then(function(response) {
                                     console.log(response)
                                     if (response.data.message == "success") {
-                                        
-                                        delete $scope.ticketTypes[index];
+                                       $http.get('index.php/configuration/TicketsConfigController/getTicketTypes')
+                                        .then(function(response){
+                                            if(response.data.message === "success"){
+                                                $scope.ticketTypes = response.data.data;
+                                            }
+                                        })
                                         swal("Configuración eliminada", "La configuración selecionada ha sido eliminada exitosamente.", "success");
                                     } else {
                                         swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
