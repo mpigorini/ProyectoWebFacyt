@@ -111,13 +111,11 @@
         <div class="row">
         	<div class="input-field col s12">
 				<h5 style="cursor: default;">Nuevo departamento y cargo:</h5>
-				<div ng-repeat="values in departments">
-				  	El departamento y sus cargos: {{values}}
-				  	<br>
-				  	Nombre del departamento: {{values.name}}
-				</div>
-				<!-- <select ng-model="newDepartment" ng-options="key as value for (key , valu) in departments"></select>
-				<select ng-model="ciudadElegida" ng-options="departmet as department.name for department in departments"></select> -->
+			
+			    <select  ng-model="newDepartment"  material-select watch>
+			        <option  ng-repeat="departmet in departments">{{departmet.name}}</option>
+			    </select>
+				
 	        </div>
         </div>
         <div class="row">
@@ -146,7 +144,4 @@
 	</div>
 </div>
 <script>
-	$(document).ready(function() {
-	    $('select').material_select();
-	});
 </script>
