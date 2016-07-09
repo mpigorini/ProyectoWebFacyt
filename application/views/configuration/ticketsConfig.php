@@ -1,19 +1,18 @@
 <h1 class="center">Configuración de los Tickets</h1>
     <br>
-        <h5 class="container" style="font-weight:300">Lista de Configuraciones</h5>
-    <br>
 <div class="ticket-config-card container ">
    <div class="row" style="width:100%;margin:auto;">
        <div class="col s12 l5  card-panel blue-grey darken-1">
     	        <p class="white-text">
-        	        En la Lista de departamentos se muestran todos los departamentos existentes.<br/>
-        	        Para editar un departamento, haga click en <i class="material-icons">keyboard_arrow_down</i> del departamento de su elección.
-        	        Para eliminar, click en <i class="material-icons">delete</i><br/>
-        	        Para crear un nuevo departamento, haga click en "nuevo" al final de Detalles del departamento.
+        	        En la Lista de configuraciones se muestran todos las configuraciones de los paramantros de las solicitudes existentes.<br/>
+        	        Para editar una configuración, haga click en <i class="material-icons">keyboard_arrow_down</i> de la configuración de su elección.
+        	        Para eliminar, click en <i class="material-icons">delete</i>.<br/>
+        	        Para crear una  nueva configuración, haga click en "nuevo" al final de  Detalles de la configuración.
     	        </p>
     	</div>
         <div class="col l2"></div>
         <div class="col s12 l5  card" style="float:right">
+            <p class="center">Lista de configuraciones</p>
             <table style="width:80%;margin:auto">
                 <thead>
                     <th>#</th>

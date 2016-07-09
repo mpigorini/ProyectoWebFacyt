@@ -46,7 +46,6 @@ class UserController extends CI_Controller {
 
     public function editUserInfo() {
         try {
-            \ChromePhp::log($_GET);
            $em = $this->doctrine->em;
            $user = $em->getRepository('\Entity\Users')->findOneBy(array("id"=>$_GET['id']));
            if($user !== null){
