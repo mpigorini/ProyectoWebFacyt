@@ -85,7 +85,7 @@ class Ticket
      *
      * @ORM\Column(name="department", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
-    private $deparment;
+    private $department;
 
     /**
      * @var \DateTime
@@ -104,7 +104,7 @@ class Ticket
     /**
      * @var string
      *
-     * @ORM\Column(name="state", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="state", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
     private $state;
 
@@ -330,9 +330,9 @@ class Ticket
      * @param string $deparment
      * @return Ticket
      */
-    public function setDeparment($deparment)
+    public function setDepartment($department)
     {
-        $this->deparment = $deparment;
+        $this->department = $department;
     
         return $this;
     }
@@ -342,9 +342,9 @@ class Ticket
      *
      * @return string 
      */
-    public function getDeparment()
+    public function getDepartment()
     {
-        return $this->deparment;
+        return $this->department;
     }
 
     /**
