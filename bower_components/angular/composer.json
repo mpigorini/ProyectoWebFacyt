@@ -1,5 +1,0 @@
-{
-    "require": {
-        "kenjis/codeigniter-doctrine": "1.0.x@dev"
-    }
-}

@@ -1,4 +1,4 @@
-var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial"]);
+var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial", "md.data.table"]);
 
 
 angular.module('helpDesk').controller('MainController',
@@ -98,7 +98,7 @@ angular.module('helpDesk')
           // console.log($location.url());
         }
         else if(auth.isLoggedIn() && $location.url() == "/login") {
-          // console.log('ALLOW');
+          console.log('lool');
           e.preventDefault();
           $state.go('tickets');
         }
