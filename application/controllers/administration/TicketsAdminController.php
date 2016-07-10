@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+include (APPPATH. '/libraries/ChromePhp.php');
 class TicketsAdminController extends CI_Controller {
 
 
@@ -124,6 +124,32 @@ class TicketsAdminController extends CI_Controller {
         }catch(Exception $e){
             \ChromePhp::log($e);
              $result['message']="error";
+        }
+        
+        echo json_encode($result);
+    }
+    
+    public function save() {
+        
+        try {
+            \ChromePhp::log($_GET);
+            $em = $this->doctrine->em;
+            
+            $ticket = $em->find('\Entity\Ticket' , $_GET['id']);
+            if($ticket != null) {
+                $ticket->setState($_GET['state']);
+                $ticket->setSolutionDescription(isset($_GET['solutionDescription']) ? $_GET['solutionDescription'] : "" );
+                $ticket->setObservations(isset($_GET['observations']) ? $_GET['observations'] : "");
+                $ticket->setQualityOfService(isset($_GET['qualityOfService'] ) ? $_GET['qualityOfService'] : "");
+                $ticket->setEvaluation(isset($_GET['evaluation']) ? $_GET['evaluation'] : "");
+                $em->merge($ticket);
+                $em->persist($ticket);
+                $em->flush();
+                $result['message'] = "success";
+            }
+        }catch(Exception $e) {
+            \ChromePhp::log($e);
+            $result['message'] = "error";
         }
         
         echo json_encode($result);

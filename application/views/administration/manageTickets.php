@@ -100,7 +100,7 @@
                                 <div flex="30" flex-offset="5">
                                       <md-input-container  class="md-block">
                                          <label>Estado</label>
-                                        <md-select placeholder="Estados" ng-model="model.state"  style="min-width: 200px;">
+                                        <md-select ng-disabled="!edit"  placeholder="Estados" ng-model="model.state"  style="min-width: 200px;">
                                         <md-option ng-value="state" ng-repeat="state in config.states">{{state}}</md-option>
                                     </md-input-container>
                                 </div>
@@ -115,7 +115,7 @@
                                 <div flex="30" flex-offset="5">
                                     <md-input-container  class="md-block">
                                        <label>Tiempo de respuesta</label>
-                                        <textarea disabled ng-model="model.answerTime"></textarea>
+                                        <textarea readonly ng-model="model.answerTime"></textarea>
                                     </md-input-container>
                                 </div>
                                 <div flex="30" flex-offset="5">
@@ -129,13 +129,13 @@
                                 <div flex="45">
                                     <md-input-container class="md-block">
                                         <label>Descripcion de la solucion</label>
-                                        <textarea ng-model="model.solutionDescription"></textarea>
+                                        <textarea ng-disabled="!edit" ng-model="model.solutionDescription"></textarea>
                                     </md-input-container>
                                 </div>
                                 <div flex="45" flex-offset="10">
                                       <md-input-container  class="md-block">
                                         <label>Observaciones</label>
-                                        <textarea ng-model="model.observation"></textarea>
+                                        <textarea ng-disabled="!edit" ng-model="model.observation"></textarea>
                                     </md-input-container>
                                 </div>
                             </div>
@@ -143,22 +143,23 @@
                                 <div flex="45">
                                     <md-input-container class="md-block">
                                         <label>Calidad del servicio</label>
-                                        <md-select placeholder="Calidad del servicio" ng-model="model.qualityOfService"  style="min-width: 200px;">
+                                        <md-select ng-disabled="!edit"  placeholder="Calidad del servicio" ng-model="model.qualityOfService"  style="min-width: 200px;">
                                         <md-option ng-value="model.qualityOfService" ng-repeat="qualityOfService in config.qualityOfServices">{{qualityOfService}}</md-option>
                                     </md-input-container>
                                 </div>
                                 <div flex="45" flex-offset="10">
                                       <md-input-container  class="md-block">
                                         <label>Evaluacion</label>
-                                        <textarea ng-model="model.evaluation"></textarea>
+                                        <textarea  ng-disabled="!edit" ng-model="model.evaluation"></textarea>
                                     </md-input-container>
                                 </div>
                             </div>
                         </form>
                    </md-card-content>
                    <md-card-actions layout="row" layout-align="end center">
-                      <md-button>Action 1</md-button>
-                      <md-button>Action 2</md-button>
+                        <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
+                        <md-button ng-click="save()" ng-show="edit" class="md-primary">Guardar</md-button>
+                        <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
                     </md-card-actions>
                 </md-card>
                 <br/>

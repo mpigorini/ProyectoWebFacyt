@@ -8,8 +8,8 @@ function ticketsAdministration($scope, $rootScope, $http) {
     'use strict';
     // show administration option as active
     $rootScope.select(2);
+    $scope.edit = false;
     $scope.states="";
-    $scope.model.closeDate = new Date();
     $scope.tabs=[];
     $http.get('index.php/administration/TicketsAdminController/getStates')
         .then(function (response){
@@ -72,7 +72,42 @@ function ticketsAdministration($scope, $rootScope, $http) {
         $scope.model.userReporter = item.userReporter
         
     }
+    
+     $scope.save = function() {
+           
+               
+            swal({
+                title: "Confirmación",
+                text: "Su actualizara el ticke con el asunto "+$scope.model.subject+" de solicitud será creada. ¿Desea proceder?" ,
+                type: "info",
+                confirmButtonText: "Sí",
+                cancelButtonText: "No",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                animation: "slide-from-top",
+                showLoaderOnConfirm: true,
+                
+            }, function() {
+                    $http.get('index.php/administration/TicketsAdminController/save',{params:$scope.model})
+                        .then(function(response) {
+                            console.log(response)
+                            if (response.data.message == "success") {
+                                swal("Ticket Actualizado", "El ticket se ha actualizado exitosamente.", "success");
+                            } else {
+                                swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
+                            }
+                    }) 
 
+            });
+    }
+            
+    
+    $scope.viewMode = function() {
+        $scope.edit = false;
+    }
+    $scope.editMode = function(){
+        $scope.edit =true;
+    }
   
     
 }
