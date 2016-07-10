@@ -89,20 +89,24 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
 	        }
 	        $scope.solvingType($scope.user.updateType);
 
-	        //solving the department-position of the user
+	        //solving the department-position of the users whit the index
 	        if( ( $scope.user.newDepartment == undefined ) || ( $scope.user.newDepartment == null ) ) {
 	        	$scope.user.updateDepartment = $scope.user.department;
 	        	$scope.user.updatePosition = $scope.user.position;
 	        	$scope.findIndex();
 	        	console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
 	        	console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
+	        	// update users info
 	        	$scope.updateUser();
-	        } else { //OJO CON ESTO
+	        } else if ( ( $scope.user.newPosition == undefined ) || ( $scope.user.newPosition == null ) ){
+	        	sweetAlert("Oops...", "Asegúrese de elegir el CARGO.", "error");
+	        } else {
 	        	$scope.user.updateDepartment = $scope.user.newDepartment;
 	        	$scope.user.updatePosition = $scope.user.newPosition;
 	        	$scope.findIndex();
 	        	// console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
 	        	// console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
+	        	// update users info
 	        	$scope.updateUser();
 	        }
     	}
@@ -187,9 +191,17 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
     }
 
     $scope.updateUser = function() {
+    	var message, saveOrUpdate;
+    	if(!$scope.notOld){
+    		message = "¿Estas seguro de que deseas agregar a este usuario?";
+    		saveOrUpdate = "Se ha creado el nuevo perfil exitosamente.";
+    	}else{
+    		message = "¿Estas seguro de que deseas realizar estos cambios?";
+    		saveOrUpdate = "El perfil se ha actualizado exitosamente.";
+    	}
     	swal({
-        	title: "¿Estas seguro de que deseas realizar estos cambios?",   
-        	text: "Si es así, ingresa tu contraseña para guardar los cambios:",   
+        	title: message,   
+        	text: "Si es así, ingresa tu contraseña...",   
         	type: "input",
         	inputType: "password",   
         	showCancelButton: true,   
@@ -223,7 +235,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
 								}
 								// reload the table of users
 							    $scope.loadAllUsers();
-		                    	swal("Actualizado!", "El perfil se ha actualizado exitosamente.", "success");
+		                    	swal("Actualizado!", saveOrUpdate, "success");
 		                    }else{
 		                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
 		                    }
