@@ -39,20 +39,31 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
     $scope.loadUser = function(id) {
     	console.log("id: " + id);
         var object = $scope.users;
-        // console.log("object[id].id: " + object[id].id);
+        //
+        var sizeUsers = Object.keys($scope.users).length, i=-1, flagUser = true;
+        console.log("sizeUsers: " + sizeUsers);
+        console.log("id: " + id);
+        while ( (i<sizeUsers) && (flagUser) ){
+        	i++;
+        	if ($scope.users[i].id == id){
+        		console.log("VALOR DE i: " + i);
+        		flagUser = false;
+        	}
+        }
+        //
         $scope.user = {};
-        $scope.user.id = object[id].id;
-        $scope.user.login = object[id].login;
-        $scope.user.password = object[id].password;
-        $scope.user.name = object[id].name;
-        $scope.user.lastname = object[id].lastname;
-        $scope.user.cedula = parseInt(object[id].cedula, 10);
-        $scope.user.phone = parseInt(object[id].phone, 10);
-        $scope.user.type = object[id].type;
-        $scope.user.department = object[id].department;
-        $scope.user.position = object[id].position;
-        $scope.labelName = object[id].name;
-        $scope.labelLastname = object[id].lastname;
+        $scope.user.id = object[i].id;
+        $scope.user.login = object[i].login;
+        $scope.user.password = object[i].password;
+        $scope.user.name = object[i].name;
+        $scope.user.lastname = object[i].lastname;
+        $scope.user.cedula = parseInt(object[i].cedula, 10);
+        $scope.user.phone = parseInt(object[i].phone, 10);
+        $scope.user.type = object[i].type;
+        $scope.user.department = object[i].department;
+        $scope.user.position = object[i].position;
+        $scope.labelName = object[i].name;
+        $scope.labelLastname = object[i].lastname;
     }
 
     $scope.checkUpdateUser = function() {
