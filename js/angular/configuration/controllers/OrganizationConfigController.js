@@ -32,7 +32,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
             $scope.department.positions = {};
         }
         $('.tooltipped').tooltip('remove');
-    }
+    };
     
     $scope.loadPosition = function(id) {
         var obj = $scope.department.positions[id];
@@ -40,7 +40,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
         $scope.position.id = obj.id;
         $scope.position.name = obj.name;
         $scope.position.description = obj.description;
-    }
+    };
     
     $scope.saveDepartment = function() {
         if ($scope.department.name == null || $scope.department.description == null
@@ -61,7 +61,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
             }, function(){
                     $http.get('index.php/configuration/OrganizationConfigController/saveDepartment',{params:$scope.department})
                         .then(function(response) {
-                            console.log(response)
+                            console.log(response);
                             if (response.data.message == "success") {
                                     $scope.editDepartment = false;
                                     $scope.editPosition = false;
@@ -82,11 +82,11 @@ function organizationConfiguration($scope, $rootScope, $http) {
                             } else {
                                 swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                             }
-                    }) 
+                    });
     
             });
         }
-    }
+    };
     
     $scope.savePosition = function() {
         if ($scope.position.name == null || $scope.position.description == null 
@@ -109,7 +109,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
                 $scope.position.department = $scope.department.id;
                     $http.get('index.php/configuration/OrganizationConfigController/savePosition',{params:$scope.position})
                         .then(function(response) {
-                            console.log(response)
+                            console.log(response);
                             if (response.data.message == "success") {
                                     $scope.editPosition = false;
                                     $scope.position = {};
@@ -127,11 +127,11 @@ function organizationConfiguration($scope, $rootScope, $http) {
                             } else {
                                 swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                             }
-                    }) 
+                    });
     
             });
         }
-    }
+    };
     
     $scope.deletePosition = function(id) {
         var position = $scope.department.positions[id];
@@ -149,7 +149,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
         }, function() {
                 $http.get('index.php/configuration/OrganizationConfigController/deletePosition',{params:position})
                     .then(function(response) {
-                        console.log(response)
+                        console.log(response);
                         if (response.data.message == "success") {
                                 $scope.editPosition = false;
                                 $scope.position = {};
@@ -167,10 +167,10 @@ function organizationConfiguration($scope, $rootScope, $http) {
                         } else {
                             swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                         }
-                }) 
+                });
 
         });
-    }
+    };
     
     $scope.deleteDepartment = function(id) {
         var department = $scope.departments[id];
@@ -188,7 +188,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
         }, function() {
                 $http.get('index.php/configuration/OrganizationConfigController/deleteDepartment',{params:department})
                     .then(function(response) {
-                        console.log(response)
+                        console.log(response);
                         if (response.data.message == "success") {
                             // refresh the data
                             $scope.editDepartment = false;
@@ -210,43 +210,53 @@ function organizationConfiguration($scope, $rootScope, $http) {
                         } else {
                             swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                         }
-                }) 
+                });
 
         });
-    }
+    };
     
     $scope.isDepartmentLoaded = function() {
         return $scope.department.name != null && $scope.department.description != null;
-    }
+    };
     
     $scope.isPositionLoaded = function() {
         return $scope.position.name != null && $scope.position.description != null;
-    }
+    };
     
     $scope.newDepartment = function() {
         $scope.department = {};
         $('.tooltipped').tooltip({delay: 50});
         $scope.editDepartment = true;
-    }
+    };
     
     $scope.newPosition = function() {
         $scope.position = {};
         $scope.editPosition = true;
-    }
+    };
     
     $scope.departmentViewMode = function() {
         $scope.editDepartment = false;
-    }
+    };
     
     $scope.positionViewMode = function() {
         $scope.editPosition = false;
-    }
+    };
     
     $scope.departmentEditMode = function() {
         $scope.editDepartment = true;
-    }
+    };
     
     $scope.positionEditMode = function() {
         $scope.editPosition = true;
-    }
+    };
+    
+    $scope.noPositionUserInput = function() {
+        return (($scope.position.name == null || $scope.position.name == "") && 
+            ($scope.position.description == null || $scope.position.description == ""));
+    };
+    
+    $scope.noDepartmentUserInput = function() {
+        return (($scope.department.name == null || $scope.department.name == "") &&
+            ($scope.department.description == null || $scope.department.description == ""));
+    };
 }

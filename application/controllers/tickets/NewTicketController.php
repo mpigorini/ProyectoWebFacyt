@@ -70,6 +70,7 @@ class NewTicketController extends CI_Controller {
             $ticket->setDescription($_GET['description']);
             $ticket->setType($_GET['type']);
             $ticket->setLevel($_GET['level']);
+            $ticket->setState($_GET['state']);
             $ticket->setPriority($_GET['priority']);
             $ticket->setUserReporter($user);
             $ticket->setDepartment($_GET['department']);
