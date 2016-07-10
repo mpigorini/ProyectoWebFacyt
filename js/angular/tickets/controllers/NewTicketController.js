@@ -36,12 +36,14 @@ function newTicket($scope, $rootScope, $http, $cookies) {
     
     $scope.saveTicket = function() {
         $scope.ticket.user = $cookies.getObject("session").id;
+        $scope.ticket.state = "En espera";
         console.log("ticket department: " + $scope.ticket.department);
         console.log("ticket type: " + $scope.ticket.type);
         console.log("ticket level: " + $scope.ticket.level);
         console.log("ticket priority: " + $scope.ticket.priority);
         console.log("ticket subject: " + $scope.ticket.subject);
         console.log("ticket description: " + $scope.ticket.description);
+        console.log("ticket state: " + $scope.ticket.state);
         console.log("user reporter ID: " + $scope.ticket.user);
 
         if ($scope.ticket.subject == null 
@@ -69,7 +71,7 @@ function newTicket($scope, $rootScope, $http, $cookies) {
                 animation: "slide-from-top",
                 showLoaderOnConfirm: true,
                 
-            }, function(){
+            }, function() {
                     $http.get('index.php/tickets/NewTicketController/saveTicket',{params:$scope.ticket})
                         .then(function(response) {
                             console.log(response)

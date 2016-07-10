@@ -14,7 +14,8 @@
 	    <div class="col s12 m5 card-panel blue-grey darken-1">
 	        <p class="white-text">
     	        En la Lista de departamentos se muestran todos los departamentos existentes.<br/>
-    	        Para editar un departamento, haga click en <i class="material-icons">keyboard_arrow_down</i> del departamento de su elección.
+    	        Para editar un departamento, haga click en <i class="material-icons">keyboard_arrow_down</i><br/>
+    	        Al seleccionar un departamento, se habilitará la opción "Cargo" en la pestaña de arriba, en la cual podrá ver los cargos asociados a ese departamento.<br/>
     	        Para eliminar, click en <i class="material-icons">delete</i><br/>
     	        Para crear un nuevo departamento, haga click en "nuevo" al final de Detalles del departamento.
 	        </p>
@@ -62,10 +63,10 @@
                     <label for="description" ng-class="{active:isDepartmentLoaded()}">Descripción del departamento</label>
                 </div>
                 <div class="row right-align">
-                    <a class="btn waves-effect waves-light" ng-click="newDepartment()" ng-show="!editDepartment">Nuevo</a>
-                    <a class="btn waves-effect waves-light" ng-click="departmentEditMode()" ng-show="!editDepartment && (department.name != null || department.description != null)">Editar</a>
-                    <a class="btn waves-effect waves-light" ng-click="saveDepartment()" ng-show="editDepartment">Guardar</a>
-                    <a class="btn waves-effect waves-light" ng-click="departmentViewMode()" ng-show="editDepartment">Cancelar</a>
+                    <md-button class="md-primary md-raised" ng-click="newDepartment()" ng-hide="editDepartment">Nuevo</md-button>
+                    <md-button class="md-primary md-raised" ng-click="departmentEditMode()" ng-hide="editDepartment || noDepartmentUserInput()">Editar</md-button>
+                    <md-button class="md-primary" ng-click="saveDepartment()" ng-show="editDepartment">Guardar</md-button>
+                    <md-button class="md-primary md-raised" ng-click="departmentViewMode()" ng-show="editDepartment">Cancelar</md-button>
                 </div>
             </div>
         </form>
@@ -128,10 +129,10 @@
                     <label for="description" ng-class="{active:isPositionLoaded()}">Descripción del cargo</label>
                 </div>
                 <div class="row right-align">
-                    <a class="btn waves-effect waves-light" ng-click="newPosition()" ng-show="!editPosition">Nuevo</a>
-                    <a class="btn waves-effect waves-light" ng-click="positionEditMode()" ng-show="!editPosition && (position.name != null || position.description != null)">Editar</a>
-                    <a class="btn waves-effect waves-light" ng-click="savePosition()" ng-show="editPosition">Guardar</a>
-                    <a class="btn waves-effect waves-light" ng-click="positionViewMode()" ng-show="editPosition">Cancelar</a>
+                    <md-button ng-click="newPosition()" ng-hide="editPosition" class="md-primary md-raised">Nuevo</md-button>
+                    <md-button ng-click="positionEditMode()" ng-hide="editPosition || noPositionUserInput()" class="md-primary md-raised">Editar</md-button>
+                    <md-button ng-click="savePosition()" ng-show="editPosition" class="md-primary">Guardar</md-button>
+                    <md-button ng-click="positionViewMode()" ng-show="editPosition" class="md-primary md-raised">Cancelar</md-button>
                 </div>
             </div>
         </form>
