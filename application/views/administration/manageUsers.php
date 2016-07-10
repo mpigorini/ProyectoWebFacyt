@@ -116,8 +116,6 @@
 			    <select ng-model="user.newDepartment" ng-change="loadPositions()" material-select watch>
 			        <option ng-repeat="department in departments">{{department.name}}</option>
 			    </select>
-			    <!-- <button class="btn waves-effect waves-light  orange accent-4" ng-click="loadDepartment($index)">Cargos</button> -->
-			    <!-- <select ng-model="user.newDepartment" ng-options="department.name for department in departments" ng-change="loadDepartment()" material-select watch></select> -->
 	        </div>
 	        <div class="input-field col s6">
 				<h5 ng-show="notOld" style="cursor: default;">Cambiar el cargo:</h5>

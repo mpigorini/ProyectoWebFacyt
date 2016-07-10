@@ -27,19 +27,19 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
             if(response.data.message == "success") {
                 $scope.departments = response.data.data;
                 console.log("response: " + response);
-                console.log("$scope.departments:" + $scope.departments)
-                console.log("$scope.departments[0]:" + $scope.departments[0])
-                console.log("$scope.departments[0].id:" + $scope.departments[0].id)
-                console.log("$scope.departments[0].name:" + $scope.departments[0].name)
-                console.log("$scope.departments[0].positions[0].name:" + $scope.departments[0].positions[0].name)
-                console.log("$scope.departments[0].positions[1].name:" + $scope.departments[0].positions[1].name)
+                // console.log("$scope.departments:" + $scope.departments)
+                // console.log("$scope.departments[0]:" + $scope.departments[0])
+                // console.log("$scope.departments[0].id:" + $scope.departments[0].id)
+                // console.log("$scope.departments[0].name:" + $scope.departments[0].name)
+                // console.log("$scope.departments[0].positions[0].name:" + $scope.departments[0].positions[0].name)
+                // console.log("$scope.departments[0].positions[1].name:" + $scope.departments[0].positions[1].name)
             }
         });	
 
     $scope.loadUser = function(id) {
     	console.log("id: " + id);
         var object = $scope.users;
-        //
+
         var sizeUsers = Object.keys($scope.users).length, i=-1, flagUser = true;
         console.log("sizeUsers: " + sizeUsers);
         console.log("id: " + id);
@@ -50,7 +50,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
         		flagUser = false;
         	}
         }
-        //
+
         $scope.user = {};
         $scope.user.id = object[i].id;
         $scope.user.login = object[i].login;
@@ -115,8 +115,8 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
 	        	$scope.user.updateDepartment = $scope.user.newDepartment;
 	        	$scope.user.updatePosition = $scope.user.newPosition;
 	        	$scope.findIndex();
-	        	// console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
-	        	// console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
+	        	console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
+	        	console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
 	        	// update users info
 	        	$scope.updateUser();
 	        }
@@ -126,17 +126,17 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
     $scope.checkNewUser = function () {
     	//new user, id dont exist
     	$scope.user.id = "";
-    	console.log("$scope.user.id: " + $scope.user.id)
-    	console.log("$scope.user.login: " + $scope.user.login)
-        console.log("$scope.user.password: " + $scope.user.password)
-        console.log("$scope.user.name: " + $scope.user.name)
-        console.log("$scope.user.lastname: " + $scope.user.lastname)
-        console.log("$scope.user.cedula: " + $scope.user.cedula)
-        console.log("$scope.user.phone: " + $scope.user.phone)
-        //the select options...
-        console.log("$scope.user.newPosition: " + $scope.user.newPosition)
-        console.log("$scope.user.newDepartment: " + $scope.user.newDepartment)
-        console.log("$scope.user.newType: " + $scope.user.newType)
+    	// console.log("$scope.user.id: " + $scope.user.id)
+    	// console.log("$scope.user.login: " + $scope.user.login)
+     //    console.log("$scope.user.password: " + $scope.user.password)
+     //    console.log("$scope.user.name: " + $scope.user.name)
+     //    console.log("$scope.user.lastname: " + $scope.user.lastname)
+     //    console.log("$scope.user.cedula: " + $scope.user.cedula)
+     //    console.log("$scope.user.phone: " + $scope.user.phone)
+     //    //the select options...
+     //    console.log("$scope.user.newPosition: " + $scope.user.newPosition)
+     //    console.log("$scope.user.newDepartment: " + $scope.user.newDepartment)
+     //    console.log("$scope.user.newType: " + $scope.user.newType)
 
         if( ($scope.user.login==undefined) || ($scope.user.login=="") ||
     		($scope.user.password==undefined) || ($scope.user.password=="") ||
@@ -168,8 +168,6 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
 
     $scope.findIndex = function() {
     	var size = Object.keys($scope.departments).length;
-    	console.log("DEPARTMENTS size: " + size);
-    	console.log("$scope.departments[0].name: " + $scope.departments[0].name);
     	var i = 0, flag = true;
         while( ( i < size ) && (flag) ){
         	if( $scope.departments[i].name == $scope.user.updateDepartment ){
@@ -180,7 +178,6 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
 
         		//
         		var size2 = Object.keys($scope.user.entityDepartment.positions).length;
-        		console.log("DEPARTMENTS.POSITIONS size2: " + size2);
         		var j = 0, flag2 = true;
 				while( ( j < size2 ) && (flag2) ){
 					// console.log("$scope.departments[i].positions[j].name: " + $scope.departments[i].positions[j].name);
@@ -226,7 +223,6 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
         			console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
         			swal.showInputError("Contraseña incorrecta");
         		}else{
-        			console.log("$scope.user.id: " + $scope.user.id)
 					$http.get('index.php/administration/UsersAdminController/saveUser', {params:$scope.user})
                 		.then(function(response) {
 							if(response.data.message != "Error") {
@@ -235,7 +231,6 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
 								$scope.labelLastname = $scope.user.lastname;
 								// Esta linea se ejecuta si el usuario se edita a si mismo	
 								if ( $scope.user.id == $cookies.getObject("session").id ){
-									console.log("Me edite")
 									$cookies.putObject('session', {username: $scope.user.login , password:$scope.user.password, id:$scope.user.id});
 									console.log("$cookies.getObject('session').login: " + $cookies.getObject("session").username)
 									console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
@@ -257,23 +252,19 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
     $scope.deleteUser = function(id) {
     	console.log("deleteUser id: " + id);
         var sizeUsers = Object.keys($scope.users).length, i=-1, flagUser = true;
-        console.log("sizeUsers: " + sizeUsers);
-        console.log("id: " + id);
+
         while ( (i<sizeUsers) && (flagUser) ){
         	i++;
         	if ($scope.users[i].id == id){
-        		console.log("VALOR DE i: " + i);
         		flagUser = false;
         	}
         }
-        console.log("$scope.users[i].name: " + $scope.users[i].name);
-        console.log("$scope.users[i].id: " + $scope.users[i].id);
+        
         $scope.user.deleteId = $scope.users[i].id;
         console.log("$scope.user.deleteId: " + $scope.user.deleteId);
         if ($scope.user.deleteId == $cookies.getObject("session").id ){
         	swal("ERROR!", "No puedes eliminar tu propio usuario", "error");
         }else{
-        	console.log("otro user");
         	swal({
 	        	title: "¿Estas seguro de que deseas eliminar a este usuario?",   
 	        	text: "Si es así, ingresa tu contraseña...",   
@@ -358,19 +349,18 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
 
     $scope.solvingType = function (type) {
     	switch (type) {
-	        	case "Gerente":
-	        		$scope.user.updateType = 1;
-	        		break;
-	        	case "Coordinador de sistema":
-	        		$scope.user.updateType = 2;
-	        		break;
-	        	case "Técnico":
-	        		$scope.user.updateType = 3;
-	        		break;
-	        	case "Solicitante":
-	        		$scope.user.updateType = 4;
-	        		break;
-	        }
-	        console.log("!!!$scope.user.updateType: " + $scope.user.updateType)
+        	case "Gerente":
+        		$scope.user.updateType = 1;
+        		break;
+        	case "Coordinador de sistema":
+        		$scope.user.updateType = 2;
+        		break;
+        	case "Técnico":
+        		$scope.user.updateType = 3;
+        		break;
+        	case "Solicitante":
+        		$scope.user.updateType = 4;
+        		break;
+        }
     }
 }
