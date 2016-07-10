@@ -46,20 +46,12 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/UsersAdminController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/TicketConfigController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/OrganizationConfigController.js"></script>
-<<<<<<< HEAD
-      
-=======
->>>>>>> 9237515dc7f68496dadbc2ad2990b43a87622905
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/dist/sweetalert.css">
-<<<<<<< HEAD
-=======
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/themes/google/google.css">
-      
 </head>
->>>>>>> 9237515dc7f68496dadbc2ad2990b43a87622905
 </head>
 <body>
   <div ng-controller="Navbar">

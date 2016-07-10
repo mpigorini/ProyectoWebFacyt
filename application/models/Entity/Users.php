@@ -120,19 +120,6 @@ class Users
     }
 
     /**
-     * Set cedula
-     *
-     * @param string $cedula
-     * @return Users
-     */
-    public function setCedula($cedula)
-    {
-        $this->cedula = $cedula;
-    
-        return $this;
-    }
-
-    /**
      * Set login
      *
      * @param string $login

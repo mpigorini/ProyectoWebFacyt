@@ -34,7 +34,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
                 console.log("$scope.departments[0].positions[0].name:" + $scope.departments[0].positions[0].name)
                 console.log("$scope.departments[0].positions[1].name:" + $scope.departments[0].positions[1].name)
             }
-        });         
+        });	
 
     $scope.loadUser = function(id) {
     	console.log("id: " + id);
@@ -134,9 +134,6 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
         console.log("$scope.user.cedula: " + $scope.user.cedula)
         console.log("$scope.user.phone: " + $scope.user.phone)
         //the select options...
-        // console.log("$scope.user.position: " + $scope.user.position)
-        // console.log("$scope.user.department: " + $scope.user.department)
-        // console.log("$scope.user.type: " + $scope.user.type)
         console.log("$scope.user.newPosition: " + $scope.user.newPosition)
         console.log("$scope.user.newDepartment: " + $scope.user.newDepartment)
         console.log("$scope.user.newType: " + $scope.user.newType)
@@ -259,6 +256,60 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
 
     $scope.deleteUser = function(id) {
     	console.log("deleteUser id: " + id);
+        var sizeUsers = Object.keys($scope.users).length, i=-1, flagUser = true;
+        console.log("sizeUsers: " + sizeUsers);
+        console.log("id: " + id);
+        while ( (i<sizeUsers) && (flagUser) ){
+        	i++;
+        	if ($scope.users[i].id == id){
+        		console.log("VALOR DE i: " + i);
+        		flagUser = false;
+        	}
+        }
+        console.log("$scope.users[i].name: " + $scope.users[i].name);
+        console.log("$scope.users[i].id: " + $scope.users[i].id);
+        $scope.user.deleteId = $scope.users[i].id;
+        console.log("$scope.user.deleteId: " + $scope.user.deleteId);
+        if ($scope.user.deleteId == $cookies.getObject("session").id ){
+        	swal("ERROR!", "No puedes eliminar tu propio usuario", "error");
+        }else{
+        	console.log("otro user");
+        	swal({
+	        	title: "¿Estas seguro de que deseas eliminar a este usuario?",   
+	        	text: "Si es así, ingresa tu contraseña...",   
+	        	type: "input",
+	        	inputType: "password",   
+	        	showCancelButton: true,   
+	        	closeOnConfirm: false,   
+	        	animation: "slide-from-top",   
+	        	inputPlaceholder: "Contraseña"
+	        }, 
+	        	function(inputValue){
+	        		if (inputValue === false) return false;      
+	        		if (inputValue === "") {     
+	        			swal.showInputError("Debes ingresar tu contraseña");     
+	        			return false   
+	        		}else if (inputValue!=$cookies.getObject("session").password){
+	        			console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
+	        			swal.showInputError("Contraseña incorrecta");
+	        		}else{
+						$http.get('index.php/administration/UsersAdminController/deleteUser', {params:$scope.user})
+	                		.then(function(response) {
+								if(response.data.message != "Error") {
+									console.log("response.data.message: " + response.data.message)
+									// reload the table of users
+								    $scope.loadAllUsers();
+								    $scope.editUser = false;
+			                    	swal("Actualizado!", "El perfil se ha eliminado exitosamente.", "success");
+			                    }else{
+			                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
+			                    }
+			                }, function (response){
+			                    
+			                })
+		           }
+	        	})
+        }
     }
 
     $scope.userEditMode = function(id) {

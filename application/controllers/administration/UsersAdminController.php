@@ -26,7 +26,7 @@ class UsersAdminController extends CI_Controller {
                 $result['data'][$key]['lastname'] = $user->getLastname();
                 $result['data'][$key]['cedula'] = $user->getCedula();
                 $result['data'][$key]['phone'] = $user->getPhone();
-                $result['data'][$key]['type'] = $user->getType();
+                $result['data'][$key]['type'] = $user->getTypeText();
                 $result['data'][$key]['department'] = $user->getDepartment()->getName();
                 $result['data'][$key]['position'] = $user->getPosition()->getName();
             }
@@ -115,6 +115,20 @@ class UsersAdminController extends CI_Controller {
            $result['message'] = "Error";
        }
 
+        echo json_encode($result);
+    }
+
+    public function deleteUser () {
+    	try {
+            $em = $this->doctrine->em;
+            $user = $em->find('\Entity\Users', $_GET['deleteId']);
+            $em->remove($user);
+            $em->flush();
+            $result['message'] = "success";
+        } catch (Exception $e) {
+            $result['message'] = "error";
+            \ChromePhp::log($e);
+        }
         echo json_encode($result);
     }
 }
