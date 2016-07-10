@@ -82,7 +82,23 @@ class Users
      */
     private $department;
 
-
+    
+     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userReporter")
+     */
+     private $tickets;
+     
+     
+    /**
+     * Constructor
+    */
+    public function __construct()
+    {
+        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -251,9 +267,7 @@ class Users
      */
     public function getType()
     {
-        $type = $this->type;
-        // Translate integer user type to it's corresponding string
-        return ($type == 1 ? "Gerente" : ($type == 2 ? "Coordinador de sistema" : ($type == 3 ? "Técnico" : "Solicitante")));
+       return $this->type;
     }    
      
     /**
@@ -298,5 +312,59 @@ class Users
     public function getDepartment()
     {
         return $this->department;
+    }
+    
+    public function getTypeText() {
+        $type = $this->type;
+        // Translate integer user type to it's corresponding string
+        return ($type == 1 ? "Gerente" : ($type == 2 ? "Coordinador de sistema" : ($type == 3 ? "Técnico" : "Solicitante")));
+    }
+    
+
+
+    /**
+     * Set cedula
+     *
+     * @param integer $cedula
+     * @return Users
+     */
+    public function setCedula($cedula)
+    {
+        $this->cedula = $cedula;
+    
+        return $this;
+    }
+
+    /**
+     * Add tickets
+     *
+     * @param \Entity\Ticket $tickets
+     * @return Users
+     */
+    public function addTicket(\Entity\Ticket $tickets)
+    {
+        $this->tickets[] = $tickets;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tickets
+     *
+     * @param \Entity\Ticket $tickets
+     */
+    public function removeTicket(\Entity\Ticket $tickets)
+    {
+        $this->tickets->removeElement($tickets);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
     }
 }

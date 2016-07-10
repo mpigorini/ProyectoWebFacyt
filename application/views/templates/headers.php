@@ -16,29 +16,50 @@
         <!-- Utils are important for page functionality so load before showing content -->
         <script src="https://use.fontawesome.com/4330ea9880.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-2.2.4.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.css" media="screen,projection">
+        <!-- Angular Material requires Angular.js Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+        
+         <!-- Data table-->
+        <script type="text/javascript" src="<?php echo base_url(); ?>data-table/dist/md-data-table.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>data-table/dist/md-data-table.min.css">
+
+        <!-- Angular Material Library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular-route.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/cookies.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/login.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/authenticate.factory.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/login/controllers/LoginController.js"></script>
-          <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular-materialize.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/materialize.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/myApp.module.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicketController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/TicketsController.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/ListTicket.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/ListTicketController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/TicketsAdminController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/UsersAdminController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/TicketConfigController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/OrganizationConfigController.js"></script>
+<<<<<<< HEAD
       
+=======
+>>>>>>> 9237515dc7f68496dadbc2ad2990b43a87622905
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/dist/sweetalert.css">
+<<<<<<< HEAD
+=======
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/themes/google/google.css">
+      
+</head>
+>>>>>>> 9237515dc7f68496dadbc2ad2990b43a87622905
 </head>
 <body>
   <div ng-controller="Navbar">
@@ -109,8 +130,8 @@
         </nav>
     </header>
     <!-- Main menu -->
-    <nav ng-show="isLoggedIn()" class="hide-on-med-and-down">
-        <div class="nav-wrapper #1de9b6 orange lighten-3">
+    <nav ng-show="isLoggedIn()" class="hide-on-med-and-down #1de9b6 orange lighten-3">
+        <div class="container nav-wrapper #1de9b6 orange lighten-3">
             <!-- Configuration dropdown menu -->
             <ul id="configMenu" class="dropdown-content">
                 <li><a href="#/tickets-config" class="waves-effect waves-teal">Tickets</a></li>

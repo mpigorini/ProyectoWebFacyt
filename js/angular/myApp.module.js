@@ -1,4 +1,4 @@
-var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize"]);
+var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial", "md.data.table"]);
 
 
 angular.module('helpDesk').controller('MainController',
@@ -26,7 +26,7 @@ angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth)
   };
 });
 
-helpDesk.config(function($stateProvider, $urlRouterProvider) {
+helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
   $urlRouterProvider
                   .otherwise('login');
   $stateProvider
@@ -80,6 +80,10 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'index.php/configuration/OrganizationConfigController',
         controller: 'OrganizationConfigController'
     })
+    // Application theme
+    $mdThemingProvider.theme('default')
+        .primaryPalette('teal')
+        .accentPalette('deep-orange');
 });
 
 // $routeChangeStart changed for $locationChangeStart because event.preventDefault was
@@ -98,7 +102,7 @@ angular.module('helpDesk')
           // console.log($location.url());
         }
         else if(auth.isLoggedIn() && $location.url() == "/login") {
-          // console.log('ALLOW');
+          console.log('lool');
           e.preventDefault();
           $state.go('tickets');
         }

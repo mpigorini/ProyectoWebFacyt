@@ -70,10 +70,13 @@ class Ticket
      */
     private $qualityOfService;
 
-    /**
-     * @var string
+      /**
+     * @var \Entity\Users
      *
-     * @ORM\Column(name="user_reporter", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\ManyToOne(targetEntity="Entity\Users", inversedBy="tickets")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * })
      */
     private $userReporter;
 
@@ -82,7 +85,7 @@ class Ticket
      *
      * @ORM\Column(name="department", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
-    private $deparment;
+    private $department;
 
     /**
      * @var \DateTime
@@ -327,9 +330,9 @@ class Ticket
      * @param string $deparment
      * @return Ticket
      */
-    public function setDeparment($deparment)
+    public function setDepartment($department)
     {
-        $this->deparment = $deparment;
+        $this->department = $department;
     
         return $this;
     }
@@ -339,9 +342,9 @@ class Ticket
      *
      * @return string 
      */
-    public function getDeparment()
+    public function getDepartment()
     {
-        return $this->deparment;
+        return $this->department;
     }
 
     /**

@@ -1,11 +1,10 @@
 <div ng-controller="ListTicketController">
-    <div class="col s12 z-depth-1">
-      <ul class="tabs #00bfa5 teal-text accent-4" >
-        <li class="tab col s3"><a class="#00bfa5 teal-text accent-4" href="#todos">Todos</a></li>
-        <li class="tab col s3"><a class="#00bfa5 teal-text accent-4" href="#espera">En Espera</a></li>
-        <li class="tab col s3"><a class="#00bfa5 teal-text accent-4" href="#proceso">En Proceso</a></li>
-        <li class="tab col s3"><a class="#00bfa5 teal-text accent-4" href="#atendido">Atendido</a></li>
-        <div class="indicator teal accent-4" style="z-index:1"></div>
+    <div class="z-depth-1">
+      <ul class="tabs" >
+        <li class="tab"><a href="#todos">Todos</a></li>
+        <li class="tab"><a href="#espera">En Espera</a></li>
+        <li class="tab"><a href="#proceso">En Proceso</a></li>
+        <li class="tab"><a href="#atendido">Atendido</a></li>
       </ul>
     </div>
     <div >

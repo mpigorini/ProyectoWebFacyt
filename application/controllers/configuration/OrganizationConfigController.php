@@ -10,9 +10,8 @@ class OrganizationConfigController extends CI_Controller {
     }
     
     public function getAllDepartments() {
-             \ChromePhp::log("inicio");
-        try {
-            
+         try {
+             
             $em = $this->doctrine->em;
             $departments = $em->getRepository('\Entity\Department')->findAll();
             
@@ -66,11 +65,28 @@ class OrganizationConfigController extends CI_Controller {
         echo json_encode($result);
     }
     
+    public function getAllPositions() {
+        try {
+            $em = $this->doctrine->em;
+            $department = $em->find('\Entity\Department', $_GET['department']);
+            $positions = $department->getPositions();
+            foreach ($positions as $key=>$position) {
+                $result['data'][$key]['id'] = $position->getId();
+                $result['data'][$key]['name'] = $position->getName();
+                $result['data'][$key]['description'] = $position->getDescription();
+            }
+            
+            $result['message'] = "success";
+       } catch(Exception $e) {
+           \ChromePhp::log($e);
+           $result['message'] = "Error";
+       }
+
+        echo json_encode($result);
+    }
+    
     public function savePosition() {
         try {
-            \ChromePhp::log("holaaaaasas");
-            \ChromePhp::log($_GET);
-            
             $em = $this->doctrine->em;
             if(isset($_GET['id']) ) {
                 $position = $em->find('\Entity\Position', $_GET['id']);   
@@ -98,5 +114,40 @@ class OrganizationConfigController extends CI_Controller {
             \ChromePhp::log($e);
         }
         echo json_encode($result);       
+    }
+    
+    function deletePosition() {
+        try {
+            $em = $this->doctrine->em;
+            // Get the specified position.
+            $position = $em->find('\Entity\Position', $_GET['id']);
+            // Get it's department.
+            $department = $position->getDepartment();
+            // Remove this position from the department entity.
+            $department->removePosition($position);
+            // Delete de position.
+            $em->remove($position);
+            // Persist the changes in database.
+            $em->flush();
+            $result['message'] = "success";
+        } catch (Exception $e) {
+            $result['message'] = "error";
+            \ChromePhp::log($e);
+        }
+        echo json_encode($result);       
+    }
+    
+    function deleteDepartment() {
+        try {
+            $em = $this->doctrine->em;
+            $department = $em->find('\Entity\Department', $_GET['id']);
+            $em->remove($department);
+            $em->flush();
+            $result['message'] = "success";
+        } catch (Exception $e) {
+            $result['message'] = "error";
+            \ChromePhp::log($e);
+        }
+        echo json_encode($result);
     }
 }
