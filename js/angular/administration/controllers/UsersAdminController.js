@@ -8,7 +8,9 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
     'use strict';
     // show administration option as active
     $rootScope.select(2);
+    $scope.user = {};
     $scope.editUser = false;
+    $scope.notOld = true;
     $scope.selectType = ["Gerente", "Coordinador de sistema", "Técnico", "Solicitante"];
 
     // load all the users
@@ -54,6 +56,61 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
     }
 
     $scope.checkUpdateUser = function() {
+    	// console.log("$scope.user.id: " + $scope.user.id)
+    	// console.log("$scope.user.login: " + $scope.user.login)
+     //    console.log("$scope.user.password: " + $scope.user.password)
+     //    console.log("$scope.user.name: " + $scope.user.name)
+     //    console.log("$scope.user.lastname: " + $scope.user.lastname)
+     //    console.log("$scope.user.cedula: " + $scope.user.cedula)
+     //    console.log("$scope.user.phone: " + $scope.user.phone)
+     //    //the select options...
+     //    console.log("$scope.user.position: " + $scope.user.position)
+     //    console.log("$scope.user.department: " + $scope.user.department)
+     //    console.log("$scope.user.type: " + $scope.user.type)
+     //    console.log("$scope.user.newPosition: " + $scope.user.newPosition)
+     //    console.log("$scope.user.newDepartment: " + $scope.user.newDepartment)
+     //    console.log("$scope.user.newType: " + $scope.user.newType)
+
+	    if( ($scope.user.login==undefined) || ($scope.user.login=="") ||
+	    		($scope.user.password==undefined) || ($scope.user.password=="") ||
+	    		($scope.user.name==undefined) || ($scope.user.name=="") ||
+	    		($scope.user.lastname==undefined) || ($scope.user.lastname=="") ||
+	    		($scope.user.phone==undefined) || ($scope.user.phone=="") ||
+	    		($scope.user.cedula==undefined) || ($scope.user.cedula=="") ){
+	            sweetAlert("Oops...", "Asegúrese de que ningún campo se encuentre vació.", "error");
+	    }else{
+	        //solving the type of the user
+	        if( $scope.user.newType==undefined ) {
+	        	$scope.user.updateType = $scope.user.type;
+	        	console.log("$scope.user.updateType: " + $scope.user.updateType)
+	        } else {
+	        	$scope.user.updateType = $scope.user.newType;
+	        	console.log("$scope.user.updateType: " + $scope.user.updateType)
+	        }
+	        $scope.solvingType($scope.user.updateType);
+
+	        //solving the department-position of the user
+	        if( ( $scope.user.newDepartment == undefined ) || ( $scope.user.newDepartment == null ) ) {
+	        	$scope.user.updateDepartment = $scope.user.department;
+	        	$scope.user.updatePosition = $scope.user.position;
+	        	$scope.findIndex();
+	        	console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
+	        	console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
+	        	$scope.updateUser();
+	        } else { //OJO CON ESTO
+	        	$scope.user.updateDepartment = $scope.user.newDepartment;
+	        	$scope.user.updatePosition = $scope.user.newPosition;
+	        	$scope.findIndex();
+	        	// console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
+	        	// console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
+	        	$scope.updateUser();
+	        }
+    	}
+    }
+
+    $scope.checkNewUser = function () {
+    	//new user, id dont exist
+    	$scope.user.id = "";
     	console.log("$scope.user.id: " + $scope.user.id)
     	console.log("$scope.user.login: " + $scope.user.login)
         console.log("$scope.user.password: " + $scope.user.password)
@@ -62,52 +119,38 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
         console.log("$scope.user.cedula: " + $scope.user.cedula)
         console.log("$scope.user.phone: " + $scope.user.phone)
         //the select options...
-        console.log("$scope.user.position: " + $scope.user.position)
-        console.log("$scope.user.department: " + $scope.user.department)
-        console.log("$scope.user.type: " + $scope.user.type)
+        // console.log("$scope.user.position: " + $scope.user.position)
+        // console.log("$scope.user.department: " + $scope.user.department)
+        // console.log("$scope.user.type: " + $scope.user.type)
         console.log("$scope.user.newPosition: " + $scope.user.newPosition)
         console.log("$scope.user.newDepartment: " + $scope.user.newDepartment)
         console.log("$scope.user.newType: " + $scope.user.newType)
 
-        //solving the type of the user
-        if( $scope.user.newType==undefined ) {
-        	$scope.user.updateType = $scope.user.type;
-        	console.log("$scope.user.updateType: " + $scope.user.updateType)
-        } else {
-        	$scope.user.updateType = $scope.user.newType;
-        	console.log("$scope.user.updateType: " + $scope.user.updateType)
-        }
-        switch ($scope.user.updateType) {
-        	case "Gerente":
-        		$scope.user.updateType = 1;
-        		break;
-        	case "Coordinador de sistema":
-        		$scope.user.updateType = 2;
-        		break;
-        	case "Técnico":
-        		$scope.user.updateType = 3;
-        		break;
-        	case "Solicitante":
-        		$scope.user.updateType = 4;
-        		break;
-        }
-        console.log("$scope.user.updateType: " + $scope.user.updateType)
+        if( ($scope.user.login==undefined) || ($scope.user.login=="") ||
+    		($scope.user.password==undefined) || ($scope.user.password=="") ||
+    		($scope.user.name==undefined) || ($scope.user.name=="") ||
+    		($scope.user.lastname==undefined) || ($scope.user.lastname=="") ||
+    		($scope.user.phone==undefined) || ($scope.user.phone=="") ||
+    		($scope.user.cedula==undefined) || ($scope.user.cedula=="") ||
+    		($scope.user.newDepartment==undefined) || ($scope.user.newDepartment=="")||
+    		($scope.user.newPosition==undefined) || ($scope.user.newPosition=="") ||
+    		($scope.user.newType==undefined) || ($scope.user.newType=="") ){
+        	sweetAlert("Oops...", "Asegúrese de que ningún campo se encuentre vació.", "error");
+        }else{
+        	console.log("nuevo user");
+        	//solving type
+	        $scope.solvingType($scope.user.newType);
 
-        //solving the department-position of the user
-        if( ( $scope.user.newDepartment == undefined ) || ( $scope.user.newDepartment == null ) ) {
-        	$scope.user.updateDepartment = $scope.user.department;
-        	$scope.user.updatePosition = $scope.user.position;
-        	$scope.findIndex();
+	        //solving index
+	        $scope.user.updateDepartment = $scope.user.newDepartment;
+        	$scope.user.updatePosition = $scope.user.newPosition;
         	console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
         	console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
-        	$scope.updateUser();
-        } else {
-        	$scope.user.updateDepartment = $scope.user.newDepartment;
-        	$scope.user.updatePosition = $scope.user.newPosition;
         	$scope.findIndex();
-        	// console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
-        	// console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
+
+        	//saving user
         	$scope.updateUser();
+
         }
     }
 
@@ -144,66 +187,51 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
     }
 
     $scope.updateUser = function() {
-    	if( ($scope.user.login==undefined) || ($scope.user.login=="") ||
-    		($scope.user.password==undefined) || ($scope.user.password=="") ||
-    		($scope.user.name==undefined) || ($scope.user.name=="") ||
-    		($scope.user.lastname==undefined) || ($scope.user.lastname=="") ||
-    		($scope.user.phone==undefined) || ($scope.user.phone=="") ||
-    		($scope.user.cedula==undefined) || ($scope.user.cedula=="") ){
-            sweetAlert("Oops...", "Asegúrese de que ningún campo se encuentre vació.", "error");
-        }else{
-	    	swal({
-	        	title: "¿Estas seguro de que deseas realizar estos cambios?",   
-	        	text: "Si es así, ingresa tu contraseña para guardar los cambios:",   
-	        	type: "input",
-	        	inputType: "password",   
-	        	showCancelButton: true,   
-	        	closeOnConfirm: false,   
-	        	animation: "slide-from-top",   
-	        	inputPlaceholder: "Contraseña"
-	        }, 
-	        	function(inputValue){
-	        		if (inputValue === false) return false;      
-	        		if (inputValue === "") {     
-	        			swal.showInputError("Debes ingresar tu contraseña");     
-	        			return false   
-	        		}else if (inputValue!=$cookies.getObject("session").password){
-	        			console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
-	        			swal.showInputError("Contraseña incorrecta");
-	        		}else{
-	        			console.log("$scope.user.id: " + $scope.user.id)
-						$http.get('index.php/administration/UsersAdminController/saveUser', {params:$scope.user})
-	                		.then(function(response) {
-								if(response.data.message != "Error") {
-									console.log("response.data.message: " + response.data.message)
-									$scope.labelName = $scope.user.name;
-									$scope.labelLastname = $scope.user.lastname;
-									// Esta linea se ejecuta si el usuario se edita a si mismo	
-									if ( $scope.user.id == $cookies.getObject("session").id ){
-										console.log("Me edite")
-										$cookies.putObject('session', {username: $scope.user.login , password:$scope.user.password, id:$scope.user.id});
-										console.log("$cookies.getObject('session').login: " + $cookies.getObject("session").username)
-										console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
-										console.log("$cookies.getObject('session').id: " + $cookies.getObject("session").id)
-									}
-									// load all the users
-								    $http.get('index.php/administration/UsersAdminController/getAllUsers')
-								    	.then(function(response) {
-								            if(response.data.message == "success") {
-								                $scope.users = response.data.data;
-								                console.log("response: " + response);
-								            }
-								        });
-			                    	swal("Actualizado!", "La actualización del perfil se ha realizado exitosamente.", "success");
-			                    }else{
-			                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
-			                    }
-			                }, function (response){
-			                    
-			                })
-		           }
-	        	})
-    	}
+    	swal({
+        	title: "¿Estas seguro de que deseas realizar estos cambios?",   
+        	text: "Si es así, ingresa tu contraseña para guardar los cambios:",   
+        	type: "input",
+        	inputType: "password",   
+        	showCancelButton: true,   
+        	closeOnConfirm: false,   
+        	animation: "slide-from-top",   
+        	inputPlaceholder: "Contraseña"
+        }, 
+        	function(inputValue){
+        		if (inputValue === false) return false;      
+        		if (inputValue === "") {     
+        			swal.showInputError("Debes ingresar tu contraseña");     
+        			return false   
+        		}else if (inputValue!=$cookies.getObject("session").password){
+        			console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
+        			swal.showInputError("Contraseña incorrecta");
+        		}else{
+        			console.log("$scope.user.id: " + $scope.user.id)
+					$http.get('index.php/administration/UsersAdminController/saveUser', {params:$scope.user})
+                		.then(function(response) {
+							if(response.data.message != "Error") {
+								console.log("response.data.message: " + response.data.message)
+								$scope.labelName = $scope.user.name;
+								$scope.labelLastname = $scope.user.lastname;
+								// Esta linea se ejecuta si el usuario se edita a si mismo	
+								if ( $scope.user.id == $cookies.getObject("session").id ){
+									console.log("Me edite")
+									$cookies.putObject('session', {username: $scope.user.login , password:$scope.user.password, id:$scope.user.id});
+									console.log("$cookies.getObject('session').login: " + $cookies.getObject("session").username)
+									console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
+									console.log("$cookies.getObject('session').id: " + $cookies.getObject("session").id)
+								}
+								// reload the table of users
+							    $scope.loadAllUsers();
+		                    	swal("Actualizado!", "El perfil se ha actualizado exitosamente.", "success");
+		                    }else{
+		                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
+		                    }
+		                }, function (response){
+		                    
+		                })
+	           }
+        	})
     }
 
     $scope.deleteUser = function(id) {
@@ -212,10 +240,19 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
 
     $scope.userEditMode = function(id) {
         $scope.editUser = true;
+        $scope.notOld = true;
         $scope.loadUser(id);
     }
+
+    $scope.userNewMode = function() {
+        $scope.editUser = true;
+        $scope.notOld = false;
+        $scope.user = {};
+    }
+
    	$scope.userViewMode = function() {
         $scope.editUser = false;
+        $scope.user = {};
     }
 
     $scope.loadPositions = function() {
@@ -233,5 +270,33 @@ function usersAdministration($scope, $rootScope, $http, $cookies) {
         	}
         	i++;
         }
+    }
+
+    $scope.loadAllUsers = function () {
+    	$http.get('index.php/administration/UsersAdminController/getAllUsers')
+    	.then(function(response) {
+            if(response.data.message == "success") {
+                $scope.users = response.data.data;
+                console.log("response: " + response);
+            }
+        });
+    }
+
+    $scope.solvingType = function (type) {
+    	switch (type) {
+	        	case "Gerente":
+	        		$scope.user.updateType = 1;
+	        		break;
+	        	case "Coordinador de sistema":
+	        		$scope.user.updateType = 2;
+	        		break;
+	        	case "Técnico":
+	        		$scope.user.updateType = 3;
+	        		break;
+	        	case "Solicitante":
+	        		$scope.user.updateType = 4;
+	        		break;
+	        }
+	        console.log("!!!$scope.user.updateType: " + $scope.user.updateType)
     }
 }

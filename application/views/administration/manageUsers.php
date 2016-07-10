@@ -51,14 +51,15 @@
 				También se mostrara una nueva sección debajo si presiona "Nuevo usuario", donde se le solicitaran los datos del usuario que desea agregar.
     		</span>
     	</div>
-    	<button class="btn waves-effect waves-light  tale"  name="new_user" title="Agregar nuevo usuario" style="top: 100px;">Nuevo usuario</button>
+    	<button class="btn waves-effect waves-light  tale"  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
     </div>
 </div>
 <br>
 <div class="container" ng-show="editUser">
 	<div class="card-panel">
 		<div class="row cols 12">
-			<h5 class="center" style="cursor: default;">Editar usuario {{labelName}} {{labelLastname}}</h5>
+			<h5 ng-show="notOld" class="center" style="cursor: default;">Editar usuario {{labelName}} {{labelLastname}}</h5>
+			<h5 ng-show="!notOld" class="center" style="cursor: default;">Ingrese los datos del nuevo usuario</h5>
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
@@ -96,7 +97,7 @@
 				</h5>
 	        </div>
         </div>
-        <div class="row">
+        <div class="row" ng-show="notOld">
 			<div class="input-field col s6">
 				<h5 style="cursor: default;">
 					Departamento actual: <input ng-model="user.department" type="text" readonly>
@@ -110,7 +111,8 @@
         </div>
         <div class="row">
         	<div class="input-field col s6">
-				<h5 style="cursor: default;">Cambiar el departamento:</h5>
+				<h5 ng-show="notOld" style="cursor: default;">Cambiar el departamento:</h5>
+				<h5 ng-show="!notOld" style="cursor: default;">Seleccione el departamento:</h5>
 			    <select ng-model="user.newDepartment" ng-change="loadPositions()" material-select watch>
 			        <option ng-repeat="department in departments">{{department.name}}</option>
 			    </select>
@@ -118,13 +120,14 @@
 			    <!-- <select ng-model="user.newDepartment" ng-options="department.name for department in departments" ng-change="loadDepartment()" material-select watch></select> -->
 	        </div>
 	        <div class="input-field col s6">
-				<h5 style="cursor: default;">Cambiar el cargo:</h5>
+				<h5 ng-show="notOld" style="cursor: default;">Cambiar el cargo:</h5>
+				<h5 ng-show="!notOld" style="cursor: default;">Seleccione el cargo:</h5>
 			    <select  ng-model="user.newPosition" material-select watch>
 			        <option  ng-repeat="pos in department.positions">{{pos.name}}</option>
 			    </select>
 	        </div>
         </div>
-        <div class="row">
+        <div class="row" ng-show="notOld">
 			<div class="input-field col s12">
 				<h5 style="cursor: default;">
 					Actualmente {{user.name}} es un usuario: <input class="center-align" ng-model="user.type" type="text" readonly>
@@ -133,14 +136,16 @@
         </div>
         <div class="row">
 			<div class="input-field col s12">
-				<h5 style="cursor: default;">Cambiar el tipo de usuario:</h5>
+				<h5 ng-show="notOld" style="cursor: default;">Cambiar el tipo de usuario:</h5>
+				<h5 ng-show="!notOld" style="cursor: default;">Determine el tipo de usuario:</h5>
 				<select ng-model="user.newType" material-select watch>
 			      	<option  ng-repeat="select in selectType">{{select}}</option>
 			    </select>
 	        </div>
         </div>
         <div class="row center">
-        	<button class="col s3 offset-s2 btn waves-effect waves-light  orange accent-4"  name="save_editUser" ng-click="checkUpdateUser()">Guardar</button>
+        	<button class="col s3 offset-s2 btn waves-effect waves-light  orange accent-4"  name="save_editUser" ng-show="notOld" ng-click="checkUpdateUser()">Guardar</button>
+        	<button class="col s3 offset-s2 btn waves-effect waves-light  orange accent-4"  name="save_editUser" ng-show="!notOld" ng-click="checkNewUser()">Guardar</button>
         	<button class="col s3 offset-s2 btn waves-effect waves-light  orange accent-4"  name="cancel_editUser" ng-click="userViewMode()">Cancelar</button>
         </div>
 	</div>

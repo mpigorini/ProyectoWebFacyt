@@ -43,7 +43,7 @@ class UsersAdminController extends CI_Controller {
 	public function saveUser() {
 		try {
             $em = $this->doctrine->em;
-            if(isset($_GET['id']) ) {
+            if( isset($_GET['id']) && !empty( $_GET['id']) ) {
             	\ChromePhp::log("entra?");
                 $user = $em->find('\Entity\Users', $_GET['id']);
                 $department = $em->find('\Entity\Department', $_GET['indexDepartment']);
@@ -63,22 +63,25 @@ class UsersAdminController extends CI_Controller {
                 $em->merge($user);
                 $em->persist($user);
                 $em->flush();
-            } //else {
-            //     $user = new \Entity\Users();
-            //     $user->setLogin( $_GET['login']);
-            //     $user->setPassword( $_GET['password']);
-            //     $user->setName( $_GET['name']);
-            //     $user->setLastname($_GET['lastname']);
-            //     $user->setCedula( $_GET['cedula']);
-            //     $user->setPhone( $_GET['phone']);
-            //     // the select options....
-            //     $user->setPosition( $_GET['updatePosition']);
-            //     $user->setDepartment( $_GET['updateDepartment']);
-            //     $user->setType( $_GET['updateType']);
+            } else {
+                $user = new \Entity\Users();
+                $department = $em->find('\Entity\Department', $_GET['indexDepartment']);
+                $position = $em->find('\Entity\Position', $_GET['indexPosition']);
 
-            //     $em->persist($user);
-            //     $em->flush();
-            // }
+                $user->setLogin( $_GET['login']);
+                $user->setPassword( $_GET['password']);
+                $user->setName( $_GET['name']);
+                $user->setLastname($_GET['lastname']);
+                $user->setCedula( $_GET['cedula']);
+                $user->setPhone( $_GET['phone']);
+                // the select options....
+                $user->setDepartment( $department );
+                $user->setPosition( $position );
+                $user->setType( $_GET['updateType']);
+
+                $em->persist($user);
+                $em->flush();
+            }
             $result['message'] = "success";
         } catch(Exception $e) {
             $result['message'] = "error";
