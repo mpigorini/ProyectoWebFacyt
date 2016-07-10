@@ -29,7 +29,7 @@ angular.module('helpDesk').controller('UserController',
 	                    $scope.edit.username = response.data.name;
 	                    $scope.edit.lastname = response.data.lastname;
 	                    $scope.edit.cedula = response.data.cedula;
-	                    $scope.edit.phone = response.data.phone;
+	                    $scope.edit.phone = parseInt(response.data.phone, 10);
 	                    $scope.edit.position = response.data.position;
 	                    $scope.edit.department = response.data.department;
 	                    $scope.edit.type = response.data.type;

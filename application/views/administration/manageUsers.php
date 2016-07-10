@@ -58,7 +58,7 @@
 <div class="container" ng-show="editUser">
 	<div class="card-panel">
 		<div class="row cols 12">
-			<h5 class="center" style="cursor: default;">Editar usuario {{user.name}} {{user.lastname}}</h5>
+			<h5 class="center" style="cursor: default;">Editar usuario {{labelName}} {{labelLastname}}</h5>
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
@@ -87,12 +87,12 @@
         <div class="row">
 			<div class="input-field col s6">
 				<h5 style="cursor: default;">
-					Cedula: <input ng-model="user.cedula" type="text">
+					Cedula: <input ng-model="user.cedula" type="number">
 				</h5>
 	        </div>
 	        <div  class="input-field col s6">
 	            <h5 style="cursor: default;">
-					Teléfono: <input ng-model="user.phone" type="text">
+					Teléfono: <input ng-model="user.phone" type="number">
 				</h5>
 	        </div>
         </div>
@@ -109,13 +109,19 @@
 	        </div>
         </div>
         <div class="row">
-        	<div class="input-field col s12">
-				<h5 style="cursor: default;">Nuevo departamento y cargo:</h5>
-			
-			    <select  ng-model="newDepartment"  material-select watch>
-			        <option  ng-repeat="departmet in departments">{{departmet.name}}</option>
+        	<div class="input-field col s6">
+				<h5 style="cursor: default;">Cambiar el departamento:</h5>
+			    <select ng-model="user.newDepartment" ng-change="loadPositions()" material-select watch>
+			        <option ng-repeat="department in departments">{{department.name}}</option>
 			    </select>
-				
+			    <!-- <button class="btn waves-effect waves-light  orange accent-4" ng-click="loadDepartment($index)">Cargos</button> -->
+			    <!-- <select ng-model="user.newDepartment" ng-options="department.name for department in departments" ng-change="loadDepartment()" material-select watch></select> -->
+	        </div>
+	        <div class="input-field col s6">
+				<h5 style="cursor: default;">Cambiar el cargo:</h5>
+			    <select  ng-model="user.newPosition" material-select watch>
+			        <option  ng-repeat="pos in department.positions">{{pos.name}}</option>
+			    </select>
 	        </div>
         </div>
         <div class="row">
@@ -128,20 +134,14 @@
         <div class="row">
 			<div class="input-field col s12">
 				<h5 style="cursor: default;">Cambiar el tipo de usuario:</h5>
-				<select ng-model="user.newType">
-			      	<option value="" disabled selected>Eliga el tipo de usuario...</option>
-			      	<option value="Gerente">Gerente</option>
-			      	<option value="Coordinador de sistema">Coordinador de sistema</option>
-			      	<option value="Técnico">Técnico</option>
-			      	<option value="Solicitante">Solicitante</option>
+				<select ng-model="user.newType" material-select watch>
+			      	<option  ng-repeat="select in selectType">{{select}}</option>
 			    </select>
 	        </div>
         </div>
         <div class="row center">
-        	<button class="col s3 offset-s2 btn waves-effect waves-light  orange accent-4"  name="save_editUser" ng-click="updateUser()">Guardar</button>
+        	<button class="col s3 offset-s2 btn waves-effect waves-light  orange accent-4"  name="save_editUser" ng-click="checkUpdateUser()">Guardar</button>
         	<button class="col s3 offset-s2 btn waves-effect waves-light  orange accent-4"  name="cancel_editUser" ng-click="userViewMode()">Cancelar</button>
         </div>
 	</div>
 </div>
-<script>
-</script>

@@ -45,8 +45,8 @@
             <div class="profile-settings col s6">
                 <h5>
                     Teléfono:
-                    <input type="text" ng-model="edit.phone" ng-show="mode">
-                    <input type="text" ng-model="edit.phone" ng-show="!mode" readonly>
+                    <input type="number" ng-model="edit.phone" ng-show="mode">
+                    <input type="number" ng-model="edit.phone" ng-show="!mode" readonly>
                 </h5>
             </div>
         </div>
