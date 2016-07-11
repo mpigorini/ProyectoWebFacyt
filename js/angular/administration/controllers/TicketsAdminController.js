@@ -8,9 +8,11 @@ function ticketsAdministration($scope, $rootScope, $http) {
     'use strict';
     // show administration option as active
     $rootScope.select(2);
+    $scope.ticketSelected = false;
     $scope.edit = false;
     $scope.states="";
     $scope.tabs=[];
+    $scope.selected = [];
     $http.get('index.php/administration/TicketsAdminController/getStates')
         .then(function (response){
             if (response.data.message== "success") {
@@ -35,7 +37,6 @@ function ticketsAdministration($scope, $rootScope, $http) {
                 $scope.config = response.data;
             }
         })
-    $scope.selected = [];
     
    $scope.show = function() {
        console.log($scope.selected);
@@ -70,6 +71,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
         }
         $scope.model.department = item.department;
         $scope.model.userReporter = item.userReporter
+        $scope.ticketSelected = true;
         
     }
     
@@ -100,11 +102,19 @@ function ticketsAdministration($scope, $rootScope, $http) {
 
             });
     }
-            
+    
+    $scope.clearModel = function() {
+        $scope.ticketSelected = false;
+        $scope.selected = [];
+    }
+    $scope.deselectItem = function() {
+        $scope.ticketSelected = false;
+    }
     
     $scope.viewMode = function() {
         $scope.edit = false;
     }
+    
     $scope.editMode = function(){
         $scope.edit =true;
     }
