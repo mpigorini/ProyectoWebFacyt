@@ -24,6 +24,16 @@ angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth)
   $scope.isLoggedIn = function() {
     return(auth.isLoggedIn());
   };
+  $scope.isGerente = function(){
+    if(auth.isLoggedIn()){
+      return(auth.perfil() == 'Gerente');
+    }
+  }
+  $scope.isCoordinador = function(){
+    if(auth.isLoggedIn()){
+      return(auth.perfil() == 'Coordinador de sistema');
+    }
+  }
 });
 
 helpDesk.config(function($stateProvider, $urlRouterProvider) {
@@ -71,8 +81,6 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
         module: 'private',
         templateUrl: 'index.php/configuration/TicketsConfigController',
         controller: 'TicketConfigController'
-
-
     })
     .state('organization-config', {
         url: '/organization-config',
@@ -89,7 +97,6 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
 angular.module('helpDesk')
      .run(['$rootScope', '$location','$state','auth', function ($rootScope, $location, $state,auth) {
         $rootScope.$on("$locationChangeStart", function(e, toState, toParams, fromState, fromParams) {
-            
         if (!auth.isLoggedIn() && $location.url() != "/login") {
           // console.log('DENY : Redirecting to Login');
           e.preventDefault();
@@ -101,6 +108,13 @@ angular.module('helpDesk')
           // console.log('ALLOW');
           e.preventDefault();
           $state.go('tickets');
+        }
+        if(auth.isLoggedIn() && auth.perfil() != 'Gerente' && auth.perfil() != 'Coordinador de sistema')
+        {
+          if($location.url() == "/users-administration" || $location.url() == "/tickets-config" || $location.url() == "/organization-config"){
+            e.preventDefault();
+            $state.go('tickets');
+          }
         }
   });
 }])
