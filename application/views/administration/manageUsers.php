@@ -15,7 +15,7 @@
 <br>
 <div class="container row">   
     <div class="card-panel col s9">
-        <h5 class="center">Lista de usuarios del sistema</h5>
+        <h5 class="center" style="cursor: default;">Lista de usuarios del sistema</h5>
         <table class="bordered striped" style="display: block; height: 550px; overflow-y: auto;">
             <thead>
                 <th>Nombre</th>
