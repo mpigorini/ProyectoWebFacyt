@@ -3,6 +3,9 @@ angular.module('helpDesk').controller('UserController',
         function($rootScope, $scope, $cookies, $http) {
 			// show my profile option as active
 		    $rootScope.select(5);
+		    $scope.edit = {};
+		    $scope.mode = {};
+		    $scope.mode = false;
             var id = $cookies.getObject("session").id;
             console.log("$cookies.getObject('session').id: " + id)
             $http.get('index.php/user/UserController/userInfo', {params:{id: id}})
@@ -26,7 +29,7 @@ angular.module('helpDesk').controller('UserController',
 	                    $scope.edit.username = response.data.name;
 	                    $scope.edit.lastname = response.data.lastname;
 	                    $scope.edit.cedula = response.data.cedula;
-	                    $scope.edit.phone = response.data.phone;
+	                    $scope.edit.phone = parseInt(response.data.phone, 10);
 	                    $scope.edit.position = response.data.position;
 	                    $scope.edit.department = response.data.department;
 	                    $scope.edit.type = response.data.type;
@@ -37,7 +40,13 @@ angular.module('helpDesk').controller('UserController',
                 }, function (response){
                     
                 })
-            $scope.edit = function (element){
+            $scope.viewMode = function() {
+                $scope.mode = false;
+            };
+            $scope.editMode = function(){
+                $scope.mode = true;
+            };   
+            $scope.save = function (element){
             	console.log("Editar User")
             	if( ($scope.edit.login==undefined) || ($scope.edit.password==undefined) ){
             		sweetAlert("Oops...", "El campo de Contraseña no puede estar vacio", "error");
@@ -64,6 +73,7 @@ angular.module('helpDesk').controller('UserController',
 								$http.get('index.php/user/UserController/editUserInfo', {params: $scope.edit})
 			                		.then(function(response) {
 										if(response.data.message != "Error") {
+											$scope.mode = false;
 											$scope.label = $scope.edit.username;
 											$cookies.putObject('session', {username: $scope.edit.login , password:$scope.edit.password, id:id});
 					                    	swal("Actualizado!", "Los cambios en tu información personal se han guardado exitosamente.", "success");
@@ -74,9 +84,9 @@ angular.module('helpDesk').controller('UserController',
 					                    
 					                })
 				           }
-	                	});
+	                	})
 	            }
-            };
+            }
         }
     ]
 );
