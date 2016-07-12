@@ -97,10 +97,10 @@
 				</h5>
 	        </div>
         </div>
-        <div class="row">
+        <div class="row" ng-class="{validate:notValid}">
 			<div class="input-field col s12">
 				<h5 style="cursor: default;">
-					Correo electrónico: <input ng-model="user.email" type="text">
+					Correo electrónico: <input ng-model="user.email" type="email" ng-change="validateEmail()">
 				</h5>
 	        </div>
         </div>
