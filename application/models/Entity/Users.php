@@ -389,7 +389,7 @@ class Users
     public function getQuestionText() {
         $question = $this->question;
 
-        return ($question == 1 ? "¿Quién fue tu mejor amigo de la infancia?" : ($question == 2 ? "¿Cuál es el nombre de tu primera mascota" : ($question == 3 ? "¿Cuál es el titulo de tu libro favorito?" : ($question == 4 ? "¿Cómo se llama tu abuela materna?" : "¿Cuál es tu deporte favorito?"))));
+        return ($question == 1 ? "¿Quién fue tu mejor amigo de la infancia?" : ($question == 2 ? "¿Cuál es el nombre de tu primera mascota?" : ($question == 3 ? "¿Cuál es el titulo de tu libro favorito?" : ($question == 4 ? "¿Cómo se llama tu abuela materna?" : "¿Cuál es tu deporte favorito?"))));
     }
 
     /**
