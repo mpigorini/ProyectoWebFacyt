@@ -1,10 +1,10 @@
 <div id="profile-card" class="container">
     <div class="row">
         <div class="left">
-            <img ng-if="edit.type=='Solicitante'" width="128" height="128"  src="<?php echo base_url()?>images/solicitante.png"/>
-            <img ng-if="edit.type=='Gerente'" width="128" height="128"  src="<?php echo base_url()?>images/gerente.png"/>
-            <img ng-if="edit.type=='Coordinador de sistema'" width="128" height="128"  src="<?php echo base_url()?>images/coordinador.png"/>
-            <img ng-if="edit.type=='Técnico'" width="128" height="128"  src="<?php echo base_url()?>images/tecnico.png"/>
+            <img ng-if="edit.type=='Solicitante'" width="128" height="128" title="Solicitante" src="<?php echo base_url()?>images/solicitante.png"/>
+            <img ng-if="edit.type=='Gerente'" width="128" height="128" title="Gerente" src="<?php echo base_url()?>images/gerente.png"/>
+            <img ng-if="edit.type=='Coordinador de sistema'" width="128" title="Coordinador de sistema" height="128" src="<?php echo base_url()?>images/coordinador.png"/>
+            <img ng-if="edit.type=='Técnico'" width="128" height="128" title="Técnico" src="<?php echo base_url()?>images/tecnico.png"/>
         </div>
         <div class="center-align card-panel z-depth-2" style="cursor: default;"><h3>Este es tu perfil, {{ label }}!</h3></div>
     </div>
