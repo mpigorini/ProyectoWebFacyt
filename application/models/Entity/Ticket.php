@@ -104,7 +104,7 @@ class Ticket
     /**
      * @var string
      *
-     * @ORM\Column(name="state", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="state", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $state;
 

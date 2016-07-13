@@ -76,9 +76,15 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
+<<<<<<< HEAD
 	'username' => 'ozkr1',
 	'password' => '',
 	'database' => 'c9',
+=======
+	'username' => 'mpigorini',
+	'password' => '',
+	'database' => 'hesk',
+>>>>>>> origin/develop
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

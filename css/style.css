@@ -66,3 +66,13 @@ main {
   color: #BDBDBD;
   cursor: default;
 }
+.card-admin-ticket{
+    width:80%;
+    margin:auto;
+}
+
+.tittle {
+  padding-top: 30px;
+  padding-left: 24px;
+  
+}

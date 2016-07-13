@@ -48,6 +48,6 @@
         </div>
     </div>
     <div class="row">
-        <a class="col s4 offset-s4 m2 offset-m5 waves-effect waves-light yellow darken-4 btn" ng-click="saveTicket()">Enviar</a>
+        <md-button class="col s4 offset-s4 m2 offset-m5 md-primary md-raised" ng-click="saveTicket()">Enviar</md-button>
    	</div>
 </div>

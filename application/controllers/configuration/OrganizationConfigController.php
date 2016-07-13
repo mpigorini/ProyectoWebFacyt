@@ -10,9 +10,8 @@ class OrganizationConfigController extends CI_Controller {
     }
     
     public function getAllDepartments() {
-             \ChromePhp::log("inicio");
-        try {
-            
+         try {
+             
             $em = $this->doctrine->em;
             $departments = $em->getRepository('\Entity\Department')->findAll();
             
