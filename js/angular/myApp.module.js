@@ -80,6 +80,13 @@ helpDesk.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'index.php/configuration/OrganizationConfigController',
         controller: 'OrganizationConfigController'
     })
+    .state('reportes-tiempo', {
+        url: '/reportes-tiempo',
+        module: 'private',
+        templateUrl: 'index.php/reportes/listtimeController',
+        controller: 'listtimeController'
+    })
+    
 });
 
 // $routeChangeStart changed for $locationChangeStart because event.preventDefault was

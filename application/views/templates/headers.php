@@ -111,6 +111,22 @@
                             </li>
                         </ul>
                     </li>
+                    <!-- Reportes -->
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header waves-effect waves-teal">Reportes<i class="material-icons right">settings</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="#/reportes-tiempo" class="waves-effect waves-teal">Por Tiempo</a></li>
+                                        <li><a href="#/reportes-departamento" class="waves-effect waves-teal">Por Departamento</a></li>
+                                        <li><a href="#/reportes-analista" class="waves-effect waves-teal">Por Analista</a></li>
+                                        <li><a href="#/reportes-satisfaccion" class="waves-effect waves-teal">Nivel de Satisfaccion</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
 				<a ng-show="isLoggedIn()" href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
@@ -131,11 +147,22 @@
                 <li class="divider"></li>
                 <li><a href="#/users-administration" class="waves-effect waves-teal">Usuarios</a></li>
             </ul>
+            <!-- Reportes dropdown menu -->
+            <ul id="reportesMenu" class="dropdown-content">
+                <li><a href="#/reportes-tiempo" class="waves-effect waves-teal">Por tiempo</a></li>
+                <li class="divider"></li>
+                <li><a href="#/reportes-departamento" class="waves-effect waves-teal">Por departamento</a></li>
+                <li class="divider"></li>
+                <li><a href="#/reportes-analista" class="waves-effect waves-teal">Por Analista</a></li>
+                <li class="divider"></li>
+                <li><a href="#/reportes-satisfaccion" class="waves-effect waves-teal">Nivel de Satisfaccion</a></li>
+            </ul>
             <!-- Actual menu -->
             <ul class="left">
                 <li ng-class="{active:isSelected(1)}"><a href="#/tickets">Tickets</a></li>
                 <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu">Administración</a></li>
                 <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu">Configuración</a></li>
+                <li ng-class="{active:isSelected(4)}"><a class="dropdown-button" href="#" data-activates="reportesMenu">Reportes</a></li>
             </ul>
         </div>
     </nav>
