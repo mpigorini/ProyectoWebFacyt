@@ -19,7 +19,8 @@ class UserController extends CI_Controller {
                 $result['lastname']= $user->getLastName();
                 $result['cedula']= $user->getCedula();
                 $result['phone']= $user->getPhone();
-                $result['type']= $user->getType();
+                $result['type']= $user->getTypeText();
+                $result['email']= $user->getEmail();
 
                 $pos = $user->getPosition();
                 if($pos !== null){
