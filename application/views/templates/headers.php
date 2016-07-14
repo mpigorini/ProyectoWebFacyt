@@ -126,7 +126,6 @@
             <ul class="left">
                 <li ng-class="{active:isSelected(1)}"><a href="#/tickets">Tickets</a></li>
                 <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu" ng-show="isGerente() || isCoordinador()">Administración</a></li>
-                <li ng-class="{active:isSelected(2)}"><a href="#/tickets-administration" ng-show="!isGerente() && !isCoordinador()">Administración de tickets</a></li>
                 <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu" ng-show="isGerente() || isCoordinador()">Configuración</a></li>
                 <li ><a class="dropdown-button" ng-show="isGerente()">Reportes</a></li>
             </ul>

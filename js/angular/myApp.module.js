@@ -21,13 +21,12 @@ angular.module('helpDesk').controller('MainController',
             };
             $scope.isGerente = function(){
               if(auth.isLoggedIn()){
-                console.log(auth.perfil());
-                return(auth.perfil() == 'Gerente');
+                return(auth.perfil() == 'Gerente' || auth.perfil() == '1');
               }
             }
             $scope.isCoordinador = function(){
               if(auth.isLoggedIn()){
-                return(auth.perfil() == 'Coordinador de sistema');
+                return(auth.perfil() == 'Coordinador de sistema' || auth.perfil() == '2');
               }
             }
         }
