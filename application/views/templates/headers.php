@@ -40,8 +40,8 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/themes/google/google.css">
 </head>
 <body>
-  <div ng-controller="Navbar">
-    <header ng-controller="MainController">
+  <div ng-controller="MainController">
+    <header >
         <nav class="teal accent-4">
             <ul id="opProfile" class="dropdown-content">
               <li><a href="#/profile">Editar perfil</a></li>
@@ -56,7 +56,7 @@
                     <li ng-class="{active:isSelected(5)}"><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
                 </ul>
                 <!-- Mobile nav-bar -->
-				<ul id="nav-mobile" class="side-nav" ng-show="isLoggedIn()">
+        <ul id="nav-mobile" class="side-nav" ng-show="isLoggedIn()">
                     <li><a href="#/new-ticket" class="waves-effect waves-teal"><i class="material-icons right">fiber_new</i>Nuevo ticket</a></li>
                     <!-- My Profile -->
                     <li class="no-padding">
@@ -103,7 +103,7 @@
                         </ul>
                     </li>
                 </ul>
-				<a ng-show="isLoggedIn()" href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a ng-show="isLoggedIn()" href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
         </nav>
     </header>

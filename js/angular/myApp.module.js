@@ -16,25 +16,23 @@ angular.module('helpDesk').controller('MainController',
             $rootScope.isSelected = function(selection) {
               return ($rootScope.choice == selection);
             }
+            $scope.isLoggedIn = function() {
+              return(auth.isLoggedIn());
+            };
+            $scope.isGerente = function(){
+              if(auth.isLoggedIn()){
+                console.log(auth.perfil());
+                return(auth.perfil() == 'Gerente');
+              }
+            }
+            $scope.isCoordinador = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == 'Coordinador de sistema');
+              }
+            }
         }
     ]
 );
-
-angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth){
-  $scope.isLoggedIn = function() {
-    return(auth.isLoggedIn());
-  };
-  $scope.isGerente = function(){
-    if(auth.isLoggedIn()){
-      return(auth.perfil() == 'Gerente');
-    }
-  }
-  $scope.isCoordinador = function(){
-    if(auth.isLoggedIn()){
-      return(auth.perfil() == 'Coordinador de sistema');
-    }
-  }
-});
 
 helpDesk.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
