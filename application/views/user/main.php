@@ -12,7 +12,7 @@
 <div class="container">
     <div class="card-panel">
         <div class="row">
-            <div class="input-field col s6">
+            <div class="profile-settings col s6">
                 <h5 style="cursor: default;">
                     Login: <input type="text" ng-model="edit.login" readonly>
                 </h5>
@@ -67,10 +67,11 @@
                 </h5>
             </div>
         </div>
-        <div class="row">
-            <div class="profile-settings col s12">
+        <div class="row" ng-class="{validate:notValid}">
+            <div class="profile-settings input-field col s12">
                 <h5 style="cursor: default;">
-                    Correo electrónico: <input class="center-align" type="text" ng-model="edit.email" readonly>
+                    Correo electrónico: <input class="center-align" type="email" ng-model="edit.email" ng-change="validateEmail()" ng-show="mode">
+                    Correo electrónico: <input class="center-align" type="text" ng-model="edit.email" ng-show="!mode" readonly>
                 </h5>
             </div>
         </div>

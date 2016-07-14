@@ -51,6 +51,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/dist/sweetalert.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/themes/google/google.css">
+        <title>Help Desk</title>
 </head>
 </head>
 <body>
@@ -64,7 +65,7 @@
             </ul>
             <div class="container nav-wrapper">
                 <a ng-show="isLoggedIn()" class="brand-logo" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
-                <a ng-show="!isLoggedIn()" class="brand-logo center" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
+                <a ng-show="!isLoggedIn()" class="brand-logo center" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help desk</a>
                 <ul class="right hide-on-med-and-down" ng-show="isLoggedIn()">
                     <li ng-class="{active:isSelected(4)}"><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
                     <li ng-class="{active:isSelected(5)}"><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
