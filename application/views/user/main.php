@@ -83,9 +83,11 @@
             </div>
         </div> 
         <div class="row">   
-            <button class="btn col s4 offset-s4 waves-effect waves-light  yellow darken-4"  name="edit" ng-click="editMode()" ng-show="!mode">Actualizar información</button>
-            <button class="btn col s4 offset-s4 waves-effect waves-light  yellow darken-4"  name="save" ng-click="save()" ng-show="mode" style="margin-bottom: 20px;">Guardar</button>
-            <button class="btn col s4 offset-s4 waves-effect waves-light  yellow darken-4"  name="cancel" ng-click="viewMode()" ng-show="mode">Cancelar</button>
+            <button class="btn col s2 offset-s5 waves-effect waves-light  yellow darken-4"  name="edit" ng-click="editMode()" ng-show="!mode">Editar información</button>
         </div>    
+        <div class="row">    
+            <button ng-show="mode" class="btn col s2 offset-s3 waves-effect waves-light  yellow darken-4"  name="save" ng-click="save()"style="margin-bottom: 20px;">Guardar</button>
+            <button ng-show="mode" class="btn col s2 offset-s2 waves-effect waves-light  yellow darken-4"  name="cancel" ng-click="viewMode()">Cancelar</button>
+        </div>
     </div>
 </div>
