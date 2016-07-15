@@ -43,8 +43,7 @@ class TicketsController extends CI_Controller {
 						$list_tickets[$key]['priority'] = $value->getPriority();
 						$list_tickets[$key]['answerTime'] = $value->getAnswerTime();
 						$list_tickets[$key]['qualityOfService'] = $value->getQualityOfService();
-						$list_tickets[$key]['userReporter'] = $value->getUserReporter();
-						$list_tickets[$key]['deparment'] = $value->getDeparment();
+						$list_tickets[$key]['deparment'] = $value->getDepartment();
 						$list_tickets[$key]['submitDate'] = date_format($value->getSubmitDate(),'m-d-Y');
 						$list_tickets[$key]['closeDate'] = date_format($value->getCloseDate(),'m-d-Y');
 						$list_tickets[$key]['state'] = $value->getState();

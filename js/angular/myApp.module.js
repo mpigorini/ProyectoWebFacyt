@@ -1,4 +1,4 @@
-var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial", "md.data.table"]);
+var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login"]);
 
 
 angular.module('helpDesk').controller('MainController',
@@ -16,17 +16,24 @@ angular.module('helpDesk').controller('MainController',
             $rootScope.isSelected = function(selection) {
               return ($rootScope.choice == selection);
             }
+            $scope.isLoggedIn = function() {
+              return(auth.isLoggedIn());
+            };
+            $scope.isGerente = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '1');
+              }
+            }
+            $scope.isCoordinador = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '2');
+              }
+            }
         }
     ]
 );
 
-angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth){
-  $scope.isLoggedIn = function() {
-    return(auth.isLoggedIn());
-  };
-});
-
-helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
+helpDesk.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
                   .otherwise('login');
   $stateProvider
@@ -71,8 +78,6 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
         module: 'private',
         templateUrl: 'index.php/configuration/TicketsConfigController',
         controller: 'TicketConfigController'
-
-
     })
     .state('organization-config', {
         url: '/organization-config',
@@ -80,10 +85,6 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
         templateUrl: 'index.php/configuration/OrganizationConfigController',
         controller: 'OrganizationConfigController'
     })
-    // Application theme
-    $mdThemingProvider.theme('default')
-        .primaryPalette('teal')
-        .accentPalette('deep-orange');
 });
 
 // $routeChangeStart changed for $locationChangeStart because event.preventDefault was
@@ -93,7 +94,6 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
 angular.module('helpDesk')
      .run(['$rootScope', '$location','$state','auth', function ($rootScope, $location, $state,auth) {
         $rootScope.$on("$locationChangeStart", function(e, toState, toParams, fromState, fromParams) {
-            
         if (!auth.isLoggedIn() && $location.url() != "/login") {
           // console.log('DENY : Redirecting to Login');
           e.preventDefault();
@@ -102,9 +102,16 @@ angular.module('helpDesk')
           // console.log($location.url());
         }
         else if(auth.isLoggedIn() && $location.url() == "/login") {
-          console.log('lool');
+          // console.log('ALLOW');
           e.preventDefault();
           $state.go('tickets');
+        }
+        if(auth.isLoggedIn() && auth.perfil() != '1' && auth.perfil() != '2')
+        {
+          if($location.url() == "/users-administration" || $location.url() == "/tickets-config" || $location.url() == "/organization-config"){
+            e.preventDefault();
+            $state.go('tickets');
+          }
         }
   });
 }])

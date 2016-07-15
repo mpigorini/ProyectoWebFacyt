@@ -27,7 +27,6 @@
                   <th>Priority</th>
                   <th>Answer Time</th>
                   <th>Quality Of Service</th>
-                  <th>User Reporter</th>
                   <th>Departament</th>
                   <th>Submit Date</th>
                   <th>Close Date</th>
@@ -46,7 +45,6 @@
                   <td>{{x.priority}}</td>
                   <td>{{x.answerTime}}</td>
                   <td>{{x.qualityOfService}}</td>
-                  <td>{{x.userReporter}}</td>
                   <td>{{x.departament}}</td>
                   <td >{{x.submitDate}}</td>
                   <td >{{x.closeDate}}</td>
@@ -78,7 +76,6 @@
                       <th>Priority</th>
                       <th>Answer Time</th>
                       <th>Quality Of Service</th>
-                      <th>User Reporter</th>
                       <th>Departament</th>
                       <th>Submit Date</th>
                       <th>Close Date</th>
@@ -95,7 +92,6 @@
                       <td>{{x.priority}}</td>
                       <td>{{x.answerTime}}</td>
                       <td>{{x.qualityOfService}}</td>
-                      <td>{{x.userReporter}}</td>
                       <td>{{x.departament}}</td>
                       <td >{{x.submitDate}}</td>
                       <td >{{x.closeDate}}</td>

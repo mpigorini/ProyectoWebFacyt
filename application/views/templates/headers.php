@@ -22,7 +22,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
-        
+
          <!-- Data table-->
         <script type="text/javascript" src="<?php echo base_url(); ?>data-table/dist/md-data-table.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>data-table/dist/md-data-table.min.css">
@@ -54,8 +54,8 @@
 </head>
 </head>
 <body>
-  <div ng-controller="Navbar">
-    <header ng-controller="MainController">
+  <div ng-controller="MainController">
+    <header >
         <nav class="teal accent-4">
             <ul id="opProfile" class="dropdown-content">
               <li><a href="#/profile">Editar perfil</a></li>
@@ -70,7 +70,7 @@
                     <li ng-class="{active:isSelected(5)}"><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
                 </ul>
                 <!-- Mobile nav-bar -->
-				<ul id="nav-mobile" class="side-nav" ng-show="isLoggedIn()">
+        <ul id="nav-mobile" class="side-nav" ng-show="isLoggedIn()">
                     <li><a href="#/new-ticket" class="waves-effect waves-teal"><i class="material-icons right">fiber_new</i>Nuevo ticket</a></li>
                     <!-- My Profile -->
                     <li class="no-padding">
@@ -89,7 +89,7 @@
                     <li class="divider"></li>
                     <li><a href="#/tickets"><i class="material-icons right">mail_outline</i>Tickets</a></li>
                     <!-- Administration -->
-                    <li class="no-padding">
+                    <li class="no-padding" ng-show="isGerente()">
                         <ul class="collapsible collapsible-accordion">
                             <li>
                                 <a class="collapsible-header waves-effect waves-teal">Administración<i class="material-icons right">business</i></a>
@@ -103,7 +103,7 @@
                         </ul>
                     </li>
                     <!-- Configuration -->
-                    <li class="no-padding">
+                    <li class="no-padding" ng-show="isGerente()">
                         <ul class="collapsible collapsible-accordion">
                             <li>
                                 <a class="collapsible-header waves-effect waves-teal">Configuración<i class="material-icons right">settings</i></a>
@@ -117,13 +117,13 @@
                         </ul>
                     </li>
                 </ul>
-				<a ng-show="isLoggedIn()" href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a ng-show="isLoggedIn()" href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
         </nav>
     </header>
     <!-- Main menu -->
-    <nav ng-show="isLoggedIn()" class="hide-on-med-and-down #1de9b6 orange lighten-3">
-        <div class="container nav-wrapper #1de9b6 orange lighten-3">
+    <nav ng-show="isLoggedIn()" class="hide-on-med-and-down">
+        <div class="nav-wrapper #1de9b6 orange lighten-3">
             <!-- Configuration dropdown menu -->
             <ul id="configMenu" class="dropdown-content">
                 <li><a href="#/tickets-config" class="waves-effect waves-teal">Tickets</a></li>
@@ -139,8 +139,10 @@
             <!-- Actual menu -->
             <ul class="left">
                 <li ng-class="{active:isSelected(1)}"><a href="#/tickets">Tickets</a></li>
-                <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu">Administración</a></li>
-                <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu">Configuración</a></li>
+                <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu" ng-show="isGerente() || isCoordinador()">Administración</a></li>
+                <li ng-class="{active:isSelected(2)}"><a href="#/tickets-administration" ng-show="!isGerente() && !isCoordinador()">Administración de tickets</a></li>
+                <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu" ng-show="isGerente() || isCoordinador()">Configuración</a></li>
+                <li ><a class="dropdown-button" ng-show="isGerente()">Reportes</a></li>
             </ul>
         </div>
     </nav>
