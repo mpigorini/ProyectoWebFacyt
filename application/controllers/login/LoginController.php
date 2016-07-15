@@ -31,4 +31,23 @@ class LoginController extends CI_Controller {
         
        echo json_encode($result);
     }
+
+    public function getQuestion () {
+        try {
+           $em = $this->doctrine->em;
+           $user = $em->getRepository('\Entity\Users')->findOneBy(array("login"=>$_GET['login']));
+           if($user !== null){
+                $result['login']= $user->getLogin();
+                $result['question']= $user->getQuestionText();
+                $result['answer']= $user->getAnswer();
+                $result['message'] = "success";
+           }else{
+                $result['message'] = "Error";
+           }
+       }catch(Exception $e){
+           \ChromePhp::log($e);
+           $result['message'] = "Error";
+       }
+       echo json_encode($result);
+    }
 }
