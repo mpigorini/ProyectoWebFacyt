@@ -52,8 +52,8 @@
 					<div ng-show="!recovery.showQuestion && !recovery.showSetPass">
 						<div class="row">
 							<div class="input-field col s6 offset-s3">
-				          		<input ng-model="recovery.recoveryLogin" id="recoveryLogin" type="text" class="validate" autocomplete="off">
-				          		<label for="recoveryLogin">Login</label>
+				          		<input ng-model="recovery.recoveryLogin" type="text" class="validate" autocomplete="off">
+				          		<label>Login</label>
 				        	</div>
 						</div><br>
 						<div class="row">
@@ -67,8 +67,8 @@
 						</div><br>
 						<div class="row">
 							<div class="input-field col s6 offset-s3">
-								<input style="font-size:20px;" id="recoveryAnswer" type="text" class="validate" ng-model="recovery.recoveryAnswer" autocomplete="off">
-			          			<label style="font-size:20px;" for="recoveryAnswer">Ingresa tu respuesta...</label>
+								<input style="font-size:20px;" type="text" class="validate" ng-model="recovery.recoveryAnswer" autocomplete="off">
+			          			<label style="font-size:20px;">Ingresa tu respuesta...</label>
 							</div>
 						</div><br>
 						<div class="row">
@@ -79,8 +79,14 @@
 					<div ng-show="recovery.showSetPass">
 						<div class="row">
 							<div class="input-field col s6 offset-s3">
-								<input style="font-size:20px;" id="recoveryPassword" type="text" class="validate" ng-model="recovery.recoveryPassword" autocomplete="off">
-				          		<label style="font-size:20px;" for="recoveryPassword">Ingresa tu nueva contraseña</label>
+								<input style="font-size:20px;" type="password" class="validate" ng-model="recovery.recoveryPassword" autocomplete="off">
+				          		<label style="font-size:20px;">Ingresa tu nueva contraseña</label>
+							</div>
+						</div><br>
+						<div class="row">
+							<div class="input-field col s6 offset-s3">
+								<input style="font-size:20px;" type="password" class="validate" ng-model="recovery.recoveryPassword2" autocomplete="off">
+				          		<label style="font-size:20px;">Repita la contraseña</label>
 							</div>
 						</div><br>
 						<div class="row">

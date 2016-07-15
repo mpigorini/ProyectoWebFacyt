@@ -37,8 +37,11 @@ angular.module('helpDesk.login').controller('LoginController',
             };
 
             $scope.setPass = function () {
-                if( ($scope.recovery.recoveryPassword=="") || ($scope.recovery.recoveryPassword==undefined) ){
+                if( ($scope.recovery.recoveryPassword=="") || ($scope.recovery.recoveryPassword==undefined) || 
+                    ($scope.recovery.recoveryPassword2=="") || ($scope.recovery.recoveryPassword2==undefined)){
                     sweetAlert("Campo vacio...", "Ingrese su nueva contraseña.", "error");
+                }else if ($scope.recovery.recoveryPassword!=$scope.recovery.recoveryPassword2) {
+                    sweetAlert("Error...", "Las contraseñas no coinciden.", "error");
                 }else{
                     $http.get('index.php/login/LoginController/setPassword', {params:{id:$scope.recovery.id, newPassword:$scope.recovery.recoveryPassword}})
                         .then(function(response) {
