@@ -52,13 +52,13 @@
 					<div ng-show="!recovery.showQuestion && !recovery.showSetPass">
 						<div class="row">
 							<div class="input-field col s6 offset-s3">
-				          		<input ng-model="recovery.recoveryLogin" id="login" type="text" class="validate">
-				          		<label for="login">Login</label>
+				          		<input ng-model="recovery.recoveryLogin" id="recoveryLogin" type="text" class="validate" autocomplete="off">
+				          		<label for="recoveryLogin">Login</label>
 				        	</div>
 						</div><br>
 						<div class="row">
-							<button class="btn col s4 offset-s2 waves-effect waves-light  yellow darken-4"  name="showQuestion" ng-click="showQuestion()" style="margin-bottom: 25px;">Mostrar la pregunta secreta</button>
-							<button class="btn col s2 offset-s2 waves-effect waves-light  yellow darken-4"  name="showLogin" ng-click="showLogin()" style="margin-bottom: 25px;">Cancelar</button>
+							<button class="btn col s3 offset-s3 waves-effect waves-light  yellow darken-4"  name="showQuestion" ng-click="showQuestion()" style="margin-bottom: 25px;">Mostrar pregunta</button>
+							<button class="btn col s2 offset-s1 waves-effect waves-light  yellow darken-4"  name="showLogin" ng-click="showLogin()" style="margin-bottom: 25px;">Cancelar</button>
 						</div>
 					</div>
 					<div ng-show="recovery.showQuestion"><br>
@@ -67,20 +67,20 @@
 						</div><br>
 						<div class="row">
 							<div class="input-field col s6 offset-s3">
-								<input style="font-size:20px;" id="answer" type="text" class="validate" ng-model="recovery.recoveryAnswer">
-			          			<label style="font-size:20px;" for="answer">Ingresa tu respuesta...</label>
+								<input style="font-size:20px;" id="recoveryAnswer" type="text" class="validate" ng-model="recovery.recoveryAnswer" autocomplete="off">
+			          			<label style="font-size:20px;" for="recoveryAnswer">Ingresa tu respuesta...</label>
 							</div>
 						</div><br>
 						<div class="row">
-							<button class="btn col s2 offset-s3 waves-effect waves-light  yellow darken-4"  name="showSetPass" ng-click="showSetPass()" style="margin-bottom: 25px;">Continuar...</button>
+							<button class="btn col s2 offset-s3 waves-effect waves-light  yellow darken-4"  name="showSetPass" ng-click="showSetPass()" style="margin-bottom: 25px;">Continuar</button>
 							<button class="btn col s2 offset-s2 waves-effect waves-light  yellow darken-4"  name="showLogin" ng-click="showLogin()" style="margin-bottom: 25px;">Cancelar</button>
 						</div>
 					</div><br>
 					<div ng-show="recovery.showSetPass">
 						<div class="row">
 							<div class="input-field col s6 offset-s3">
-								<input style="font-size:20px;" id="password" type="text" class="validate" ng-model="recovery.recoveryPassword">
-			          			<label style="font-size:20px;" for="password">Ingresa tu nueva contraseña</label>
+								<input style="font-size:20px;" id="recoveryPassword" type="text" class="validate" ng-model="recovery.recoveryPassword" autocomplete="off">
+				          		<label style="font-size:20px;" for="recoveryPassword">Ingresa tu nueva contraseña</label>
 							</div>
 						</div><br>
 						<div class="row">
