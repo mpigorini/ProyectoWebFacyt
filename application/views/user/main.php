@@ -18,26 +18,35 @@
                 </h5>
             </div>    
             <div class="profile-settings col s6">
-                <h5 style="cursor: default;">
+                <h5 style="cursor: default;" ng-show="mode">
                     Contraseña:
-                    <input type="password" ng-model="edit.password" ng-show="mode">
-                    <input type="password" ng-model="edit.password" ng-show="!mode" readonly>
+                    <input type="password" ng-model="edit.password">
+                </h5>
+                <h5 style="cursor: default;" ng-show="!mode">
+                    Contraseña:
+                    <input type="password" ng-model="edit.password" readonly>
                 </h5>
             </div>
         </div>
         <div class="row">
             <div class="profile-settings col s6">
-                <h5 style="cursor: default;">
+                <h5 style="cursor: default;" ng-show="mode">
                     Nombre:
-                    <input type="text" ng-model="edit.username" ng-show="mode">
-                    <input type="text" ng-model="edit.username" ng-show="!mode" readonly>
+                    <input type="text" ng-model="edit.username">
+                </h5>
+                <h5 style="cursor: default;" ng-show="!mode">
+                    Nombre:
+                    <input type="text" ng-model="edit.username" readonly>
                 </h5>
             </div>
             <div class="profile-settings col s6">
-                <h5 style="cursor: default;">
+                <h5 style="cursor: default;" ng-show="mode">
                     Apellido:
-                    <input type="text" ng-model="edit.lastname" ng-show="mode">
-                    <input type="text" ng-model="edit.lastname" ng-show="!mode" readonly>
+                    <input type="text" ng-model="edit.lastname">
+                </h5>
+                <h5 style="cursor: default;" ng-show="!mode">
+                    Apellido:
+                    <input type="text" ng-model="edit.lastname" readonly>
                 </h5>
             </div>
         </div>
@@ -48,10 +57,13 @@
                 </h5>
             </div>
             <div class="profile-settings col s6">
-                <h5 style="cursor: default;">
+                <h5 style="cursor: default;" ng-show="mode">
                     Teléfono:
-                    <input type="number" ng-model="edit.phone" ng-show="mode">
-                    <input type="number" ng-model="edit.phone" ng-show="!mode" readonly>
+                    <input type="number" ng-model="edit.phone">
+                </h5>
+                <h5 style="cursor: default;" ng-show="!mode">
+                    Teléfono:
+                    <input type="number" ng-model="edit.phone" readonly>
                 </h5>
             </div>
         </div>
@@ -69,9 +81,13 @@
         </div>
         <div class="row" ng-class="{validate:notValid}">
             <div class="profile-settings input-field col s12">
-                <h5 style="cursor: default;">
-                    Correo electrónico: <input class="center-align" type="email" ng-model="edit.email" ng-change="validateEmail()" ng-show="mode">
-                    Correo electrónico: <input class="center-align" type="text" ng-model="edit.email" ng-show="!mode" readonly>
+                <h5 style="cursor: default;" ng-show="mode">
+                    Correo electrónico:
+                    <input class="center-align" type="email" ng-model="edit.email" ng-change="validateEmail()">
+                </h5>
+                <h5 style="cursor: default;" ng-show="!mode">
+                    Correo electrónico:
+                    <input class="center-align" type="text" ng-model="edit.email" readonly>
                 </h5>
             </div>
         </div>
@@ -81,13 +97,13 @@
                     Tipo de usuario: <input class="center-align" type="text" ng-model="edit.type" readonly>
                 </h5>
             </div>
-        </div> 
-        <div class="row">   
-            <button class="btn col s2 offset-s5 waves-effect waves-light  yellow darken-4"  name="edit" ng-click="editMode()" ng-show="!mode">Editar información</button>
-        </div>    
-        <div class="row">    
-            <button ng-show="mode" class="btn col s2 offset-s3 waves-effect waves-light  yellow darken-4"  name="save" ng-click="save()"style="margin-bottom: 20px;">Guardar</button>
-            <button ng-show="mode" class="btn col s2 offset-s2 waves-effect waves-light  yellow darken-4"  name="cancel" ng-click="viewMode()">Cancelar</button>
+        </div>
+        <div class="row" ng-show="!mode" >   
+            <button class="btn col s2 offset-s5 waves-effect waves-light  yellow darken-4"  name="edit" ng-click="editMode()">Editar información</button>
+        </div>
+        <div class="row" ng-show="mode">    
+            <button class="btn col s2 offset-s3 waves-effect waves-light  yellow darken-4"  name="save" ng-click="save()">Guardar</button>
+            <button class="btn col s2 offset-s2 waves-effect waves-light  yellow darken-4"  name="cancel" ng-click="viewMode()">Cancelar</button>
         </div>
     </div>
 </div>
