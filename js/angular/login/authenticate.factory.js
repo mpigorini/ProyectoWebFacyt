@@ -14,7 +14,7 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                         var timeToExpire =  new Date();
                         timeToExpire.setDate(timeToExpire.getDate() + 7 );
                          //creamos la cookie
-                        $cookies.putObject('session', {username: username , password:password, id:response.data.id,perfil:response.data.type}, {
+                        $cookies.putObject('session', {username: username , password:password, id:response.data.id}, {
                             expires : timeToExpire
                         });
                         //mandamos a la home
@@ -54,13 +54,6 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                 console.log("holaaaaaaaa");
                 //$location.path("/tickets");
             }
-        },
-        perfil: function(){
-          if($cookies.get('session') !== "undefined")
-          {
-            var obj = $cookies.getObject("session");
-            return(obj.perfil);
-          }
         },
         isLoggedIn : function()
         {
