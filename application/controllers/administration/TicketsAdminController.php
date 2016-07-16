@@ -29,7 +29,7 @@ class TicketsAdminController extends CI_Controller {
 		        		$result['states'][$key]['table'][$keyTicket]['description'] = $ticket->getDescription();
 		        		$result['states'][$key]['table'][$keyTicket]['type'] = $ticket->getType();
 		        		$result['states'][$key]['table'][$keyTicket]['level'] = $ticket->getLevel();
-		        		$result['states'][$key]['table'[$keyTicket]]['priority'] = $ticket->getPriority();
+		        		$result['states'][$key]['table'][$keyTicket]['priority'] = $ticket->getPriority();
 		        		$result['states'][$key]['table'][$keyTicket]['answerTime'] = $ticket->getAnswerTime();
 		        		$result['states'][$key]['table'][$keyTicket]['qualityOfService'] = $ticket->getQualityOfService();
 		        		//Load user 
@@ -37,8 +37,8 @@ class TicketsAdminController extends CI_Controller {
 		        			$result['states'][$key]['table'][$keyTicket]['userReporter']['name'] = $ticket->getUserReporter()->getName();
 		        	    //Load user assigned
 		        	    if($ticket->getUserAssigned() != null ) {
-		        	        $result['states'][$key]['table'][$keyTicket]['userAssigned']['id'] = $ticket->getUserAssigned()->getId();
-		        	        $result['states'][$key]['table'][$keyTicket]['userAssigned']['showName'] =$ticket->getUserAssigned()->getName() ." " .$ticket->getUserAssigned()->getLastName() ;
+		        	       $result['states'][$key]['table'][$keyTicket]['userAssigned']['id'] = $ticket->getUserAssigned()->getId();
+		        	       $result['states'][$key]['table'][$keyTicket]['userAssigned']['showName'] = $ticket->getUserAssigned()->getName() ." " . $ticket->getUserAssigned()->getLastName();
 		        	    } 
 		        		$result['states'][$key]['table'][$keyTicket]['department'] = $ticket->getDepartment();
 		        		$result['states'][$key]['table'][$keyTicket]['submitDate'] =$ticket->getSubmitDate();

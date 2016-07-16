@@ -71,6 +71,8 @@ function ticketsAdministration($scope, $rootScope, $http) {
         $scope.model.answerTime = item.asweTime;
         $scope.model.qualityOfService = item.qualityOfService;
         $scope.model.userAssigned = item.userAssigned ? item.userAssigned : null;
+        $scope.searchText = "";
+        
         if(item.submitDate != null) {
           var  date =  new Date(item.submitDate.date);
           $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
@@ -88,11 +90,10 @@ function ticketsAdministration($scope, $rootScope, $http) {
     }
     
      $scope.save = function() {
-           
                
             swal({
                 title: "Confirmación",
-                text: "Su actualizara el ticke con el asunto "+$scope.model.subject+" de solicitud será creada. ¿Desea proceder?" ,
+                text: "Su actualizara el ticket con el asunto "+$scope.model.subject+" de solicitud será creada. ¿Desea proceder?" ,
                 type: "info",
                 confirmButtonText: "Sí",
                 cancelButtonText: "No",
