@@ -25,7 +25,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                         }
                     }
                 });
-    
+
             $scope.loadTicketType = function(id) {
                 var obj = $scope.ticketTypes;
                 $scope.model={};
@@ -43,7 +43,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                 $scope.model.states.splice(0, 1);
                 $scope.model.states.splice($scope.model.states.length-1, 1);
             }
-            
+
             // helper function that initializes chip containers
             function initializeChipsContainers() {
                 $scope.model = {};
@@ -55,11 +55,11 @@ angular.module('helpDesk').controller('TicketConfigController',
                 // default states array
                 $scope.defaultStates = ["En espera", "Cerrado"];
             }
-            
+
             $scope.check = function(id) {
                 console.log("Checked chip index: " + id);
             }
-            
+
             $scope.save = function() {
                 if ($scope.model.name == null ||
                     $scope.model.states == null ||
@@ -87,7 +87,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                         closeOnConfirm: false,
                         animation: "slide-from-top",
                         showLoaderOnConfirm: true,
-                        
+
                     }, function() {
                             $http.get('index.php/configuration/TicketsConfigController/save',{params:result})
                                 .then(function(response) {
@@ -112,12 +112,12 @@ angular.module('helpDesk').controller('TicketConfigController',
                                     } else {
                                         swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                                     }
-                            }) 
-    
+                            })
+
                     });
                 }
             }
-            
+
             function parseResult() {
                 var obj = {};
                 obj.id = $scope.model.id;
@@ -136,7 +136,7 @@ angular.module('helpDesk').controller('TicketConfigController',
 
                 return obj;
             }
-            
+
             function parseStates(array) {
                 var result = "";
                 // First must be the default's first index
@@ -146,7 +146,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                 result = result + $scope.defaultStates[$scope.defaultStates.length-1];
                 return result;
             }
-            
+
             $scope.delete = function(index){
                    swal({
                     title: "Confirmación",
@@ -158,7 +158,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                     closeOnConfirm: false,
                     animation: "slide-from-top",
                     showLoaderOnConfirm: true,
-                    
+
                 }, function(){
                         $http.get('index.php/configuration/TicketsConfigController/delete',{params:{id:$scope.ticketTypes[index].id}})
                             .then(function(response) {
@@ -182,15 +182,17 @@ angular.module('helpDesk').controller('TicketConfigController',
                                 } else {
                                     swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                                 }
-                        }) 
-    
+                        })
+
                 });
             }
-            
+
             $scope.setAsActive = function(id) {
                 // switch off the previous config and switch on selected one
-                $scope.ticketTypes[$scope.active].active = false;
-                console.log("Disabling config ID: " + $scope.active);
+                if (typeof $scope.active !== "undefined") {
+                  console.log("Disabling config ID: " + $scope.active);
+                  $scope.ticketTypes[$scope.active].active = false;
+                }
                 $scope.ticketTypes[id].active = true;
                 console.log("Enabling config ID: " + id);
                 swal({
@@ -203,12 +205,13 @@ angular.module('helpDesk').controller('TicketConfigController',
                     closeOnConfirm: false,
                     allowEscapeKey: false,
                     showLoaderOnConfirm: true,
-                
+
                 }, function(isConfirm) {
                     if (isConfirm) {
-                        $http.get('index.php/configuration/TicketsConfigController/setAsActive',{params:{id:$scope.ticketTypes[id].id, oldId:$scope.ticketTypes[$scope.active].id}})
+                        var unactiveId = typeof $scope.active === "undefined" ? -1 : $scope.ticketTypes[$scope.active].id;
+                        $http.get('index.php/configuration/TicketsConfigController/setAsActive',{params:{id:$scope.ticketTypes[id].id, oldId:unactiveId}})
                             .then(function(response) {
-                                console.log(response)
+                                console.log(response);
                                 if (response.data.message == "success") {
                                    $http.get('index.php/configuration/TicketsConfigController/getTicketTypes')
                                     .then(function(response) {
@@ -218,31 +221,35 @@ angular.module('helpDesk').controller('TicketConfigController',
                                         }
                                     })
                                     swal("Configuración cambiada", "La configuración de los tickets ha sido cambiada exitosamente", "success");
-                                    
+
                                 } else {
                                     swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                                     // revert back switching
-                                    $scope.ticketTypes[$scope.active].active = true;
+                                    if (typeof $scope.active !== "undefined") {
+                                      $scope.ticketTypes[$scope.active].active = true;
+                                    }
                                     $scope.ticketTypes[id].active = false;
                                     // refresh
-                                    $scope.$apply();
+                                    // $scope.$apply();
                                 }
                         })
                     } else {
                         // switch on the previous config and switch off selected one
-                        $scope.ticketTypes[$scope.active].active = true;
+                        if (typeof $scope.active !== "undefined") {
+                          $scope.ticketTypes[$scope.active].active = true;
+                        }
                         $scope.ticketTypes[id].active = false;
                         // refresh
                         $scope.$apply();
                     }
-                
+
                 });
             }
-            
+
             $scope.isActive = function(id) {
                 return $scope.ticketTypes[id].active;
             }
-            
+
             $scope.newTicketType = function(){
                 initializeChipsContainers();
                 $scope.edit=true;
@@ -253,7 +260,7 @@ angular.module('helpDesk').controller('TicketConfigController',
             $scope.editMode = function(){
                 $scope.edit =true;
             }
-            
+
             $scope.noUserInput = function() {
                 return (
                     ($scope.model.name == null || $scope.model.name == "")
@@ -263,7 +270,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                     && $scope.model.priorities.length == 0
                     && $scope.model.answerTimes.length == 0);
             }
-            
+
         }
     ]
 );

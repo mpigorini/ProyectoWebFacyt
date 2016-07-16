@@ -41,14 +41,14 @@
                             </tbody>
                           </table>
                         </md-table-container>
-                        
+
                         <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{tickets.length}}" md-page-select></md-table-pagination>
                     </md-card-content>
                 </md-card>
                 <br/>
                 <!-- Load summary for tabs Todos-->
                 <md-card ng-show="ticketSelected" class="card-admin-ticket">
-                   <md-card-tittle></md-card-tittle> 
+                   <md-card-tittle></md-card-tittle>
                    <md-card-content>
                         <div class="md-toolbar-tools">
                             <span>Descripcion del Ticket</span>
@@ -210,14 +210,14 @@
                             </tbody>
                           </table>
                         </md-table-container>
-                        
+
                         <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{state.table.length}}" md-page-select></md-table-pagination>
                     </md-card-content>
                 </md-card>
                 <br/>
                 <!-- Card for summary of tickets in other tabs -->
                 <md-card ng-show="ticketSelected" class="card-admin-ticket">
-                   <md-card-tittle></md-card-tittle> 
+                   <md-card-tittle></md-card-tittle>
                    <md-card-content>
                         <div class="md-toolbar-tools">
                             <span>Descripcion del Ticket</span>
