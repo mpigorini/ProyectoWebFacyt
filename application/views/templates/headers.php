@@ -22,7 +22,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
-        
+
          <!-- Data table-->
         <script type="text/javascript" src="<?php echo base_url(); ?>data-table/dist/md-data-table.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>data-table/dist/md-data-table.min.css">
@@ -145,4 +145,4 @@
         </div>
     </nav>
     </div>
-    <div ui-view autoscroll="false"></div>
+    <main ui-view autoscroll="false"></main>
