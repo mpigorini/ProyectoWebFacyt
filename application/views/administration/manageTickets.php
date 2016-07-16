@@ -52,7 +52,7 @@
                    <md-card-content>
                         <div class="md-toolbar-tools">
                             <span>Descripcion del Ticket</span>
-                          </div>
+                        </div>
                         <form name="adminTicket">
                             <div layout="row">
                                 <div flex="45">
@@ -159,6 +159,19 @@
                                 </div>
                             </div>
                         </form>
+                        <br/>
+                            <md-divider class="teal"></md-divider>
+                        <br/>
+                        <div class="md-toolbar-tools">
+                            <span>Solicitud asignada a </span>
+                        </div>
+                        <div layout="row">
+                            <div flex="45">
+                                <md-autocomplete disabled="!edit" md-selected-item="model.userAssigned" md-min-length="0" placeholder="Selecione un usuario" md-search-text="searchText" md-items="user in getUsers(searchText)" md-item-text="user.showName">
+                                  <span md-highlight-text="searchText">{{user.showName}}</span>
+                                </md-autocomplete>
+                            </div>
+                        </div>
                    </md-card-content>
                    <md-card-actions layout="row" layout-align="end center">
                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
@@ -174,7 +187,7 @@
         <md-tab ng-repeat="(keyState, state) in states" label="{{state.name}}" md-on-select="clearModel()">
             <md-content class="md-padding">
                 <!-- Table for dynamic tabs-->
-                <md-card>
+                <md-card class="card-admin-ticket">
                     <md-card-tittle>
                     </md-card-tittle>
                     <md-card-content>
@@ -328,6 +341,19 @@
                                 </div>
                             </div>
                         </form>
+                         <br/>
+                            <md-divider class="teal"></md-divider>
+                        <br/>
+                        <div class="md-toolbar-tools">
+                            <span>Solicitud asignada a </span>
+                        </div>
+                        <div layout="row">
+                            <div flex="45">
+                                <md-autocomplete readonly="!edit" md-selected-item="model.userAssigned" md-min-length="0" placeholder="Selecione un usuario" md-search-text="searchText" md-items="user in getUsers(searchText)" md-item-text="user.showName">
+                                  <span md-highlight-text="searchText">{{user.showName}}</span>
+                                </md-autocomplete>
+                            </div>
+                        </div>
                    </md-card-content>
                    <md-card-actions layout="row" layout-align="end center">
                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
@@ -335,6 +361,7 @@
                         <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
                     </md-card-actions>
                 </md-card>
+                
             </md-content>
         </md-tab>
         <!--End of dinamyc tabs -->

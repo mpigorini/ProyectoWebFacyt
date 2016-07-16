@@ -21,9 +21,6 @@ main {
 }
 
 #profile-card .profile-settings {
-	font-weight: bold;
-	background-color: #eeeeee;
-	margin-bottom: 20px;
 	cursor: default;
 	-webkit-user-select: none;
 	-moz-user-select: none;

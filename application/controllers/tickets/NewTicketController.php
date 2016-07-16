@@ -57,8 +57,7 @@ class NewTicketController extends CI_Controller {
     }
 
     public function saveTicket() {
-        \ChromePhp::log("Ticket subject: ");
-        \ChromePhp::log($_GET['subject']);
+       
         // dont forget to add date and user reporter (with associations)
         try {
             $em = $this->doctrine->em;
