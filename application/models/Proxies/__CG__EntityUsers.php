@@ -183,10 +183,70 @@ class Users extends \Entity\Users implements \Doctrine\ORM\Proxy\Proxy
         return parent::getTickets();
     }
 
+    public function addTicketsAssigned(\Entity\Ticket $ticketAssigned)
+    {
+        $this->__load();
+        return parent::addTicketsAssigned($ticketAssigned);
+    }
+
+    public function removeTicketsAssigned(\Entity\Ticket $ticketAssigned)
+    {
+        $this->__load();
+        return parent::removeTicketsAssigned($ticketAssigned);
+    }
+
+    public function getTicketsAssigneds()
+    {
+        $this->__load();
+        return parent::getTicketsAssigneds();
+    }
+
+    public function getQuestion()
+    {
+        $this->__load();
+        return parent::getQuestion();
+    }
+
+    public function getQuestionText()
+    {
+        $this->__load();
+        return parent::getQuestionText();
+    }
+
+    public function setQuestion($question)
+    {
+        $this->__load();
+        return parent::setQuestion($question);
+    }
+
+    public function setAnswer($answer)
+    {
+        $this->__load();
+        return parent::setAnswer($answer);
+    }
+
+    public function getAnswer()
+    {
+        $this->__load();
+        return parent::getAnswer();
+    }
+
+    public function setEmail($email)
+    {
+        $this->__load();
+        return parent::setEmail($email);
+    }
+
+    public function getEmail()
+    {
+        $this->__load();
+        return parent::getEmail();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'cedula', 'login', 'password', 'name', 'lastName', 'phone', 'type', 'position', 'department', 'tickets');
+        return array('__isInitialized__', 'id', 'cedula', 'login', 'password', 'name', 'lastName', 'phone', 'type', 'question', 'answer', 'email', 'position', 'department', 'tickets', 'ticketsAssigned');
     }
 
     public function __clone()

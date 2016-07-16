@@ -38,6 +38,17 @@ function ticketsAdministration($scope, $rootScope, $http) {
             }
         })
     
+    // load all the users
+    $http.get('index.php/administration/UsersAdminController/getAllUsers')
+    	.then(function(response) {
+            if(response.data.message == "success") {
+                $scope.users = response.data.data;
+                angular.forEach($scope.users, function (user, key) {
+                    user.value = angular.lowercase(user.name) + " " +angular.lowercase(user.lastname);
+                    user.showName = user.name + " " + user.lastname;
+                })
+            }
+        });
    $scope.show = function() {
        console.log($scope.selected);
    }
@@ -59,6 +70,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
         $scope.model.state = item.state;
         $scope.model.answerTime = item.asweTime;
         $scope.model.qualityOfService = item.qualityOfService;
+        $scope.model.userAssigned = item.userAssigned ? item.userAssigned : null;
         if(item.submitDate != null) {
           var  date =  new Date(item.submitDate.date);
           $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
@@ -92,7 +104,6 @@ function ticketsAdministration($scope, $rootScope, $http) {
             }, function() {
                     $http.get('index.php/administration/TicketsAdminController/save',{params:$scope.model})
                         .then(function(response) {
-                            console.log(response)
                             if (response.data.message == "success") {
                                 swal("Ticket Actualizado", "El ticket se ha actualizado exitosamente.", "success");
                             } else {
@@ -103,6 +114,21 @@ function ticketsAdministration($scope, $rootScope, $http) {
             });
     }
     
+    $scope.getUsers = function (filter) {
+        
+        $scope.filter = filter;
+        var result = filter ? $scope.users.filter(filterForName) : $scope.users;
+        
+        return result;
+        
+    }
+    
+    function filterForName(user) {
+        
+        var filter = angular.lowercase($scope.filter);
+        return user.value.indexOf(filter) >= 0;
+       
+    }
     $scope.clearModel = function() {
         $scope.ticketSelected = false;
         $scope.selected = [];

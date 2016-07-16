@@ -89,6 +89,14 @@ class Users
      * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userReporter")
      */
      private $tickets;
+     
+     
+     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userAssigned")
+     */
+     private $ticketsAssigned;
 
      /**
      * @var integer
@@ -112,12 +120,14 @@ class Users
     private $email;
      
      
+     
     /**
      * Constructor
     */
     public function __construct()
     {
         $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ticketsAssigned = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -376,6 +386,40 @@ class Users
         return $this->tickets;
     }
 
+    
+    /**
+     * Add tickets
+     *
+     * @param \Entity\Ticket $ticketAssigned
+     * @return Users
+     */
+    public function addTicketsAssigned(\Entity\Ticket $ticketAssigned)
+    {
+        $this->ticketsAssigned[] = $ticketAssigned;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tickets
+     *
+     * @param \Entity\Ticket $ticketAssigned
+     */
+    public function removeTicketsAssigned(\Entity\Ticket $ticketAssigned)
+    {
+        $this->tickets->removeElement($ticketAssigned);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTicketsAssigneds()
+    {
+        return $this->$ticketAssigned;
+    }
+    
     /**
      * Get question
      *
@@ -450,4 +494,5 @@ class Users
     {
         return $this->email;
     }
+    
 }
