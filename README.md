@@ -1,30 +1,69 @@
+Symfony Standard Edition
+========================
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+Welcome to the Symfony Standard Edition - a fully-functional Symfony2
+application that you can use as the skeleton for your new applications.
 
+For details on how to download and get started with Symfony, see the
+[Installation][1] chapter of the Symfony Documentation.
 
-Hi there! Welcome to Cloud9 IDE!
+What's inside?
+--------------
 
-To get you started, we have created a small hello world application.
+The Symfony Standard Edition is configured with the following defaults:
 
-1) Open the hello-world.php file
+  * An AppBundle you can use to start coding;
 
-2) Follow the run instructions in the file's comments
+  * Twig as the only configured template engine;
 
-3) If you want to look at the Apache logs, check out ~/lib/apache2/log
+  * Doctrine ORM/DBAL;
 
-And that's all there is to it! Just have fun. Go ahead and edit the code, 
-or add new files. It's all up to you! 
+  * Swiftmailer;
 
-Happy coding!
-The Cloud9 IDE team
+  * Annotations enabled for everything.
 
+It comes pre-configured with the following bundles:
 
-## Support & Documentation
+  * **FrameworkBundle** - The core Symfony framework bundle
 
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
+    template and routing annotation capability
+
+  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+
+  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+
+  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
+    component
+
+  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
+    sending emails
+
+  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+
+  * [**AsseticBundle**][12] - Adds support for Assetic, an asset processing
+    library
+
+  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
+    the web debug toolbar
+
+  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
+    configuring and working with Symfony distributions
+
+  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
+    capabilities
+
+All libraries and bundles included in the Symfony Standard Edition are
+released under the MIT or BSD license.
+
+Enjoy!
+
+[1]:  http://symfony.com/doc/2.5/book/installation.html
+[6]:  http://symfony.com/doc/2.5/bundles/SensioFrameworkExtraBundle/index.html
+[7]:  http://symfony.com/doc/2.5/book/doctrine.html
+[8]:  http://symfony.com/doc/2.5/book/templating.html
+[9]:  http://symfony.com/doc/2.5/book/security.html
+[10]: http://symfony.com/doc/2.5/cookbook/email.html
+[11]: http://symfony.com/doc/2.5/cookbook/logging/monolog.html
+[12]: http://symfony.com/doc/2.5/cookbook/assetic/asset_management.html
+[13]: http://symfony.com/doc/2.5/bundles/SensioGeneratorBundle/index.html
