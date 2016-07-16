@@ -1,4 +1,7 @@
-var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial", "md.data.table"]);
+var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial", "md.data.table","ui.grid",
+    "ui.grid.grouping",
+    "ui.grid.selection",
+    "ngAnimate"]);
 
 
 angular.module('helpDesk').controller('MainController',
@@ -79,7 +82,30 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
         module: 'private',
         templateUrl: 'index.php/configuration/OrganizationConfigController',
         controller: 'OrganizationConfigController'
+    }).state('reportes-tiempo', {
+        url: '/reportes-tiempo',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListtimeController',
+        controller: 'ListtimeCtrl'
     })
+    .state('reportes-departamento', {
+        url: '/reportes-departamento',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListdepartamentController',
+        controller: 'ListdepartamentCtrl'
+    })
+    .state('reportes-analista', {
+        url: '/reportes-analista',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListtimeanalystController',
+        controller: 'ListtimeanalystCtrl'
+    })
+    .state('reportes-satisfaccion', {
+        url: '/reportes-satisfaccion',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListsatisfactionController',
+        controller: 'ListsatisfactionCtrl'
+    });
     // Application theme
     $mdThemingProvider.theme('default')
         .primaryPalette('teal')
