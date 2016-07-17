@@ -22,10 +22,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-touch.js"></script>
         
          <!-- Data table-->
         <script type="text/javascript" src="<?php echo base_url(); ?>data-table/dist/md-data-table.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>data-table/dist/md-data-table.min.css">
+          <!-- START ui-Grid bowers-->
+        <link rel="stylesheet" type="text/css" href="ui-grid/ui-grid.css" />
+        <script src="ui-grid/ui-grid.js"></script>
+        <!-- END ui-Grid bowers-->
 
         <!-- Angular Material Library -->
         <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.js"></script>
@@ -46,6 +51,12 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/UsersAdminController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/TicketConfigController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/OrganizationConfigController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtimeanalyst.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listdepartament.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listsatisfaction.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtime.js"></script>
+        
+        
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
@@ -137,11 +148,23 @@
                 <li class="divider"></li>
                 <li><a href="#/users-administration" class="waves-effect waves-teal">Usuarios</a></li>
             </ul>
+             <!-- Reportes dropdown menu -->
+            <ul id="reportesMenu" class="dropdown-content">
+                <li><a href="#/reportes-tiempo" class="waves-effect waves-teal">Por tiempo</a></li>
+                <li class="divider"></li>
+                <li><a href="#/reportes-departamento" class="waves-effect waves-teal">Por departamento</a></li>
+                <li class="divider"></li>
+                <li><a href="#/reportes-analista" class="waves-effect waves-teal">Por Analista</a></li>
+                <li class="divider"></li>
+                <li><a href="#/reportes-satisfaccion" class="waves-effect waves-teal">Nivel de Satisfaccion</a></li>
+            </ul>
+            <!-- END Reportes dropdown menu-->
             <!-- Actual menu -->
             <ul class="left">
                 <li ng-class="{active:isSelected(1)}"><a href="#/tickets">Tickets</a></li>
                 <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu">Administración</a></li>
                 <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu">Configuración</a></li>
+                <li ng-class="{active:isSelected(4)}"><a class="dropdown-button" href="#" data-activates="reportesMenu">Reportes</a></li>
             </ul>
         </div>
     </nav>
