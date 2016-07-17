@@ -80,6 +80,16 @@ class Ticket
      */
     private $userReporter;
 
+     /**
+     * @var \Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="Entity\Users", inversedBy="ticketsAssigned")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_assigned_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $userAssigned;
+    
     /**
      * @var string
      *
@@ -483,5 +493,28 @@ class Ticket
     public function getObservations()
     {
         return $this->observations;
+    }
+    
+    /**
+     * Set userAssigned
+     *
+     * @param string $userAssigned
+     * @return Ticket
+     */
+    public function setUserAssigned($userAssigned)
+    {
+        $this->userAssigned = $userAssigned;
+    
+        return $this;
+    }
+
+    /**
+     * Get userAssigned
+     *
+     * @return string 
+     */
+    public function getUserAssigned()
+    {
+        return $this->userAssigned;
     }
 }

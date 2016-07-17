@@ -91,12 +91,43 @@ class Users
      private $tickets;
      
      
+     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userAssigned")
+     */
+     private $ticketsAssigned;
+
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="question", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $question;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="answer", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $answer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $email;
+     
+     
+     
     /**
      * Constructor
     */
     public function __construct()
     {
         $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ticketsAssigned = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -354,4 +385,114 @@ class Users
     {
         return $this->tickets;
     }
+
+    
+    /**
+     * Add tickets
+     *
+     * @param \Entity\Ticket $ticketAssigned
+     * @return Users
+     */
+    public function addTicketsAssigned(\Entity\Ticket $ticketAssigned)
+    {
+        $this->ticketsAssigned[] = $ticketAssigned;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tickets
+     *
+     * @param \Entity\Ticket $ticketAssigned
+     */
+    public function removeTicketsAssigned(\Entity\Ticket $ticketAssigned)
+    {
+        $this->tickets->removeElement($ticketAssigned);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTicketsAssigneds()
+    {
+        return $this->$ticketAssigned;
+    }
+    
+    /**
+     * Get question
+     *
+     * @return integer 
+     */
+    public function getQuestion()
+    {
+       return $this->question;
+    }
+
+    public function getQuestionText() {
+        $question = $this->question;
+
+        return ($question == 1 ? "¿Quién fue tu mejor amigo de la infancia?" : ($question == 2 ? "¿Cuál es el nombre de tu primera mascota?" : ($question == 3 ? "¿Cuál es el titulo de tu libro favorito?" : ($question == 4 ? "¿Cómo se llama tu abuela materna?" : "¿Cuál es tu deporte favorito?"))));
+    }
+
+    /**
+     * Set question
+     *
+     * @param integer $question
+     * @return Users
+     */
+    public function setQuestion($question)
+    {
+        $this->question = $question;
+    
+        return $this;
+    }
+
+    /**
+     * Set answer
+     *
+     * @param string $answer
+     * @return Users
+     */
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
+    
+        return $this;
+    }
+
+    /**
+     * Get answer
+     *
+     * @return string 
+     */
+    public function getAnswer()
+    {
+        return $this->answer;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Users
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    
 }

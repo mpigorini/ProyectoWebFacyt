@@ -6,5 +6,5 @@ class ListdepartamentController extends CI_Controller {
        $this->load->view('reportes/listdepartament');
     }
     
-   
+
 }

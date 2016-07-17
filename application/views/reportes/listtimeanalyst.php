@@ -7,18 +7,18 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s4 offset-s2">
-          <input ng-model="startTime" placeholder="" id="first_name" type="date" class="validate">
+          <input ng-model="date.StartTime" placeholder="" id="first_name" type="date" class="validate">
           <label for="first_name"></label>
         </div>
         <div class="input-field col s4 offset-s1">
-          <input  ng-model="endTime" id="last_name" type="date" class="validate">
+          <input  ng-model="date.EndTime" id="last_name" type="date" class="validate">
           <label for="last_name"></label>
         </div>
       </div>
      
       <div class="row">
         <div class="input-field col s4 offset-s2">
-          <input ng-model="Analyst" id="name" type="text" class="validate">
+          <input ng-model="date.Analyst" id="name" type="text" class="validate">
           <label for="Name">Name Analyst</label>
         </div>
       </div>

@@ -22,6 +22,7 @@ angular.module('helpDesk').controller('UserController',
                     console.log("response.data.position: " + response.data.position)
                     console.log("response.data.department: " + response.data.department)
                     console.log("response.data.type: " + response.data.type)
+                    console.log("response.data.email: " + response.data.email)
                     if(response.data.message != "Error") {
                     	$scope.edit.id = id;
                     	$scope.edit.login = response.data.login;
@@ -33,6 +34,7 @@ angular.module('helpDesk').controller('UserController',
 	                    $scope.edit.position = response.data.position;
 	                    $scope.edit.department = response.data.department;
 	                    $scope.edit.type = response.data.type;
+	                    $scope.edit.email = response.data.email;
 	                    $scope.label = response.data.name;
                     }else{
                     	sweetAlert("Oops...", "Ah ocurrido un problema al cargar tus datos de usuario", "error");

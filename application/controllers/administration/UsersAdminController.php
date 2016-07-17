@@ -27,6 +27,7 @@ class UsersAdminController extends CI_Controller {
                 $result['data'][$key]['cedula'] = $user->getCedula();
                 $result['data'][$key]['phone'] = $user->getPhone();
                 $result['data'][$key]['type'] = $user->getTypeText();
+                $result['data'][$key]['email'] = $user->getEmail();
                 $result['data'][$key]['department'] = $user->getDepartment()->getName();
                 $result['data'][$key]['position'] = $user->getPosition()->getName();
             }
@@ -78,6 +79,10 @@ class UsersAdminController extends CI_Controller {
                 $user->setDepartment( $department );
                 $user->setPosition( $position );
                 $user->setType( $_GET['updateType']);
+                $user->setEmail( $_GET['email']);
+                // Q&A
+                $user->setQuestion( $_GET['theQuestion']);
+                $user->setAnswer( $_GET['answer']);
 
                 $em->persist($user);
                 $em->flush();

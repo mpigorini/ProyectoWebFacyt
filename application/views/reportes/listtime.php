@@ -2,14 +2,13 @@
 
 <div class="row" ng-controller="ListtimeCtrl" >
 
- 
   <div class="col s2  offset-s2">
     <strong > Input start Time </strong>
-    <input name="StartTime"  type="date" required="date">
+    <input ng-model="date.StartTime" name="StartTime"  type="date" required>
   </div>
   <div class="col s2 offset-s1">
     <strong> Input end Time </strong>
-    <input name="EndTime"  type="date" required="date">
+    <input ng-model="date.EndTime" name="EndTime"  type="date" required>
   </div>
 
   <div class="col s2 offset-s1">
@@ -20,8 +19,9 @@
 <br>
 <br>	
   <div class="section">
-
-    <h2 ng-show="title" class="left" >Reportes</h2> 
+    <div class="row">
+  <h2 ng-show="title" >Reportes</h2>
+  </div>
   </div>
   <div ng-show="table" class="container"> 
 

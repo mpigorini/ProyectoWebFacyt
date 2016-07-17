@@ -29,12 +29,17 @@ class TicketsAdminController extends CI_Controller {
 		        		$result['states'][$key]['table'][$keyTicket]['description'] = $ticket->getDescription();
 		        		$result['states'][$key]['table'][$keyTicket]['type'] = $ticket->getType();
 		        		$result['states'][$key]['table'][$keyTicket]['level'] = $ticket->getLevel();
-		        		$result['states'][$key]['table'[$keyTicket]]['priority'] = $ticket->getPriority();
+		        		$result['states'][$key]['table'][$keyTicket]['priority'] = $ticket->getPriority();
 		        		$result['states'][$key]['table'][$keyTicket]['answerTime'] = $ticket->getAnswerTime();
 		        		$result['states'][$key]['table'][$keyTicket]['qualityOfService'] = $ticket->getQualityOfService();
 		        		//Load user 
 		        			$result['states'][$key]['table'][$keyTicket]['userReporter']['id'] = $ticket->getUserReporter()->getId();
 		        			$result['states'][$key]['table'][$keyTicket]['userReporter']['name'] = $ticket->getUserReporter()->getName();
+		        	    //Load user assigned
+		        	    if($ticket->getUserAssigned() != null ) {
+		        	       $result['states'][$key]['table'][$keyTicket]['userAssigned']['id'] = $ticket->getUserAssigned()->getId();
+		        	       $result['states'][$key]['table'][$keyTicket]['userAssigned']['showName'] = $ticket->getUserAssigned()->getName() ." " . $ticket->getUserAssigned()->getLastName();
+		        	    } 
 		        		$result['states'][$key]['table'][$keyTicket]['department'] = $ticket->getDepartment();
 		        		$result['states'][$key]['table'][$keyTicket]['submitDate'] =$ticket->getSubmitDate();
 		        		$result['states'][$key]['table'][$keyTicket]['closeDate'] = $ticket->getCloseDate();
@@ -74,6 +79,11 @@ class TicketsAdminController extends CI_Controller {
         		//Load user 
         			$result['tickets'][$key]['userReporter']['id'] = $ticket->getUserReporter()->getId();
         			$result['tickets'][$key]['userReporter']['name'] = $ticket->getUserReporter()->getName();
+			   //Load user assigned
+        	    if($ticket->getUserAssigned() != null ) {
+        	        $result['tickets'][$key]['userAssigned']['id'] = $ticket->getUserAssigned()->getId();
+        	        $result['tickets'][$key]['userAssigned']['showName'] =$ticket->getUserAssigned()->getName() ." " .$ticket->getUserAssigned()->getLastName() ;
+        	    } 
         		$result['tickets'][$key]['department'] = $ticket->getDepartment();
         		$result['tickets'][$key]['submitDate'] =$ticket->getSubmitDate();
         		$result['tickets'][$key]['closeDate'] = $ticket->getCloseDate();
@@ -142,6 +152,12 @@ class TicketsAdminController extends CI_Controller {
                 $ticket->setObservations(isset($_GET['observations']) ? $_GET['observations'] : "");
                 $ticket->setQualityOfService(isset($_GET['qualityOfService'] ) ? $_GET['qualityOfService'] : "");
                 $ticket->setEvaluation(isset($_GET['evaluation']) ? $_GET['evaluation'] : "");
+                if(isset($_GET['userAssigned'])) {
+                    $userAssigned = json_decode( $_GET['userAssigned']);
+                    $userAssigned = $em->find('\Entity\Users', $userAssigned->id);
+                    $ticket->setUserAssigned($userAssigned);
+                }
+                
                 $em->merge($ticket);
                 $em->persist($ticket);
                 $em->flush();
