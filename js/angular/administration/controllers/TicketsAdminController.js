@@ -19,14 +19,14 @@ function ticketsAdministration($scope, $rootScope, $http) {
                 $scope.states = response.data.states;
                 console.log($scope.states);
                 $scope.loading = false
-                
+
             }
         })
     $http.get('index.php/administration/TicketsAdminController/getTickets')
         .then(function (response){
             if(response.data.message == "success") {
-               $scope.tickets = response.data.tickets; 
-              
+               $scope.tickets = response.data.tickets;
+
                 console.log($scope.tickets);
                console.log($scope.states);
             }
@@ -37,7 +37,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
                 $scope.config = response.data;
             }
         })
-    
+
     // load all the users
     $http.get('index.php/administration/UsersAdminController/getAllUsers')
     	.then(function(response) {
@@ -58,7 +58,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
         page: 1
     };
 
-    
+
     $scope.selectItem = function(item,key) {
         console.log(item);
         $scope.model.id = item.id;
@@ -72,7 +72,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
         $scope.model.qualityOfService = item.qualityOfService;
         $scope.model.userAssigned = item.userAssigned ? item.userAssigned : null;
         $scope.searchText = "";
-        
+
         if(item.submitDate != null) {
           var  date =  new Date(item.submitDate.date);
           $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
@@ -86,11 +86,11 @@ function ticketsAdministration($scope, $rootScope, $http) {
         $scope.model.department = item.department;
         $scope.model.userReporter = item.userReporter
         $scope.ticketSelected = true;
-        
+
     }
-    
+
      $scope.save = function() {
-               
+
             swal({
                 title: "Confirmación",
                 text: "Su actualizara el ticket con el asunto "+$scope.model.subject+" de solicitud será creada. ¿Desea proceder?" ,
@@ -101,7 +101,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
                 closeOnConfirm: false,
                 animation: "slide-from-top",
                 showLoaderOnConfirm: true,
-                
+
             }, function() {
                     $http.get('index.php/administration/TicketsAdminController/save',{params:$scope.model})
                         .then(function(response) {
@@ -110,25 +110,25 @@ function ticketsAdministration($scope, $rootScope, $http) {
                             } else {
                                 swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                             }
-                    }) 
+                    })
 
             });
     }
-    
+
     $scope.getUsers = function (filter) {
-        
+
         $scope.filter = filter;
         var result = filter ? $scope.users.filter(filterForName) : $scope.users;
-        
+
         return result;
-        
+
     }
-    
+
     function filterForName(user) {
-        
+
         var filter = angular.lowercase($scope.filter);
         return user.value.indexOf(filter) >= 0;
-       
+
     }
     $scope.clearModel = function() {
         $scope.ticketSelected = false;
@@ -137,14 +137,14 @@ function ticketsAdministration($scope, $rootScope, $http) {
     $scope.deselectItem = function() {
         $scope.ticketSelected = false;
     }
-    
+
     $scope.viewMode = function() {
         $scope.edit = false;
     }
-    
+
     $scope.editMode = function(){
         $scope.edit =true;
     }
-  
-    
+
+
 }
