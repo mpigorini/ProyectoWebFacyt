@@ -15,7 +15,7 @@
 <br>
 <div class="container row">   
     <div class="card-panel col s9">
-        <h5 class="center">Lista de usuarios del sistema</h5>
+        <h5 class="center" style="cursor: default;">Lista de usuarios del sistema</h5>
         <table class="bordered striped" style="display: block; height: 550px; overflow-y: auto;">
             <thead>
                 <th>Nombre</th>
@@ -58,8 +58,8 @@
 <div class="container" ng-show="editUser">
 	<div class="card-panel">
 		<div class="row cols 12">
-			<h5 ng-show="notOld" class="center" style="cursor: default;">Editar usuario {{labelName}} {{labelLastname}}</h5>
-			<h5 ng-show="!notOld" class="center" style="cursor: default;">Ingrese los datos del nuevo usuario</h5>
+			<h5 ng-show="notOld" class="center" style="cursor: default; font-weight: bold;">Editar usuario {{labelName}} {{labelLastname}}</h5>
+			<h5 ng-show="!notOld" class="center" style="cursor: default; font-weight: bold;">Ingrese los datos del nuevo usuario</h5>
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
@@ -94,6 +94,13 @@
 	        <div  class="input-field col s6">
 	            <h5 style="cursor: default;">
 					Teléfono: <input ng-model="user.phone" type="number">
+				</h5>
+	        </div>
+        </div>
+        <div class="row" ng-class="{validate:notValid}">
+			<div class="input-field col s12">
+				<h5 style="cursor: default;">
+					Correo electrónico: <input ng-model="user.email" type="email" ng-change="validateEmail()">
 				</h5>
 	        </div>
         </div>
@@ -139,6 +146,23 @@
 				<select ng-model="user.newType" material-select watch>
 			      	<option  ng-repeat="select in selectType">{{select}}</option>
 			    </select>
+	        </div>
+        </div>
+        <div class="row" ng-show="!notOld">
+			<div class="input-field col s12">
+				<h5 style="cursor: default;">Seleccione una pregunta de seguridad:</h5>
+				<select ng-model="user.question" material-select watch>
+			      	<option  ng-repeat="select in selectQuestion">{{select}}</option>
+			    </select>
+	        </div>
+        </div>
+        <div class="row" ng-show="!notOld">
+			<div class="input-field col s12" style="cursor: default;">
+				<h5>
+					Escribe tu respuesta:
+					<h6>¡Asegurate de no olvidarla! La necesitaras en caso de querer recuperar tu cuenta.</h6>
+					<input ng-model="user.answer" type="text">
+				</h5>
 	        </div>
         </div>
         <div class="row center">

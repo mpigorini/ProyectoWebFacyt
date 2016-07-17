@@ -6,6 +6,7 @@ angular.module('helpDesk').controller('UserController',
 		    $scope.edit = {};
 		    $scope.mode = {};
 		    $scope.mode = false;
+		    $scope.notValid = false;
             var id = $cookies.getObject("session").id;
             console.log("$cookies.getObject('session').id: " + id)
             $http.get('index.php/user/UserController/userInfo', {params:{id: id}})
@@ -22,6 +23,7 @@ angular.module('helpDesk').controller('UserController',
                     console.log("response.data.position: " + response.data.position)
                     console.log("response.data.department: " + response.data.department)
                     console.log("response.data.type: " + response.data.type)
+                    console.log("response.data.email: " + response.data.email)
                     if(response.data.message != "Error") {
                     	$scope.edit.id = id;
                     	$scope.edit.login = response.data.login;
@@ -33,6 +35,7 @@ angular.module('helpDesk').controller('UserController',
 	                    $scope.edit.position = response.data.position;
 	                    $scope.edit.department = response.data.department;
 	                    $scope.edit.type = response.data.type;
+	                    $scope.edit.email = response.data.email;
 	                    $scope.label = response.data.name;
                     }else{
                     	sweetAlert("Oops...", "Ah ocurrido un problema al cargar tus datos de usuario", "error");
@@ -45,10 +48,23 @@ angular.module('helpDesk').controller('UserController',
             };
             $scope.editMode = function(){
                 $scope.mode = true;
-            };   
+            };
+            $scope.validateEmail = function () {
+		        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		        var validate = re.test($scope.edit.email);
+		        if (validate){
+		        	console.log("validate")
+		            $scope.notValid = false;
+		        }else{
+		            $scope.notValid = true;
+		            console.log("!validate")
+		        }
+		    }   
             $scope.save = function (element){
             	console.log("Editar User")
-            	if( ($scope.edit.login==undefined) || ($scope.edit.password==undefined) ){
+            	if($scope.notValid){
+            		sweetAlert("Oops...", "Ingrese un correo electrónico valido.", "error");
+            	}else if( ($scope.edit.password=="") || ($scope.edit.password==undefined) ){
             		sweetAlert("Oops...", "El campo de Contraseña no puede estar vacio", "error");
             	}else{
 	                swal({
@@ -72,6 +88,7 @@ angular.module('helpDesk').controller('UserController',
 	                		}else{
 								$http.get('index.php/user/UserController/editUserInfo', {params: $scope.edit})
 			                		.then(function(response) {
+			                			console.log("response.data.message: " + response.data.message)
 										if(response.data.message != "Error") {
 											$scope.mode = false;
 											$scope.label = $scope.edit.username;

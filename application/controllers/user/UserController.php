@@ -20,6 +20,7 @@ class UserController extends CI_Controller {
                 $result['cedula']= $user->getCedula();
                 $result['phone']= $user->getPhone();
                 $result['type']= $user->getTypeText();
+                $result['email']= $user->getEmail();
 
                 $pos = $user->getPosition();
                 if($pos !== null){
@@ -37,6 +38,7 @@ class UserController extends CI_Controller {
 
                 $result['message'] = "";
            }
+           $result['message'] = "success";
        }catch(Exception $e){
            \ChromePhp::log($e);
            $result['message'] = "Error";
@@ -53,11 +55,12 @@ class UserController extends CI_Controller {
                 $user->setName( $_GET['username'] );
                 $user->setLastName( $_GET['lastname'] );
                 $user->setPhone( $_GET['phone'] );
-                $result['message'] = "";
+                $user->setEmail( $_GET['email'] );
                 $em->merge($user);
                 $em->persist($user);
                 $em->flush($user);
            }
+           $result['message'] = "success";
        }catch(Exception $e){
            \ChromePhp::log($e);
            $result['message'] = "Error";
