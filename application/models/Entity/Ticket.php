@@ -70,26 +70,6 @@ class Ticket
      */
     private $qualityOfService;
 
-      /**
-     * @var \Entity\Users
-     *
-     * @ORM\ManyToOne(targetEntity="Entity\Users", inversedBy="tickets")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
-     * })
-     */
-    private $userReporter;
-
-     /**
-     * @var \Entity\Users
-     *
-     * @ORM\ManyToOne(targetEntity="Entity\Users", inversedBy="ticketsAssigned")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_assigned_id", referencedColumnName="id", nullable=true)
-     * })
-     */
-    private $userAssigned;
-
     /**
      * @var string
      *
@@ -132,11 +112,31 @@ class Ticket
      */
     private $evaluation;
 
+    /**
+     * @var \Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="Entity\Users", inversedBy="tickets")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $userReporter;
+
+    /**
+     * @var \Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="Entity\Users", inversedBy="ticketsAssigned")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_assigned_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $userAssigned;
+
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -152,14 +152,14 @@ class Ticket
     public function setSubject($subject)
     {
         $this->subject = $subject;
-
+    
         return $this;
     }
 
     /**
      * Get subject
      *
-     * @return string
+     * @return string 
      */
     public function getSubject()
     {
@@ -175,14 +175,14 @@ class Ticket
     public function setDescription($description)
     {
         $this->description = $description;
-
+    
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string
+     * @return string 
      */
     public function getDescription()
     {
@@ -198,14 +198,14 @@ class Ticket
     public function setType($type)
     {
         $this->type = $type;
-
+    
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return string
+     * @return string 
      */
     public function getType()
     {
@@ -221,14 +221,14 @@ class Ticket
     public function setLevel($level)
     {
         $this->level = $level;
-
+    
         return $this;
     }
 
     /**
      * Get level
      *
-     * @return string
+     * @return string 
      */
     public function getLevel()
     {
@@ -244,14 +244,14 @@ class Ticket
     public function setPriority($priority)
     {
         $this->priority = $priority;
-
+    
         return $this;
     }
 
     /**
      * Get priority
      *
-     * @return string
+     * @return string 
      */
     public function getPriority()
     {
@@ -267,14 +267,14 @@ class Ticket
     public function setAnswerTime($answerTime)
     {
         $this->answerTime = $answerTime;
-
+    
         return $this;
     }
 
     /**
      * Get answerTime
      *
-     * @return string
+     * @return string 
      */
     public function getAnswerTime()
     {
@@ -290,14 +290,14 @@ class Ticket
     public function setQualityOfService($qualityOfService)
     {
         $this->qualityOfService = $qualityOfService;
-
+    
         return $this;
     }
 
     /**
      * Get qualityOfService
      *
-     * @return string
+     * @return string 
      */
     public function getQualityOfService()
     {
@@ -305,45 +305,22 @@ class Ticket
     }
 
     /**
-     * Set userReporter
+     * Set department
      *
-     * @param string $userReporter
-     * @return Ticket
-     */
-    public function setUserReporter($userReporter)
-    {
-        $this->userReporter = $userReporter;
-
-        return $this;
-    }
-
-    /**
-     * Get userReporter
-     *
-     * @return string
-     */
-    public function getUserReporter()
-    {
-        return $this->userReporter;
-    }
-
-    /**
-     * Set deparment
-     *
-     * @param string $deparment
+     * @param string $department
      * @return Ticket
      */
     public function setDepartment($department)
     {
         $this->department = $department;
-
+    
         return $this;
     }
 
     /**
-     * Get deparment
+     * Get department
      *
-     * @return string
+     * @return string 
      */
     public function getDepartment()
     {
@@ -359,14 +336,14 @@ class Ticket
     public function setSubmitDate($submitDate)
     {
         $this->submitDate = $submitDate;
-
+    
         return $this;
     }
 
     /**
      * Get submitDate
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getSubmitDate()
     {
@@ -382,14 +359,14 @@ class Ticket
     public function setCloseDate($closeDate)
     {
         $this->closeDate = $closeDate;
-
+    
         return $this;
     }
 
     /**
      * Get closeDate
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCloseDate()
     {
@@ -405,14 +382,14 @@ class Ticket
     public function setState($state)
     {
         $this->state = $state;
-
+    
         return $this;
     }
 
     /**
      * Get state
      *
-     * @return string
+     * @return string 
      */
     public function getState()
     {
@@ -428,14 +405,14 @@ class Ticket
     public function setSolutionDescription($solutionDescription)
     {
         $this->solutionDescription = $solutionDescription;
-
+    
         return $this;
     }
 
     /**
      * Get solutionDescription
      *
-     * @return string
+     * @return string 
      */
     public function getSolutionDescription()
     {
@@ -451,14 +428,14 @@ class Ticket
     public function setEvaluation($evaluation)
     {
         $this->evaluation = $evaluation;
-
+    
         return $this;
     }
 
     /**
      * Get evaluation
      *
-     * @return string
+     * @return string 
      */
     public function getEvaluation()
     {
@@ -466,22 +443,45 @@ class Ticket
     }
 
     /**
-     * Set userAssigned
+     * Set userReporter
      *
-     * @param string $userAssigned
+     * @param \Entity\Users $userReporter
      * @return Ticket
      */
-    public function setUserAssigned($userAssigned)
+    public function setUserReporter(\Entity\Users $userReporter)
+    {
+        $this->userReporter = $userReporter;
+    
+        return $this;
+    }
+
+    /**
+     * Get userReporter
+     *
+     * @return \Entity\Users 
+     */
+    public function getUserReporter()
+    {
+        return $this->userReporter;
+    }
+
+    /**
+     * Set userAssigned
+     *
+     * @param \Entity\Users $userAssigned
+     * @return Ticket
+     */
+    public function setUserAssigned(\Entity\Users $userAssigned = null)
     {
         $this->userAssigned = $userAssigned;
-
+    
         return $this;
     }
 
     /**
      * Get userAssigned
      *
-     * @return string
+     * @return \Entity\Users 
      */
     public function getUserAssigned()
     {

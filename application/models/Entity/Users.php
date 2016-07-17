@@ -71,41 +71,13 @@ class Users
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Position")
-     * @ORM\JoinColumn(name="position_id", referencedColumnName="id")
-     */
-    private $position;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Department")
-     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
-     */
-    private $department;
-
-    
-     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userReporter")
-     */
-     private $tickets;
-     
-     
-     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userAssigned")
-     */
-     private $ticketsAssigned;
-
-     /**
      * @var integer
      *
      * @ORM\Column(name="question", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $question;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="answer", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
@@ -118,12 +90,44 @@ class Users
      * @ORM\Column(name="email", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $email;
-     
-     
-     
+
+    /**
+     * @var \Entity\Position
+     *
+     * @ORM\ManyToOne(targetEntity="Entity\Position")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="position_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $position;
+
+    /**
+     * @var \Entity\Department
+     *
+     * @ORM\ManyToOne(targetEntity="Entity\Department")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="department_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $department;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userReporter")
+     */
+    private $tickets;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userAssigned")
+     */
+    private $ticketsAssigned;
+
     /**
      * Constructor
-    */
+     */
     public function __construct()
     {
         $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
@@ -138,6 +142,19 @@ class Users
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set cedula
+     *
+     * @param integer $cedula
+     * @return Users
+     */
+    public function setCedula($cedula)
+    {
+        $this->cedula = $cedula;
+    
+        return $this;
     }
 
     /**
@@ -243,16 +260,6 @@ class Users
     }
 
     /**
-     * Get phone
-     *
-     * @return integer 
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
      * Set phone
      *
      * @param integer $phone
@@ -263,6 +270,16 @@ class Users
         $this->phone = $phone;
     
         return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return integer 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 
     /**
@@ -285,155 +302,7 @@ class Users
      */
     public function getType()
     {
-       return $this->type;
-    }    
-     
-    /**
-     * Set position
-     *
-     * @param \Entity\Position $position
-     * @return Users
-     */
-    public function setPosition(\Entity\Position $position = null)
-    {
-        $this->position = $position;
-    
-        return $this;
-    }
-    /**
-     * Get position
-     *
-     * @return \Entity\Position 
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * Set department
-     *
-     * @param \Entity\Department $department
-     * @return Users
-     */
-    public function setDepartment(\Entity\Department $department = null)
-    {
-        $this->department = $department;
-    
-        return $this;
-    }
-    /**
-     * Get department
-     *
-     * @return \Entity\Department 
-     */
-    public function getDepartment()
-    {
-        return $this->department;
-    }
-    
-    public function getTypeText() {
-        $type = $this->type;
-        // Translate integer user type to it's corresponding string
-        return ($type == 1 ? "Gerente" : ($type == 2 ? "Coordinador de sistema" : ($type == 3 ? "Técnico" : "Solicitante")));
-    }
-    
-
-
-    /**
-     * Set cedula
-     *
-     * @param integer $cedula
-     * @return Users
-     */
-    public function setCedula($cedula)
-    {
-        $this->cedula = $cedula;
-    
-        return $this;
-    }
-
-    /**
-     * Add tickets
-     *
-     * @param \Entity\Ticket $tickets
-     * @return Users
-     */
-    public function addTicket(\Entity\Ticket $tickets)
-    {
-        $this->tickets[] = $tickets;
-    
-        return $this;
-    }
-
-    /**
-     * Remove tickets
-     *
-     * @param \Entity\Ticket $tickets
-     */
-    public function removeTicket(\Entity\Ticket $tickets)
-    {
-        $this->tickets->removeElement($tickets);
-    }
-
-    /**
-     * Get tickets
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTickets()
-    {
-        return $this->tickets;
-    }
-
-    
-    /**
-     * Add tickets
-     *
-     * @param \Entity\Ticket $ticketAssigned
-     * @return Users
-     */
-    public function addTicketsAssigned(\Entity\Ticket $ticketAssigned)
-    {
-        $this->ticketsAssigned[] = $ticketAssigned;
-    
-        return $this;
-    }
-
-    /**
-     * Remove tickets
-     *
-     * @param \Entity\Ticket $ticketAssigned
-     */
-    public function removeTicketsAssigned(\Entity\Ticket $ticketAssigned)
-    {
-        $this->tickets->removeElement($ticketAssigned);
-    }
-
-    /**
-     * Get tickets
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTicketsAssigneds()
-    {
-        return $this->$ticketAssigned;
-    }
-    
-    /**
-     * Get question
-     *
-     * @return integer 
-     */
-    public function getQuestion()
-    {
-       return $this->question;
-    }
-
-    public function getQuestionText() {
-        $question = $this->question;
-
-        return ($question == 1 ? "¿Quién fue tu mejor amigo de la infancia?" : ($question == 2 ? "¿Cuál es el nombre de tu primera mascota?" : ($question == 3 ? "¿Cuál es el titulo de tu libro favorito?" : ($question == 4 ? "¿Cómo se llama tu abuela materna?" : "¿Cuál es tu deporte favorito?"))));
+        return $this->type;
     }
 
     /**
@@ -447,6 +316,16 @@ class Users
         $this->question = $question;
     
         return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return integer 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
     }
 
     /**
@@ -494,5 +373,116 @@ class Users
     {
         return $this->email;
     }
+
+    /**
+     * Set position
+     *
+     * @param \Entity\Position $position
+     * @return Users
+     */
+    public function setPosition(\Entity\Position $position = null)
+    {
+        $this->position = $position;
     
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return \Entity\Position 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set department
+     *
+     * @param \Entity\Department $department
+     * @return Users
+     */
+    public function setDepartment(\Entity\Department $department = null)
+    {
+        $this->department = $department;
+    
+        return $this;
+    }
+
+    /**
+     * Get department
+     *
+     * @return \Entity\Department 
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
+
+    /**
+     * Add tickets
+     *
+     * @param \Entity\Ticket $tickets
+     * @return Users
+     */
+    public function addTicket(\Entity\Ticket $tickets)
+    {
+        $this->tickets[] = $tickets;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tickets
+     *
+     * @param \Entity\Ticket $tickets
+     */
+    public function removeTicket(\Entity\Ticket $tickets)
+    {
+        $this->tickets->removeElement($tickets);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+
+    /**
+     * Add ticketsAssigned
+     *
+     * @param \Entity\Ticket $ticketsAssigned
+     * @return Users
+     */
+    public function addTicketsAssigned(\Entity\Ticket $ticketsAssigned)
+    {
+        $this->ticketsAssigned[] = $ticketsAssigned;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ticketsAssigned
+     *
+     * @param \Entity\Ticket $ticketsAssigned
+     */
+    public function removeTicketsAssigned(\Entity\Ticket $ticketsAssigned)
+    {
+        $this->ticketsAssigned->removeElement($ticketsAssigned);
+    }
+
+    /**
+     * Get ticketsAssigned
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTicketsAssigned()
+    {
+        return $this->ticketsAssigned;
+    }
 }
