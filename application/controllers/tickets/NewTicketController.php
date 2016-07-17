@@ -3,13 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 include (APPPATH. '/libraries/ChromePhp.php');
 
 class NewTicketController extends CI_Controller {
-    
+
     public function index() {
         $this->load->view('tickets/newTicket');
     }
-    
+
     public function getConfiguration() {
-        
+
         try{
             $em = $this->doctrine->em;
             $config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));
@@ -26,14 +26,14 @@ class NewTicketController extends CI_Controller {
                     $result['priorities'][$key] = $priority;
                 }
                 $result['message'] = "success";
-                
-            }            
-            
+
+            }
+
         }catch(Exception $e){
             \ChromePhp::log($e);
              $result['message']="error";
         }
-        
+
         echo json_encode($result);
     }
 
@@ -41,7 +41,7 @@ class NewTicketController extends CI_Controller {
         try {
             $em = $this->doctrine->em;
             $departments = $em->getRepository('\Entity\Department')->findAll();
-            
+
             foreach ($departments as $key=>$department) {
                 // We only need id and name for this purpose
                 $result['data'][$key]['id'] = $department->getId();
@@ -55,10 +55,9 @@ class NewTicketController extends CI_Controller {
 
         echo json_encode($result);
     }
-    
+
     public function saveTicket() {
-        \ChromePhp::log("Ticket subject: ");
-        \ChromePhp::log($_GET['subject']);
+
         // dont forget to add date and user reporter (with associations)
         try {
             $em = $this->doctrine->em;
@@ -74,12 +73,14 @@ class NewTicketController extends CI_Controller {
             $ticket->setPriority($_GET['priority']);
             $ticket->setUserReporter($user);
             $ticket->setDepartment($_GET['department']);
+            // Set submit date as today
             $ticket->setSubmitDate(new \DateTime('now'));
-            
+
             $em->persist($ticket);
             $em->merge($user);
             $em->persist($user);
             $em->flush();
+            $result['paddedId'] = sprintf('%06d', $ticket->getId());
             $result['message'] = "success";
         } catch(Exception $e) {
            \ChromePhp::log($e);

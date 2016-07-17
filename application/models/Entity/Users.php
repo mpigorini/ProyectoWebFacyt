@@ -71,33 +71,13 @@ class Users
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Position")
-     * @ORM\JoinColumn(name="position_id", referencedColumnName="id")
-     */
-    private $position;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Department")
-     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
-     */
-    private $department;
-
-    
-     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userReporter")
-     */
-     private $tickets;
-
-     /**
      * @var integer
      *
      * @ORM\Column(name="question", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $question;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="answer", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
@@ -110,20 +90,54 @@ class Users
      * @ORM\Column(name="email", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
     private $email;
-     
-     
+
+    /**
+     * @var \Entity\Position
+     *
+     * @ORM\ManyToOne(targetEntity="Entity\Position")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="position_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $position;
+
+    /**
+     * @var \Entity\Department
+     *
+     * @ORM\ManyToOne(targetEntity="Entity\Department")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="department_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $department;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userReporter")
+     */
+    private $tickets;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Entity\Ticket", mappedBy="userAssigned")
+     */
+    private $ticketsAssigned;
+
     /**
      * Constructor
-    */
+     */
     public function __construct()
     {
         $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ticketsAssigned = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -131,9 +145,22 @@ class Users
     }
 
     /**
+     * Set cedula
+     *
+     * @param integer $cedula
+     * @return Users
+     */
+    public function setCedula($cedula)
+    {
+        $this->cedula = $cedula;
+
+        return $this;
+    }
+
+    /**
      * Get cedula
      *
-     * @return integer 
+     * @return integer
      */
     public function getCedula()
     {
@@ -149,14 +176,14 @@ class Users
     public function setLogin($login)
     {
         $this->login = $login;
-    
+
         return $this;
     }
 
     /**
      * Get login
      *
-     * @return string 
+     * @return string
      */
     public function getLogin()
     {
@@ -172,14 +199,14 @@ class Users
     public function setPassword($password)
     {
         $this->password = $password;
-    
+
         return $this;
     }
 
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -195,14 +222,14 @@ class Users
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -218,28 +245,18 @@ class Users
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
-    
+
         return $this;
     }
 
     /**
      * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
         return $this->lastName;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return integer 
-     */
-    public function getPhone()
-    {
-        return $this->phone;
     }
 
     /**
@@ -251,8 +268,18 @@ class Users
     public function setPhone($phone)
     {
         $this->phone = $phone;
-    
+
         return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return integer
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 
     /**
@@ -264,20 +291,94 @@ class Users
     public function setType($type)
     {
         $this->type = $type;
-    
+
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return integer 
+     * @return integer
      */
     public function getType()
     {
-       return $this->type;
-    }    
-     
+        return $this->type;
+    }
+
+    /**
+     * Set question
+     *
+     * @param integer $question
+     * @return Users
+     */
+    public function setQuestion($question)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return integer
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    public function getQuestionText() {
+        $question = $this->question;
+        return ($question == 1 ? "¿Quién fue tu mejor amigo de la infancia?" : ($question == 2 ? "¿Cuál es el nombre de tu primera mascota?" : ($question == 3 ? "¿Cuál es el titulo de tu libro favorito?" : ($question == 4 ? "¿Cómo se llama tu abuela materna?" : "¿Cuál es tu deporte favorito?"))));
+    }
+
+    /**
+     * Set answer
+     *
+     * @param string $answer
+     * @return Users
+     */
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
+
+        return $this;
+    }
+
+    /**
+     * Get answer
+     *
+     * @return string
+     */
+    public function getAnswer()
+    {
+        return $this->answer;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Users
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
     /**
      * Set position
      *
@@ -287,13 +388,14 @@ class Users
     public function setPosition(\Entity\Position $position = null)
     {
         $this->position = $position;
-    
+
         return $this;
     }
+
     /**
      * Get position
      *
-     * @return \Entity\Position 
+     * @return \Entity\Position
      */
     public function getPosition()
     {
@@ -309,38 +411,24 @@ class Users
     public function setDepartment(\Entity\Department $department = null)
     {
         $this->department = $department;
-    
+
         return $this;
     }
+
     /**
      * Get department
      *
-     * @return \Entity\Department 
+     * @return \Entity\Department
      */
     public function getDepartment()
     {
         return $this->department;
     }
-    
+
     public function getTypeText() {
         $type = $this->type;
         // Translate integer user type to it's corresponding string
         return ($type == 1 ? "Gerente" : ($type == 2 ? "Coordinador de sistema" : ($type == 3 ? "Técnico" : "Solicitante")));
-    }
-    
-
-
-    /**
-     * Set cedula
-     *
-     * @param integer $cedula
-     * @return Users
-     */
-    public function setCedula($cedula)
-    {
-        $this->cedula = $cedula;
-    
-        return $this;
     }
 
     /**
@@ -352,7 +440,7 @@ class Users
     public function addTicket(\Entity\Ticket $tickets)
     {
         $this->tickets[] = $tickets;
-    
+
         return $this;
     }
 
@@ -369,7 +457,7 @@ class Users
     /**
      * Get tickets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTickets()
     {
@@ -377,77 +465,35 @@ class Users
     }
 
     /**
-     * Get question
+     * Add ticketsAssigned
      *
-     * @return integer 
-     */
-    public function getQuestion()
-    {
-       return $this->question;
-    }
-
-    public function getQuestionText() {
-        $question = $this->question;
-
-        return ($question == 1 ? "¿Quién fue tu mejor amigo de la infancia?" : ($question == 2 ? "¿Cuál es el nombre de tu primera mascota?" : ($question == 3 ? "¿Cuál es el titulo de tu libro favorito?" : ($question == 4 ? "¿Cómo se llama tu abuela materna?" : "¿Cuál es tu deporte favorito?"))));
-    }
-
-    /**
-     * Set question
-     *
-     * @param integer $question
+     * @param \Entity\Ticket $ticketsAssigned
      * @return Users
      */
-    public function setQuestion($question)
+    public function addTicketsAssigned(\Entity\Ticket $ticketsAssigned)
     {
-        $this->question = $question;
-    
+        $this->ticketsAssigned[] = $ticketsAssigned;
+
         return $this;
     }
 
     /**
-     * Set answer
+     * Remove ticketsAssigned
      *
-     * @param string $answer
-     * @return Users
+     * @param \Entity\Ticket $ticketsAssigned
      */
-    public function setAnswer($answer)
+    public function removeTicketsAssigned(\Entity\Ticket $ticketsAssigned)
     {
-        $this->answer = $answer;
-    
-        return $this;
+        $this->ticketsAssigned->removeElement($ticketsAssigned);
     }
 
     /**
-     * Get answer
+     * Get ticketsAssigned
      *
-     * @return string 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAnswer()
+    public function getTicketsAssigned()
     {
-        return $this->answer;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Users
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
+        return $this->ticketsAssigned;
     }
 }

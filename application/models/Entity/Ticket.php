@@ -70,16 +70,6 @@ class Ticket
      */
     private $qualityOfService;
 
-      /**
-     * @var \Entity\Users
-     *
-     * @ORM\ManyToOne(targetEntity="Entity\Users", inversedBy="tickets")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
-     * })
-     */
-    private $userReporter;
-
     /**
      * @var string
      *
@@ -123,11 +113,24 @@ class Ticket
     private $evaluation;
 
     /**
-     * @var string
+     * @var \Entity\Users
      *
-     * @ORM\Column(name="observations", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\ManyToOne(targetEntity="Entity\Users", inversedBy="tickets")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * })
      */
-    private $observations;
+    private $userReporter;
+
+    /**
+     * @var \Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="Entity\Users", inversedBy="ticketsAssigned")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_assigned_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $userAssigned;
 
 
     /**
@@ -302,32 +305,9 @@ class Ticket
     }
 
     /**
-     * Set userReporter
+     * Set department
      *
-     * @param string $userReporter
-     * @return Ticket
-     */
-    public function setUserReporter($userReporter)
-    {
-        $this->userReporter = $userReporter;
-    
-        return $this;
-    }
-
-    /**
-     * Get userReporter
-     *
-     * @return string 
-     */
-    public function getUserReporter()
-    {
-        return $this->userReporter;
-    }
-
-    /**
-     * Set deparment
-     *
-     * @param string $deparment
+     * @param string $department
      * @return Ticket
      */
     public function setDepartment($department)
@@ -338,7 +318,7 @@ class Ticket
     }
 
     /**
-     * Get deparment
+     * Get department
      *
      * @return string 
      */
@@ -463,25 +443,48 @@ class Ticket
     }
 
     /**
-     * Set observations
+     * Set userReporter
      *
-     * @param string $observations
+     * @param \Entity\Users $userReporter
      * @return Ticket
      */
-    public function setObservations($observations)
+    public function setUserReporter(\Entity\Users $userReporter)
     {
-        $this->observations = $observations;
+        $this->userReporter = $userReporter;
     
         return $this;
     }
 
     /**
-     * Get observations
+     * Get userReporter
      *
-     * @return string 
+     * @return \Entity\Users 
      */
-    public function getObservations()
+    public function getUserReporter()
     {
-        return $this->observations;
+        return $this->userReporter;
+    }
+
+    /**
+     * Set userAssigned
+     *
+     * @param \Entity\Users $userAssigned
+     * @return Ticket
+     */
+    public function setUserAssigned(\Entity\Users $userAssigned = null)
+    {
+        $this->userAssigned = $userAssigned;
+    
+        return $this;
+    }
+
+    /**
+     * Get userAssigned
+     *
+     * @return \Entity\Users 
+     */
+    public function getUserAssigned()
+    {
+        return $this->userAssigned;
     }
 }
