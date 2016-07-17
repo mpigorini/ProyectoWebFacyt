@@ -82,7 +82,8 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
         module: 'private',
         templateUrl: 'index.php/configuration/OrganizationConfigController',
         controller: 'OrganizationConfigController'
-    }).state('reportes-tiempo', {
+    })
+    .state('reportes-tiempo', {
         url: '/reportes-tiempo',
         module: 'private',
         templateUrl: 'index.php/reportes/ListtimeController',
