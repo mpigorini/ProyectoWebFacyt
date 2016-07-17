@@ -27,7 +27,7 @@
                           </div>
                         </md-toolbar>
                         <md-table-container>
-                          <table md-table md-row-select ng-model="selected" md-progress="promise" >
+                          <table md-table md-row-select ng-model="selected">
                             <thead md-head md-order="query.order">
                               <tr md-row>
                                 <th md-column><span>ID</span></th>
@@ -199,7 +199,7 @@
                           </div>
                         </md-toolbar>
                         <md-table-container>
-                          <table md-table md-row-select ng-model="selected" md-progress="promise" >
+                          <table md-table md-row-select ng-model="selected" >
                             <thead md-head md-order="query.order">
                               <tr md-row>
                                 <th md-column><span>ID</span></th>

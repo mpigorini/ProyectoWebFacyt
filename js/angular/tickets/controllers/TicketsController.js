@@ -56,6 +56,7 @@ function tickets($scope, $rootScope, $http, $cookies) {
 
     $scope.selectItem = function(item,key) {
         console.log(item);
+        console.log(key);
         $scope.model.id = item.id;
         $scope.model.paddedId = item.paddedId;
         $scope.model.subject = item.subject;
@@ -66,7 +67,6 @@ function tickets($scope, $rootScope, $http, $cookies) {
         $scope.model.state = item.state;
         $scope.model.answerTime = item.asweTime;
         $scope.model.qualityOfService = item.qualityOfService;
-        console.log($scope.model.qualityOfService);
         $scope.model.userAssigned = item.userAssigned ? item.userAssigned : null;
         $scope.model.evaluation = item.evaluation;
         $scope.searchText = "";
@@ -106,7 +106,26 @@ function tickets($scope, $rootScope, $http, $cookies) {
                     $http.get('index.php/tickets/TicketsController/save',{params:$scope.model})
                         .then(function(response) {
                             if (response.data.message == "success") {
-                                
+                                $http.get('index.php/tickets/TicketsController/getStates',{params:{userId:userId}})
+                                    .then(function (response){
+                                        if (response.data.message== "success") {
+                                            var states = response.data.states;
+                                            console.log(states);
+                                            // put all tickets (regardless of state) from this user in a single container
+                                            var tickets = [];
+                                            for (var i = 0; i < states.length; i++) {
+                                                if (typeof states[i].table !== "undefined") {
+                                                    // found a table for this state
+                                                    for (var j = 0; j < states[i].table.length; j++) {
+                                                        tickets.push(states[i].table[j]);
+                                                        $scope.states[i].table[j] = states[i].table[j];
+                                                    }
+                                                }
+                                            }
+                                            $scope.tickets = tickets;
+                                            console.log($scope.tickets);
+                                        }
+                                    });
                                 swal("Evaluación enviada", "Su evaluación ha sido enviada exitosamente. ¡Gracias!.", "success");
                             } else {
                                 swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
