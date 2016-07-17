@@ -19,7 +19,6 @@ angular.module('helpDesk')
         $http.get('index.php/reportes/ListtimeanalystController/TicketsFiltered',{params:$scope.date})
                 .then(function(response) {
                 console.log(response.data);
-                alert(response.data);
                 if (response.data.message == "success") {
                 $scope.total=response.data.tickets;
                 $scope.atendidas=response.data.atendidas;
