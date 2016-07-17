@@ -9,7 +9,7 @@ function newTicket($scope, $rootScope, $http, $cookies) {
     // show NewTicket option as active
     $rootScope.select(4);
     $scope.ticket = {}
-    
+
     $http.get('index.php/tickets/NewTicketController/getAllDepartments')
     	.then(function(response) {
             if(response.data.message == "success") {
@@ -20,7 +20,7 @@ function newTicket($scope, $rootScope, $http, $cookies) {
                $scope.ticket.department = $scope.departments[0];
             }
     });
-    
+
     $http.get('index.php/tickets/NewTicketController/getConfiguration')
         .then(function(response) {
             if (response.data.message == "success") {
@@ -33,7 +33,7 @@ function newTicket($scope, $rootScope, $http, $cookies) {
                $scope.ticket.level = $scope.config.levels[0];
             }
     });
-    
+
     $scope.saveTicket = function() {
         $scope.ticket.user = $cookies.getObject("session").id;
         $scope.ticket.state = "En espera";
@@ -46,13 +46,13 @@ function newTicket($scope, $rootScope, $http, $cookies) {
         console.log("ticket state: " + $scope.ticket.state);
         console.log("user reporter ID: " + $scope.ticket.user);
 
-        if ($scope.ticket.subject == null 
+        if ($scope.ticket.subject == null
             || $scope.ticket.description == null
             || $scope.ticket.type == null
             || $scope.ticket.level == null
             || $scope.ticket.department == null
             || $scope.ticket.priority == null
-            || $scope.ticket.subject == "" 
+            || $scope.ticket.subject == ""
             || $scope.ticket.description == ""
             || $scope.ticket.type == ""
             || $scope.ticket.level == ""
@@ -70,21 +70,26 @@ function newTicket($scope, $rootScope, $http, $cookies) {
                 closeOnConfirm: false,
                 animation: "slide-from-top",
                 showLoaderOnConfirm: true,
-                
+
             }, function() {
                     $http.get('index.php/tickets/NewTicketController/saveTicket',{params:$scope.ticket})
                         .then(function(response) {
                             console.log(response)
                             if (response.data.message == "success") {
-                                swal("Incidente reportado", "Su ticket ha sido enviado exitosamente. Nuestro técnicos analizarán el problema a la mayor brevedad posible.", "success");
+                                swal({
+                                    title: "Incidente <b>#"+ response.data.paddedId +"</b> reportado",
+                                    text: "Su ticket ha sido enviado exitosamente bajo el ID <b>#"+response.data.paddedId+"</b>. Nuestro técnicos analizarán el problema a la mayor brevedad posible.",
+                                    html: true,
+                                    type: "success"
+                                });
                             } else {
                                 swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                             }
-                    }) 
-    
+                    })
+
             });
         }
 
     }
-    
+
 }

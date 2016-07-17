@@ -67,7 +67,7 @@ function tickets($scope, $rootScope, $http, $cookies) {
         $scope.model.state = item.state;
         $scope.model.answerTime = item.asweTime;
         $scope.model.qualityOfService = item.qualityOfService;
-        $scope.model.userAssigned = item.userAssigned ? item.userAssigned : null;
+        $scope.model.userAssigned = item.userAssigned ? item.userAssigned.showName : null;
         $scope.model.evaluation = item.evaluation;
         $scope.searchText = "";
 

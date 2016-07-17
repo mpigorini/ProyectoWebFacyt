@@ -68,16 +68,22 @@
                         </div>
                         <form>
                             <div layout="row">
-                                <div flex="45">
+                                <div flex="30">
                                     <md-input-container class="md-block">
                                         <label>Asunto</label>
                                         <textarea readonly ng-model="model.subject"></textarea>
                                     </md-input-container>
                                 </div>
-                                <div flex="45" flex-offset="10">
+                                <div flex="30" flex-offset="5">
                                       <md-input-container  class="md-block">
                                         <label>Descripción</label>
                                         <textarea  readonly ng-model="model.description"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div flex="30" flex-offset="5">
+                                      <md-input-container  class="md-block">
+                                        <label>Técnico asignado</label>
+                                        <textarea  readonly ng-model="model.userAssigned"></textarea>
                                     </md-input-container>
                                 </div>
                             </div>
@@ -237,16 +243,22 @@
                         </div>
                         <form>
                           <div layout="row">
-                              <div flex="45">
+                              <div flex="30">
                                   <md-input-container class="md-block">
                                       <label>Asunto</label>
                                       <textarea readonly ng-model="model.subject"></textarea>
                                   </md-input-container>
                               </div>
-                              <div flex="45" flex-offset="10">
+                              <div flex="30" flex-offset="5">
                                     <md-input-container  class="md-block">
                                       <label>Descripción</label>
                                       <textarea  readonly ng-model="model.description"></textarea>
+                                  </md-input-container>
+                              </div>
+                              <div flex="30" flex-offset="5">
+                                    <md-input-container  class="md-block">
+                                      <label>Técnico asignado</label>
+                                      <textarea  readonly ng-model="model.userAssigned"></textarea>
                                   </md-input-container>
                               </div>
                           </div>

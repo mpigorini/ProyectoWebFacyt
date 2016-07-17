@@ -39,7 +39,7 @@
 							      </div>
 							    </div>
 							</div>
-						</div>	
+						</div>
 				       	<a class="btn col s6 offset-s3 waves-effect waves-light center"  name="login" ng-click="login()">Iniciar sesión</a>
 					</form>
 		        </div>

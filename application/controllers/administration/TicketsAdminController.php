@@ -147,9 +147,6 @@ class TicketsAdminController extends CI_Controller {
             if($ticket != null) {
                 $ticket->setState($_GET['state']);
                 $ticket->setSolutionDescription(isset($_GET['solutionDescription']) ? $_GET['solutionDescription'] : "" );
-                $ticket->setObservations(isset($_GET['observations']) ? $_GET['observations'] : "");
-                $ticket->setQualityOfService(isset($_GET['qualityOfService'] ) ? $_GET['qualityOfService'] : "");
-                $ticket->setEvaluation(isset($_GET['evaluation']) ? $_GET['evaluation'] : "");
                 if(isset($_GET['userAssigned'])) {
                     $userAssigned = json_decode( $_GET['userAssigned']);
                     $userAssigned = $em->find('\Entity\Users', $userAssigned->id);

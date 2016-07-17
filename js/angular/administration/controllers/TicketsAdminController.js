@@ -35,6 +35,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
         .then(function(response) {
             if(response.data.message=="success") {
                 $scope.config = response.data;
+                console.log($scope.config.qualityOfServices);
             }
         })
 
@@ -70,6 +71,8 @@ function ticketsAdministration($scope, $rootScope, $http) {
         $scope.model.state = item.state;
         $scope.model.answerTime = item.asweTime;
         $scope.model.qualityOfService = item.qualityOfService;
+        console.log($scope.model.qualityOfService);
+        $scope.model.evaluation = item.evaluation;
         $scope.model.userAssigned = item.userAssigned ? item.userAssigned : null;
         $scope.searchText = "";
 
