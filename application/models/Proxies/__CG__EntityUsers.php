@@ -51,6 +51,12 @@ class Users extends \Entity\Users implements \Doctrine\ORM\Proxy\Proxy
         return parent::getId();
     }
 
+    public function setCedula($cedula)
+    {
+        $this->__load();
+        return parent::setCedula($cedula);
+    }
+
     public function getCedula()
     {
         $this->__load();
@@ -105,16 +111,16 @@ class Users extends \Entity\Users implements \Doctrine\ORM\Proxy\Proxy
         return parent::getLastName();
     }
 
-    public function getPhone()
-    {
-        $this->__load();
-        return parent::getPhone();
-    }
-
     public function setPhone($phone)
     {
         $this->__load();
         return parent::setPhone($phone);
+    }
+
+    public function getPhone()
+    {
+        $this->__load();
+        return parent::getPhone();
     }
 
     public function setType($type)
@@ -127,6 +133,48 @@ class Users extends \Entity\Users implements \Doctrine\ORM\Proxy\Proxy
     {
         $this->__load();
         return parent::getType();
+    }
+
+    public function setQuestion($question)
+    {
+        $this->__load();
+        return parent::setQuestion($question);
+    }
+
+    public function getQuestion()
+    {
+        $this->__load();
+        return parent::getQuestion();
+    }
+
+    public function getQuestionText()
+    {
+        $this->__load();
+        return parent::getQuestionText();
+    }
+
+    public function setAnswer($answer)
+    {
+        $this->__load();
+        return parent::setAnswer($answer);
+    }
+
+    public function getAnswer()
+    {
+        $this->__load();
+        return parent::getAnswer();
+    }
+
+    public function setEmail($email)
+    {
+        $this->__load();
+        return parent::setEmail($email);
+    }
+
+    public function getEmail()
+    {
+        $this->__load();
+        return parent::getEmail();
     }
 
     public function setPosition(\Entity\Position $position = NULL)
@@ -159,12 +207,6 @@ class Users extends \Entity\Users implements \Doctrine\ORM\Proxy\Proxy
         return parent::getTypeText();
     }
 
-    public function setCedula($cedula)
-    {
-        $this->__load();
-        return parent::setCedula($cedula);
-    }
-
     public function addTicket(\Entity\Ticket $tickets)
     {
         $this->__load();
@@ -183,64 +225,22 @@ class Users extends \Entity\Users implements \Doctrine\ORM\Proxy\Proxy
         return parent::getTickets();
     }
 
-    public function addTicketsAssigned(\Entity\Ticket $ticketAssigned)
+    public function addTicketsAssigned(\Entity\Ticket $ticketsAssigned)
     {
         $this->__load();
-        return parent::addTicketsAssigned($ticketAssigned);
+        return parent::addTicketsAssigned($ticketsAssigned);
     }
 
-    public function removeTicketsAssigned(\Entity\Ticket $ticketAssigned)
+    public function removeTicketsAssigned(\Entity\Ticket $ticketsAssigned)
     {
         $this->__load();
-        return parent::removeTicketsAssigned($ticketAssigned);
+        return parent::removeTicketsAssigned($ticketsAssigned);
     }
 
-    public function getTicketsAssigneds()
+    public function getTicketsAssigned()
     {
         $this->__load();
-        return parent::getTicketsAssigneds();
-    }
-
-    public function getQuestion()
-    {
-        $this->__load();
-        return parent::getQuestion();
-    }
-
-    public function getQuestionText()
-    {
-        $this->__load();
-        return parent::getQuestionText();
-    }
-
-    public function setQuestion($question)
-    {
-        $this->__load();
-        return parent::setQuestion($question);
-    }
-
-    public function setAnswer($answer)
-    {
-        $this->__load();
-        return parent::setAnswer($answer);
-    }
-
-    public function getAnswer()
-    {
-        $this->__load();
-        return parent::getAnswer();
-    }
-
-    public function setEmail($email)
-    {
-        $this->__load();
-        return parent::setEmail($email);
-    }
-
-    public function getEmail()
-    {
-        $this->__load();
-        return parent::getEmail();
+        return parent::getTicketsAssigned();
     }
 
 
