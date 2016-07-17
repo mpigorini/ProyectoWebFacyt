@@ -445,3 +445,14 @@
 [07-Jul-2016 03:28:17 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
 [07-Jul-2016 03:28:17 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
 [07-Jul-2016 03:28:17 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
+[14-Jul-2016 03:13:29 UTC] PHP Fatal error:  Cannot redeclare Entity\Ticket::getUserReporter() in /home/ubuntu/workspace/application/models/Entity/Ticket.php on line 516
+[14-Jul-2016 03:13:29 UTC] PHP Stack trace:
+[14-Jul-2016 03:13:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/application/libraries/console:0
+[14-Jul-2016 03:13:29 UTC] PHP   2. include() /home/ubuntu/workspace/application/libraries/console:4
+[14-Jul-2016 03:13:29 UTC] PHP   3. Doctrine\ORM\Tools\Console\ConsoleRunner::run() /home/ubuntu/workspace/application/libraries/console.php:25
+[14-Jul-2016 03:13:29 UTC] PHP   4. Symfony\Component\Console\Application->run() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/ConsoleRunner.php:41
+[14-Jul-2016 03:13:29 UTC] PHP   5. Symfony\Component\Console\Application->doRun() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:106
+[14-Jul-2016 03:13:29 UTC] PHP   6. Symfony\Component\Console\Command\Command->run() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Application.php:193
+[14-Jul-2016 03:13:29 UTC] PHP   7. Doctrine\ORM\Tools\Console\Command\SchemaTool\AbstractCommand->execute() /home/ubuntu/workspace/application/libraries/Doctrine/Symfony/Component/Console/Command/Command.php:239
+[14-Jul-2016 03:13:29 UTC] PHP   8. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getAllMetadata() /home/ubuntu/workspace/application/libraries/Doctrine/ORM/Tools/Console/Command/SchemaTool/AbstractCommand.php:47
+[14-Jul-2016 03:13:29 UTC] PHP   9. Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver->getAllClassNames() /home/ubuntu/workspace/application/libraries/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:111
