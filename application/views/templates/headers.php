@@ -53,6 +53,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listdepartament.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listsatisfaction.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtime.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtickets.js"></script>
         
         
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
@@ -125,6 +126,23 @@
                             </li>
                         </ul>
                     </li>
+                    <!-- Reportes -->
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header waves-effect waves-teal">Reportes<i class="material-icons right">description</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="#/reportes-tickets" class="waves-effect waves-teal">Tickets</a></li>
+                                        <li><a href="#/reportes-tiempo" class="waves-effect waves-teal">Tiempo</a></li><li>
+                                        <li><a href="#/reportes-departamento" class="waves-effect waves-teal">Departamento</a></li>
+                                        <li><a href="#/reportes-analista" class="waves-effect waves-teal">Analista</a></li>
+                                        <li><a href="#/reportes-satisfaccion" class="waves-effect waves-teal">Satisfaccion</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
 				<a ng-show="isLoggedIn()" href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
@@ -147,6 +165,8 @@
             </ul>
              <!-- Reportes dropdown menu -->
             <ul id="reportesMenu" class="dropdown-content">
+                <li><a href="#/reportes-tickets" class="waves-effect waves-teal">Todos Los tickets</a></li>
+                <li class="divider"></li>
                 <li><a href="#/reportes-tiempo" class="waves-effect waves-teal">Por tiempo</a></li>
                 <li class="divider"></li>
                 <li><a href="#/reportes-departamento" class="waves-effect waves-teal">Por departamento</a></li>

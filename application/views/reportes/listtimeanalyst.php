@@ -26,23 +26,21 @@
   </div>
         
   <div class="col s2 offset-s5">
-    <button ng-click="search()" class="btn waves-effect waves-light " type="submit" name="action">Search
+    <button ng-click="search()" class="btn waves-effect waves-light " type="submit" name="action"
+    message="Procesando solicitud" duration="1000" toast='click'>Search
       <i class="material-icons right">search</i>
     </button>
   </div>
 
 <br>
 <br>
-	
-  <div class="col s2">
-
-    <h2 ng-show="title" class="left" >Reportes</h2> 
+	<div class="row">
+    <div class="col s2 offset-s1">
+  
+      <h2 ng-show="title" class="left" >Reportes</h2> 
+    </div>
   </div>
-
   <div ng-show="table" class="container"> 
-
-  	<br>
-    <br><br>
 	  
     <div class="section">
       <label class="left" >Total De solicitudes: {{total}} </label>
@@ -68,6 +66,10 @@
       <div class="progress">
       <div class="determinate" style="width: {{(exedieron*100)/total}}%"></div>
       </div>
+      
+    </div>
+    <div class="section">
+      <label for="">Tiempo promedio de respuesta : {{avg}}  </label>
       
     </div>
 

@@ -417,7 +417,7 @@ class Users
      */
     public function getTicketsAssigneds()
     {
-        return $this->$ticketAssigned;
+        return $this->$ticketsAssigned;
     }
     
     /**

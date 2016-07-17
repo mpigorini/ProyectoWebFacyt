@@ -99,6 +99,11 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
         module: 'private',
         templateUrl: 'index.php/reportes/ListtimeanalystController',
         controller: 'ListtimeanalystCtrl'
+    }).state('reportes-tickets', {
+        url: '/reportes-tickets',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListticketsController',
+        controller: 'ListticketsCtrl'
     })
     .state('reportes-satisfaccion', {
         url: '/reportes-satisfaccion',

@@ -19,19 +19,20 @@ angular.module('helpDesk')
         $http.get('index.php/reportes/ListtimeanalystController/TicketsFiltered',{params:$scope.date})
                 .then(function(response) {
                 console.log(response.data);
-                
+                alert(response.data);
                 if (response.data.message == "success") {
-                $scope.resumen.total=response.data.tickets;
-                $scope.resumen.atendidas=response.data.atendidas;
-                $scope.resumen.espera=response.data.En_espera;
-                $scope.resumen.exedieron=response.data.exedidos;
+                $scope.total=response.data.tickets;
+                $scope.atendidas=response.data.atendidas;
+                $scope.espera=response.data.En_espera;
+                $scope.exedieron=response.data.exedidos;
+                $scope.avg=response.data.avg;
                 $scope.table=true;
                 $scope.title=true;
                 $scope.loader=false;
                 console.log($scope.loader,$scope.search,$scope.title);  
                 } else
                 {
-                alert(response.data); 
+                alert(response.data.message); 
                 }
         }); 
     };	
