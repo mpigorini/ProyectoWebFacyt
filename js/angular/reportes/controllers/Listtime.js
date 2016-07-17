@@ -30,7 +30,7 @@ angular.module('helpDesk')
             console.log($scope.loader,$scope.search,$scope.title);  
             } else
             {
-            alert(response.data); 
+            alert("Error, ingrese un valor a los campos"); 
             }
     }); 
     };

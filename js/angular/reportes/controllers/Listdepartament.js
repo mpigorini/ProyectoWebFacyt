@@ -29,7 +29,7 @@ angular.module('helpDesk')
 
 
     
-    $http.get('index.php/tickets/TicketsController/listTicket')
+    $http.get('index.php/reportes/ListdepartamentController/listTicket')
       .then(function(response) {
           if(response.data.message === "success") {
             $scope.miembros = response.data.tickets;
@@ -46,6 +46,7 @@ angular.module('helpDesk')
     
     $scope.gridOptions={
 //defincion de las propiedades del ng-Grid
+    
     jqueryUITheme: true,
     showGroupPanel: true,
     showGridFooter: true,
@@ -56,9 +57,9 @@ angular.module('helpDesk')
     { name:'type', displayName:'StateTicket' },
     { name:'answerTime' },
     { name:'qualityOfService' },
-    { name:'departament' },
+    { name:'department' },
    ],
-	data : 'miembros'
+	  data : 'miembros'
 
 	};
 	

@@ -12,7 +12,13 @@ class ListtimeanalystController extends CI_Controller {
             
             $_GET['StartTime'];
             $_GET['EndTime'];
-            try {
+        	
+        	$em = $this->doctrine->em;
+        	$user = $em->getRepository('\Entity\Users')->findOneBy(array("name"=>$_GET['Analyst']));
+            
+            $product = $em->getRepository('\Entity\Ticket')->findAll();
+            //$result=$product->getTicketsAssigneds();
+            /*try {
 		    $em = $this->doctrine->em;
 		    $query = $em->createQuery('SELECT u.tickets FROM \Entity\Users u WHERE u.name=:analyst');
 		    $query->setParameter('analyst', $_GET['Analyst']);
@@ -89,6 +95,7 @@ class ListtimeanalystController extends CI_Controller {
 					$result['message'] = "Error";
 			}*/
 			
-			echo json_encode($userID);
+			print_r($product);
+			//echo json_encode($userID);
 		}
 }
