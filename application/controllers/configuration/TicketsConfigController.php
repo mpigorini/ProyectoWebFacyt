@@ -24,11 +24,20 @@ class TicketsConfigController extends CI_Controller {
             foreach($ticketTypes as $key=>$ticketType){
                 $result['data'][$key]['id'] = $ticketType->getId();
                 $result['data'][$key]['name'] = $ticketType->getName();
-                $result['data'][$key]['states'] = $ticketType->getStates();
-                $result['data'][$key]['types'] = $ticketType->getTypes();
-                $result['data'][$key]['levels'] = $ticketType->getLevels();
-                $result['data'][$key]['priorities'] =  $ticketType->getPriorities();
-                $result['data'][$key]['answerTimes'] = $ticketType->getAnswerTimes();
+                $result['data'][$key]['states'] = explode(',', $ticketType->getStates());
+                $result['data'][$key]['types'] = explode(',', $ticketType->getTypes());
+                $result['data'][$key]['levels'] = explode(',', $ticketType->getLevels());
+                $result['data'][$key]['priorities'] =  explode(',', $ticketType->getPriorities());
+                $result['data'][$key]['qualityOfServices'] =  explode(',', $ticketType->getQualityOfServices());
+                // $maxAnswerTimes = $ticketType->getMaxAnswerTimes();
+                // foreach($result['data'][$key]['types'] as $tKey => $type) {
+                //     foreach($result['data'][$key]['priorities'] as $pKey => $priority) {
+                //         foreach ($maxAnswerTimes a $mKey => $maxAnswerTime) {
+                //             $result['data'][$key]['maxAnswerTimes'][$tKey][$pKey][$mKey] = $maxAnswerTime->getMaxTime();
+                //         }
+                //     }
+                // }
+                // \ChromePhp::log($result['data'][$key]['maxAnswerTimes']);
                 $result['data'][$key]['active'] = $ticketType->getActive();
             }
 
@@ -53,7 +62,7 @@ class TicketsConfigController extends CI_Controller {
                 $ticketType->setTypes( $_GET['types']);
                 $ticketType->setLevels( $_GET['levels']);
                 $ticketType->setPriorities( $_GET['priorities']);
-                $ticketType->setAnswerTimes( $_GET['answerTimes']);
+                // $ticketType->setMaxAnswerTimes( $_GET['answerTimes']);
                 $em->merge($ticketType);
                 $em->persist($ticketType);
                 $em->flush();
@@ -64,7 +73,7 @@ class TicketsConfigController extends CI_Controller {
                 $ticketType->setTypes( $_GET['types']);
                 $ticketType->setLevels( $_GET['levels']);
                 $ticketType->setPriorities( $_GET['priorities']);
-                $ticketType->setAnswerTimes( $_GET['answerTimes']);
+                // $ticketType->setAnswerTimes( $_GET['answerTimes']);
                 $ticketType->setQualityOfServices('aqsadsad');
                 $ticketType->setActive(false);
                 $em->persist($ticketType);

@@ -49,7 +49,7 @@
                                 <td md-cell>{{ticket.type}}</td>
                                 <td md-cell>{{ticket.level}}</td>
                                 <td md-cell>{{ticket.priority}}</td>
-                                <td md-cell>{{ticket.answerTime}}</td>
+                                <td md-cell>{{ticket.answerTime}}{{ticket.answerTimes == null ? "" : d}}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -225,7 +225,7 @@
                                 <td md-cell>{{ticket.type}}</td>
                                 <td md-cell>{{ticket.level}}</td>
                                 <td md-cell>{{ticket.priority}}</td>
-                                <td md-cell>{{ticket.answerTime}}</td>
+                                <td md-cell>{{ticket.answerTime}}{{ticket.answerTimes == null ? "" : d}}</td>
                               </tr>
                             </tbody>
                           </table>

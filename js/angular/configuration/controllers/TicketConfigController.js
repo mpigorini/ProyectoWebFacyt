@@ -27,16 +27,17 @@ angular.module('helpDesk').controller('TicketConfigController',
                 });
 
             $scope.loadTicketType = function(id) {
-                var obj = $scope.ticketTypes;
+                var obj = $scope.ticketTypes[id];
                 $scope.model={};
-                $scope.model.id = obj[id].id;
-                $scope.model.name = obj[id].name;
-                $scope.model.states = obj[id].states.split(',');
-                $scope.model.types = obj[id].types.split(',');
-                $scope.model.priorities = obj[id].priorities.split(',');
-                $scope.model.levels = obj[id].levels.split(',');
-                $scope.model.answerTimes = obj[id].answerTimes.split(',');
-                $scope.model.active = obj[id].active;
+                $scope.model.id = obj.id;
+                $scope.model.name = obj.name;
+                $scope.model.states = obj.states;
+                $scope.model.types = obj.types;
+                $scope.model.priorities = obj.priorities;
+                $scope.model.levels = obj.levels;
+                // $scope.model.answerTimes = obj[id].answerTimes.split(',');
+                $scope.model.qualityOfServices = obj.qualityOfServices;
+                $scope.model.active = obj.active;
                 // default state array for loaded tickets will always be first and last index.
                 $scope.defaultStates = [$scope.model.states[0], $scope.model.states[$scope.model.states.length-1]]
                  // remove default values from model var.
@@ -52,6 +53,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                 $scope.model.levels = [];
                 $scope.model.priorities = [];
                 $scope.model.answerTimes = [];
+                $scope.model.qualityOfServices = [];
                 // default states array
                 $scope.defaultStates = ["En espera", "Cerrado"];
             }
