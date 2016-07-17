@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+include (APPPATH. '/libraries/ChromePhp.php');
 
 class TicketsController extends CI_Controller {
 
@@ -74,13 +75,12 @@ class TicketsController extends CI_Controller {
             $config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));
 
             if($config != null){
-                 foreach(explode(',', $config->getQualityOfServices()) as $key=>$qualityOfServices){
-                    $result['qualityOfServices'][$key] = $qualityOfServices;
+                 foreach(explode(',', $config->getQualityOfServices()) as $key=>$qualityOfService) {
+                    $result['qualityOfServices'][$key] = $qualityOfService;
                 }
-
-                $result['message'] = "success";
-
+				\ChromePhp::log($result['qualityOfServices']);
             }
+			$result['message'] = "success";
 
         }catch(Exception $e){
             \ChromePhp::log($e);
@@ -98,17 +98,8 @@ class TicketsController extends CI_Controller {
 
             $ticket = $em->find('\Entity\Ticket' , $_GET['id']);
             if($ticket != null) {
-                $ticket->setState($_GET['state']);
-                $ticket->setSolutionDescription(isset($_GET['solutionDescription']) ? $_GET['solutionDescription'] : "" );
-                $ticket->setObservations(isset($_GET['observations']) ? $_GET['observations'] : "");
+                $ticket->setEvaluation(isset($_GET['evaluation']) ? $_GET['evaluation'] : "" );
                 $ticket->setQualityOfService(isset($_GET['qualityOfService'] ) ? $_GET['qualityOfService'] : "");
-                $ticket->setEvaluation(isset($_GET['evaluation']) ? $_GET['evaluation'] : "");
-                if(isset($_GET['userAssigned'])) {
-                    $userAssigned = json_decode( $_GET['userAssigned']);
-                    $userAssigned = $em->find('\Entity\Users', $userAssigned->id);
-                    $ticket->setUserAssigned($userAssigned);
-                }
-
                 $em->merge($ticket);
                 $em->persist($ticket);
                 $em->flush();

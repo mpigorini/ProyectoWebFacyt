@@ -1,4 +1,10 @@
-<div ng-cloak>
+<md-content ng-if="loading" class="md-padding">
+    <div layout layout-align="center center">
+        <md-progress-circular md-mode="indeterminate" md-diameter="80"></md-progress-circular>
+    </div>
+</md-content>
+
+<div ng-cloak ng-if="!loading">
   <md-content>
     <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
         <!-- Init tabs Todos -->

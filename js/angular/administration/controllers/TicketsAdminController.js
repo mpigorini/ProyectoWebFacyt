@@ -8,6 +8,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
     'use strict';
     // show administration option as active
     $rootScope.select(2);
+    $scope.loading = true;
     $scope.ticketSelected = false;
     $scope.edit = false;
     $scope.states="";
@@ -18,8 +19,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
             if (response.data.message== "success") {
                 $scope.states = response.data.states;
                 console.log($scope.states);
-                $scope.loading = false
-
+                $scope.loading = false;
             }
         })
     $http.get('index.php/administration/TicketsAdminController/getTickets')

@@ -8,6 +8,7 @@ function tickets($scope, $rootScope, $http, $cookies) {
     'use strict';
     // show Tickets option as active
     $rootScope.select(1);
+    $scope.loading = true;
     $scope.ticketSelected = false;
     $scope.edit = false;
     $scope.states="";
@@ -23,7 +24,6 @@ function tickets($scope, $rootScope, $http, $cookies) {
                 // put all tickets (regardless of state) from this user in a single container
                 $scope.tickets = [];
                 for (var i = 0; i < $scope.states.length; i++) {
-                    console.log($scope.states[i].table);
                     if (typeof $scope.states[i].table !== "undefined") {
                         // found a table for this state
                         for (var j = 0; j < $scope.states[i].table.length; j++) {
@@ -32,14 +32,15 @@ function tickets($scope, $rootScope, $http, $cookies) {
                     }
                 }
                 console.log($scope.tickets);
-                $scope.loading = false
+                $scope.loading = false;
 
             }
         });
     $http.get('index.php/tickets/TicketsController/getActiveQoS')
         .then(function(response) {
             if(response.data.message=="success") {
-                $scope.config = response.data;
+                $scope.qualityOfServices = response.data.qualityOfServices;
+                console.log($scope.qualityOfServices);
             }
         });
 
@@ -65,8 +66,9 @@ function tickets($scope, $rootScope, $http, $cookies) {
         $scope.model.state = item.state;
         $scope.model.answerTime = item.asweTime;
         $scope.model.qualityOfService = item.qualityOfService;
+        console.log($scope.model.qualityOfService);
         $scope.model.userAssigned = item.userAssigned ? item.userAssigned : null;
-        $scope.model.evlauation = item.evaluation;
+        $scope.model.evaluation = item.evaluation;
         $scope.searchText = "";
 
         if(item.submitDate != null) {
@@ -88,10 +90,10 @@ function tickets($scope, $rootScope, $http, $cookies) {
     }
 
      $scope.save = function() {
-
+            console.log($scope.model.qualityOfService);
             swal({
                 title: "Confirmación",
-                text: "Su actualizara el ticket con el asunto "+$scope.model.subject+" de solicitud será creada. ¿Desea proceder?" ,
+                text: "Se enviará la evaluación para el ticket con asunto "+$scope.model.subject+". ¿Desea proceder?" ,
                 type: "info",
                 confirmButtonText: "Sí",
                 cancelButtonText: "No",
@@ -101,33 +103,18 @@ function tickets($scope, $rootScope, $http, $cookies) {
                 showLoaderOnConfirm: true,
 
             }, function() {
-                    $http.get('index.php/administration/TicketsAdminController/save',{params:$scope.model})
+                    $http.get('index.php/tickets/TicketsController/save',{params:$scope.model})
                         .then(function(response) {
                             if (response.data.message == "success") {
-                                swal("Ticket Actualizado", "El ticket se ha actualizado exitosamente.", "success");
+                                
+                                swal("Evaluación enviada", "Su evaluación ha sido enviada exitosamente. ¡Gracias!.", "success");
                             } else {
                                 swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                             }
                     })
-
             });
     }
 
-    $scope.getUsers = function (filter) {
-
-        $scope.filter = filter;
-        var result = filter ? $scope.users.filter(filterForName) : $scope.users;
-
-        return result;
-
-    }
-
-    function filterForName(user) {
-
-        var filter = angular.lowercase($scope.filter);
-        return user.value.indexOf(filter) >= 0;
-
-    }
     $scope.clearModel = function() {
         $scope.ticketSelected = false;
         $scope.selected = [];

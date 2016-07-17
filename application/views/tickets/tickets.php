@@ -1,4 +1,10 @@
-<div ng-cloak>
+<md-content ng-if="loading" class="md-padding">
+    <div layout layout-align="center center">
+        <md-progress-circular md-mode="indeterminate" md-diameter="80"></md-progress-circular>
+    </div>
+</md-content>
+
+<div ng-cloak ng-if="!loading">
   <md-content>
     <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
         <!-- Init tabs Todos -->
@@ -154,9 +160,11 @@
                                     </md-input-container>
                                 </div>
                                 <div flex="45" flex-offset="10">
-                                    <md-input-container  class="md-block">
+                                    <md-input-container ng-disabled="!edit"  class="md-block">
                                         <label>Calidad del servicio</label>
-                                        <textarea ng-disabled="!edit" ng-model="model.qualityOfService"></textarea>
+                                        <md-select ng-disabled="!edit" ng-model="model.qualityOfService">
+                                            <md-option ng-value="qos" ng-repeat="qos in qualityOfServices">{{qos}}</md-option>
+                                        </md-select>
                                     </md-input-container>
                                 </div>
                             </div>
@@ -323,7 +331,9 @@
                                 <div flex="45" flex-offset="10">
                                     <md-input-container  class="md-block">
                                         <label>Calidad del servicio</label>
-                                        <textarea ng-disabled="!edit" ng-model="model.qualityOfService"></textarea>
+                                        <md-select ng-disabled="!edit" ng-model="model.qualityOfService">
+                                            <md-option ng-value="qos" ng-repeat="qos in qualityOfServices">{{qos}}</md-option>
+                                        </md-select>
                                     </md-input-container>
                                 </div>
                             </div>
