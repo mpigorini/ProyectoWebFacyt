@@ -41,14 +41,14 @@
                             </tbody>
                           </table>
                         </md-table-container>
-                        
+
                         <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{tickets.length}}" md-page-select></md-table-pagination>
                     </md-card-content>
                 </md-card>
                 <br/>
                 <!-- Load summary for tabs Todos-->
                 <md-card ng-show="ticketSelected" class="card-admin-ticket">
-                   <md-card-tittle></md-card-tittle> 
+                   <md-card-tittle></md-card-tittle>
                    <md-card-content>
                         <div class="md-toolbar-tools">
                             <span>Descripcion del Ticket</span>
@@ -167,7 +167,7 @@
                         </div>
                         <div layout="row">
                             <div flex="45">
-                                <md-autocomplete disabled="!edit" md-selected-item="model.userAssigned" md-min-length="0" placeholder="Selecione un usuario" md-search-text="searchText" md-items="user in getUsers(searchText)" md-item-text="user.showName">
+                                <md-autocomplete ng-disabled="!edit" md-selected-item="model.userAssigned" md-min-length="0" placeholder="Selecione un usuario" md-search-text="searchText" md-items="user in getUsers(searchText)" md-item-text="user.showName">
                                   <span md-highlight-text="searchText">{{user.showName}}</span>
                                 </md-autocomplete>
                             </div>
@@ -223,14 +223,14 @@
                             </tbody>
                           </table>
                         </md-table-container>
-                        
+
                         <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{state.table.length}}" md-page-select></md-table-pagination>
                     </md-card-content>
                 </md-card>
                 <br/>
                 <!-- Card for summary of tickets in other tabs -->
                 <md-card ng-show="ticketSelected" class="card-admin-ticket">
-                   <md-card-tittle></md-card-tittle> 
+                   <md-card-tittle></md-card-tittle>
                    <md-card-content>
                         <div class="md-toolbar-tools">
                             <span>Descripcion del Ticket</span>
@@ -349,7 +349,7 @@
                         </div>
                         <div layout="row">
                             <div flex="45">
-                                <md-autocomplete readonly="!edit" md-selected-item="model.userAssigned" md-min-length="0" placeholder="Selecione un usuario" md-search-text="searchText" md-items="user in getUsers(searchText)" md-item-text="user.showName">
+                                <md-autocomplete ng-disabled="!edit" md-selected-item="model.userAssigned" md-min-length="0" placeholder="Selecione un usuario" md-search-text="searchText" md-items="user in getUsers(searchText)" md-item-text="user.showName">
                                   <span md-highlight-text="searchText">{{user.showName}}</span>
                                 </md-autocomplete>
                             </div>
@@ -361,7 +361,7 @@
                         <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
                     </md-card-actions>
                 </md-card>
-                
+
             </md-content>
         </md-tab>
         <!--End of dinamyc tabs -->

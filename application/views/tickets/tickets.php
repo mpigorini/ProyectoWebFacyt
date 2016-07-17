@@ -1,120 +1,343 @@
-<div ng-controller="ListTicketController">
-    <div class="col s12 z-depth-1">
-      <ul class="tabs #00bfa5 teal-text accent-4" >
-        <li class="tab col s3"><a class="#00bfa5 teal-text accent-4" href="#todos">Todos</a></li>
-        <?php
-            foreach ($state as $key => $value) {
-              echo '<li class="tab col s3"><a class="#00bfa5 teal-text accent-4" href="#'.$value.'">'.$value.'</a></li>';
-            }
-         ?>
-        <div class="indicator teal accent-4" style="z-index:1"></div>
-      </ul>
-    </div>
-    <div >
-      <?php
+<div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
+        <!-- Init tabs Todos -->
+        <md-tab label="Todas" md-on-select="clearModel()">
+            <md-content class="md-padding">
+                <br/>
+                <p class="card-admin-ticket">
+                    En la siguiente tabla encontrará <b>todas</b> las solicitudes generadas por usted.
+                    Seleccione alguna para consultar más detalles y enviar una evaluación de nuestro servicio si así lo desea.
+                </p>
+                <br/>
+                <!-- Load Table for tabs todos-->
+                <md-card class="card-admin-ticket">
+                    <md-card-tittle>
+                    </md-card-tittle>
+                    <md-card-content>
+                        <md-toolbar class="md-table-toolbar md-default">
+                          <div class="md-toolbar-tools">
+                            <span>Tickets</span>
+                          </div>
+                        </md-toolbar>
+                        <md-table-container>
+                          <table md-table md-row-select ng-model="selected" md-progress="promise" >
+                            <thead md-head md-order="query.order">
+                              <tr md-row>
+                                <th md-column><span>ID</span></th>
+                                <th md-column><span>Asunto</span></th>
+                                <th md-column ><span>Descripción</span></th>
+                                <th md-column ><span>Estado</span></th>
+                                <th md-column >Tipo</th>
+                                <th md-column >Nivel</th>
+                                <th md-column >Prioridad</th>
+                                <th md-column >Tiempo de Respuesta</th>
+                              </tr>
+                            </thead>
+                            <tbody md-body>
+                              <tr md-row md-select="ticket"  md-on-select="selectItem" md-on-deselect="deselectItem" ng-repeat="ticket in tickets | orderBy: ticket.subject | limitTo: query.limit: (query.page - 1) * query.limit">
+                                <td md-cell>{{ticket.paddedId}}</td>
+                                <td md-cell>{{ticket.subject}}</td>
+                                <td md-cell>{{ticket.description}}</td>
+                                <td md-cell>{{ticket.state}}</td>
+                                <td md-cell>{{ticket.type}}</td>
+                                <td md-cell>{{ticket.level}}</td>
+                                <td md-cell>{{ticket.priority}}</td>
+                                <td md-cell>{{ticket.answerTime}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </md-table-container>
 
-          foreach ($state as $key => $value) {
-            echo '<div id="'.$value.'" class="col s12">
-                  <div class="row">
-                  <div class="col s12 m12">
-                  <div class="card ">
-                  <div class="card-content">
-                  <span class="card-title">Tickets: '.$value.'</span>
-                  <table class="bordered highlight"> <tr><th>Subject</th>
-                  <th>Description</th>
-                  <th>Type</th>
-                  <th>Level</th>
-                  <th>Priority</th>
-                  <th>Answer Time</th>
-                  <th>Quality Of Service</th>
-                  <th>User Reporter</th>
-                  <th>Departament</th>
-                  <th>Submit Date</th>
-                  <th>Close Date</th>
-                  <th>State</th>
-                  <th>Solution Description</th>
-                  <th>Evaluation</th>
-                  <th>Observations</th>
-                  </tr>';
-            echo  "<tr ng-repeat='x in list | filter:{state:\"";
-            echo  $value;
-            echo  "\"}'>";
-            echo  "<td>{{x.subject}}</td>
-                  <td>{{x.description}}</td>
-                  <td>{{x.type}}</td>
-                  <td>{{x.level}}</td>
-                  <td>{{x.priority}}</td>
-                  <td>{{x.answerTime}}</td>
-                  <td>{{x.qualityOfService}}</td>
-                  <td>{{x.userReporter}}</td>
-                  <td>{{x.departament}}</td>
-                  <td >{{x.submitDate}}</td>
-                  <td >{{x.closeDate}}</td>
-                  <td>{{x.state}}</td>
-                  <td>{{x.solutionDescription}}</td>
-                  <td>{{x.evaluation}}</td>
-                  <td>{{x.observations}}</td>
-                  </tr>
-                  </table>
-                  </div>
-                  </div>
-                  </div>
-                </div>
-                </div>";
-          }
-       ?>
-      <div id="todos" class="col s12">
-        <div class="row">
-          <div class="col s12 m12">
-            <div class="card ">
-              <div class="card-content">
-                <span class="card-title">Todos los tickets</span>
-                  <table class="bordered highlight">
-                    <tr >
-                      <th>Subject</th>
-                      <th>Description</th>
-                      <th>Type</th>
-                      <th>Level</th>
-                      <th>Priority</th>
-                      <th>Answer Time</th>
-                      <th>Quality Of Service</th>
-                      <th>User Reporter</th>
-                      <th>Departament</th>
-                      <th>Submit Date</th>
-                      <th>Close Date</th>
-                      <th>State</th>
-                      <th>Solution Description</th>
-                      <th>Evaluation</th>
-                      <th>Observations</th>
-                    </tr>
-                    <tr ng-repeat="x in list">
-                      <td>{{x.subject}}</td>
-                      <td>{{x.description}}</td>
-                      <td>{{x.type}}</td>
-                      <td>{{x.level}}</td>
-                      <td>{{x.priority}}</td>
-                      <td>{{x.answerTime}}</td>
-                      <td>{{x.qualityOfService}}</td>
-                      <td>{{x.userReporter}}</td>
-                      <td>{{x.departament}}</td>
-                      <td >{{x.submitDate}}</td>
-                      <td >{{x.closeDate}}</td>
-                      <td>{{x.state}}</td>
-                      <td>{{x.solutionDescription}}</td>
-                      <td>{{x.evaluation}}</td>
-                      <td>{{x.observations}}</td>
-                    </tr>
-                  </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                        <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{tickets.length}}" md-page-select></md-table-pagination>
+                    </md-card-content>
+                </md-card>
+                <br/>
+                <!-- Load summary for tabs Todos-->
+                <md-card ng-show="ticketSelected" class="card-admin-ticket">
+                   <md-card-tittle></md-card-tittle>
+                   <md-card-content>
+                        <div class="md-toolbar-tools">
+                            <span>Detalles de interés del Ticket #{{model.paddedId}}</span>
+                        </div>
+                        <form>
+                            <div layout="row">
+                                <div flex="45">
+                                    <md-input-container class="md-block">
+                                        <label>Asunto</label>
+                                        <textarea readonly ng-model="model.subject"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div flex="45" flex-offset="10">
+                                      <md-input-container  class="md-block">
+                                        <label>Descripción</label>
+                                        <textarea  readonly ng-model="model.description"></textarea>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div layout="row">
+                                <div flex="30">
+                                    <md-input-container class="md-block">
+                                        <label>Tipo</label>
+                                        <textarea readonly ng-model="model.type"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div flex="30" flex-offset="5">
+                                    <md-input-container  class="md-block">
+                                        <label>Nivel</label>
+                                        <textarea readonly ng-model="model.level"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div flex="30" flex-offset="5">
+                                      <md-input-container  class="md-block">
+                                        <label>Prioridad</label>
+                                         <textarea readonly ng-model="model.priority"></textarea>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                             <div layout="row">
+                                 <div flex="30">
+                                     <md-input-container  class="md-block">
+                                        <label>Departamento</label>
+                                         <textarea readonly ng-model="model.department"></textarea>
+                                     </md-input-container>
+                                 </div>
+                                <div flex="30" flex-offset="5">
+                                    <md-input-container class="md-block">
+                                        <label>Fecha de creación</label>
+                                        <textarea readonly ng-model="model.submitDate"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div flex="30" flex-offset="5">
+                                    <md-input-container class="md-block">
+                                        <label>Fecha de cierre</label>
+                                        <textarea readonly ng-model="model.closeDate"></textarea>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div layout="row" layout-align="center center">
+                                <div flex="30">
+                                    <md-input-container  class="md-block">
+                                       <label>Tiempo de respuesta</label>
+                                        <textarea readonly ng-model="model.answerTime"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div flex="30" flex-offset="5">
+                                      <md-input-container  class="md-block">
+                                         <label>Estado</label>
+                                        <textarea readonly ng-model="model.state"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div flex="30" flex-offset="5">
+                                    <md-input-container class="md-block">
+                                        <label>Descripción de la solución</label>
+                                        <textarea readonly ng-model="model.solutionDescription"></textarea>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                        </form>
+                   </md-card-content>
+                </md-card>
+                <!-- Rate our service! -->
+                <br/>
+                <md-card ng-show="ticketSelected" class="card-admin-ticket">
+                    <md-card-content>
+                        <div class="md-toolbar-tools">
+                            <span>¡Realice su evaluación!</span>
+                        </div>
+                        <form>
+                            <div layout>
+                                <div flex="45">
+                                    <md-input-container  class="md-block">
+                                        <label>Evaluación</label>
+                                        <textarea ng-disabled="!edit" ng-model="model.evaluation"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div flex="45" flex-offset="10">
+                                    <md-input-container  class="md-block">
+                                        <label>Calidad del servicio</label>
+                                        <textarea ng-disabled="!edit" ng-model="model.qualityOfService"></textarea>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                        </form>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end center">
+                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
+                         <md-button ng-click="save()" ng-show="edit" class="md-primary">Enviar</md-button>
+                         <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
+                     </md-card-actions>
+                </md-card>
+            </md-content>
+        </md-tab>
+        <!--End of tabs Todos-->
+        <!-- Load dynamic tabs -->
+        <md-tab ng-repeat="(keyState, state) in states" label="{{state.name}}" md-on-select="clearModel()">
+            <md-content class="md-padding">
+                <br/>
+                <p class="card-admin-ticket">
+                    En la siguiente tabla encontrará las solicitudes generadas por usted, actualmente en estado "{{state.name}}".
+                    Seleccione alguna para consultar más detalles y enviar una evaluación de nuestro servicio si así lo desea
+                </p>
+                <br/>
+                <!-- Table for dynamic tabs-->
+                <md-card class="card-admin-ticket">
+                    <md-card-tittle>
+                    </md-card-tittle>
+                    <md-card-content>
+                        <md-toolbar class="md-table-toolbar md-default">
+                          <div class="md-toolbar-tools">
+                            <span>Tickets</span>
+                          </div>
+                        </md-toolbar>
+                        <md-table-container>
+                          <table md-table md-row-select ng-model="selected" md-progress="promise" >
+                            <thead md-head md-order="query.order">
+                              <tr md-row>
+                                <th md-column><span>ID</span></th>
+                                <th md-column><span>Asunto</span></th>
+                                <th md-column ><span>Descripción</span></th>
+                                <th md-column >Tipo</th>
+                                <th md-column >Nivel</th>
+                                <th md-column >Prioridad</th>
+                                <th md-column >Tiempo de Respuesta</th>
+                              </tr>
+                            </thead>
+                            <tbody md-body>
+                            <tr md-row md-select="ticket" md-on-select="selectItem" md-on-deselect="deselectItem" ng-repeat="ticket in state.table | limitTo: query.limit: (query.page - 1) * query.limit">
+                                <td md-cell>{{ticket.paddedId}}</td>
+                                <td md-cell>{{ticket.subject}}</td>
+                                <td md-cell>{{ticket.description}}</td>
+                                <td md-cell>{{ticket.type}}</td>
+                                <td md-cell>{{ticket.level}}</td>
+                                <td md-cell>{{ticket.priority}}</td>
+                                <td md-cell>{{ticket.answerTime}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </md-table-container>
+                        <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{state.table.length}}" md-page-select></md-table-pagination>
+                    </md-card-content>
+                </md-card>
+                <br/>
+                <!-- Card for summary of tickets in other tabs -->
+                <md-card ng-show="ticketSelected" class="card-admin-ticket">
+                   <md-card-tittle></md-card-tittle>
+                   <md-card-content>
+                        <div class="md-toolbar-tools">
+                            <span>Descripción del Ticket #{{model.paddedId}}</span>
+                        </div>
+                        <form>
+                          <div layout="row">
+                              <div flex="45">
+                                  <md-input-container class="md-block">
+                                      <label>Asunto</label>
+                                      <textarea readonly ng-model="model.subject"></textarea>
+                                  </md-input-container>
+                              </div>
+                              <div flex="45" flex-offset="10">
+                                    <md-input-container  class="md-block">
+                                      <label>Descripción</label>
+                                      <textarea  readonly ng-model="model.description"></textarea>
+                                  </md-input-container>
+                              </div>
+                          </div>
+                          <div layout="row">
+                              <div flex="30">
+                                  <md-input-container class="md-block">
+                                      <label>Tipo</label>
+                                      <textarea readonly ng-model="model.type"></textarea>
+                                  </md-input-container>
+                              </div>
+                              <div flex="30" flex-offset="5">
+                                  <md-input-container  class="md-block">
+                                      <label>Nivel</label>
+                                      <textarea readonly ng-model="model.level"></textarea>
+                                  </md-input-container>
+                              </div>
+                              <div flex="30" flex-offset="5">
+                                    <md-input-container  class="md-block">
+                                      <label>Prioridad</label>
+                                       <textarea readonly ng-model="model.priority"></textarea>
+                                  </md-input-container>
+                              </div>
+                          </div>
+                           <div layout="row">
+                               <div flex="30">
+                                   <md-input-container  class="md-block">
+                                      <label>Departamento</label>
+                                       <textarea readonly ng-model="model.department"></textarea>
+                                   </md-input-container>
+                               </div>
+                              <div flex="30" flex-offset="5">
+                                  <md-input-container class="md-block">
+                                      <label>Fecha de creación</label>
+                                      <textarea readonly ng-model="model.submitDate"></textarea>
+                                  </md-input-container>
+                              </div>
+                              <div flex="30" flex-offset="5">
+                                  <md-input-container class="md-block">
+                                      <label>Fecha de cierre</label>
+                                      <textarea readonly ng-model="model.closeDate"></textarea>
+                                  </md-input-container>
+                              </div>
+                          </div>
+                          <div layout="row" layout-align="center center">
+                              <div flex="30">
+                                  <md-input-container  class="md-block">
+                                     <label>Tiempo de respuesta</label>
+                                      <textarea readonly ng-model="model.answerTime"></textarea>
+                                  </md-input-container>
+                              </div>
+                              <div flex="30" flex-offset="5">
+                                    <md-input-container  class="md-block">
+                                       <label>Estado</label>
+                                      <textarea readonly ng-model="model.state"></textarea>
+                                  </md-input-container>
+                              </div>
+                              <div flex="30" flex-offset="5">
+                                  <md-input-container class="md-block">
+                                      <label>Descripción de la solución</label>
+                                      <textarea readonly ng-model="model.solutionDescription"></textarea>
+                                  </md-input-container>
+                              </div>
+                          </div>
+                      </form>
+                   </md-card-content>
+                </md-card>
+                <br/>
+                <!-- Rate our service! -->
+                <md-card ng-show="ticketSelected" class="card-admin-ticket">
+                    <md-card-content>
+                        <div class="md-toolbar-tools">
+                            <span>¡Realice su evaluación!</span>
+                        </div>
+                        <form>
+                            <div layout>
+                                <div flex="45">
+                                    <md-input-container  class="md-block">
+                                        <label>Evaluación</label>
+                                        <textarea ng-disabled="!edit" ng-model="model.evaluation"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div flex="45" flex-offset="10">
+                                    <md-input-container  class="md-block">
+                                        <label>Calidad del servicio</label>
+                                        <textarea ng-disabled="!edit" ng-model="model.qualityOfService"></textarea>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                        </form>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end center">
+                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
+                         <md-button ng-click="save()" ng-show="edit" class="md-primary">Enviar</md-button>
+                         <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
+                     </md-card-actions>
+                </md-card>
+            </md-content>
+        </md-tab>
+        <!--End of dinamyc tabs -->
+    </md-tabs>
+  </md-content>
 </div>
-<script type="text/javascript">
-$(document).ready(function(){
-    $('ul.tabs').tabs();
-
-  });
-</script>

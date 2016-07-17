@@ -3,24 +3,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 include (APPPATH. '/libraries/ChromePhp.php');
 
 class TicketsConfigController extends CI_Controller {
-    
+
     public function index() {
         $this->load->view('configuration/ticketsConfig');
     }
-    
+
     public function getTicketTypes(){
-        
+
         try{
             $em = $this->doctrine->em;
-            
+
             $qb = $em->createQueryBuilder();
-            
+
             $ticketTypes = $qb->select('Tt')
                             ->from('\Entity\TicketType' , 'Tt')
                             ->getQuery()
                             ->getResult()
                             ;
-            // TODO: If tycketTypes is empty (no ticketTypes), load default configuration
+            $result['data'] = [];
             foreach($ticketTypes as $key=>$ticketType){
                 $result['data'][$key]['id'] = $ticketType->getId();
                 $result['data'][$key]['name'] = $ticketType->getName();
@@ -31,23 +31,23 @@ class TicketsConfigController extends CI_Controller {
                 $result['data'][$key]['answerTimes'] = $ticketType->getAnswerTimes();
                 $result['data'][$key]['active'] = $ticketType->getActive();
             }
-            
+
             $result['message'] = "success";
         }catch(Exception $e){
             $result['message'] = "error";
             \ChromePhp::log($e);
         }
         echo json_encode($result);
-        
+
     }
-    
+
     public function save(){
-        
+
         try{
-            
+
             $em = $this->doctrine->em;
             if(isset($_GET['id']) ) {
-                $ticketType = $em->find('\Entity\TicketType', $_GET['id']);   
+                $ticketType = $em->find('\Entity\TicketType', $_GET['id']);
                 $ticketType->setName( $_GET['name']);
                 $ticketType->setStates( $_GET['states']);
                 $ticketType->setTypes( $_GET['types']);
@@ -77,11 +77,11 @@ class TicketsConfigController extends CI_Controller {
         }
         echo json_encode($result);
     }
-    
+
     public function delete() {
-       
+
        try{
-           
+
            $em = $this->doctrine->em;
            $entity = $em->find('\Entity\TicketType', $_GET['id']);
            $em->remove($entity);
@@ -93,27 +93,30 @@ class TicketsConfigController extends CI_Controller {
        }
         echo json_encode($result);
     }
-    
+
     public function setAsActive() {
         try{
             $em = $this->doctrine->em;
             // Set selected config as active
-            $ticketType = $em->find('\Entity\TicketType', $_GET['id']);   
+            $ticketType = $em->find('\Entity\TicketType', $_GET['id']);
             $ticketType->setActive(true);
-            // Set previous config as unactive
-            $oldTicketType = $em->find('\Entity\TicketType', $_GET['oldId']); 
-            $oldTicketType->setActive(false);
+            // Set previous config as unactive, if there was any.
+            $oldId = $_GET['oldId'];
+            if ($oldId != -1) {
+                $oldTicketType = $em->find('\Entity\TicketType', $oldId);
+                $oldTicketType->setActive(false);
+                $em->merge($oldTicketType);
+                $em->persist($oldTicketType);
+            }
             // Persist changes
             $em->merge($ticketType);
             $em->persist($ticketType);
-            $em->merge($oldTicketType);
-            $em->persist($oldTicketType);
             $em->flush();
             $result['message'] = "success";
         }catch(Exception $e){
              $result['message'] = "error";
             \ChromePhp::log($e);
         }
-        echo json_encode($result);        
+        echo json_encode($result);
     }
 }

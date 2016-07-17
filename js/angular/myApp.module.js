@@ -119,7 +119,7 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
 angular.module('helpDesk')
      .run(['$rootScope', '$location','$state','auth', function ($rootScope, $location, $state,auth) {
         $rootScope.$on("$locationChangeStart", function(e, toState, toParams, fromState, fromParams) {
-            
+
         if (!auth.isLoggedIn() && $location.url() != "/login") {
           // console.log('DENY : Redirecting to Login');
           e.preventDefault();
