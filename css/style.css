@@ -19,7 +19,7 @@ body {
 main {
     flex: 1 0 auto;
 }
-      
+
 #profile-card .profile-settings {
 	cursor: default;
 	-webkit-user-select: none;
@@ -71,4 +71,10 @@ main {
 .tittle {
   padding-top: 30px;
   padding-left: 24px;
+
+}
+
+main {
+    /*420px = aprox. header + nav + footer height */
+  min-height: calc(100vh - 420px);
 }

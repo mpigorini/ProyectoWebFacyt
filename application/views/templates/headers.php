@@ -14,7 +14,6 @@
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Utils are important for page functionality so load before showing content -->
-        <script src="https://use.fontawesome.com/4330ea9880.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-2.2.4.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.css" media="screen,projection">
         <!-- Angular Material requires Angular.js Libraries -->
@@ -22,8 +21,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+<<<<<<< HEAD
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-touch.js"></script>
         
+=======
+
+>>>>>>> 37c9cd9bc3a5c085eec90d3dc91f351b12c177b0
          <!-- Data table-->
         <script type="text/javascript" src="<?php echo base_url(); ?>data-table/dist/md-data-table.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>data-table/dist/md-data-table.min.css">
@@ -46,7 +49,6 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/user/controllers/UserController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/NewTicketController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/TicketsController.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/tickets/controllers/ListTicketController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/TicketsAdminController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/UsersAdminController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/TicketConfigController.js"></script>
@@ -169,4 +171,4 @@
         </div>
     </nav>
     </div>
-    <div ui-view autoscroll="false"></div>
+    <main ui-view autoscroll="false"></main>
