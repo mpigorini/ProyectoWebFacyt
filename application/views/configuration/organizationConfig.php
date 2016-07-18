@@ -11,7 +11,7 @@
     <br>
     <!-- Departments -->
 	<div class="row">
-        <span ng-show="$parent.helpers">
+        <span ng-if="$parent.helpers">
     	    <div class="col s12 m5 card-panel blue-grey darken-1">
     	        <p class="white-text">
         	        En la Lista de departamentos se muestran todos los departamentos existentes.<br/>
@@ -41,7 +41,7 @@
                 </table>
             </div>
         </span>
-        <span ng-show="!$parent.helpers">
+        <span ng-if="!$parent.helpers">
             <div class="col s12 m6 offset-m3 card-panel">
                 <p class="center">Lista de departamentos</p>
                 <table style="width:80%;margin:auto">
@@ -101,7 +101,7 @@
     <br>
     <!-- Positions -->
     <div class="row">
-        <span ng-show="$parent.helpers">
+        <span ng-if="$parent.helpers">
             <div class="col s12 m6 card-panel">
                 <p class="center">Lista de cargos dentro del departamento {{department.name}}</p>
                 <table style="width:80%;margin:auto">
@@ -131,7 +131,7 @@
     	        </p>
     	    </div>
         </span>
-        <span ng-show="!$parent.helpers">
+        <span ng-if="!$parent.helpers">
             <div class="col s12 m6 offset-m3 card-panel">
                 <p class="center">Lista de cargos dentro del departamento {{department.name}}</p>
                 <table style="width:80%;margin:auto">

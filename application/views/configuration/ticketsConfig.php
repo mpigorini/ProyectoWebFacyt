@@ -4,7 +4,7 @@
 <br>
 <div class="ticket-config-card container">
    <div class="row" style="width:100%;margin:auto;">
-        <span ng-show="$parent.helpers">
+        <span ng-if="$parent.helpers">
             <div class="col s12 l5 card-panel blue-grey darken-1">
                 <p class="white-text">
         	        En la Lista de configuraciones se muestran todos las configuraciones de los paramantros de las solicitudes existentes.<br/>
@@ -51,7 +51,7 @@
                 </table>
             </div>
         </span>
-        <span ng-show="!$parent.helpers">
+        <span ng-if="!$parent.helpers">
             <div class="col s12 m6 offset-m3 card">
                 <p class="center">Lista de configuraciones</p>
                 <table style="width:80%;margin:auto">
@@ -95,7 +95,7 @@
 <br/>
     <h5 class="container" style="font-weight:300">Configuración Seleccionada</h5>
 <br/>
-<div ng-show="$parent.helpers" class="row container">
+<div ng-if="$parent.helpers" class="row container">
     <div class="col s12 card-panel blue-grey darken-1">
         <p class="white-text">
             En el panel de abajo se mostrarán los detalles de la configuración seleccionada.<br/>

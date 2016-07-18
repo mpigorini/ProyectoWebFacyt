@@ -1,7 +1,7 @@
 <h5 class="center" style="cursor: default;">Administración de los Usuarios</h5>
 <br>
 <div class="row">
-	<span ng-show="$parent.helpers">
+	<span ng-if="$parent.helpers">
 		<div class="col s3 offset-s2">
 		    <div class="card-panel  blue-grey darken-1">
 		    	<span class="white-text" style="text-align: justify; cursor: default; font-size: 16px;">Puede utilizar la herramienta <i class="material-icons prefix small">search</i> para buscar un usuario en especifico, o filtrar de acuerdo a un departamento, un cargo, etc.</span>
@@ -13,7 +13,7 @@
 	    	<label for="filter">Buscar usuarios...</label>
 	    </div>
     </span>
-    <span ng-show="!$parent.helpers"><br>
+    <span ng-if="!$parent.helpers"><br>
     	<div class="input-field col s2 offset-s4">
 	    	<i class="material-icons prefix small">search</i>
 	        <input id="filter" type="text" ng-model="search">
@@ -24,7 +24,7 @@
 <br>
 <div class="container row">   
     <div class="card-panel col s9">
-    	<span ng-show="loading" style="margin-left: 45%;">
+    	<span ng-if="loading" style="margin-left: 45%;">
         	<div class="preloader-wrapper big active">
 			    <div class="spinner-layer">
 				      <div class="circle-clipper left">
@@ -37,7 +37,7 @@
 			    </div>
 		  	</div>
         </span>
-        <span ng-show="!loading">
+        <span ng-if="!loading">
 	        <h5 class="center" style="cursor: default;">Lista de usuarios del sistema</h5>
 	        <table class="bordered striped" style="display: block; height: 550px; overflow-y: auto;">
 	            <thead>
@@ -68,7 +68,7 @@
         </span>
     </div>
     <div class="col s3 center-align">
-   		<span ng-show="$parent.helpers">
+   		<span ng-if="$parent.helpers">
 	    	<div class="card-panel blue-grey darken-1">
 	    		<span class="white-text" style="text-align: justify; cursor: default; font-size: 17px;">Al presionar sobre <i class="material-icons prefix small">mode_edit</i>
 	    			para editar un usuario, se mostrara una nueva sección debajo que le permitirá realizar los cambios que desee.
@@ -78,7 +78,7 @@
 	    	</div>
 	    	<button class="btn waves-effect waves-light  orange accent-4 "  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
     	</span>
-    	<span ng-show="!$parent.helpers">
+    	<span ng-if="!$parent.helpers">
     		<button class="btn waves-effect waves-light  orange accent-4 "  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
     	</span>
     </div>
