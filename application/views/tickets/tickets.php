@@ -1,4 +1,10 @@
-<div ng-cloak>
+<md-content ng-if="loading" class="md-padding">
+    <div layout layout-align="center center">
+        <md-progress-circular md-mode="indeterminate" md-diameter="80"></md-progress-circular>
+    </div>
+</md-content>
+
+<div ng-cloak ng-if="!loading">
   <md-content>
     <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
         <!-- Init tabs Todos -->
@@ -21,7 +27,7 @@
                           </div>
                         </md-toolbar>
                         <md-table-container>
-                          <table md-table md-row-select ng-model="selected" md-progress="promise" >
+                          <table md-table md-row-select ng-model="selected">
                             <thead md-head md-order="query.order">
                               <tr md-row>
                                 <th md-column><span>ID</span></th>
@@ -29,7 +35,6 @@
                                 <th md-column ><span>Descripción</span></th>
                                 <th md-column ><span>Estado</span></th>
                                 <th md-column >Tipo</th>
-                                <th md-column >Nivel</th>
                                 <th md-column >Prioridad</th>
                                 <th md-column >Tiempo de Respuesta</th>
                               </tr>
@@ -41,7 +46,6 @@
                                 <td md-cell>{{ticket.description}}</td>
                                 <td md-cell>{{ticket.state}}</td>
                                 <td md-cell>{{ticket.type}}</td>
-                                <td md-cell>{{ticket.level}}</td>
                                 <td md-cell>{{ticket.priority}}</td>
                                 <td md-cell>{{ticket.answerTime}}</td>
                               </tr>
@@ -62,16 +66,22 @@
                         </div>
                         <form>
                             <div layout="row">
-                                <div flex="45">
+                                <div flex="30">
                                     <md-input-container class="md-block">
                                         <label>Asunto</label>
                                         <textarea readonly ng-model="model.subject"></textarea>
                                     </md-input-container>
                                 </div>
-                                <div flex="45" flex-offset="10">
+                                <div flex="30" flex-offset="5">
                                       <md-input-container  class="md-block">
                                         <label>Descripción</label>
                                         <textarea  readonly ng-model="model.description"></textarea>
+                                    </md-input-container>
+                                </div>
+                                <div flex="30" flex-offset="5">
+                                      <md-input-container  class="md-block">
+                                        <label>Técnico asignado</label>
+                                        <textarea  readonly ng-model="model.userAssigned"></textarea>
                                     </md-input-container>
                                 </div>
                             </div>
@@ -154,9 +164,11 @@
                                     </md-input-container>
                                 </div>
                                 <div flex="45" flex-offset="10">
-                                    <md-input-container  class="md-block">
+                                    <md-input-container ng-disabled="!edit"  class="md-block">
                                         <label>Calidad del servicio</label>
-                                        <textarea ng-disabled="!edit" ng-model="model.qualityOfService"></textarea>
+                                        <md-select ng-disabled="!edit" ng-model="model.qualityOfService">
+                                            <md-option ng-value="qos" ng-repeat="qos in qualityOfServices">{{qos}}</md-option>
+                                        </md-select>
                                     </md-input-container>
                                 </div>
                             </div>
@@ -191,7 +203,7 @@
                           </div>
                         </md-toolbar>
                         <md-table-container>
-                          <table md-table md-row-select ng-model="selected" md-progress="promise" >
+                          <table md-table md-row-select ng-model="selected" >
                             <thead md-head md-order="query.order">
                               <tr md-row>
                                 <th md-column><span>ID</span></th>
@@ -229,16 +241,22 @@
                         </div>
                         <form>
                           <div layout="row">
-                              <div flex="45">
+                              <div flex="30">
                                   <md-input-container class="md-block">
                                       <label>Asunto</label>
                                       <textarea readonly ng-model="model.subject"></textarea>
                                   </md-input-container>
                               </div>
-                              <div flex="45" flex-offset="10">
+                              <div flex="30" flex-offset="5">
                                     <md-input-container  class="md-block">
                                       <label>Descripción</label>
                                       <textarea  readonly ng-model="model.description"></textarea>
+                                  </md-input-container>
+                              </div>
+                              <div flex="30" flex-offset="5">
+                                    <md-input-container  class="md-block">
+                                      <label>Técnico asignado</label>
+                                      <textarea  readonly ng-model="model.userAssigned"></textarea>
                                   </md-input-container>
                               </div>
                           </div>
@@ -323,7 +341,9 @@
                                 <div flex="45" flex-offset="10">
                                     <md-input-container  class="md-block">
                                         <label>Calidad del servicio</label>
-                                        <textarea ng-disabled="!edit" ng-model="model.qualityOfService"></textarea>
+                                        <md-select ng-disabled="!edit" ng-model="model.qualityOfService">
+                                            <md-option ng-value="qos" ng-repeat="qos in qualityOfServices">{{qos}}</md-option>
+                                        </md-select>
                                     </md-input-container>
                                 </div>
                             </div>

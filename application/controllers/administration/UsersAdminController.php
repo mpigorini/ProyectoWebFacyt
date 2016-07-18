@@ -45,7 +45,6 @@ class UsersAdminController extends CI_Controller {
 		try {
             $em = $this->doctrine->em;
             if( isset($_GET['id']) && !empty( $_GET['id']) ) {
-            	\ChromePhp::log("entra?");
                 $user = $em->find('\Entity\Users', $_GET['id']);
                 $department = $em->find('\Entity\Department', $_GET['indexDepartment']);
                 $position = $em->find('\Entity\Position', $_GET['indexPosition']);
@@ -95,34 +94,6 @@ class UsersAdminController extends CI_Controller {
         echo json_encode($result);
 	}
 
-	public function getAllDepartments() {
-        try {
-            
-            $em = $this->doctrine->em;
-            $departments = $em->getRepository('\Entity\Department')->findAll();
-            
-            foreach ($departments as $key=>$department) {
-                $result['data'][$key]['id'] = $department->getId();
-                $result['data'][$key]['name'] = $department->getName();
-                $result['data'][$key]['description'] = $department->getDescription();
-                //$result['data'][$key]['positions'] = $department->getPositions();
-                $positions = $department->getPositions();
-                foreach ($positions as $pkey=>$position) {
-                    $result['data'][$key]['positions'][$pkey]['id'] = $position->getId();
-                    $result['data'][$key]['positions'][$pkey]['name'] = $position->getName();
-                    $result['data'][$key]['positions'][$pkey]['description'] = $position->getDescription();
-                }
-            }
-            
-            $result['message'] = "success";
-       } catch(Exception $e) {
-           \ChromePhp::log($e);
-           $result['message'] = "Error";
-       }
-
-        echo json_encode($result);
-    }
-
     public function deleteUser () {
     	try {
             $em = $this->doctrine->em;
@@ -134,6 +105,43 @@ class UsersAdminController extends CI_Controller {
             $result['message'] = "error";
             \ChromePhp::log($e);
         }
+        echo json_encode($result);
+    }
+    
+    public function getUsersExcept() {
+        
+        try {
+            
+            
+            
+            $em = $this->doctrine->em;
+            $userReporter = $em->find('\Entity\Users', $_GET['id']);
+            $users = $em->getRepository('\Entity\Users')->findAllExcept($userReporter);
+            
+            foreach ($users as $key=>$user) {
+                if($user->getType() !== 4) {
+                    $result['data'][$key]['id'] = $user->getId();
+                    $result['data'][$key]['login'] = $user->getLogin();
+                    $result['data'][$key]['password'] = $user->getPassword();
+                    $result['data'][$key]['name'] = $user->getName();
+                    $result['data'][$key]['lastname'] = $user->getLastname();
+                    $result['data'][$key]['cedula'] = $user->getCedula();
+                    $result['data'][$key]['phone'] = $user->getPhone();
+                    $result['data'][$key]['type'] = $user->getTypeText();
+                    $result['data'][$key]['email'] = $user->getEmail();
+                    $result['data'][$key]['department'] = $user->getDepartment()->getName();
+                    $result['data'][$key]['position'] = $user->getPosition()->getName();
+                    $result['data'][$key]['value'] =  strtolower($result['data'][$key]['name']) . " " . strtolower($result['data'][$key]['lastname']);
+                    $result['data'][$key]['showName'] = $result['data'][$key]['name'] . " " . $result['data'][$key]['lastname'];
+                }
+            }
+            
+            $result['message'] = "success";
+       } catch(Exception $e) {
+           \ChromePhp::log($e);
+           $result['message'] = "Error";
+       }
+
         echo json_encode($result);
     }
 }

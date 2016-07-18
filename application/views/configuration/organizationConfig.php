@@ -11,34 +11,57 @@
     <br>
     <!-- Departments -->
 	<div class="row">
-	    <div class="col s12 m5 card-panel blue-grey darken-1">
-	        <p class="white-text">
-    	        En la Lista de departamentos se muestran todos los departamentos existentes.<br/>
-    	        Para editar un departamento, haga click en <i class="material-icons">keyboard_arrow_down</i><br/>
-    	        Al seleccionar un departamento, se habilitará la opción "Cargo" en la pestaña de arriba, en la cual podrá ver los cargos asociados a ese departamento.<br/>
-    	        Para eliminar, click en <i class="material-icons">delete</i><br/>
-    	        Para crear un nuevo departamento, haga click en "nuevo" al final de Detalles del departamento.
-	        </p>
-	    </div>
-        <div class="col s12 m6 offset-m1 card-panel">
-            <p class="center">Lista de departamentos</p>
-            <table style="width:80%;margin:auto">
-                <thead>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th></th>
-                    <th></th>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="department in departments">
-                        <td>{{$index+1}}</td>
-                        <td>{{department.name}}</td>
-                        <td><a class="btn-floating waves-effect waves-light" ng-click="loadDepartment($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
-                        <td><a class="btn-floating waves-effect waves-light red" ng-click="deleteDepartment($index)"><i class="material-icons">delete</i></a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <span ng-show="$parent.helpers">
+    	    <div class="col s12 m5 card-panel blue-grey darken-1">
+    	        <p class="white-text">
+        	        En la Lista de departamentos se muestran todos los departamentos existentes.<br/>
+        	        Para editar un departamento, haga click en <i class="material-icons">keyboard_arrow_down</i><br/>
+        	        Al seleccionar un departamento, se habilitará la opción "Cargo" en la pestaña de arriba, en la cual podrá ver los cargos asociados a ese departamento.<br/>
+        	        Para eliminar, click en <i class="material-icons">delete</i><br/>
+        	        Para crear un nuevo departamento, haga click en "nuevo" al final de Detalles del departamento.
+    	        </p>
+    	    </div>
+            <div class="col s12 m6 offset-m1 card-panel">
+                <p class="center">Lista de departamentos</p>
+                <table style="width:80%;margin:auto">
+                    <thead>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="department in departments">
+                            <td>{{$index+1}}</td>
+                            <td>{{department.name}}</td>
+                            <td><a class="btn-floating waves-effect waves-light" ng-click="loadDepartment($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
+                            <td><a class="btn-floating waves-effect waves-light red" ng-click="deleteDepartment($index)"><i class="material-icons">delete</i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </span>
+        <span ng-show="!$parent.helpers">
+            <div class="col s12 m6 offset-m3 card-panel">
+                <p class="center">Lista de departamentos</p>
+                <table style="width:80%;margin:auto">
+                    <thead>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="department in departments">
+                            <td>{{$index+1}}</td>
+                            <td>{{department.name}}</td>
+                            <td><a class="btn-floating waves-effect waves-light" ng-click="loadDepartment($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
+                            <td><a class="btn-floating waves-effect waves-light red" ng-click="deleteDepartment($index)"><i class="material-icons">delete</i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </span>
 	</div>
 	<br/>
 	<!-- Selected department's detail -->
@@ -78,34 +101,58 @@
     <br>
     <!-- Positions -->
     <div class="row">
-        <div class="col s12 m6 card-panel">
-            <p class="center">Lista de cargos dentro del departamento {{department.name}}</p>
-            <table style="width:80%;margin:auto">
-                <thead>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th></th>
-                    <th></th>
-                </thead>
-                <tbody>
-                    
-                    <tr ng-repeat="pos in department.positions">
-                        <td>{{$index+1}}</td>
-                        <td>{{pos.name}}</td>
-                        <td><a class="btn-floating waves-effect waves-light" ng-click="loadPosition($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
-                        <td><a class="btn-floating waves-effect waves-light red" ng-click="deletePosition($index)"><i class="material-icons">delete</i></a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-	    <div class="col s12 m5 offset-m1 card-panel blue-grey darken-1">
-	        <p class="right-align white-text">
-    	        En la Lista de cargos se muestran todos los cargos existentes dentro del departamento {{department.name}}.<br/>
-    	        Para editar un cargo, haga click en <i class="material-icons">keyboard_arrow_down</i> del cargo de su elección.
-    	        Para eliminarlo, haga click en <i class="material-icons">delete</i><br/>
-    	        Para crear un cargo nuevo para el departamento de {{department.name}}, haga click en "nuevo" al final de Detalles del cargo.
-	        </p>
-	    </div>
+        <span ng-show="$parent.helpers">
+            <div class="col s12 m6 card-panel">
+                <p class="center">Lista de cargos dentro del departamento {{department.name}}</p>
+                <table style="width:80%;margin:auto">
+                    <thead>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        
+                        <tr ng-repeat="pos in department.positions">
+                            <td>{{$index+1}}</td>
+                            <td>{{pos.name}}</td>
+                            <td><a class="btn-floating waves-effect waves-light" ng-click="loadPosition($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
+                            <td><a class="btn-floating waves-effect waves-light red" ng-click="deletePosition($index)"><i class="material-icons">delete</i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    	    <div class="col s12 m5 offset-m1 card-panel blue-grey darken-1">
+    	        <p class="right-align white-text">
+        	        En la Lista de cargos se muestran todos los cargos existentes dentro del departamento {{department.name}}.<br/>
+        	        Para editar un cargo, haga click en <i class="material-icons">keyboard_arrow_down</i> del cargo de su elección.
+        	        Para eliminarlo, haga click en <i class="material-icons">delete</i><br/>
+        	        Para crear un cargo nuevo para el departamento de {{department.name}}, haga click en "nuevo" al final de Detalles del cargo.
+    	        </p>
+    	    </div>
+        </span>
+        <span ng-show="!$parent.helpers">
+            <div class="col s12 m6 offset-m3 card-panel">
+                <p class="center">Lista de cargos dentro del departamento {{department.name}}</p>
+                <table style="width:80%;margin:auto">
+                    <thead>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        
+                        <tr ng-repeat="pos in department.positions">
+                            <td>{{$index+1}}</td>
+                            <td>{{pos.name}}</td>
+                            <td><a class="btn-floating waves-effect waves-light" ng-click="loadPosition($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
+                            <td><a class="btn-floating waves-effect waves-light red" ng-click="deletePosition($index)"><i class="material-icons">delete</i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </span>
 	</div>
 	<!-- Selected position's detail -->
     <div id="positions-table" class="row" style="margin-left:20px; margin-right:20px">
@@ -139,7 +186,7 @@
     </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-    $('ul.tabs').tabs();
-  });
+    $(document).ready(function(){
+        $('ul.tabs').tabs();
+    });
 </script>

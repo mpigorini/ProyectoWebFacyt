@@ -8,6 +8,7 @@ function tickets($scope, $rootScope, $http, $cookies) {
     'use strict';
     // show Tickets option as active
     $rootScope.select(1);
+    $scope.loading = true;
     $scope.ticketSelected = false;
     $scope.edit = false;
     $scope.states="";
@@ -19,27 +20,18 @@ function tickets($scope, $rootScope, $http, $cookies) {
         .then(function (response){
             if (response.data.message== "success") {
                 $scope.states = response.data.states;
+                $scope.tickets = response.data.tickets;
                 console.log($scope.states);
-                // put all tickets (regardless of state) from this user in a single container
-                $scope.tickets = [];
-                for (var i = 0; i < $scope.states.length; i++) {
-                    console.log($scope.states[i].table);
-                    if (typeof $scope.states[i].table !== "undefined") {
-                        // found a table for this state
-                        for (var j = 0; j < $scope.states[i].table.length; j++) {
-                            $scope.tickets.push($scope.states[i].table[j]);
-                        }
-                    }
-                }
                 console.log($scope.tickets);
-                $scope.loading = false
+                $scope.loading = false;
 
             }
         });
     $http.get('index.php/tickets/TicketsController/getActiveQoS')
         .then(function(response) {
             if(response.data.message=="success") {
-                $scope.config = response.data;
+                $scope.qualityOfServices = response.data.qualityOfServices;
+                console.log($scope.qualityOfServices);
             }
         });
 
@@ -54,7 +46,6 @@ function tickets($scope, $rootScope, $http, $cookies) {
 
 
     $scope.selectItem = function(item,key) {
-        console.log(item);
         $scope.model.id = item.id;
         $scope.model.paddedId = item.paddedId;
         $scope.model.subject = item.subject;
@@ -63,10 +54,10 @@ function tickets($scope, $rootScope, $http, $cookies) {
         $scope.model.level = item.level;
         $scope.model.priority = item.priority;
         $scope.model.state = item.state;
-        $scope.model.answerTime = item.asweTime;
+        $scope.model.answerTime = item.answerTime ? item.answerTime + "d" : null;
         $scope.model.qualityOfService = item.qualityOfService;
-        $scope.model.userAssigned = item.userAssigned ? item.userAssigned : null;
-        $scope.model.evlauation = item.evaluation;
+        $scope.model.userAssigned = item.userAssigned ? item.userAssigned.showName : null;
+        $scope.model.evaluation = item.evaluation;
         $scope.searchText = "";
 
         if(item.submitDate != null) {
@@ -88,10 +79,10 @@ function tickets($scope, $rootScope, $http, $cookies) {
     }
 
      $scope.save = function() {
-
+            console.log($scope.model.qualityOfService);
             swal({
                 title: "Confirmación",
-                text: "Su actualizara el ticket con el asunto "+$scope.model.subject+" de solicitud será creada. ¿Desea proceder?" ,
+                text: "Se enviará la evaluación para el ticket con asunto "+$scope.model.subject+". ¿Desea proceder?" ,
                 type: "info",
                 confirmButtonText: "Sí",
                 cancelButtonText: "No",
@@ -101,33 +92,36 @@ function tickets($scope, $rootScope, $http, $cookies) {
                 showLoaderOnConfirm: true,
 
             }, function() {
-                    $http.get('index.php/administration/TicketsAdminController/save',{params:$scope.model})
+                    $http.get('index.php/tickets/TicketsController/save',{params:$scope.model})
                         .then(function(response) {
                             if (response.data.message == "success") {
-                                swal("Ticket Actualizado", "El ticket se ha actualizado exitosamente.", "success");
+                                $http.get('index.php/tickets/TicketsController/getStates',{params:{userId:userId}})
+                                    .then(function (response){
+                                        if (response.data.message== "success") {
+                                            var states = response.data.states;
+                                            console.log(states);
+                                            // Render UI
+                                            var tickets = response.data.tickets;
+                                            for (var i = 0; i < states.length; i++) {
+                                                if (typeof states[i].table !== "undefined") {
+                                                    // found a table for this state
+                                                    for (var j = 0; j < states[i].table.length; j++) {
+                                                        $scope.states[i].table[j] = states[i].table[j];
+                                                    }
+                                                }
+                                            }
+                                            $scope.tickets = tickets;
+                                            console.log($scope.tickets);
+                                        }
+                                    });
+                                swal("Evaluación enviada", "Su evaluación ha sido enviada exitosamente. ¡Gracias!.", "success");
                             } else {
                                 swal("Oops!", "Ha ocurrido un error y su solicitud no ha podido ser procesada. Por favor intente más tarde.", "error");
                             }
                     })
-
             });
     }
 
-    $scope.getUsers = function (filter) {
-
-        $scope.filter = filter;
-        var result = filter ? $scope.users.filter(filterForName) : $scope.users;
-
-        return result;
-
-    }
-
-    function filterForName(user) {
-
-        var filter = angular.lowercase($scope.filter);
-        return user.value.indexOf(filter) >= 0;
-
-    }
     $scope.clearModel = function() {
         $scope.ticketSelected = false;
         $scope.selected = [];

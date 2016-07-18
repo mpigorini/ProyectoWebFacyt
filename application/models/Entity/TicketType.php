@@ -59,13 +59,6 @@ class TicketType
     /**
      * @var string
      *
-     * @ORM\Column(name="answer_time", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
-     */
-    private $answerTimes;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="quality_of_services", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
     private $qualityOfServices;
@@ -77,11 +70,25 @@ class TicketType
      */
     private $active;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Entity\MaxAnswerTime", mappedBy="ticketType")
+     */
+    private $maxAnswerTimes;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->maxAnswerTimes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -97,14 +104,14 @@ class TicketType
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -120,14 +127,14 @@ class TicketType
     public function setStates($states)
     {
         $this->states = $states;
-    
+
         return $this;
     }
 
     /**
      * Get states
      *
-     * @return string 
+     * @return string
      */
     public function getStates()
     {
@@ -143,14 +150,14 @@ class TicketType
     public function setTypes($types)
     {
         $this->types = $types;
-    
+
         return $this;
     }
 
     /**
      * Get types
      *
-     * @return string 
+     * @return string
      */
     public function getTypes()
     {
@@ -166,14 +173,14 @@ class TicketType
     public function setLevels($levels)
     {
         $this->levels = $levels;
-    
+
         return $this;
     }
 
     /**
      * Get levels
      *
-     * @return string 
+     * @return string
      */
     public function getLevels()
     {
@@ -189,41 +196,18 @@ class TicketType
     public function setPriorities($priorities)
     {
         $this->priorities = $priorities;
-    
+
         return $this;
     }
 
     /**
      * Get priorities
      *
-     * @return string 
+     * @return string
      */
     public function getPriorities()
     {
         return $this->priorities;
-    }
-
-    /**
-     * Set answerTimes
-     *
-     * @param string $answerTimes
-     * @return TicketType
-     */
-    public function setAnswerTimes($answerTimes)
-    {
-        $this->answerTimes = $answerTimes;
-    
-        return $this;
-    }
-
-    /**
-     * Get answerTimes
-     *
-     * @return string 
-     */
-    public function getAnswerTimes()
-    {
-        return $this->answerTimes;
     }
 
     /**
@@ -235,14 +219,14 @@ class TicketType
     public function setQualityOfServices($qualityOfServices)
     {
         $this->qualityOfServices = $qualityOfServices;
-    
+
         return $this;
     }
 
     /**
      * Get qualityOfServices
      *
-     * @return string 
+     * @return string
      */
     public function getQualityOfServices()
     {
@@ -250,7 +234,7 @@ class TicketType
     }
 
     /**
-     * Set Active
+     * Set active
      *
      * @param boolean $active
      * @return TicketType
@@ -258,19 +242,50 @@ class TicketType
     public function setActive($active)
     {
         $this->active = $active;
-    
+
         return $this;
     }
 
     /**
-     * Get Active
+     * Get active
      *
-     * @return boolean 
+     * @return boolean
      */
-    public function getactive()
+    public function getActive()
     {
         return $this->active;
     }
 
-  
+    /**
+     * Add maxAnswerTimes
+     *
+     * @param \Entity\MaxAnswerTime $maxAnswerTimes
+     * @return TicketType
+     */
+    public function addMaxAnswerTime(\Entity\MaxAnswerTime $maxAnswerTimes)
+    {
+        $this->maxAnswerTimes[] = $maxAnswerTimes;
+
+        return $this;
+    }
+
+    /**
+     * Remove maxAnswerTimes
+     *
+     * @param \Entity\MaxAnswerTime $maxAnswerTimes
+     */
+    public function removeMaxAnswerTime(\Entity\MaxAnswerTime $maxAnswerTimes)
+    {
+        $this->maxAnswerTimes->removeElement($maxAnswerTimes);
+    }
+
+    /**
+     * Get maxAnswerTimes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMaxAnswerTimes()
+    {
+        return $this->maxAnswerTimes;
+    }
 }
