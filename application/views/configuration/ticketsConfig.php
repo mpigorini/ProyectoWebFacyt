@@ -24,7 +24,7 @@
                     <th></th>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="ticketType in ticketTypes">
+                    <tr ng-repeat="ticketType in ticketTypes track by $index">
                         <td>{{$index+1}}</td>
                         <td>{{ticketType.name}}</td>
                         <td><a class="btn-floating waves-effect waves-light" ng-click="loadTicketType($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
@@ -93,7 +93,7 @@
                 <p>Opciones para Tipo de incidente</p>
                 <md-chips
                     readonly="!edit"
-                    ng-model="model.qualityOfServices"
+                    ng-model="model.types"
                     md-separator-keys="customKeys">
                 </md-chips>
                 </md-content>
@@ -137,7 +137,7 @@
                     md-separator-keys="customKeys"></md-chips>
                 </md-content>
             </div>
-            <!-- Answer Times section -->
+            <!-- Quality of services section -->
             <div flex="50">
                 <md-content class="md-padding" layout="column">
                 <p>Opciones para Calidad de Servicio</p>
@@ -148,7 +148,38 @@
                 </md-content>
             </div>
         </div>
-        <div class="row right-align" >
+        <br/>
+        <!-- Max answer times explanation -->
+        <div class="md-padding" ng-show="model.priorities.length > 0 && model.types.length > 0" layout="row" layout-align="start center">
+            <div class="md-toolbar-tools">
+                <p ng-style="{'font-weight':'300'}">Debe proveer un máximo tiempo de respuesta en días para cada par <em>(tipo de incidente, prioridad)</em></p>
+            </div>
+        </div>
+        <div ng-show="model.priorities.length > 0 && model.types.length > 0" layout ng-repeat="(keyT, type) in model.types">
+            <div layout layout-align="center center" class="md-padding">
+                <p>Para tipo de incidente <em>{{type}} </em></p>
+            </div>
+            <!-- Max answer times options for each type and priority -->
+            <div layout layout-align="center center" ng-repeat="(keyP, priority) in model.priorities">
+                <div ng-show="edit">
+                    <md-content class="md-padding">
+                        <p>Prioridad <em>{{priority}}</em></p>
+                        <md-input-container class="md-block">
+                        <input aria-label="max-time {{type}}-{{priority}}" ng-model="model.maxAnswerTimes[keyT][keyP]" type="number" step="1" min="1" required>
+                        </md-input-container>
+                    </md-content>
+                </div>
+                <div ng-hide="edit">
+                    <md-content class="md-padding">
+                        <p>Prioridad <em>{{priority}}</em></p>
+                        <md-input-container class="md-block">
+                        <input readonly aria-label="max-time {{type}}-{{priority}}" ng-model="model.maxAnswerTimes[keyT][keyP]" type="number" step="1" min="1">
+                        </md-input-container>
+                    </md-content>
+                </div>
+            </div>
+        </div>
+        <div layout="row" layout-align="end center">
             <md-button ng-click="newTicketType()" ng-hide="edit" class="md-primary md-raised">Nuevo</md-button>
             <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
             <md-button ng-click="save()" ng-show="edit" class="md-primary">Guardar</md-button>

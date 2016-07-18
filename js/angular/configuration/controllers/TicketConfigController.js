@@ -35,9 +35,10 @@ angular.module('helpDesk').controller('TicketConfigController',
                 $scope.model.types = obj.types;
                 $scope.model.priorities = obj.priorities;
                 $scope.model.levels = obj.levels;
-                // $scope.model.answerTimes = obj[id].answerTimes.split(',');
                 $scope.model.qualityOfServices = obj.qualityOfServices;
                 $scope.model.active = obj.active;
+                $scope.model.maxAnswerTimes = obj.maxAnswerTimes ? obj.maxAnswerTimes : [];
+
                 // default state array for loaded tickets will always be first and last index.
                 $scope.defaultStates = [$scope.model.states[0], $scope.model.states[$scope.model.states.length-1]]
                  // remove default values from model var.
@@ -54,6 +55,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                 $scope.model.priorities = [];
                 $scope.model.answerTimes = [];
                 $scope.model.qualityOfServices = [];
+                $scope.model.maxAnswerTimes = [];
                 // default states array
                 $scope.defaultStates = ["En espera", "Cerrado"];
             }
@@ -68,20 +70,19 @@ angular.module('helpDesk').controller('TicketConfigController',
                     $scope.model.types == null ||
                     $scope.model.priorities == null ||
                     $scope.model.levels == null ||
-                    $scope.model.answerTimes == null ||
                     $scope.model.name == ""
                     || $scope.model.states.length == 0
                     || $scope.model.types.length == 0
                     || $scope.model.levels.length == 0
                     || $scope.model.priorities.length == 0
-                    || $scope.model.answerTimes.length == 0) {
+                    || isMaxAnswerTimesEmpty()) {
                         swal("Falta información", "Debe proveer toda la información solicitada", "error");
                 } else {
                     var result = parseResult();
-                    // console.log(result);
+                    console.log(result);
                     swal({
                         title: "Confirmación",
-                        text: typeof result.id === "undefined" ? "Su nueva configuración de solicitud será creada. ¿Desea proceder?" : "Se actualizara la configuracion "+result.name+". ¿Desea proceder?",
+                        text: typeof result.id === "undefined" ? "Su nueva configuración de solicitud será creada. ¿Desea proceder?" : "Se actualizará la configuración "+result.name+". ¿Desea proceder?",
                         type: "info",
                         confirmButtonText: "Sí",
                         cancelButtonText: "No",
@@ -95,6 +96,8 @@ angular.module('helpDesk').controller('TicketConfigController',
                                 .then(function(response) {
                                     console.log(response)
                                     if (response.data.message == "success") {
+                                        // In case user wants to edit the NEW ticket type
+                                        $scope.model.id = response.data.newConfigId;
                                         $http.get('index.php/configuration/TicketsConfigController/getTicketTypes')
                                             .then(function(response){
                                                 if(response.data.message === "success") {
@@ -106,6 +109,7 @@ angular.module('helpDesk').controller('TicketConfigController',
                                                             $scope.active = i;
                                                         }
                                                     }
+
                                                     swal("Configuración creada", "Su nueva configuración para tickets ha sido creada exitosamente.", "success");
                                                 } else {
                                                     swal("Oops!", "Su solicitud fue procesada, pero ha ocurrido un error actualizando los datos.", "error");
@@ -124,6 +128,8 @@ angular.module('helpDesk').controller('TicketConfigController',
                 var obj = {};
                 obj.id = $scope.model.id;
                 obj.name = $scope.model.name;
+                obj.maxAnswerTimes = JSON.stringify($scope.model.maxAnswerTimes);
+                console.log(obj.maxAnswerTimes);
                 // parse types
                 obj.types = $scope.model.types.toString();
                 // parse states. Must joint default states
@@ -133,8 +139,8 @@ angular.module('helpDesk').controller('TicketConfigController',
                 obj.levels = $scope.model.levels.toString();
                 // parse priorities
                 obj.priorities = $scope.model.priorities.toString();
-                // parse answerTimes
-                obj.answerTimes = $scope.model.answerTimes.toString();
+                // parse quality of services
+                obj.qualityOfServices = $scope.model.qualityOfServices.toString();
 
                 return obj;
             }
@@ -271,6 +277,17 @@ angular.module('helpDesk').controller('TicketConfigController',
                     && $scope.model.levels.length == 0
                     && $scope.model.priorities.length == 0
                     && $scope.model.answerTimes.length == 0);
+            }
+
+            var isMaxAnswerTimesEmpty = function() {
+                for(var i = 0; i < $scope.model.types.length; i++) {
+                    for(var j = 0; j < $scope.model.priorities.length; j++) {
+                        if (typeof $scope.model.maxAnswerTimes[i] === "undefined" || typeof $scope.model.maxAnswerTimes[i][j] === "undefined" || $scope.model.maxAnswerTimes[i][j] === null || $scope.model.maxAnswerTimes[i][j] == 0) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
             }
 
         }
