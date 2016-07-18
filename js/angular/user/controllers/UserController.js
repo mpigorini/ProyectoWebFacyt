@@ -5,6 +5,7 @@ angular.module('helpDesk').controller('UserController',
 		    $rootScope.select(5);
 		    $scope.edit = {};
 		    $scope.mode = {};
+		    $scope.loading = true;
 		    $scope.mode = false;
 		    $scope.notValid = false;
             var id = $cookies.getObject("session").id;
@@ -37,6 +38,7 @@ angular.module('helpDesk').controller('UserController',
 	                    $scope.edit.type = response.data.type;
 	                    $scope.edit.email = response.data.email;
 	                    $scope.label = response.data.name;
+	                    $scope.loading = false;
                     }else{
                     	sweetAlert("Oops...", "Ah ocurrido un problema al cargar tus datos de usuario", "error");
                     }

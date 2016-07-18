@@ -31,7 +31,7 @@ function organizationConfiguration($scope, $rootScope, $http) {
         if ($scope.department.positions == null) {
             $scope.department.positions = {};
         }
-        $('.tooltipped').tooltip('remove');
+        $('.tabs .tooltipped').tooltip('remove');
     };
     
     $scope.loadPosition = function(id) {

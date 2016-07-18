@@ -9,6 +9,7 @@ angular.module('helpDesk').controller('MainController',
         function($rootScope,$scope, auth) {
             $rootScope.model = {};
             $rootScope.model.errorLogin = "";
+            $rootScope.helpers = false;
             $scope.logout = function () {
                 auth.logout();
             };
@@ -18,7 +19,14 @@ angular.module('helpDesk').controller('MainController',
             };
             $rootScope.isSelected = function(selection) {
               return ($rootScope.choice == selection);
-            }
+            };
+            $scope.helpers = function () {
+                if($rootScope.helpers){
+                    $rootScope.helpers=false;
+                }else{
+                    $rootScope.helpers=true;
+                }
+            };
         }
     ]
 );
@@ -109,8 +117,8 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
     });
     // Application theme
     $mdThemingProvider.theme('default')
-        .primaryPalette('teal')
-        .accentPalette('deep-orange');
+        .primaryPalette('deep-orange')//teal
+        .accentPalette('blue-grey');//deep-orange
 });
 
 // $routeChangeStart changed for $locationChangeStart because event.preventDefault was

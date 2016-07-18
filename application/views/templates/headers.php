@@ -78,6 +78,12 @@
                 <ul class="right hide-on-med-and-down" ng-show="isLoggedIn()">
                     <li ng-class="{active:isSelected(4)}"><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
                     <li ng-class="{active:isSelected(5)}"><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
+                    <span ng-show="!$parent.helpers">
+                        <li class="tooltipped" data-position="bottom" data-delay="60" data-tooltip="Mostrar tarjetas de ayuda"><a ng-click="helpers()" style="font-weight: bold; font-size: 22px;">?</a></li>
+                    </span>
+                    <span ng-show="$parent.helpers">
+                        <li class="tooltipped" data-position="bottom" data-delay="60" data-tooltip="Ocultar tarjetas de ayuda"><a ng-click="helpers()" style="font-weight: bold; font-size: 22px;">?</a></li>
+                    </span>
                 </ul>
                 <!-- Mobile nav-bar -->
 				<ul id="nav-mobile" class="side-nav" ng-show="isLoggedIn()">
