@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'https://proyecto-web-facyt-mpigorini.c9users.io';
 
+
 /*
 |--------------------------------------------------------------------------
 | Index File
