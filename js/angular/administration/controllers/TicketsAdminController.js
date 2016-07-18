@@ -64,7 +64,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
         $scope.model.level = item.level;
         $scope.model.priority = item.priority;
         $scope.model.state = item.state;
-        $scope.model.answerTime = item.answerTime ? item.answerTime + "d" : null;
+        $scope.model.answerTime = item.answerTime;
         $scope.model.qualityOfService = item.qualityOfService;
         console.log($scope.model.qualityOfService);
         $scope.model.evaluation = item.evaluation;

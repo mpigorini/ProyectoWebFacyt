@@ -16,6 +16,7 @@ angular.module('helpDesk').controller('MainController',
             $rootScope.isSelected = function(selection) {
               return ($rootScope.choice == selection);
             }
+            $rootScope.helpImagePath = 'images/ic_info.png'
         }
     ]
 );
@@ -31,6 +32,8 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
                   .otherwise('login');
   $stateProvider
     .state('login', {
+        // TODO: Replace templateUrl with function that return the URL to the View ONLY if user has the corresponding permissions
+        // TODO: At the END -- tell codeigniter to redirect to base URL when any other url is (manually) specified
         url: '/login',
         module: 'public',
         templateUrl: 'index.php/login/LoginController',
@@ -80,10 +83,20 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
         templateUrl: 'index.php/configuration/OrganizationConfigController',
         controller: 'OrganizationConfigController'
     })
+    .state('solve-tickets', {
+        url: '/solve-tickets',
+        module: 'private',
+        templateUrl: 'index.php/administration/SolveTicketsController',
+        controller: 'SolveTicketsController'
+    });
     // Application theme
     $mdThemingProvider.theme('default')
         .primaryPalette('teal')
         .accentPalette('deep-orange');
+    $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+    $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
+    $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+    $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
 });
 
 // $routeChangeStart changed for $locationChangeStart because event.preventDefault was
