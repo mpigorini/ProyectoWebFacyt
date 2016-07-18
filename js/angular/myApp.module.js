@@ -6,7 +6,7 @@ angular.module('helpDesk').controller('MainController',
         function($rootScope,$scope, auth) {
             $rootScope.model = {};
             $rootScope.model.errorLogin = "";
-            $rootScope.helpers = true;
+            $rootScope.helpers = false;
             console.log('$rootScope.helpers: ' + $rootScope.helpers)
             $scope.logout = function () {
                 auth.logout();
@@ -24,7 +24,7 @@ angular.module('helpDesk').controller('MainController',
                 }else{
                     $rootScope.helpers=true;
                 }
-                console.log('$rootScope.helpers: ' + $rootScope.helpers)
+                console.log('MyApp$rootScope.helpers: ' + $rootScope.helpers)
             };
         }
     ]

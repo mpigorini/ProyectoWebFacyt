@@ -1,16 +1,25 @@
 <h5 class="center" style="cursor: default;">Administración de los Usuarios</h5>
 <br>
 <div class="row">
-	<div class="col s3 offset-s2">
-	    <div class="card-panel  blue-grey darken-1">
-	    	<span class="white-text" style="text-align: justify; cursor: default; font-size: 16px;">Puede utilizar la herramienta <i class="material-icons prefix small">search</i> para buscar un usuario en especifico, o filtrar de acuerdo a un departamento, un cargo, etc.</span>
+	<span ng-show="$parent.helpers">
+		<div class="col s3 offset-s2">
+		    <div class="card-panel  blue-grey darken-1">
+		    	<span class="white-text" style="text-align: justify; cursor: default; font-size: 16px;">Puede utilizar la herramienta <i class="material-icons prefix small">search</i> para buscar un usuario en especifico, o filtrar de acuerdo a un departamento, un cargo, etc.</span>
+		    </div>
 	    </div>
-    </div>
-    <div class="input-field col s3">
-    	<i class="material-icons prefix small">search</i>
-        <input id="filter" type="text" ng-model="search">
-    	<label for="filter">Buscar usuarios...</label>
-    </div>
+	    <div class="input-field col s3">
+	    	<i class="material-icons prefix small">search</i>
+	        <input id="filter" type="text" ng-model="search">
+	    	<label for="filter">Buscar usuarios...</label>
+	    </div>
+    </span>
+    <span ng-show="!$parent.helpers"><br>
+    	<div class="input-field col s2 offset-s4">
+	    	<i class="material-icons prefix small">search</i>
+	        <input id="filter" type="text" ng-model="search">
+	    	<label for="filter">Buscar usuarios...</label>
+	    </div><br>
+    </span>
 </div>
 <br>
 <div class="container row">   
@@ -44,14 +53,19 @@
         </table>
     </div>
     <div class="col s3 center-align">
-    	<div class="card-panel blue-grey darken-1">
-    		<span class="white-text" style="text-align: justify; cursor: default; font-size: 17px;">Al presionar sobre <i class="material-icons prefix small">mode_edit</i>
-    			para editar un usuario, se mostrara una nueva sección debajo que le permitirá realizar los cambios que desee.
-				<br><br>
-				También se mostrara una nueva sección debajo si presiona "Nuevo usuario", donde se le solicitaran los datos del usuario que desea agregar.
-    		</span>
-    	</div>
-    	<button class="btn waves-effect waves-light  orange accent-4 "  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
+   		<span ng-show="$parent.helpers">
+	    	<div class="card-panel blue-grey darken-1">
+	    		<span class="white-text" style="text-align: justify; cursor: default; font-size: 17px;">Al presionar sobre <i class="material-icons prefix small">mode_edit</i>
+	    			para editar un usuario, se mostrara una nueva sección debajo que le permitirá realizar los cambios que desee.
+					<br><br>
+					También se mostrara una nueva sección debajo si presiona "Nuevo usuario", donde se le solicitaran los datos del usuario que desea agregar.
+	    		</span>
+	    	</div>
+	    	<button class="btn waves-effect waves-light  orange accent-4 "  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
+    	</span>
+    	<span ng-show="!$parent.helpers">
+    		<button class="btn waves-effect waves-light  orange accent-4 "  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
+    	</span>
     </div>
 </div>
 <br>
