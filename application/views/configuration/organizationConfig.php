@@ -186,7 +186,7 @@
     </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-    $('ul.tabs').tabs();
-  });
+    $(document).ready(function(){
+        $('ul.tabs').tabs();
+    });
 </script>
