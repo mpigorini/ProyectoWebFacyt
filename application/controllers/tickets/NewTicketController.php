@@ -57,7 +57,7 @@ class NewTicketController extends CI_Controller {
     }
 
     public function saveTicket() {
-       
+
         // dont forget to add date and user reporter (with associations)
         try {
             $em = $this->doctrine->em;
@@ -80,6 +80,7 @@ class NewTicketController extends CI_Controller {
             $em->merge($user);
             $em->persist($user);
             $em->flush();
+            $result['paddedId'] = sprintf('%06d', $ticket->getId());
             $result['message'] = "success";
         } catch(Exception $e) {
            \ChromePhp::log($e);

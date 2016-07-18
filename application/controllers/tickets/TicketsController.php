@@ -22,7 +22,7 @@ class TicketsController extends CI_Controller {
 
             if($config != null) {
 				// for each current config's state
-                foreach(explode(',', $config->getStates()) as $key=>$state){
+                foreach(explode(',', $config->getStates()) as $key=>$state) {
 					// save state value
                     $result['states'][$key]['name'] = $state;
 					// get all the tickets with specified state
@@ -54,10 +54,18 @@ class TicketsController extends CI_Controller {
 			        		$result['states'][$key]['table'][$keyTicket]['evaluation'] = $ticket->getEvaluation();
 						}
 		        	}
-
+					// Put all tickets (regardless of state) from current configuration and specified user in a single container
+					$counter = 0;
+					foreach ($result['states'] as $state) {
+						if (isset($state['table'])) {
+							foreach ($state['table'] as $table) {
+								$result['tickets'][$counter] = $table;
+								$counter++;
+							}
+						}
+					}
                 }
                 $result['message'] = "success";
-
             }
 
         }catch(Exception $e){

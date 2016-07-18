@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class LoginController extends CI_Controller {
-    
+
     public function index() {
         $this->load->view('login/main');
     }
-    
+
     public function authenticate() {
-        
-       
+
+
        try {
            $em = $this->doctrine->em;
            $user = $em->getRepository('\Entity\Users')->findOneBy(array("login"=>$_GET['username']));
@@ -24,13 +24,14 @@ class LoginController extends CI_Controller {
            else {
                $result['message'] = "Error en login";
            }
-           
+
        }catch(Exception $e){
            $result['message'] = "Error";
        }
-        
+
        echo json_encode($result);
     }
+<<<<<<< HEAD
 
     public function getQuestion () {
         try {
@@ -71,3 +72,6 @@ class LoginController extends CI_Controller {
        echo json_encode($result);
     }
 }
+=======
+}
+>>>>>>> 53eb34d0301ce28519af930fa3f136a890d5bf0d

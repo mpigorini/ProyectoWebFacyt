@@ -22,27 +22,29 @@
                           </div>
                         </md-toolbar>
                         <md-table-container>
-                          <table md-table md-row-select ng-model="selected" md-progress="promise" >
+                          <table md-table md-row-select ng-model="selected">
                             <thead md-head md-order="query.order">
                               <tr md-row>
+                                <th md-column><span>ID</span></th>
                                 <th md-column><span>Asunto</span></th>
-                                <th md-column ><span>Descripcion</span></th>
-                                <th md-column >Tipo</th>
-                                <th md-column >Nivel</th>
-                                <th md-column >Prioridad</th>
-                                <th md-column >Tiempo de Respuesta</th>
-                                <th md-column >Solicitante</th>
+                                <th md-column><span>Descripción</span></th>
+                                <th md-column>Solicitante</th>
+                                <th md-column>Días restantes</th>
+                                <th md-column>Tipo</th>
+                                <th md-column>Estado</th<>
+                                <th md-column>Prioridad</th>
                               </tr>
                             </thead>
                             <tbody md-body>
                               <tr md-row md-select="ticket"  md-on-select="selectItem" md-on-deselect="deselectItem" ng-repeat="ticket in tickets | orderBy: ticket.subject | limitTo: query.limit: (query.page - 1) * query.limit">
+                                <td md-cell>{{ticket.paddedId}}</td>
                                 <td md-cell>{{ticket.subject}}</td>
                                 <td md-cell>{{ticket.description}}</td>
-                                <td md-cell>{{ticket.type}}</td>
-                                <td md-cell>{{ticket.level}}</td>
-                                <td md-cell>{{ticket.priority}}</td>
-                                <td md-cell>{{ticket.answerTime}}</td>
                                 <td md-cell>{{ticket.userReporter.name}}</td>
+                                <td md-cell>{{ticket.daysLeft}} <md-icon ng-if="ticket.warn" ng-style="{'color':'#F44336'}">warning</md-icon></td>
+                                <td md-cell>{{ticket.type}}</td>
+                                <td md-cell>{{ticket.state}}</td>
+                                <td md-cell>{{ticket.priority}}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -57,7 +59,7 @@
                    <md-card-tittle></md-card-tittle>
                    <md-card-content>
                         <div class="md-toolbar-tools">
-                            <span>Descripcion del Ticket</span>
+                            <span>Descripción del Ticket #{{model.paddedId}}</span>
                         </div>
                         <form name="adminTicket">
                             <div layout="row">
@@ -69,7 +71,7 @@
                                 </div>
                                 <div flex="45" flex-offset="10">
                                       <md-input-container  class="md-block">
-                                        <label>Descripcion</label>
+                                        <label>Descripción</label>
                                         <textarea  readonly ng-model="model.description"></textarea>
                                     </md-input-container>
                                 </div>
@@ -118,7 +120,7 @@
                              <div layout="row">
                                 <div flex="30">
                                     <md-input-container class="md-block">
-                                        <label>Fecha de creacion</label>
+                                        <label>Fecha de creación</label>
                                         <textarea readonly ng-model="model.submitDate"></textarea>
                                     </md-input-container>
                                 </div>
@@ -135,32 +137,25 @@
                                     </md-input-container>
                                 </div>
                             </div>
-                            <div layout="row">
-                                <div flex="45">
-                                    <md-input-container class="md-block">
-                                        <label>Descripcion de la solucion</label>
-                                        <textarea ng-disabled="!edit" ng-model="model.solutionDescription"></textarea>
-                                    </md-input-container>
-                                </div>
-                                <div flex="45" flex-offset="10">
-                                      <md-input-container  class="md-block">
-                                        <label>Observaciones</label>
-                                        <textarea ng-disabled="!edit" ng-model="model.observation"></textarea>
-                                    </md-input-container>
-                                </div>
-                            </div>
                              <div layout="row">
                                 <div flex="45">
                                     <md-input-container class="md-block">
                                         <label>Calidad del servicio</label>
-                                        <md-select ng-disabled="!edit"  placeholder="Calidad del servicio" ng-model="model.qualityOfService"  style="min-width: 200px;">
-                                        <md-option ng-value="model.qualityOfService" ng-repeat="qualityOfService in config.qualityOfServices">{{qualityOfService}}</md-option>
+                                        <textarea readonly ng-model="model.qualityOfService"></textarea>
                                     </md-input-container>
                                 </div>
                                 <div flex="45" flex-offset="10">
                                       <md-input-container  class="md-block">
-                                        <label>Evaluacion</label>
-                                        <textarea  ng-disabled="!edit" ng-model="model.evaluation"></textarea>
+                                        <label>Evaluación</label>
+                                        <textarea  readonly ng-model="model.evaluation"></textarea>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div layout="row">
+                                <div flex="45">
+                                    <md-input-container class="md-block">
+                                        <label>Descripción de la solución</label>
+                                        <textarea ng-disabled="!edit" ng-model="model.solutionDescription"></textarea>
                                     </md-input-container>
                                 </div>
                             </div>
@@ -204,27 +199,27 @@
                         </md-toolbar>
                         <!-- exact table from live demo -->
                         <md-table-container>
-                          <table md-table md-row-select ng-model="selected" md-progress="promise">
+                          <table md-table md-row-select ng-model="selected">
                             <thead md-head md-order="query.order">
                               <tr md-row>
+                                <th md-column><span>ID</span></th>
                                 <th md-column><span>Asunto</span></th>
-                                <th md-column ><span>Descripcion</span></th>
-                                <th md-column >Tipo</th>
-                                <th md-column >Nivel</th>
-                                <th md-column >Prioridad</th>
-                                <th md-column >Tiempo de Respuesta</th>
+                                <th md-column ><span>Descripción</span></th>
                                 <th md-column >Solicitante</th>
+                                <th md-column >Días restantes</th>
+                                <th md-column >Tipo</th>
+                                <th md-column >Prioridad</th>
                               </tr>
                             </thead>
                             <tbody md-body>
                               <tr md-row md-select="ticket" md-on-select="selectItem" md-on-deselect="deselectItem" ng-repeat="ticket in state.table | limitTo: query.limit: (query.page - 1) * query.limit">
+                                <td md-cell>{{ticket.paddedId}}</td>
                                 <td md-cell>{{ticket.subject}}</td>
                                 <td md-cell>{{ticket.description}}</td>
-                                <td md-cell>{{ticket.type}}</td>
-                                <td md-cell>{{ticket.level}}</td>
-                                <td md-cell>{{ticket.priority}}</td>
-                                <td md-cell>{{ticket.answerTime}}</td>
                                 <td md-cell>{{ticket.userReporter.name}}</td>
+                                <td md-cell>{{ticket.daysLeft}} <md-icon ng-if="ticket.warn" ng-style="{'color':'#F44336'}">warning</md-icon></td>
+                                <td md-cell>{{ticket.type}}</td>
+                                <td md-cell>{{ticket.priority}}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -239,7 +234,7 @@
                    <md-card-tittle></md-card-tittle>
                    <md-card-content>
                         <div class="md-toolbar-tools">
-                            <span>Descripcion del Ticket</span>
+                            <span>Descripción del Ticket #{{model.paddedId}}</span>
                           </div>
                         <form name="adminTicket">
                             <div layout="row">
@@ -251,7 +246,7 @@
                                 </div>
                                 <div flex="45" flex-offset="10">
                                       <md-input-container  class="md-block">
-                                        <label>Descripcion</label>
+                                        <label>Descripción</label>
                                         <textarea  readonly ng-model="model.description"></textarea>
                                     </md-input-container>
                                 </div>
@@ -300,7 +295,7 @@
                             <div layout="row">
                                 <div flex="30">
                                     <md-input-container class="md-block">
-                                        <label>Fecha de creacion</label>
+                                        <label>Fecha de creación</label>
                                         <textarea readonly ng-model="model.submitDate"></textarea>
                                     </md-input-container>
                                 </div>
@@ -318,34 +313,27 @@
                                 </div>
                             </div>
                             <div layout="row">
-                                <div flex="45">
-                                    <md-input-container class="md-block">
-                                        <label>Descripcion de la solucion</label>
-                                        <textarea ng-disabled="!edit" ng-model="model.solutionDescription"></textarea>
-                                    </md-input-container>
-                                </div>
-                                <div flex="45" flex-offset="10">
-                                      <md-input-container  class="md-block">
-                                        <label>Observaciones</label>
-                                        <textarea ng-disabled="!edit" ng-model="model.observation"></textarea>
-                                    </md-input-container>
-                                </div>
-                            </div>
-                            <div layout="row">
-                                <div flex="45">
-                                    <md-input-container class="md-block">
-                                        <label>Calidad del servicio</label>
-                                        <md-select ng-disabled="!edit"  placeholder="Calidad del servicio" ng-model="model.qualityOfService"  style="min-width: 200px;">
-                                        <md-option ng-value="model.qualityOfService" ng-repeat="qualityOfService in config.qualityOfServices">{{qualityOfService}}</md-option>
-                                    </md-input-container>
-                                </div>
-                                <div flex="45" flex-offset="10">
-                                      <md-input-container  class="md-block">
-                                        <label>Evaluacion</label>
-                                        <textarea  ng-disabled="!edit" ng-model="model.evaluation"></textarea>
-                                    </md-input-container>
-                                </div>
-                            </div>
+                               <div flex="45">
+                                   <md-input-container class="md-block">
+                                       <label>Calidad del servicio</label>
+                                       <textarea readonly ng-model="model.qualityOfService"></textarea>
+                                   </md-input-container>
+                               </div>
+                               <div flex="45" flex-offset="10">
+                                     <md-input-container  class="md-block">
+                                       <label>Evaluación</label>
+                                       <textarea  readonly ng-model="model.evaluation"></textarea>
+                                   </md-input-container>
+                               </div>
+                           </div>
+                           <div layout="row">
+                               <div flex="45">
+                                   <md-input-container class="md-block">
+                                       <label>Descripción de la solución</label>
+                                       <textarea ng-disabled="!edit" ng-model="model.solutionDescription"></textarea>
+                                   </md-input-container>
+                               </div>
+                           </div>
                         </form>
                          <br/>
                             <md-divider class="teal"></md-divider>
