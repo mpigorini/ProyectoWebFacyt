@@ -25,24 +25,26 @@
                           <table md-table md-row-select ng-model="selected">
                             <thead md-head md-order="query.order">
                               <tr md-row>
+                                <th md-column><span>ID</span></th>
                                 <th md-column><span>Asunto</span></th>
-                                <th md-column ><span>Descripción</span></th>
-                                <th md-column >Tipo</th>
-                                <th md-column >Nivel</th>
-                                <th md-column >Prioridad</th>
-                                <th md-column >Tiempo de Respuesta</th>
-                                <th md-column >Solicitante</th>
+                                <th md-column><span>Descripción</span></th>
+                                <th md-column>Solicitante</th>
+                                <th md-column>Días restantes</th>
+                                <th md-column>Tipo</th>
+                                <th md-column>Estado</th<>
+                                <th md-column>Prioridad</th>
                               </tr>
                             </thead>
                             <tbody md-body>
                               <tr md-row md-select="ticket"  md-on-select="selectItem" md-on-deselect="deselectItem" ng-repeat="ticket in tickets | orderBy: ticket.subject | limitTo: query.limit: (query.page - 1) * query.limit">
+                                <td md-cell>{{ticket.paddedId}}</td>
                                 <td md-cell>{{ticket.subject}}</td>
                                 <td md-cell>{{ticket.description}}</td>
-                                <td md-cell>{{ticket.type}}</td>
-                                <td md-cell>{{ticket.level}}</td>
-                                <td md-cell>{{ticket.priority}}</td>
-                                <td md-cell>{{ticket.answerTime}}</td>
                                 <td md-cell>{{ticket.userReporter.name}}</td>
+                                <td md-cell>{{ticket.daysLeft}} <md-icon ng-if="ticket.warn" ng-style="{'color':'#F44336'}">warning</md-icon></td>
+                                <td md-cell>{{ticket.type}}</td>
+                                <td md-cell>{{ticket.state}}</td>
+                                <td md-cell>{{ticket.priority}}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -57,7 +59,7 @@
                    <md-card-tittle></md-card-tittle>
                    <md-card-content>
                         <div class="md-toolbar-tools">
-                            <span>Descripción del Ticket</span>
+                            <span>Descripción del Ticket #{{model.paddedId}}</span>
                         </div>
                         <form name="adminTicket">
                             <div layout="row">
@@ -200,24 +202,24 @@
                           <table md-table md-row-select ng-model="selected">
                             <thead md-head md-order="query.order">
                               <tr md-row>
+                                <th md-column><span>ID</span></th>
                                 <th md-column><span>Asunto</span></th>
                                 <th md-column ><span>Descripción</span></th>
-                                <th md-column >Tipo</th>
-                                <th md-column >Nivel</th>
-                                <th md-column >Prioridad</th>
-                                <th md-column >Tiempo de Respuesta</th>
                                 <th md-column >Solicitante</th>
+                                <th md-column >Días restantes</th>
+                                <th md-column >Tipo</th>
+                                <th md-column >Prioridad</th>
                               </tr>
                             </thead>
                             <tbody md-body>
                               <tr md-row md-select="ticket" md-on-select="selectItem" md-on-deselect="deselectItem" ng-repeat="ticket in state.table | limitTo: query.limit: (query.page - 1) * query.limit">
+                                <td md-cell>{{ticket.paddedId}}</td>
                                 <td md-cell>{{ticket.subject}}</td>
                                 <td md-cell>{{ticket.description}}</td>
-                                <td md-cell>{{ticket.type}}</td>
-                                <td md-cell>{{ticket.level}}</td>
-                                <td md-cell>{{ticket.priority}}</td>
-                                <td md-cell>{{ticket.answerTime}}</td>
                                 <td md-cell>{{ticket.userReporter.name}}</td>
+                                <td md-cell>{{ticket.daysLeft}} <md-icon ng-if="ticket.warn" ng-style="{'color':'#F44336'}">warning</md-icon></td>
+                                <td md-cell>{{ticket.type}}</td>
+                                <td md-cell>{{ticket.priority}}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -232,7 +234,7 @@
                    <md-card-tittle></md-card-tittle>
                    <md-card-content>
                         <div class="md-toolbar-tools">
-                            <span>Descripción del Ticket</span>
+                            <span>Descripción del Ticket #{{model.paddedId}}</span>
                           </div>
                         <form name="adminTicket">
                             <div layout="row">

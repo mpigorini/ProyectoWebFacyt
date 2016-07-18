@@ -35,7 +35,6 @@
                                 <th md-column ><span>Descripción</span></th>
                                 <th md-column ><span>Estado</span></th>
                                 <th md-column >Tipo</th>
-                                <th md-column >Nivel</th>
                                 <th md-column >Prioridad</th>
                                 <th md-column >Tiempo de Respuesta</th>
                               </tr>
@@ -47,9 +46,8 @@
                                 <td md-cell>{{ticket.description}}</td>
                                 <td md-cell>{{ticket.state}}</td>
                                 <td md-cell>{{ticket.type}}</td>
-                                <td md-cell>{{ticket.level}}</td>
                                 <td md-cell>{{ticket.priority}}</td>
-                                <td md-cell>{{ticket.answerTime}}{{ticket.answerTimes == null ? "" : d}}</td>
+                                <td md-cell>{{ticket.answerTime}}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -225,7 +223,7 @@
                                 <td md-cell>{{ticket.type}}</td>
                                 <td md-cell>{{ticket.level}}</td>
                                 <td md-cell>{{ticket.priority}}</td>
-                                <td md-cell>{{ticket.answerTime}}{{ticket.answerTimes == null ? "" : d}}</td>
+                                <td md-cell>{{ticket.answerTime}}</td>
                               </tr>
                             </tbody>
                           </table>

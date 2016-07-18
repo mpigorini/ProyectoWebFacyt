@@ -47,10 +47,10 @@ class MaxAnswerTime
      *
      * @ORM\ManyToOne(targetEntity="Entity\TicketType", inversedBy="maxAnswerTimes")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ticket_id", referencedColumnName="id", nullable=false)
+     *   @ORM\JoinColumn(name="ticket_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      * })
      */
-    private $tickeyType;
+    private $ticketType;
 
 
     /**
@@ -133,25 +133,25 @@ class MaxAnswerTime
     }
 
     /**
-     * Set tickeyType
+     * Set ticketType
      *
-     * @param \Entity\TicketType $tickeyType
+     * @param \Entity\TicketType $ticketType
      * @return MaxAnswerTime
      */
-    public function setTickeyType(\Entity\TicketType $tickeyType)
+    public function setTicketType(\Entity\TicketType $ticketType)
     {
-        $this->tickeyType = $tickeyType;
+        $this->ticketType = $ticketType;
 
         return $this;
     }
 
     /**
-     * Get tickeyType
+     * Get ticketType
      *
      * @return \Entity\TicketType
      */
-    public function getTickeyType()
+    public function getTicketType()
     {
-        return $this->tickeyType;
+        return $this->ticketType;
     }
 }

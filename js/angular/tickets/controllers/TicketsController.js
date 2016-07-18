@@ -20,17 +20,8 @@ function tickets($scope, $rootScope, $http, $cookies) {
         .then(function (response){
             if (response.data.message== "success") {
                 $scope.states = response.data.states;
+                $scope.tickets = response.data.tickets;
                 console.log($scope.states);
-                // put all tickets (regardless of state) from this user in a single container
-                $scope.tickets = [];
-                for (var i = 0; i < $scope.states.length; i++) {
-                    if (typeof $scope.states[i].table !== "undefined") {
-                        // found a table for this state
-                        for (var j = 0; j < $scope.states[i].table.length; j++) {
-                            $scope.tickets.push($scope.states[i].table[j]);
-                        }
-                    }
-                }
                 console.log($scope.tickets);
                 $scope.loading = false;
 
@@ -55,8 +46,6 @@ function tickets($scope, $rootScope, $http, $cookies) {
 
 
     $scope.selectItem = function(item,key) {
-        console.log(item);
-        console.log(key);
         $scope.model.id = item.id;
         $scope.model.paddedId = item.paddedId;
         $scope.model.subject = item.subject;
@@ -65,7 +54,7 @@ function tickets($scope, $rootScope, $http, $cookies) {
         $scope.model.level = item.level;
         $scope.model.priority = item.priority;
         $scope.model.state = item.state;
-        $scope.model.answerTime = item.asweTime;
+        $scope.model.answerTime = item.answerTime ? item.answerTime + "d" : null;
         $scope.model.qualityOfService = item.qualityOfService;
         $scope.model.userAssigned = item.userAssigned ? item.userAssigned.showName : null;
         $scope.model.evaluation = item.evaluation;
@@ -111,13 +100,12 @@ function tickets($scope, $rootScope, $http, $cookies) {
                                         if (response.data.message== "success") {
                                             var states = response.data.states;
                                             console.log(states);
-                                            // put all tickets (regardless of state) from this user in a single container
-                                            var tickets = [];
+                                            // Render UI
+                                            var tickets = response.data.tickets;
                                             for (var i = 0; i < states.length; i++) {
                                                 if (typeof states[i].table !== "undefined") {
                                                     // found a table for this state
                                                     for (var j = 0; j < states[i].table.length; j++) {
-                                                        tickets.push(states[i].table[j]);
                                                         $scope.states[i].table[j] = states[i].table[j];
                                                     }
                                                 }
