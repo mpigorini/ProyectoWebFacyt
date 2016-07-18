@@ -9,6 +9,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
     // show administration option as active
     $rootScope.select(2);
     $scope.user = {};
+    $scope.loading = true;
     $scope.notValid = false;
     $scope.editUser = false;
     $scope.notOld = true;
@@ -24,11 +25,12 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
     	.then(function(response) {
             if(response.data.message == "success") {
                 $scope.users = response.data.data;
+                $scope.loading = false;
                 console.log("response: " + response);
             }
         });
     // load all the departments and his positions
-    $http.get('index.php/administration/UsersAdminController/getAllDepartments')
+    $http.get('index.php/configuration/OrganizationConfigController/getAllDepartments')
     	.then(function(response) {
             if(response.data.message == "success") {
                 $scope.departments = response.data.data;

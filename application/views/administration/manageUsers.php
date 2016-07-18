@@ -24,33 +24,48 @@
 <br>
 <div class="container row">   
     <div class="card-panel col s9">
-        <h5 class="center" style="cursor: default;">Lista de usuarios del sistema</h5>
-        <table class="bordered striped" style="display: block; height: 550px; overflow-y: auto;">
-            <thead>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Cédula</th>
-                <th>Teléfono</th>
-                <th>Tipo de usuario</th>
-                <th>Departamento</th>
-                <th>Cargo</th>
-                <th>Editar</th>
-                <th style="width: 4% !important;">Eliminar</th>
-            </thead>
-            <tbody>
-                <tr ng-repeat="user in users | filter:search">
-                    <td>{{user.name}}</td>
-                    <td>{{user.lastname}}</td>
-                    <td>{{user.cedula}}</td>
-                    <td>{{user.phone}}</td>
-                    <td>{{user.type}}</td>
-                    <td>{{user.department}}</td>
-                    <td>{{user.position}}</td>
-                    <td><a class="btn-floating waves-effect waves-light tale" title="Editar usuario {{user.name}}" ng-click="userEditMode(user.id)"><i class="material-icons">mode_edit</i></a></td>
-                    <td><a class="btn-floating waves-effect waves-light red" title="Eliminar usuario {{user.name}}" ng-click="deleteUser(user.id)"><i class="material-icons">delete</i></a></td>
-                </tr>
-            </tbody>
-        </table>
+    	<span ng-show="loading" style="margin-left: 45%;">
+        	<div class="preloader-wrapper big active">
+			    <div class="spinner-layer">
+				      <div class="circle-clipper left">
+				        <div class="circle"></div>
+				      </div><div class="gap-patch">
+				        <div class="circle"></div>
+				      </div><div class="circle-clipper right">
+				        <div class="circle"></div>
+				      </div>
+			    </div>
+		  	</div>
+        </span>
+        <span ng-show="!loading">
+	        <h5 class="center" style="cursor: default;">Lista de usuarios del sistema</h5>
+	        <table class="bordered striped" style="display: block; height: 550px; overflow-y: auto;">
+	            <thead>
+	                <th>Nombre</th>
+	                <th>Apellido</th>
+	                <th>Cédula</th>
+	                <th>Teléfono</th>
+	                <th>Tipo de usuario</th>
+	                <th>Departamento</th>
+	                <th>Cargo</th>
+	                <th>Editar</th>
+	                <th style="width: 4% !important;">Eliminar</th>
+	            </thead>
+	            <tbody>
+	                <tr ng-repeat="user in users | filter:search">
+	                    <td>{{user.name}}</td>
+	                    <td>{{user.lastname}}</td>
+	                    <td>{{user.cedula}}</td>
+	                    <td>{{user.phone}}</td>
+	                    <td>{{user.type}}</td>
+	                    <td>{{user.department}}</td>
+	                    <td>{{user.position}}</td>
+	                    <td><a class="btn-floating waves-effect waves-light tale" title="Editar usuario {{user.name}}" ng-click="userEditMode(user.id)"><i class="material-icons">mode_edit</i></a></td>
+	                    <td><a class="btn-floating waves-effect waves-light red" title="Eliminar usuario {{user.name}}" ng-click="deleteUser(user.id)"><i class="material-icons">delete</i></a></td>
+	                </tr>
+	            </tbody>
+	        </table>
+        </span>
     </div>
     <div class="col s3 center-align">
    		<span ng-show="$parent.helpers">
