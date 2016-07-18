@@ -2,7 +2,7 @@
 <br>
 <div class="row">
 	<div class="col s3 offset-s2">
-	    <div class="card-panel orange accent-4">
+	    <div class="card-panel  blue-grey darken-1">
 	    	<span class="white-text" style="text-align: justify; cursor: default; font-size: 16px;">Puede utilizar la herramienta <i class="material-icons prefix small">search</i> para buscar un usuario en especifico, o filtrar de acuerdo a un departamento, un cargo, etc.</span>
 	    </div>
     </div>
@@ -44,14 +44,14 @@
         </table>
     </div>
     <div class="col s3 center-align">
-    	<div class="card-panel orange accent-4">
+    	<div class="card-panel blue-grey darken-1">
     		<span class="white-text" style="text-align: justify; cursor: default; font-size: 17px;">Al presionar sobre <i class="material-icons prefix small">mode_edit</i>
     			para editar un usuario, se mostrara una nueva sección debajo que le permitirá realizar los cambios que desee.
 				<br><br>
 				También se mostrara una nueva sección debajo si presiona "Nuevo usuario", donde se le solicitaran los datos del usuario que desea agregar.
     		</span>
     	</div>
-    	<button class="btn waves-effect waves-light  tale"  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
+    	<button class="btn waves-effect waves-light  orange accent-4 "  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
     </div>
 </div>
 <br>
