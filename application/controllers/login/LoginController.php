@@ -31,7 +31,6 @@ class LoginController extends CI_Controller {
 
        echo json_encode($result);
     }
-<<<<<<< HEAD
 
     public function getQuestion () {
         try {
@@ -72,6 +71,3 @@ class LoginController extends CI_Controller {
        echo json_encode($result);
     }
 }
-=======
-}
->>>>>>> 53eb34d0301ce28519af930fa3f136a890d5bf0d

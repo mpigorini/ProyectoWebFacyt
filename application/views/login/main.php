@@ -70,7 +70,6 @@
 								<input style="font-size:20px;" type="text" class="validate" ng-model="recovery.recoveryAnswer" autocomplete="off">
 			          			<label style="font-size:20px;">Ingresa tu respuesta...</label>
 							</div>
-<<<<<<< HEAD
 						</div><br>
 						<div class="row">
 							<button class="btn col s2 offset-s3 waves-effect waves-light  yellow darken-4"  name="showSetPass" ng-click="showSetPass()" style="margin-bottom: 25px;">Continuar</button>
@@ -96,11 +95,5 @@
 						</div>
 					</div>
 				</div>
-=======
-						</div>
-				       	<a class="btn col s6 offset-s3 waves-effect waves-light center"  name="login" ng-click="login()">Iniciar sesión</a>
-					</form>
-		        </div>
->>>>>>> 53eb34d0301ce28519af930fa3f136a890d5bf0d
 			</div>
 		</div>
