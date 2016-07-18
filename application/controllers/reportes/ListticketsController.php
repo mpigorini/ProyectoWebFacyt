@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+include (APPPATH. '/libraries/ChromePhp.php');
 class ListticketsController extends CI_Controller {
     
     public function index() {
