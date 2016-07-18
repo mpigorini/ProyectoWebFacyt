@@ -16,6 +16,7 @@ class LoginController extends CI_Controller {
                if($user->getPassword() == $_GET['password']) {
                    $result['message'] ="success";
                    $result['id']= $user->getId();
+                   $result['perfil'] =$user->getType();
                }
                else {
                    $result['message'] = "Error en password";

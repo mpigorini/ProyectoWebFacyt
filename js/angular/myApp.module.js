@@ -27,15 +27,30 @@ angular.module('helpDesk').controller('MainController',
                     $rootScope.helpers=true;
                 }
             };
+            $scope.isLoggedIn = function() {
+              return(auth.isLoggedIn());
+            };
+            if(auth.isLoggedIn()){
+              console.log(auth.perfil());
+            }
+            $scope.isGerente = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '1');
+              }
+            };
+            $scope.isCoordinador = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '2');
+              }
+            };
+            $scope.isTecnico = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '3');
+              }
+            };
         }
     ]
 );
-
-angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth){
-  $scope.isLoggedIn = function() {
-    return(auth.isLoggedIn());
-  };
-});
 
 helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
   $urlRouterProvider
@@ -145,6 +160,21 @@ angular.module('helpDesk')
           console.log('lool');
           e.preventDefault();
           $state.go('tickets');
+        }
+        if(auth.isLoggedIn() && auth.perfil() != '1' && auth.perfil() != '2')
+        {
+          if($location.url() == "/users-administration" || $location.url() == "/tickets-config" || $location.url() == "/organization-config"){
+            e.preventDefault();
+            $state.go('tickets');
+          }
+        }
+        if(auth.isLoggedIn() && auth.perfil() != '1'){
+          if($location.url() == '/reportes-tiempo' || $location.url() == '/reportes-departamento'
+          || $location.url() == '/reportes-analista' || $location.url() == '/reportes-tickets'
+          || $location.url() =='/reportes-satisfaccion'){
+            e.preventDefault();
+            $state.go('tickets');
+          }
         }
   });
 }])

@@ -22,7 +22,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-touch.js"></script>
-        
+
          <!-- Data table-->
         <script type="text/javascript" src="<?php echo base_url(); ?>data-table/dist/md-data-table.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>data-table/dist/md-data-table.min.css">
@@ -54,8 +54,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listsatisfaction.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtime.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtickets.js"></script>
-        
-        
+
+
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
@@ -65,8 +65,8 @@
 </head>
 </head>
 <body>
-  <div ng-controller="Navbar">
-    <header ng-controller="MainController">
+  <div ng-controller="MainController">
+    <header >
         <nav class="teal accent-4">
             <ul id="opProfile" class="dropdown-content">
               <li><a href="#/profile">Editar perfil</a></li>
@@ -185,10 +185,11 @@
             <!-- END Reportes dropdown menu-->
             <!-- Actual menu -->
             <ul class="left">
-                <li ng-class="{active:isSelected(1)}"><a href="#/tickets">Tickets</a></li>
-                <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu">Administración</a></li>
-                <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu">Configuración</a></li>
-                <li ng-class="{active:isSelected(4)}"><a class="dropdown-button" href="#" data-activates="reportesMenu">Reportes</a></li>
+              <li ng-class="{active:isSelected(1)}"><a href="#/tickets">Tickets</a></li>
+              <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu" ng-show="isGerente() || isCoordinador()">Administración</a></li>
+              <li ng-class="{active:isSelected(2)}"><a href="#/tickets-administration" ng-show="isTecnico()">Administración de tickets</a></li>
+              <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu" ng-show="isGerente() || isCoordinador()">Configuración</a></li>
+              <li ><a class="dropdown-button" ng-show="isGerente()">Reportes</a></li>
             </ul>
         </div>
     </nav>
