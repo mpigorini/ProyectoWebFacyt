@@ -100,6 +100,7 @@
 		            <thead>
 		                <th>Nombre</th>
 		                <th>Apellido</th>
+		                <th>Login</th>
 		                <th>Cédula</th>
 		                <th>Teléfono</th>
 		                <th>Tipo de usuario</th>
@@ -112,6 +113,7 @@
 		                <tr ng-repeat="user in users | filter:search2">
 		                    <td>{{user.name}}</td>
 		                    <td>{{user.lastname}}</td>
+		                    <td>{{user.login}}</td>
 		                    <td>{{user.cedula}}</td>
 		                    <td>{{user.phone}}</td>
 		                    <td>{{user.type}}</td>
