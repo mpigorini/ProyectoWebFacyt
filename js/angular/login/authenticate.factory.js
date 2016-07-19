@@ -14,7 +14,7 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                         var timeToExpire =  new Date();
                         timeToExpire.setDate(timeToExpire.getDate() + 7 );
                          //creamos la cookie
-                        $cookies.putObject('session', {username: username , password:password, id:response.data.id}, {
+                        $cookies.putObject('session', {username: username , password:password, id:response.data.id, type:response.data.type}, {
                             expires : timeToExpire
                         });
                         //mandamos a la home
