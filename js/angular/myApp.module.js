@@ -218,5 +218,7 @@ angular.module('helpDesk')
             // check for manager rights
             return userType == 1;
       }
+      // maybe going to login (.otherwise('login'))? if so, keep going!
+      return true;
   }
 }])
