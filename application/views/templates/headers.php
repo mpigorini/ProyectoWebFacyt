@@ -55,7 +55,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtime.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtickets.js"></script>
         
-        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
