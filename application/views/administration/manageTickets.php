@@ -343,7 +343,7 @@
                         </div>
                         <div layout="row">
                             <div flex="45">
-                                <md-autocomplete ng-disabled="!edit" md-selected-item="model.userAssigned" md-min-length="0" placeholder="Selecione un usuario" md-search-text="searchText" md-items="user in getUsers(searchText)" md-item-text="user.showName">
+                                <md-autocomplete  ng-disabled="!edit" md-selected-item="model.userAssigned" md-min-length="0" placeholder="Selecione un usuario" md-search-text="searchText" md-items="user in getUsers(searchText)" md-item-text="user.showName">
                                   <span md-highlight-text="searchText">{{user.showName}}</span>
                                 </md-autocomplete>
                             </div>

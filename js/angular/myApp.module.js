@@ -1,4 +1,7 @@
-var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial", "md.data.table"]);
+var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial", "md.data.table","ui.grid",
+    "ui.grid.grouping",
+    "ui.grid.selection",
+    "ngAnimate"]);
 
 
 angular.module('helpDesk').controller('MainController',
@@ -24,15 +27,30 @@ angular.module('helpDesk').controller('MainController',
                     $rootScope.helpers=true;
                 }
             };
+            $scope.isLoggedIn = function() {
+              return(auth.isLoggedIn());
+            };
+            if(auth.isLoggedIn()){
+              console.log(auth.perfil());
+            }
+            $scope.isGerente = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '1');
+              }
+            };
+            $scope.isCoordinador = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '2');
+              }
+            };
+            $scope.isTecnico = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '3');
+              }
+            };
         }
     ]
 );
-
-angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth){
-  $scope.isLoggedIn = function() {
-    return(auth.isLoggedIn());
-  };
-});
 
 helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
   $urlRouterProvider
@@ -88,6 +106,35 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
         templateUrl: 'index.php/configuration/OrganizationConfigController',
         controller: 'OrganizationConfigController'
     })
+    .state('reportes-tiempo', {
+        url: '/reportes-tiempo',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListtimeController',
+        controller: 'ListtimeCtrl'
+    })
+    .state('reportes-departamento', {
+        url: '/reportes-departamento',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListdepartamentController',
+        controller: 'ListdepartamentCtrl'
+    })
+    .state('reportes-analista', {
+        url: '/reportes-analista',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListtimeanalystController',
+        controller: 'ListtimeanalystCtrl'
+    }).state('reportes-tickets', {
+        url: '/reportes-tickets',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListticketsController',
+        controller: 'ListticketsCtrl'
+    })
+    .state('reportes-satisfaccion', {
+        url: '/reportes-satisfaccion',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListsatisfactionController',
+        controller: 'ListsatisfactionCtrl'
+    });
     // Application theme
     $mdThemingProvider.theme('default')
         .primaryPalette('deep-orange')//teal
@@ -113,6 +160,21 @@ angular.module('helpDesk')
           console.log('lool');
           e.preventDefault();
           $state.go('tickets');
+        }
+        if(auth.isLoggedIn() && auth.perfil() != '1' && auth.perfil() != '2')
+        {
+          if($location.url() == "/users-administration" || $location.url() == "/tickets-config" || $location.url() == "/organization-config"){
+            e.preventDefault();
+            $state.go('tickets');
+          }
+        }
+        if(auth.isLoggedIn() && auth.perfil() != '1'){
+          if($location.url() == '/reportes-tiempo' || $location.url() == '/reportes-departamento'
+          || $location.url() == '/reportes-analista' || $location.url() == '/reportes-tickets'
+          || $location.url() =='/reportes-satisfaccion'){
+            e.preventDefault();
+            $state.go('tickets');
+          }
         }
   });
 }])

@@ -33,17 +33,6 @@ function ticketsAdministration($scope, $rootScope, $http) {
             }
         })
 
-    // load all the users
-    $http.get('index.php/administration/UsersAdminController/getAllUsers')
-    	.then(function(response) {
-            if(response.data.message == "success") {
-                $scope.users = response.data.data;
-                angular.forEach($scope.users, function (user, key) {
-                    user.value = angular.lowercase(user.name) + " " +angular.lowercase(user.lastname);
-                    user.showName = user.name + " " + user.lastname;
-                })
-            }
-        });
    $scope.show = function() {
        console.log($scope.selected);
    }
@@ -55,39 +44,50 @@ function ticketsAdministration($scope, $rootScope, $http) {
 
 
     $scope.selectItem = function(item) {
-        console.log(item);
-        $scope.model.id = item.id;
-        $scope.model.paddedId = item.paddedId;
-        $scope.model.subject = item.subject;
-        $scope.model.description =item.description;
-        $scope.model.type = item.type;
-        $scope.model.level = item.level;
-        $scope.model.priority = item.priority;
-        $scope.model.state = item.state;
-        $scope.model.answerTime = item.answerTime ? item.answerTime + "d" : null;
-        $scope.model.qualityOfService = item.qualityOfService;
-        console.log($scope.model.qualityOfService);
-        $scope.model.evaluation = item.evaluation;
-        $scope.model.userAssigned = item.userAssigned ? item.userAssigned : null;
-        $scope.searchText = "";
-
-        if(item.submitDate != null) {
-          var  date =  new Date(item.submitDate.date);
-          $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
-        }
-        if(item.closeDate != null) {
-          var  date =  new Date(item.closeDate.date);
-           $scope.model.closeDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
-        }else {
-            $scope.model.closeDate = "";
-        }
-        $scope.model.department = item.department;
-        $scope.model.userReporter = item.userReporter
-        $scope.ticketSelected = true;
-
+        setTimeout(prueba(item), 1000);
     }
 
-     $scope.save = function() {
+    function prueba(item) {
+        $scope.model.id = item.id;
+            $scope.model.paddedId = item.paddedId;
+            $scope.model.subject = item.subject;
+            $scope.model.description =item.description;
+            $scope.model.type = item.type;
+            $scope.model.level = item.level;
+            $scope.model.priority = item.priority;
+            $scope.model.state = item.state;
+            $scope.model.answerTime = item.answerTime ? item.answerTime + "d" : null;
+            $scope.model.qualityOfService = item.qualityOfService;
+            $scope.model.evaluation = item.evaluation;
+            // load all the users
+            $http.get('index.php/administration/UsersAdminController/getUsersExcept', {params : item.userReporter})
+            	.then(function(response) {
+                    if(response.data.message == "success") {
+                        $scope.users = response.data.data;
+                    }
+                });
+            if(typeof item.userAssigned != 'undefined') {
+                $scope.model.userAssigned = item.userAssigned;    
+            }
+            
+            $scope.searchText = "";
+    
+            if(item.submitDate != null) {
+              var  date =  new Date(item.submitDate.date);
+              $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
+            }
+            if(item.closeDate != null) {
+              var  date =  new Date(item.closeDate.date);
+               $scope.model.closeDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
+            }else {
+                $scope.model.closeDate = "";
+            }
+            $scope.model.department = item.department;
+            $scope.model.userReporter = item.userReporter
+            $scope.ticketSelected = true;
+    }
+     
+    $scope.save = function() {
 
             swal({
                 title: "Confirmación",
