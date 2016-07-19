@@ -49,8 +49,7 @@
 		                <th>Tipo de usuario</th>
 		                <th>Departamento</th>
 		                <th>Cargo</th>
-		                <th>Editar</th>
-		                <th style="width: 4% !important;">Eliminar</th>
+		                <th style="width: 4% !important;">Editar</th>
 		            </thead>
 		            <tbody>
 		                <tr ng-repeat="user in users | filter:search">
@@ -62,7 +61,6 @@
 		                    <td>{{user.department}}</td>
 		                    <td>{{user.position}}</td>
 		                    <td><a class="btn-floating waves-effect waves-light tale" title="Editar usuario {{user.name}}" ng-click="userEditMode(user.id)"><i class="material-icons">mode_edit</i></a></td>
-		                    <td><a class="btn-floating waves-effect waves-light red" title="Eliminar usuario {{user.name}}" ng-click="deleteUser(user.id)"><i class="material-icons">delete</i></a></td>
 		                </tr>
 		            </tbody>
 		        </table>
@@ -106,8 +104,7 @@
 		                <th>Tipo de usuario</th>
 		                <th>Departamento</th>
 		                <th>Cargo</th>
-		                <th>Editar</th>
-		                <th style="width: 4% !important;">Eliminar</th>
+		                <th style="width: 4% !important;">Editar</th>
 		            </thead>
 		            <tbody>
 		                <tr ng-repeat="user in users | filter:search2">
@@ -120,7 +117,6 @@
 		                    <td>{{user.department}}</td>
 		                    <td>{{user.position}}</td>
 		                    <td><a class="btn-floating waves-effect waves-light tale" title="Editar usuario {{user.name}}" ng-click="userEditMode(user.id)"><i class="material-icons">mode_edit</i></a></td>
-		                    <td><a class="btn-floating waves-effect waves-light red" title="Eliminar usuario {{user.name}}" ng-click="deleteUser(user.id)"><i class="material-icons">delete</i></a></td>
 		                </tr>
 		            </tbody>
 		        </table>

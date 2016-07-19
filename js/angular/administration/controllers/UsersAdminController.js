@@ -273,69 +273,6 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
         	})
     }
 
-    $scope.deleteUser = function(id) {
-    	console.log("deleteUser id: " + id);
-        var sizeUsers = Object.keys($scope.users).length, i=-1, flagUser = true;
-
-        while ( (i<sizeUsers) && (flagUser) ){
-        	i++;
-        	if ($scope.users[i].id == id){
-        		flagUser = false;
-        	}
-        }
-        
-        $scope.user.deleteId = $scope.users[i].id;
-        console.log("$scope.user.deleteId: " + $scope.user.deleteId);
-        var message, logout;
-        if ($scope.user.deleteId == $cookies.getObject("session").id ){
-        	message = "Estas a punto de eliminar TU PERFIL, ¿Estas seguro de querer hacerlo?";
-        	logout = true;
-        }else{
-        	message = "¿Estas seguro de que deseas eliminar a este usuario?";
-        	logout = false;
-        }
-    	swal({
-        	title: message,   
-        	text: "Si es así, ingresa tu contraseña...",   
-        	type: "input",
-        	inputType: "password",   
-        	showCancelButton: true,   
-        	closeOnConfirm: false,   
-        	animation: "slide-from-top",   
-        	inputPlaceholder: "Contraseña"
-        }, 
-        	function(inputValue){
-        		if (inputValue === false) return false;      
-        		if (inputValue === "") {     
-        			swal.showInputError("Debes ingresar tu contraseña");     
-        			return false   
-        		}else if (inputValue!=$cookies.getObject("session").password){
-        			console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
-        			swal.showInputError("Contraseña incorrecta");
-        		}else{
-					$http.get('index.php/administration/UsersAdminController/deleteUser', {deleteId:$scope.user.deleteId})
-                		.then(function(response) {
-							if(response.data.message != "Error") {
-								console.log("response.data.message: " + response.data.message)
-								// reload the table of users
-							    $scope.loadAllUsers();
-							    $scope.editUser = false;
-							    if (logout){
-							    	swal("Actualizado!", "Haz eliminado tu perfil.", "success");
-							    	auth.logout();
-							    }else{
-							    	swal("Actualizado!", "El perfil se ha eliminado exitosamente.", "success");
-							    }
-		                    }else{
-		                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
-		                    }
-		                }, function (response){
-		                    
-		                })
-	           }
-        	})
-    }
-
     $scope.userEditMode = function(id) {
         $scope.editUser = true;
         $scope.notOld = true;
