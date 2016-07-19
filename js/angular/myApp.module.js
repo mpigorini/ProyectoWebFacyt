@@ -19,7 +19,9 @@ angular.module('helpDesk').controller('MainController',
             };
             $rootScope.isSelected = function(selection) {
               return ($rootScope.choice == selection);
-            };
+            }
+            $rootScope.helpImagePath = 'images/ic_info.png';
+
             $scope.helpers = function () {
                 if($rootScope.helpers){
                     $rootScope.helpers=false;
@@ -57,6 +59,8 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
                   .otherwise('login');
   $stateProvider
     .state('login', {
+        // TODO: Replace templateUrl with function that return the URL to the View ONLY if user has the corresponding permissions
+        // TODO: At the END -- tell codeigniter to redirect to base URL when any other url is (manually) specified
         url: '/login',
         module: 'public',
         templateUrl: 'index.php/login/LoginController',
@@ -134,11 +138,28 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
         module: 'private',
         templateUrl: 'index.php/reportes/ListsatisfactionController',
         controller: 'ListsatisfactionCtrl'
+    })
+    .state('solve-tickets', {
+        url: '/solve-tickets',
+        module: 'private',
+        templateUrl: 'index.php/administration/SolveTicketsController',
+        controller: 'SolveTicketsController'
+    })
+    .state('forbidden', {
+        url: '/forbidden',
+        module: 'private',
+        templateUrl: 'index.php/ForbiddenAccessController'
     });
     // Application theme
     $mdThemingProvider.theme('default')
-        .primaryPalette('deep-orange')//teal
-        .accentPalette('blue-grey');//deep-orange
+        .primaryPalette('teal')//teal
+        .accentPalette('deep-orange', {
+            'default': '500',
+        }); // deep-orange
+        $mdThemingProvider.theme('dark-blue-grey').backgroundPalette('blue-grey').dark();
+        $mdThemingProvider.theme('blue-grey').backgroundPalette('blue-grey', {
+          'default': '600',
+    });
 });
 
 // $routeChangeStart changed for $locationChangeStart because event.preventDefault was
@@ -146,20 +167,27 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
 // user was already logged in.
 // $locationChangeStart does not provide $state information so can't really use it at all.
 angular.module('helpDesk')
-     .run(['$rootScope', '$location','$state','auth', function ($rootScope, $location, $state,auth) {
+     .run(['$rootScope', '$location','$state','auth', '$cookies', function ($rootScope, $location, $state, auth, $cookies) {
         $rootScope.$on("$locationChangeStart", function(e, toState, toParams, fromState, fromParams) {
 
         if (!auth.isLoggedIn() && $location.url() != "/login") {
-          // console.log('DENY : Redirecting to Login');
-          e.preventDefault();
-          $state.go('login');
-          //$location.path('/login');
-          // console.log($location.url());
+            // if user is not logged in and is trying to access
+            // private content, send to login.
+            e.preventDefault();
+            $state.go('login');
         }
         else if(auth.isLoggedIn() && $location.url() == "/login") {
-          console.log('lool');
-          e.preventDefault();
-          $state.go('tickets');
+            // if user Is logged in and is trying to access login page
+            // send to home page (tickets)
+            e.preventDefault();
+            $state.go('tickets');
+        } else if (auth.isLoggedIn() && !userHasPermission($cookies.getObject("session").perfil, $location.url())) {
+            // check if user actually has access permission to intended url
+
+            e.preventDefault();
+            // if user does not have the propper permission, send home
+            // or maybe send to error page.
+            $state.go('forbidden');
         }
         if(auth.isLoggedIn() && auth.perfil() != '1' && auth.perfil() != '2')
         {
@@ -177,4 +205,50 @@ angular.module('helpDesk')
           }
         }
   });
+
+  function userHasPermission(userType, url) {
+      switch (url) {
+        case '/profile':
+            // everybody can see it's profile
+            return true;
+        case '/new-ticket':
+            // everybody can create a new ticket
+            return true;
+        case '/tickets':
+            // everybody can access home page
+            return true;
+        case '/solve-tickets':
+            // check for technician rights
+            return userType <= 3;
+        case '/tickets-administration':
+            // check rights for administrator
+            return userType <= 2;
+        case '/users-administration':
+            // check rights for administrator
+            return userType <= 2;
+        case '/tickets-config':
+            // check for administrator rights
+            return userType <= 2;
+        case '/organization-config':
+            // check for administrator rights
+            return userType <= 2;
+        case '/reportes-tiempo':
+            // check for manager rights
+            return userType == 1;
+        case '/reportes-departamento':
+            // check for manager rights
+            return userType == 1;
+        case '/reportes-analista':
+            // check for manager rights
+            return userType == 1;
+        case '/reportes-tickets':
+            // check for manager rights
+            return userType == 1;
+        case '/reportes-satisfaccion':
+            // check for manager rights
+            return userType == 1;
+      }
+      // maybe going to login (.otherwise('login'))? if so, keep going!
+      return true;
+  }
 }])

@@ -9,7 +9,10 @@
  */
 angular.module('helpDesk')
   .controller('ListtimeanalystCtrl',['$scope','$http', function ($scope,$http) {
-
+      //cerramos automáticamente el mobile sideNav
+      $('.button-collapse').sideNav('hide');
+      // show reports option as active
+      $rootScope.select(6);
     $scope.table=false;
     $scope.title=false;
     $scope.loader=false;
@@ -28,16 +31,16 @@ angular.module('helpDesk')
                 $scope.table=true;
                 $scope.title=true;
                 $scope.loader=false;
-                console.log($scope.loader,$scope.search,$scope.title);  
+                console.log($scope.loader,$scope.search,$scope.title);
                 } else
                 {
-                alert(response.data.message); 
+                alert(response.data.message);
                 }
-        }); 
-    };	
+        });
+    };
 
 
 
-  	
-    
+
+
 }]);

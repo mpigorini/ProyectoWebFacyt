@@ -17,6 +17,7 @@ class LoginController extends CI_Controller {
                    $result['message'] ="success";
                    $result['id']= $user->getId();
                    $result['perfil'] =$user->getType();
+                   $result['type'] = $user->getType();
                }
                else {
                    $result['message'] = "Error en password";

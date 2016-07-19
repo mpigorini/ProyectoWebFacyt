@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include (APPPATH. '/libraries/ChromePhp.php');
 class TicketsAdminController extends CI_Controller {
 
 
@@ -30,7 +29,7 @@ class TicketsAdminController extends CI_Controller {
 				foreach ($maxAnswerTimes as $maxAnswerTime) {
 					array_push($temp, $maxAnswerTime->getMaxTime());
 				}
-				// Store each max time in a hashed max answer time structure
+				// Store each max time in a hashed max answer times structure
 				$counter = 0;
 				foreach($types as $tKey => $type) {
 					 foreach($priorities as $pKey => $priority) {
@@ -50,7 +49,7 @@ class TicketsAdminController extends CI_Controller {
 		        		$result['states'][$key]['table'][$keyTicket]['type'] = $ticket->getType();
 		        		$result['states'][$key]['table'][$keyTicket]['level'] = $ticket->getLevel();
 		        		$result['states'][$key]['table'][$keyTicket]['priority'] = $ticket->getPriority();
-		        		$result['states'][$key]['table'][$keyTicket]['answerTime'] = $ticket->getAnswerTime();
+						$result['states'][$key]['table'][$keyTicket]['answerTime'] = $ticket->getAnswerTime() !== null ? $ticket->getAnswerTime() . "d / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d" : "- / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d";
 		        		$result['states'][$key]['table'][$keyTicket]['qualityOfService'] = $ticket->getQualityOfService();
 		        		//Load user
 	        			$result['states'][$key]['table'][$keyTicket]['userReporter']['id'] = $ticket->getUserReporter()->getId();
@@ -185,7 +184,7 @@ class TicketsAdminController extends CI_Controller {
 				if ($ticket->getState() == "Cerrado" && $_GET['state'] != "Cerrado") {
 					// Re-opening ticket.
 					// Reset answer time from ticket.
-					$ticket->setAnswerTime("");
+					$ticket->setAnswerTime(null);
 					// Reset closing date
 					$ticket->setCloseDate(null);
 				} else if ($_GET['state'] == "Cerrado" && $ticket->getState() != "Cerrado") {

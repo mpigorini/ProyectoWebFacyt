@@ -13,7 +13,7 @@ angular.module('helpDesk.login').factory("auth", function($cookies,$location, $h
                     if(response.data.message === "success") {
                         var timeToExpire =  new Date();
                         timeToExpire.setDate(timeToExpire.getDate() + 7 );
-                         //creamos la cookie
+                         //creamos la cookie type:response.data.type
                          console.log(response.data.perfil);
                         $cookies.putObject('session', {username: username , password:password, id:response.data.id, perfil:response.data.perfil}, {
                             expires : timeToExpire

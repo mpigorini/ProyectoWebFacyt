@@ -1,22 +1,24 @@
 angular
     .module('helpDesk')
-    .controller('TicketsAdminController', ticketsAdministration);
+    .controller('SolveTicketsController', solveTickets);
 
-ticketsAdministration.$inject = ['$scope', '$rootScope', '$http'];
+solveTickets.$inject = ['$scope', '$rootScope', '$http', '$cookies'];
 
-function ticketsAdministration($scope, $rootScope, $http) {
+function solveTickets($scope, $rootScope, $http, $cookies) {
     'use strict';
     //cerramos automáticamente el mobile sideNav
     $('.button-collapse').sideNav('hide');
-    // show administration option as active
-    $rootScope.select(2);
+    // show solving option as active
+    $rootScope.select(7);
     $scope.loading = true;
     $scope.ticketSelected = false;
     $scope.edit = false;
     $scope.states="";
     $scope.tabs=[];
     $scope.selected = [];
-    $http.get('index.php/administration/TicketsAdminController/getStates')
+    var userId = $cookies.getObject("session").id;
+
+    $http.get('index.php/administration/SolveTicketsController/getStates', {params:{userId:userId}})
         .then(function (response){
             if (response.data.message== "success") {
                 $scope.states = response.data.states;
@@ -78,47 +80,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
 
     }
 
-    function prueba(item) {
-        $scope.model.id = item.id;
-            $scope.model.paddedId = item.paddedId;
-            $scope.model.subject = item.subject;
-            $scope.model.description =item.description;
-            $scope.model.type = item.type;
-            $scope.model.level = item.level;
-            $scope.model.priority = item.priority;
-            $scope.model.state = item.state;
-            $scope.model.answerTime = item.answerTime ? item.answerTime + "d" : null;
-            $scope.model.qualityOfService = item.qualityOfService;
-            $scope.model.evaluation = item.evaluation;
-            // load all the users
-            $http.get('index.php/administration/UsersAdminController/getUsersExcept', {params : item.userReporter})
-            	.then(function(response) {
-                    if(response.data.message == "success") {
-                        $scope.users = response.data.data;
-                    }
-                });
-            if(typeof item.userAssigned != 'undefined') {
-                $scope.model.userAssigned = item.userAssigned;
-            }
-
-            $scope.searchText = "";
-
-            if(item.submitDate != null) {
-              var  date =  new Date(item.submitDate.date);
-              $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
-            }
-            if(item.closeDate != null) {
-              var  date =  new Date(item.closeDate.date);
-               $scope.model.closeDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
-            }else {
-                $scope.model.closeDate = "";
-            }
-            $scope.model.department = item.department;
-            $scope.model.userReporter = item.userReporter
-            $scope.ticketSelected = true;
-    }
-
-    $scope.save = function() {
+     $scope.save = function() {
 
             swal({
                 title: "Confirmación",
@@ -136,7 +98,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
                     $http.get('index.php/administration/TicketsAdminController/save',{params:$scope.model})
                         .then(function(response) {
                             if (response.data.message == "success") {
-                                $http.get('index.php/administration/TicketsAdminController/getStates')
+                                $http.get('index.php/administration/SolveTicketsController/getStates', {params:{userId:userId}})
                                     .then(function (response){
                                         if (response.data.message== "success") {
                                             var states = response.data.states;
@@ -182,21 +144,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
             });
     }
 
-    $scope.getUsers = function (filter) {
 
-        $scope.filter = filter;
-        var result = filter ? $scope.users.filter(filterForName) : $scope.users;
-
-        return result;
-
-    }
-
-    function filterForName(user) {
-
-        var filter = angular.lowercase($scope.filter);
-        return user.value.indexOf(filter) >= 0;
-
-    }
     $scope.clearModel = function() {
         $scope.ticketSelected = false;
         $scope.selected = [];
@@ -212,6 +160,4 @@ function ticketsAdministration($scope, $rootScope, $http) {
     $scope.editMode = function(){
         $scope.edit =true;
     }
-
-
 }

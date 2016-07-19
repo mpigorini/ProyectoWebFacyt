@@ -6,6 +6,8 @@ tickets.$inject = ['$scope', '$rootScope', '$http', '$cookies'];
 
 function tickets($scope, $rootScope, $http, $cookies) {
     'use strict';
+    //cerramos automáticamente el mobile sideNav
+    $('.button-collapse').sideNav('hide');
     // show Tickets option as active
     $rootScope.select(1);
     $scope.loading = true;
@@ -54,7 +56,7 @@ function tickets($scope, $rootScope, $http, $cookies) {
         $scope.model.level = item.level;
         $scope.model.priority = item.priority;
         $scope.model.state = item.state;
-        $scope.model.answerTime = item.answerTime ? item.answerTime + "d" : null;
+        $scope.model.answerTime = item.answerTime;
         $scope.model.qualityOfService = item.qualityOfService;
         $scope.model.userAssigned = item.userAssigned ? item.userAssigned.showName : null;
         $scope.model.evaluation = item.evaluation;
