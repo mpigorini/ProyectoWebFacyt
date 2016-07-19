@@ -258,10 +258,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
 								$scope.labelLastname = $scope.user.lastname;
 								// Esta linea se ejecuta si el usuario se edita a si mismo	
 								if ( $scope.user.id == $cookies.getObject("session").id ){
-									$cookies.putObject('session', {username: $scope.user.login , password:$scope.user.password, id:$scope.user.id});
-									console.log("$cookies.getObject('session').login: " + $cookies.getObject("session").username)
-									console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
-									console.log("$cookies.getObject('session').id: " + $cookies.getObject("session").id)
+									$cookies.putObject('session', {username: $scope.user.login , password:$scope.user.password, id:$scope.user.id, perfil:$scope.user.updateType});
 								}
 								// reload the table of users
 							    $scope.loadAllUsers();

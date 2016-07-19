@@ -36,6 +36,7 @@ angular.module('helpDesk').controller('UserController',
 	                    $scope.edit.position = response.data.position;
 	                    $scope.edit.department = response.data.department;
 	                    $scope.edit.type = response.data.type;
+	                    $scope.edit.typeInt = response.data.typeInt;
 	                    $scope.edit.email = response.data.email;
 	                    $scope.label = response.data.name;
 	                    $scope.loading = false;
@@ -94,7 +95,7 @@ angular.module('helpDesk').controller('UserController',
 										if(response.data.message != "Error") {
 											$scope.mode = false;
 											$scope.label = $scope.edit.username;
-											$cookies.putObject('session', {username: $scope.edit.login , password:$scope.edit.password, id:id});
+											$cookies.putObject('session', {username: $scope.edit.login , password:$scope.edit.password, id:id, perfil:$scope.edit.typeInt});
 					                    	swal("Actualizado!", "Los cambios en tu información personal se han guardado exitosamente.", "success");
 					                    }else{
 					                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
