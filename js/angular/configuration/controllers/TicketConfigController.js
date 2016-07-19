@@ -1,6 +1,8 @@
 angular.module('helpDesk').controller('TicketConfigController',
     ['$scope', '$rootScope','$http','$mdConstant',
         function($scope, $rootScope, $http, $mdConstant) {
+            //cerramos automáticamente el mobile sideNav
+            $('.button-collapse').sideNav('hide');
             // show configuration option as active
             $rootScope.select(3);
             $scope.edit = false;

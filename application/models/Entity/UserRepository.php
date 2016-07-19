@@ -13,5 +13,12 @@ use Doctrine\ORM\EntityRepository;
 class UserRepository extends EntityRepository
 {
   
-    
+    public function findAllExcept($user) {
+        $qb = $this->createQueryBuilder('\Entity\Users');
+        $qb->select('u')
+           ->from('\Entity\Users', 'u')
+           ->where( 'u != :user')
+           ->setParameter('user', $user);
+        return $qb->getQuery()->getResult();
+    } 
 }

@@ -197,6 +197,23 @@ class TicketsAdminController extends CI_Controller {
 					// Set closing date
 					$ticket->setCloseDate($today);
 					// TODO: SENT EMAIL TO USER - TICKET CLOSED!
+					// the message
+                    $msg = "First line of text\nSecond line of text";
+                    
+                    // use wordwrap() if lines are longer than 70 characters
+                    $msg = wordwrap($msg,70);
+                    
+                    // send email
+                    try {
+                        $verify = mail("mpigorini@gmail.com","My subject",$msg);    
+                        \ChromePhp::log("Envio de email");
+                        \ChromePhp::log($verify);
+                        \ChromePhp::log("Finde envio de email");
+                    }catch(Exception $e){
+                        \ChromePhp::log("Excepcion");
+                        \ChromePhp::log($e);
+                    }
+                    
 				}
                 $ticket->setState($_GET['state']);
                 $ticket->setSolutionDescription(isset($_GET['solutionDescription']) ? $_GET['solutionDescription'] : "" );

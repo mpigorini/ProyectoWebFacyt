@@ -1,4 +1,7 @@
-var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial", "md.data.table"]);
+var helpDesk = angular.module("helpDesk", ["ui.router", "helpDesk.login", "ui.materialize", "ngMaterial", "md.data.table","ui.grid",
+    "ui.grid.grouping",
+    "ui.grid.selection",
+    "ngAnimate"]);
 
 
 angular.module('helpDesk').controller('MainController',
@@ -6,6 +9,7 @@ angular.module('helpDesk').controller('MainController',
         function($rootScope,$scope, auth) {
             $rootScope.model = {};
             $rootScope.model.errorLogin = "";
+            $rootScope.helpers = false;
             $scope.logout = function () {
                 auth.logout();
             };
@@ -16,7 +20,15 @@ angular.module('helpDesk').controller('MainController',
             $rootScope.isSelected = function(selection) {
               return ($rootScope.choice == selection);
             }
-            $rootScope.helpImagePath = 'images/ic_info.png'
+            $rootScope.helpImagePath = 'images/ic_info.png';
+
+            $scope.helpers = function () {
+                if($rootScope.helpers){
+                    $rootScope.helpers=false;
+                }else{
+                    $rootScope.helpers=true;
+                }
+            };
         }
     ]
 );
@@ -83,6 +95,35 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
         templateUrl: 'index.php/configuration/OrganizationConfigController',
         controller: 'OrganizationConfigController'
     })
+    .state('reportes-tiempo', {
+        url: '/reportes-tiempo',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListtimeController',
+        controller: 'ListtimeCtrl'
+    })
+    .state('reportes-departamento', {
+        url: '/reportes-departamento',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListdepartamentController',
+        controller: 'ListdepartamentCtrl'
+    })
+    .state('reportes-analista', {
+        url: '/reportes-analista',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListtimeanalystController',
+        controller: 'ListtimeanalystCtrl'
+    }).state('reportes-tickets', {
+        url: '/reportes-tickets',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListticketsController',
+        controller: 'ListticketsCtrl'
+    })
+    .state('reportes-satisfaccion', {
+        url: '/reportes-satisfaccion',
+        module: 'private',
+        templateUrl: 'index.php/reportes/ListsatisfactionController',
+        controller: 'ListsatisfactionCtrl'
+    })
     .state('solve-tickets', {
         url: '/solve-tickets',
         module: 'private',
@@ -91,12 +132,12 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
     });
     // Application theme
     $mdThemingProvider.theme('default')
-        .primaryPalette('teal')
-        .accentPalette('deep-orange');
-    $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
-    $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
-    $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
-    $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+        .primaryPalette('teal')//teal
+        .accentPalette('deep-orange');//blue-gray
+        $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+        $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
+        $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+        $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
 });
 
 // $routeChangeStart changed for $locationChangeStart because event.preventDefault was

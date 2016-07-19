@@ -21,10 +21,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-touch.js"></script>
 
          <!-- Data table-->
         <script type="text/javascript" src="<?php echo base_url(); ?>data-table/dist/md-data-table.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>data-table/dist/md-data-table.min.css">
+          <!-- START ui-Grid bowers-->
+        <link rel="stylesheet" type="text/css" href="ui-grid/ui-grid.css" />
+        <script src="ui-grid/ui-grid.js"></script>
+        <!-- END ui-Grid bowers-->
 
         <!-- Angular Material Library -->
         <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.js"></script>
@@ -45,11 +50,19 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/administration/controllers/SolveTicketsController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/TicketConfigController.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/configuration/controllers/OrganizationConfigController.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtimeanalyst.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listdepartament.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listsatisfaction.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtime.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/angular/reportes/controllers/Listtickets.js"></script>
+
+
         <script type="text/javascript" src="<?php echo base_url(); ?>js/init.js"></script>
         <!-- Sweet Alert load -->
         <script type="text/javascript" src="<?php echo base_url(); ?>sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/dist/sweetalert.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>sweetalert/themes/google/google.css">
+        <title>Help Desk</title>
 </head>
 </head>
 <body>
@@ -63,10 +76,16 @@
             </ul>
             <div class="container nav-wrapper">
                 <a ng-show="isLoggedIn()" class="brand-logo" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
-                <a ng-show="!isLoggedIn()" class="brand-logo center" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help Desk</a>
+                <a ng-show="!isLoggedIn()" class="brand-logo center" href="#/main"><i class="material-icons left">supervisor_account</i>Company name help desk</a>
                 <ul class="right hide-on-med-and-down" ng-show="isLoggedIn()">
                     <li ng-class="{active:isSelected(4)}"><a class="waves-effect waves-light yellow darken-4 btn" href="#/new-ticket">Nuevo ticket</a></li>
                     <li ng-class="{active:isSelected(5)}"><a class="dropdown-button" href="#" data-activates="opProfile">Mi perfil<i class="material-icons right">perm_identity</i></a></li>
+                    <span ng-show="!$parent.helpers">
+                        <li class="tooltipped" data-position="bottom" data-delay="60" data-tooltip="Mostrar tarjetas de ayuda"><a ng-click="helpers()" style="font-weight: bold; font-size: 22px;">?</a></li>
+                    </span>
+                    <span ng-show="$parent.helpers">
+                        <li class="tooltipped" data-position="bottom" data-delay="60" data-tooltip="Ocultar tarjetas de ayuda"><a ng-click="helpers()" style="font-weight: bold; font-size: 22px;">?</a></li>
+                    </span>
                 </ul>
                 <!-- Mobile nav-bar -->
 				<ul id="nav-mobile" class="side-nav" ng-show="isLoggedIn()">
@@ -115,6 +134,26 @@
                             </li>
                         </ul>
                     </li>
+                    <li><a href="#/solve-tickets"><i class="material-icons right">build</i>Atender</a></li>
+                    <!-- Reportes -->
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header waves-effect waves-teal">Reportes<i class="material-icons right">description</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="#/reportes-tickets" class="waves-effect waves-teal">Tickets</a></li>
+                                        <li><a href="#/reportes-tiempo" class="waves-effect waves-teal">Tiempo</a></li>
+                                        <li><a href="#/reportes-departamento" class="waves-effect waves-teal">Departamento</a></li>
+                                        <li><a href="#/reportes-analista" class="waves-effect waves-teal">Analista</a></li>
+                                        <li><a href="#/reportes-satisfaccion" class="waves-effect waves-teal">Satisfacción</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a ng-click="helpers()"><i class="material-icons right">info_outline</i>Carta de ayuda</a></li>
                 </ul>
 				<a ng-show="isLoggedIn()" href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
@@ -135,11 +174,25 @@
                 <li class="divider"></li>
                 <li><a href="#/users-administration" class="waves-effect waves-teal">Usuarios</a></li>
             </ul>
+             <!-- Reportes dropdown menu -->
+            <ul id="reportesMenu" class="dropdown-content">
+                <li><a href="#/reportes-tickets" class="waves-effect waves-teal">Todos Los tickets</a></li>
+                <li class="divider"></li>
+                <li><a href="#/reportes-tiempo" class="waves-effect waves-teal">Por tiempo</a></li>
+                <li class="divider"></li>
+                <li><a href="#/reportes-departamento" class="waves-effect waves-teal">Por departamento</a></li>
+                <li class="divider"></li>
+                <li><a href="#/reportes-analista" class="waves-effect waves-teal">Por Analista</a></li>
+                <li class="divider"></li>
+                <li><a href="#/reportes-satisfaccion" class="waves-effect waves-teal">Nivel de Satisfaccion</a></li>
+            </ul>
+            <!-- END Reportes dropdown menu-->
             <!-- Actual menu -->
             <ul class="left">
                 <li ng-class="{active:isSelected(1)}"><a href="#/tickets">Tickets</a></li>
                 <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu">Administración</a></li>
                 <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu">Configuración</a></li>
+                <li ng-class="{active:isSelected(6)}"><a class="dropdown-button" href="#" data-activates="reportesMenu">Reportes</a></li>
                 <li ng-class="{active:isSelected(7)}"><a href="#/solve-tickets">Atender</a></li>
             </ul>
         </div>

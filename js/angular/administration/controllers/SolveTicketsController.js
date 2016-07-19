@@ -6,7 +6,9 @@ solveTickets.$inject = ['$scope', '$rootScope', '$http', '$cookies'];
 
 function solveTickets($scope, $rootScope, $http, $cookies) {
     'use strict';
-    // show administration option as active
+    //cerramos automáticamente el mobile sideNav
+    $('.button-collapse').sideNav('hide');
+    // show solving option as active
     $rootScope.select(7);
     $scope.loading = true;
     $scope.ticketSelected = false;

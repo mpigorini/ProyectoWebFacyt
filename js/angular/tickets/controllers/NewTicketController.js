@@ -6,6 +6,8 @@ newTicket.$inject = ['$scope', '$rootScope', '$http', '$cookies'];
 
 function newTicket($scope, $rootScope, $http, $cookies) {
     'use strict';
+    //cerramos automáticamente el mobile sideNav
+    $('.button-collapse').sideNav('hide');
     // show NewTicket option as active
     $rootScope.select(4);
     $scope.ticket = {}

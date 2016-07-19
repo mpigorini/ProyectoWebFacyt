@@ -6,9 +6,13 @@ usersAdministration.$inject = ['$scope', '$rootScope', '$http', '$cookies', 'aut
 
 function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
     'use strict';
+    //cerramos automáticamente el mobile sideNav
+    $('.button-collapse').sideNav('hide');
     // show administration option as active
     $rootScope.select(2);
     $scope.user = {};
+    $scope.loading = true;
+    $scope.notValid = false;
     $scope.editUser = false;
     $scope.notOld = true;
     $scope.selectType = ["Gerente", "Coordinador de sistema", "Técnico", "Solicitante"];
@@ -23,11 +27,12 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
     	.then(function(response) {
             if(response.data.message == "success") {
                 $scope.users = response.data.data;
+                $scope.loading = false;
                 console.log("response: " + response);
             }
         });
     // load all the departments and his positions
-    $http.get('index.php/administration/UsersAdminController/getAllDepartments')
+    $http.get('index.php/configuration/OrganizationConfigController/getAllDepartments')
     	.then(function(response) {
             if(response.data.message == "success") {
                 $scope.departments = response.data.data;
@@ -39,7 +44,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
                 // console.log("$scope.departments[0].positions[0].name:" + $scope.departments[0].positions[0].name)
                 // console.log("$scope.departments[0].positions[1].name:" + $scope.departments[0].positions[1].name)
             }
-        });	
+        });
 
     $scope.loadUser = function(id) {
     	console.log("id: " + id);
@@ -87,6 +92,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
      //    console.log("$scope.user.newPosition: " + $scope.user.newPosition)
      //    console.log("$scope.user.newDepartment: " + $scope.user.newDepartment)
      //    console.log("$scope.user.newType: " + $scope.user.newType)
+        // console.log("$scope.user.email: " + $scope.user.email)
 
 	    if( ($scope.user.login==undefined) || ($scope.user.login=="") ||
 	    		($scope.user.password==undefined) || ($scope.user.password=="") ||
@@ -94,7 +100,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
 	    		($scope.user.lastname==undefined) || ($scope.user.lastname=="") ||
 	    		($scope.user.phone==undefined) || ($scope.user.phone=="") ||
 	    		($scope.user.cedula==undefined) || ($scope.user.cedula=="") ||
-	    		($scope.user.email==undefined) || ($scope.user.email=="") ){
+                ($scope.user.email=="") ){
 	            sweetAlert("Oops...", "Asegúrese de que ningún campo se encuentre vació.", "error");
 	    }else{
 	        //solving the type of the user
@@ -107,26 +113,30 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
 	        }
 	        $scope.solvingType($scope.user.updateType);
 
-	        //solving the department-position of the users whit the index
-	        if( ( $scope.user.newDepartment == undefined ) || ( $scope.user.newDepartment == null ) ) {
-	        	$scope.user.updateDepartment = $scope.user.department;
-	        	$scope.user.updatePosition = $scope.user.position;
-	        	$scope.findIndex();
-	        	console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
-	        	console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
-	        	// update users info
-	        	$scope.updateUser();
-	        } else if ( ( $scope.user.newPosition == undefined ) || ( $scope.user.newPosition == null ) ){
-	        	sweetAlert("Oops...", "Asegúrese de elegir el CARGO.", "error");
-	        } else {
-	        	$scope.user.updateDepartment = $scope.user.newDepartment;
-	        	$scope.user.updatePosition = $scope.user.newPosition;
-	        	$scope.findIndex();
-	        	console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
-	        	console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
-	        	// update users info
-	        	$scope.updateUser();
-	        }
+            if($scope.notValid){
+                sweetAlert("Oops...", "Ingrese un correo electrónico valido.", "error");
+            }else{
+                //solving the department-position of the users whit the index
+                if( ( $scope.user.newDepartment == undefined ) || ( $scope.user.newDepartment == null ) ) {
+                    $scope.user.updateDepartment = $scope.user.department;
+                    $scope.user.updatePosition = $scope.user.position;
+                    $scope.findIndex();
+                    console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
+                    console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
+                    // update users info
+                    $scope.updateUser();
+                } else if ( ( $scope.user.newPosition == undefined ) || ( $scope.user.newPosition == null ) ){
+                    sweetAlert("Oops...", "Asegúrese de elegir el CARGO.", "error");
+                } else {
+                    $scope.user.updateDepartment = $scope.user.newDepartment;
+                    $scope.user.updatePosition = $scope.user.newPosition;
+                    $scope.findIndex();
+                    console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
+                    console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
+                    // update users info
+                    $scope.updateUser();
+                }
+            }
     	}
     }
 
@@ -144,7 +154,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
      //    console.log("$scope.user.newPosition: " + $scope.user.newPosition)
      //    console.log("$scope.user.newDepartment: " + $scope.user.newDepartment)
      //    console.log("$scope.user.newType: " + $scope.user.newType)
-     //    console.log("$scope.user.email: " + $scope.user.email)
+        // console.log("$scope.user.email: " + $scope.user.email)
      //    //Q&A
      //    console.log("$scope.user.question: " + $scope.user.question)
      //    console.log("$scope.user.answer: " + $scope.user.answer)
@@ -157,29 +167,31 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
     		($scope.user.cedula==undefined) || ($scope.user.cedula=="") ||
     		($scope.user.newDepartment==undefined) || ($scope.user.newDepartment=="")||
     		($scope.user.newPosition==undefined) || ($scope.user.newPosition=="") ||
-    		($scope.user.newType==undefined) || ($scope.user.newType=="") ||
-    		($scope.user.email==undefined) || ($scope.user.email=="") ||
     		($scope.user.question==undefined) || ($scope.user.question=="") ||
-    		($scope.user.answer==undefined) || ($scope.user.answer=="") ){
+    		($scope.user.answer==undefined) || ($scope.user.answer=="") ||
+            ($scope.user.email=="") ){
         	sweetAlert("Oops...", "Asegúrese de que ningún campo se encuentre vació.", "error");
         }else{
         	console.log("nuevo user");
-        	//solving type
-	        $scope.solvingType($scope.user.newType);
+            if($scope.notValid){
+                sweetAlert("Oops...", "Ingrese un correo electrónico valido.", "error");
+            }else{
+                //solving type
+                $scope.solvingType($scope.user.newType);
 
-	        //solving question
-	        $scope.solvingQuestion($scope.user.question);
+                //solving question
+                $scope.solvingQuestion($scope.user.question);
 
-	        //solving index
-	        $scope.user.updateDepartment = $scope.user.newDepartment;
-        	$scope.user.updatePosition = $scope.user.newPosition;
-        	console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
-        	console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
-        	$scope.findIndex();
+                //solving index
+                $scope.user.updateDepartment = $scope.user.newDepartment;
+                $scope.user.updatePosition = $scope.user.newPosition;
+                console.log("$scope.user.updateDepartment: " + $scope.user.updateDepartment)
+                console.log("$scope.user.updatePosition: " + $scope.user.updatePosition)
+                $scope.findIndex();
 
-        	//saving user
-        	$scope.updateUser();
-
+                //saving user
+                $scope.updateUser();
+            }
         }
     }
 
@@ -222,20 +234,20 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
     		saveOrUpdate = "El perfil se ha actualizado exitosamente.";
     	}
     	swal({
-        	title: message,   
-        	text: "Si es así, ingresa tu contraseña...",   
+        	title: message,
+        	text: "Si es así, ingresa tu contraseña...",
         	type: "input",
-        	inputType: "password",   
-        	showCancelButton: true,   
-        	closeOnConfirm: false,   
-        	animation: "slide-from-top",   
+        	inputType: "password",
+        	showCancelButton: true,
+        	closeOnConfirm: false,
+        	animation: "slide-from-top",
         	inputPlaceholder: "Contraseña"
-        }, 
+        },
         	function(inputValue){
-        		if (inputValue === false) return false;      
-        		if (inputValue === "") {     
-        			swal.showInputError("Debes ingresar tu contraseña");     
-        			return false   
+        		if (inputValue === false) return false;
+        		if (inputValue === "") {
+        			swal.showInputError("Debes ingresar tu contraseña");
+        			return false
         		}else if (inputValue!=$cookies.getObject("session").password){
         			console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
         			swal.showInputError("Contraseña incorrecta");
@@ -246,7 +258,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
 								console.log("response.data.message: " + response.data.message)
 								$scope.labelName = $scope.user.name;
 								$scope.labelLastname = $scope.user.lastname;
-								// Esta linea se ejecuta si el usuario se edita a si mismo	
+								// Esta linea se ejecuta si el usuario se edita a si mismo
 								if ( $scope.user.id == $cookies.getObject("session").id ){
 									$cookies.putObject('session', {username: $scope.user.login , password:$scope.user.password, id:$scope.user.id});
 									console.log("$cookies.getObject('session').login: " + $cookies.getObject("session").username)
@@ -260,7 +272,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
 		                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
 		                    }
 		                }, function (response){
-		                    
+
 		                })
 	           }
         	})
@@ -276,7 +288,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
         		flagUser = false;
         	}
         }
-        
+
         $scope.user.deleteId = $scope.users[i].id;
         console.log("$scope.user.deleteId: " + $scope.user.deleteId);
         var message, logout;
@@ -288,20 +300,20 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
         	logout = false;
         }
     	swal({
-        	title: message,   
-        	text: "Si es así, ingresa tu contraseña...",   
+        	title: message,
+        	text: "Si es así, ingresa tu contraseña...",
         	type: "input",
-        	inputType: "password",   
-        	showCancelButton: true,   
-        	closeOnConfirm: false,   
-        	animation: "slide-from-top",   
+        	inputType: "password",
+        	showCancelButton: true,
+        	closeOnConfirm: false,
+        	animation: "slide-from-top",
         	inputPlaceholder: "Contraseña"
-        }, 
+        },
         	function(inputValue){
-        		if (inputValue === false) return false;      
-        		if (inputValue === "") {     
-        			swal.showInputError("Debes ingresar tu contraseña");     
-        			return false   
+        		if (inputValue === false) return false;
+        		if (inputValue === "") {
+        			swal.showInputError("Debes ingresar tu contraseña");
+        			return false
         		}else if (inputValue!=$cookies.getObject("session").password){
         			console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
         			swal.showInputError("Contraseña incorrecta");
@@ -323,7 +335,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
 		                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
 		                    }
 		                }, function (response){
-		                    
+
 		                })
 	           }
         	})
@@ -332,12 +344,14 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
     $scope.userEditMode = function(id) {
         $scope.editUser = true;
         $scope.notOld = true;
+        $scope.notValid = false;
         $scope.loadUser(id);
     }
 
     $scope.userNewMode = function() {
         $scope.editUser = true;
         $scope.notOld = false;
+        $scope.notValid = true;
         $scope.user = {};
     }
 
@@ -407,6 +421,16 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
     		case "¿Cuál es tu deporte favorito?":
     			$scope.user.theQuestion = 5;
     			break;
+        }
+    }
+
+    $scope.validateEmail = function () {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var validate = re.test($scope.user.email);
+        if (validate){
+            $scope.notValid = false;
+        }else{
+            $scope.notValid = true;
         }
     }
 }

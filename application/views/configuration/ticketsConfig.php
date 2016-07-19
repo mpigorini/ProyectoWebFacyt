@@ -4,52 +4,90 @@
 <br>
 <div class="ticket-config-card container">
    <div class="row" style="width:100%;margin:auto;">
-       <div class="col s12 l5 card-panel blue-grey darken-1">
-            <p class="white-text">
-    	        En la Lista de configuraciones se muestran todos las configuraciones de los paramantros de las solicitudes existentes.<br/>
-    	        Para editar una configuración, haga click en <i class="material-icons">keyboard_arrow_down</i> de la configuración de su elección.
-    	        Para eliminar, click en <i class="material-icons">delete</i>.<br/>
-    	        Para cambiar de configuración, click en el switch.<br/>
-    	        Para crear una  nueva configuración, haga click en "nuevo" al final de  Detalles de la configuración.
-            </p>
-    	</div>
-        <div class="col l1"></div>
-        <div class="col s12 l6 card" style="float:right">
-            <p class="center">Lista de configuraciones</p>
-            <table style="width:80%;margin:auto">
-                <thead>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th></th>
-                    <th></th>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="ticketType in ticketTypes track by $index">
-                        <td>{{$index+1}}</td>
-                        <td>{{ticketType.name}}</td>
-                        <td><a class="btn-floating waves-effect waves-light" ng-click="loadTicketType($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
-                        <td><a class="btn-floating waves-effect waves-light red" ng-click="delete($index)"><i class="material-icons">delete</i></a></td>
-                        <td ng-hide="isActive($index)">
-                          <div class="switch">
-                            <label>
-                              <input type="checkbox" ng-checked="isActive($index)" ng-click="setAsActive($index)">
-                              <span class="lever"></span>
-                            </label>
-                          </div>
-                        </td>
-                        <td ng-show="isActive($index)">
-                          <div class="switch">
-                            <label>
-                              <input checked disabled type="checkbox">
-                              <span class="lever"></span>
-                            </label>
-                          </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
+        <span ng-show="$parent.helpers">
+            <div class="col s12 l5 card-panel blue-grey darken-1">
+                <p class="white-text">
+        	        En la Lista de configuraciones se muestran todos las configuraciones de los paramantros de las solicitudes existentes.<br/>
+        	        Para editar una configuración, haga click en <i class="material-icons">keyboard_arrow_down</i> de la configuración de su elección.
+        	        Para eliminar, click en <i class="material-icons">delete</i>.<br/>
+        	        Para cambiar de configuración, click en el switch.<br/>
+        	        Para crear una  nueva configuración, haga click en "nuevo" al final de  Detalles de la configuración.
+                </p>
+        	</div>
+            <div class="col l1"></div>
+            <div class="col s12 l6 card" style="float:right">
+                <p class="center">Lista de configuraciones</p>
+                <table style="width:80%;margin:auto">
+                    <thead>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="ticketType in ticketTypes track by $index">
+                            <td>{{$index+1}}</td>
+                            <td>{{ticketType.name}}</td>
+                            <td><a class="btn-floating waves-effect waves-light" ng-click="loadTicketType($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
+                            <td><a class="btn-floating waves-effect waves-light red" ng-click="delete($index)"><i class="material-icons">delete</i></a></td>
+                            <td ng-hide="isActive($index)">
+                              <div class="switch">
+                                <label>
+                                  <input type="checkbox" ng-checked="isActive($index)" ng-click="setAsActive($index)">
+                                  <span class="lever"></span>
+                                </label>
+                              </div>
+                            </td>
+                            <td ng-show="isActive($index)">
+                              <div class="switch">
+                                <label>
+                                  <input checked disabled type="checkbox">
+                                  <span class="lever"></span>
+                                </label>
+                              </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </span>
+        <span ng-show="!$parent.helpers">
+            <div class="col s12 m6 offset-m3 card">
+                <p class="center">Lista de configuraciones</p>
+                <table style="width:80%;margin:auto">
+                    <thead>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="ticketType in ticketTypes track by $index">
+                            <td>{{$index+1}}</td>
+                            <td>{{ticketType.name}}</td>
+                            <td><a class="btn-floating waves-effect waves-light" ng-click="loadTicketType($index)"><i class="material-icons">keyboard_arrow_down</i></a></td>
+                            <td><a class="btn-floating waves-effect waves-light red" ng-click="delete($index)"><i class="material-icons">delete</i></a></td>
+                            <td ng-hide="isActive($index)">
+                              <div class="switch">
+                                <label>
+                                  <input type="checkbox" ng-checked="isActive($index)" ng-click="setAsActive($index)">
+                                  <span class="lever"></span>
+                                </label>
+                              </div>
+                            </td>
+                            <td ng-show="isActive($index)">
+                              <div class="switch">
+                                <label>
+                                  <input checked disabled type="checkbox">
+                                  <span class="lever"></span>
+                                </label>
+                              </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </span>
     </div>
     <br/>
 </div>
@@ -57,7 +95,7 @@
 <br/>
     <h5 class="container" style="font-weight:300">Configuración Seleccionada</h5>
 <br/>
-<div class="row container">
+<div ng-show="$parent.helpers" class="row container">
     <div class="col s12 card-panel blue-grey darken-1">
         <p class="white-text">
             En el panel de abajo se mostrarán los detalles de la configuración seleccionada.<br/>

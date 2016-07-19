@@ -6,6 +6,8 @@ tickets.$inject = ['$scope', '$rootScope', '$http', '$cookies'];
 
 function tickets($scope, $rootScope, $http, $cookies) {
     'use strict';
+    //cerramos automáticamente el mobile sideNav
+    $('.button-collapse').sideNav('hide');
     // show Tickets option as active
     $rootScope.select(1);
     $scope.loading = true;
