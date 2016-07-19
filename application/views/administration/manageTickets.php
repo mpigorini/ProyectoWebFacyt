@@ -12,7 +12,7 @@
             <md-content >
                 <br/>
                 <!-- HELP for tab "todas" -->
-                <md-card class="card-admin-ticket" md-theme="dark-orange">
+                <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
                     <md-card-title>
                         <md-card-title-media>
                             <div class="md-media-md"><img  ng-src="{{helpImagePath}}" class="md-card-image" alt="Help"></div>
@@ -186,9 +186,9 @@
                         </div>
                    </md-card-content>
                    <md-card-actions layout="row" layout-align="end center">
-                        <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
-                        <md-button ng-click="save()" ng-show="edit" class="md-primary">Guardar</md-button>
-                        <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
+                        <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-accent md-raised">Editar</md-button>
+                        <md-button ng-click="save()" ng-show="edit" class="md-accent">Guardar</md-button>
+                        <md-button ng-click="viewMode()" ng-show="edit" class="md-accent md-raised">Cancelar</md-button>
                     </md-card-actions>
                 </md-card>
                 <br/>
@@ -200,7 +200,7 @@
             <md-content class="md-padding">
                 <br/>
                 <!-- HELP for dynamic tabs -->
-                <md-card class="card-admin-ticket" md-theme="dark-orange">
+                <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
                     <md-card-title>
                         <md-card-title-media>
                             <div class="md-media-md"><img  ng-src="{{helpImagePath}}" class="md-card-image" alt="Help"></div>
@@ -373,9 +373,9 @@
                          </div>
                     </md-card-content>
                    <md-card-actions layout="row" layout-align="end center">
-                        <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
-                        <md-button ng-click="save()" ng-show="edit" class="md-primary">Guardar</md-button>
-                        <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
+                        <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-accent md-raised">Editar</md-button>
+                        <md-button ng-click="save()" ng-show="edit" class="md-accent">Guardar</md-button>
+                        <md-button ng-click="viewMode()" ng-show="edit" class="md-accent md-raised">Cancelar</md-button>
                     </md-card-actions>
                 </md-card>
 

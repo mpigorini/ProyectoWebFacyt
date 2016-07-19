@@ -133,11 +133,13 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
     // Application theme
     $mdThemingProvider.theme('default')
         .primaryPalette('teal')//teal
-        .accentPalette('deep-orange');//blue-gray
-        $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
-        $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
-        $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
-        $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+        .accentPalette('deep-orange', {
+            'default': '500',
+        }); // deep-orange
+        $mdThemingProvider.theme('dark-blue-grey').backgroundPalette('blue-grey').dark();
+        $mdThemingProvider.theme('blue-grey').backgroundPalette('blue-grey', {
+          'default': '600',
+    });
 });
 
 // $routeChangeStart changed for $locationChangeStart because event.preventDefault was

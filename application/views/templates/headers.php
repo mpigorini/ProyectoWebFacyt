@@ -153,7 +153,7 @@
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li><a ng-click="helpers()"><i class="material-icons right">info_outline</i>Carta de ayuda</a></li>
+                    <li><a ng-click="helpers()"><i class="material-icons right">info_outline</i>Tarjetas de ayuda</a></li>
                 </ul>
 				<a ng-show="isLoggedIn()" href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
