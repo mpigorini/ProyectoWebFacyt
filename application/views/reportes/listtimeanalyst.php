@@ -77,7 +77,7 @@
             </div>
             <div layout="row">
                 <div flex="40" layout-align="center">
-                    <md-progress-linear md-mode="determinate" value="{{(enEspera * 100) / todas}}"></md-progress-linear>    
+                    <md-progress-linear md-theme="{{badProgressTheme(enEspera * 100 / todas)}}" md-mode="determinate" value="{{(enEspera * 100) / todas}}" md-theme-watch></md-progress-linear>
                 </div>
             </div>
             <br/>
@@ -89,7 +89,7 @@
             </div>
             <div layout="row">
                 <div flex="40" layout-align="center">
-                    <md-progress-linear md-mode="determinate" value="{{(atendidas * 100) / todas}}"></md-progress-linear>    
+                    <md-progress-linear md-theme="{{goodProgressTheme(atendidas * 100 / todas)}}" md-mode="determinate" value="{{(atendidas * 100) / todas}}" md-theme-watch></md-progress-linear>
                 </div>
             </div>
             <br/>
@@ -101,7 +101,7 @@
             </div>
             <div layout="row">
                 <div flex="40" layout-align="center">
-                    <md-progress-linear md-mode="determinate" value="{{(excedidas * 100) / todas}}"></md-progress-linear>    
+                    <md-progress-linear  md-theme="{{badProgressTheme(excedidas * 100 / todas)}}" md-mode="determinate" value="{{(excedidas * 100) / todas}}" md-theme-watch></md-progress-linear>
                 </div>
             </div>
             
