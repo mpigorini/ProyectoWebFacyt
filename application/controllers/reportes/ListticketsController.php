@@ -2,13 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 include (APPPATH. '/libraries/ChromePhp.php');
 class ListticketsController extends CI_Controller {
-    
+
     public function index() {
        $this->load->view('reportes/listtickets');
     }
-    
+
   /*  public function ListTickets(){
-            
+
             	try {
 					$em = $this->doctrine->em;
 					$query = $em->createQuery('SELECT t FROM \Entity\Ticket t');
@@ -37,25 +37,25 @@ class ListticketsController extends CI_Controller {
 					$result['message'] = "Error";
 			}
 			echo json_encode($result);
-		
+
         	$em = $this->doctrine->em;
         	$tickets = $em->getRepository('\Entity\Ticket')->findAll();
-           
+
             if (!$tickets) {
                 $result['message']="Error, no se encuentran tickets en la base de datos";
         	}else
     		{
     		    $result['message']="success";
         	    $result['tickets']=$tickets->getResult();
-    		    
+
     		}
     		//print_r($tickets);
 			//echo json_encode($result);
 		} */
-		
+
 		public function getTickets() {
 	      try {
-	
+
              $em = $this->doctrine->em;
              $config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));
 
@@ -79,7 +79,7 @@ class ListticketsController extends CI_Controller {
 					}
 				}
 	            $tickets = $em->getRepository('\Entity\Ticket')->findAll();
-		
+
 	         	foreach($tickets as $key => $ticket) {
 	         		$result['tickets'][$key]['id'] = $ticket->getId();
 	         		$result['tickets'][$key]['paddedId'] = sprintf('%06d', $ticket->getId());
@@ -89,6 +89,7 @@ class ListticketsController extends CI_Controller {
 	         		$result['tickets'][$key]['level'] = $ticket->getLevel();
 	         		$result['tickets'][$key]['priority'] = $ticket->getPriority();
 	         		$result['tickets'][$key]['answerTime'] = $ticket->getAnswerTime();
+                    $result['tickets'][$key]['answerTime'] = $ticket->getAnswerTime() !== null ? $ticket->getAnswerTime() . "d / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d" : "- / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d";
 	         		$result['tickets'][$key]['qualityOfService'] = $ticket->getQualityOfService();
 	         		// Load user
 	     			$result['tickets'][$key]['userReporter']['id'] = $ticket->getUserReporter()->getId();
@@ -120,8 +121,8 @@ class ListticketsController extends CI_Controller {
             \ChromePhp::log($e);
             $result['message'] = "Error";
         }
-	
-	
+
+
          echo json_encode($result);
 	 }
 }
