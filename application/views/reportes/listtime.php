@@ -1,10 +1,4 @@
-<md-content ng-if="loading" class="md-padding">
-    <div layout layout-align="center center">
-        <md-progress-circular md-mode="indeterminate" md-diameter="80"></md-progress-circular>
-    </div>
-</md-content>
-
-<div ng-cloak ng-if="!loading">
+<div ng-cloak>
   <md-content id="mainContent">
     <br/>
 

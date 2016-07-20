@@ -12,7 +12,7 @@ angular.module('helpDesk')
   .controller('ListtimeanalystCtrl',['$scope','$http', '$rootScope', function ($scope,$http, $rootScope) {
 
  'use strict';
-    
+
      var currentTime = new Date();
     $scope.currentTime = currentTime;
     $scope.month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
@@ -43,7 +43,7 @@ angular.module('helpDesk')
         limit: 5,
         page: 1
     };
-    
+
     $http.get('index.php/reportes/ListtimeanalystController/getAnalysts')
     .then(function (response){
         if (response.data.message== "success") {
@@ -60,22 +60,24 @@ angular.module('helpDesk')
                 $scope.enEspera = response.data.enEspera;
                 $scope.atendidas = response.data.atendidas;
                 $scope.excedidas = response.data.excedidas;
-                
+                console.log("succeded");
                 if(typeof $scope.tickets !== 'undefined'){
-                  $scope.result = true;  
+                  $scope.result = true;
                   $scope.noData = false;
                 }else {
-                  $scope.result = false; 
+                  $scope.result = false;
                   $scope.noData = true;
                 }
-                
+
+            } else {
+                console.log("Failed");
             }
         })
     }
     $scope.selectItem = function(item) {
         setTimeout(prueba(item), 1000);
     }
-    
+
     function prueba(item) {
         $scope.model.id = item.id;
             $scope.model.paddedId = item.paddedId;
@@ -89,13 +91,13 @@ angular.module('helpDesk')
             $scope.model.qualityOfService = item.qualityOfService;
             $scope.model.evaluation = item.evaluation;
             if(typeof item.userAssigned != 'undefined') {
-                $scope.model.userAssigned = item.userAssigned;    
+                $scope.model.userAssigned = item.userAssigned;
             } else {
                $scope.model.userAssigned = null;
             }
-            
+
             $scope.searchText = "";
-    
+
             if(item.submitDate != null) {
               var  date =  new Date(item.submitDate.date);
               $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
@@ -137,7 +139,7 @@ angular.module('helpDesk')
             return 'red-bar';
         }
     }
-      
+
     $scope.clearModel = function() {
         $scope.ticketSelected = false;
         $scope.selected = [];

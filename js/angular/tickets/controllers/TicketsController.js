@@ -46,8 +46,11 @@ function tickets($scope, $rootScope, $http, $cookies) {
         page: 1
     };
 
+    $scope.selectItem = function(item) {
+        setTimeout(prueba(item), 1000);
+    }
 
-    $scope.selectItem = function(item,key) {
+    function prueba(item) {
         $scope.model.id = item.id;
         $scope.model.paddedId = item.paddedId;
         $scope.model.subject = item.subject;

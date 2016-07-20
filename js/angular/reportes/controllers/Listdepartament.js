@@ -31,15 +31,16 @@ angular.module('helpDesk')
         }
     })
     $scope.getTicketsForDepartment = function () {
+      clearModel();
       $http.get('index.php/reportes/ListdepartamentController/getTicketsForDepartment' , {params : $scope.model.departmentSelect})
         .then(function (response){
             if (response.data.message== "success") {
                 $scope.tickets = response.data.tickets;
                  if(typeof $scope.tickets !== 'undefined'){
-                  $scope.result = true;  
+                  $scope.result = true;
                   $scope.noData = false;
                 }else {
-                  $scope.result = false; 
+                  $scope.result = false;
                   $scope.noData = true;
                 }
             }
@@ -84,7 +85,12 @@ angular.module('helpDesk')
             $scope.ticketSelected = true;
     }
 
-    $scope.clearModel = function() {
+    $scope.test = function() {
+        console.log("CHANGED!");
+        console.log($scope.model.departmentSelect);
+    }
+
+    function clearModel() {
         $scope.ticketSelected = false;
         $scope.selected = [];
     }

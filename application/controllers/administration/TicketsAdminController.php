@@ -111,8 +111,6 @@ class TicketsAdminController extends CI_Controller {
 						// If days left is three or less and it has not been closed yet, we must warn user.
 						$result['otherTickets'][$counter]['warn'] = $daysLeft <= 3  && $ticket->getState() != "Cerrado" ? true : false;
 						$result['otherTickets'][$counter]['daysLeft'] = $daysLeft < 0 ? 0 : $daysLeft;
-
-						\ChromePhp::log($result['otherTickets'][$counter]);
 						$counter++;
 					}
 				}
@@ -262,5 +260,5 @@ class TicketsAdminController extends CI_Controller {
 
         echo json_encode($result);
     }
-    
+
 }

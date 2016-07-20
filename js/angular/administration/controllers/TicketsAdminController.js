@@ -66,7 +66,6 @@ function ticketsAdministration($scope, $rootScope, $http) {
             $http.get('index.php/administration/UsersAdminController/getUsersExcept', {params : item.userReporter})
             	.then(function(response) {
                     if(response.data.message == "success") {
-                        console.log("what")
                         $scope.users = response.data.data;
                     }
                 });

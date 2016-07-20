@@ -1,19 +1,13 @@
-<md-content ng-if="loading" class="md-padding">
-    <div layout layout-align="center center">
-        <md-progress-circular md-mode="indeterminate" md-diameter="80"></md-progress-circular>
-    </div>
-</md-content>
-
-<div ng-cloak ng-if="!loading">
+<br/>
+<div class="md-padding" layout layout-align="center center">
+    <h5 class="card-admin-ticket" ng-style="{'font-weight':'300'}"> A continuación se muestran las estadísticas para los niveles de satisfacción de los usuarios</h5>
+</div>
+<br/>
+<div ng-cloak>
   <md-content id="mainContent">
     <br/>
-        <!-- Load Table for tabs todos-->
     <md-card class="card-admin-ticket">
-        <md-card-tittle>
-        </md-card-tittle>
         <md-card-content>
-            <h4> Acontinuacion se muestran las estadisticas para los niveles de satisfaccion de los usuarios</h4>
-            <br/> <br/>
             <div ng-repeat="qualityOfServices in static">
                 <p>{{qualityOfServices.name}}</p>
                  <div layout="row">
@@ -23,14 +17,14 @@
                 </div>
                 <div layout="row">
                     <div flex="40" layout-align="center">
-                        <md-progress-linear  md-mode="determinate" value="{{(qualityOfServices.value * 100) / todas}}"></md-progress-linear>    
+                        <md-progress-linear  md-mode="determinate" value="{{(qualityOfServices.value * 100) / todas}}"></md-progress-linear>
                     </div>
                 </div>
                 <br/>
             </div>
- 
+
        </md-card-content>
-        
+
     </md-card>
     <br/>
   </md-content>

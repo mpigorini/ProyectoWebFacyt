@@ -18,7 +18,7 @@
 		<md-divider></md-divider>
         <md-card-content>
             <p ng-style="{'color':'white'}">
-                Seleccione un <b>Tecnico/Analista</b> y un rango de <b>fecha</b>, luego presione el boton <b>Consultar</b> para ver las solicitudes generadas en ese rango.</br>
+                Seleccione un <b>Técnico/Analista</b> y un rango de <b>fecha</b>, luego presione el botón <b>Consultar</b> para ver las solicitudes generadas en ese rango.</br>
                 Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles.
             </p>
         </md-card-content>
@@ -37,7 +37,7 @@
                 </md-input-container>
             </div>
             <div flex="20" flex-offset="5">
-              <input input-date type="text" id="inputCreated" placeholder="Fecha de inicio" ng-model="model.analyst.from" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}" 
+              <input input-date type="text" id="inputCreated" placeholder="Fecha de inicio" ng-model="model.analyst.from" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}"
                   weekdays-short="{{ weekdaysShort }}"
                   weekdays-letter="{{ weekdaysLetter }}"
                   min="{{ minDate }}"
@@ -50,9 +50,9 @@
                   on-close="onCloseDatePicker()"
                 />
             </div>
-            
+
              <div flex="20" flex-offset="5">
-              <input input-date type="text" id="inputCreated" placeholder="Fecha de inicio" ng-model="model.analyst.to" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}" 
+              <input input-date type="text" id="inputCreated" placeholder="Fecha de inicio" ng-model="model.analyst.to" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}"
                   weekdays-short="{{ weekdaysShort }}"
                   weekdays-letter="{{ weekdaysLetter }}"
                   min="{{ minDate }}"
@@ -104,7 +104,7 @@
                     <md-progress-linear  md-theme="{{badProgressTheme(excedidas * 100 / todas)}}" md-mode="determinate" value="{{(excedidas * 100) / todas}}" md-theme-watch></md-progress-linear>
                 </div>
             </div>
-            
+
             <br/>
             <br/>
             <h3 ng-show="noData">No se encontraron solicitudes para el rango de fecha seleccionado</h3>
@@ -139,7 +139,7 @@
                 </tbody>
               </table>
             </md-table-container>
-  
+
             <md-table-pagination ng-show="result" md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{tickets.length}}" md-page-select></md-table-pagination>
         </md-card-content>
     </md-card>
@@ -265,7 +265,7 @@
                 </div>
             </div>
        </md-card-content>
-        
+
     </md-card>
     <br/>
   </md-content>

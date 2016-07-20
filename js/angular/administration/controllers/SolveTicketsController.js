@@ -47,8 +47,11 @@ function solveTickets($scope, $rootScope, $http, $cookies) {
         page: 1
     };
 
-
     $scope.selectItem = function(item) {
+        setTimeout(prueba(item), 1000);
+    }
+    
+    function prueba (item) {
         console.log(item);
         $scope.model.id = item.id;
         $scope.model.paddedId = item.paddedId;

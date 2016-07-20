@@ -1,13 +1,6 @@
-<md-content ng-if="loading" class="md-padding">
-    <div layout layout-align="center center">
-        <md-progress-circular md-mode="indeterminate" md-diameter="80"></md-progress-circular>
-    </div>
-</md-content>
-
-<div ng-cloak ng-if="!loading">
+<div ng-cloak>
   <md-content id="mainContent">
     <br/>
-        <!-- Load Table for tabs todos-->
      <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
                     <md-card-title>
     					<div layout layout-align="center center">
@@ -18,7 +11,7 @@
     				<md-divider></md-divider>
               <md-card-content>
                   <p ng-style="{'color':'white'}">
-                      Selccione un <b>departamento</b> y luego haga click en consultar para ver todos los tickets,  correspondientes al departamento seleccionado.</br>
+                      Selccione un <b>departamento</b> para ver todos los tickets correspondientes al departamento seleccionado.</br>
                       Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles.
                   </p>
               </md-card-content>
@@ -27,18 +20,15 @@
         <md-card-tittle>
         </md-card-tittle>
         <md-card-content>
-          <div layout="row">
-            <div flex="30">
+          <div layout layout-align="center">
+            <div>
                <md-input-container  class="md-block">
                     <label>Departamento</label>
-                    <md-select placeholder="Departamento" ng-model="model.departmentSelect"  style="min-width: 200px;">
+                    <md-select placeholder="Departamento" ng-model="model.departmentSelect" ng-change="getTicketsForDepartment()" style="min-width: 200px;">
                       <md-option ng-value="departmentSelect" ng-repeat="departmentSelect in departments">{{departmentSelect.name}}</md-option>
                     </md-select>
                 </md-input-container>
             </div>
-             <div flex="30" flex-offset="5" layout-align="center center">
-                <md-button ng-click= "getTicketsForDepartment()" class="md-primary md-raised" >Consultar</md-button>
-              </div>
           </div>
           <br/>
             <h3 ng-show="noData">No se encontraron tickets asociados al departamento {{model.departmentSelect.name}}</h3>
@@ -73,7 +63,7 @@
                 </tbody>
               </table>
             </md-table-container>
-  
+
             <md-table-pagination ng-show="result" md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{tickets.length}}" md-page-select></md-table-pagination>
         </md-card-content>
     </md-card>
