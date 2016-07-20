@@ -5,14 +5,26 @@
 <div class="ticket-config-card container">
    <div class="row" style="width:100%;margin:auto;">
         <span ng-show="$parent.helpers">
-            <div class="col s12 l5 card-panel blue-grey darken-1">
-                <p class="white-text">
-        	        En la Lista de configuraciones se muestran todos las configuraciones de los paramantros de las solicitudes existentes.<br/>
-        	        Para editar una configuración, haga click en <i class="material-icons">keyboard_arrow_down</i> de la configuración de su elección.
-        	        Para eliminar, click en <i class="material-icons">delete</i>.<br/>
-        	        Para cambiar de configuración, click en el switch.<br/>
-        	        Para crear una  nueva configuración, haga click en "nuevo" al final de  Detalles de la configuración.
-                </p>
+            <!-- Help for Tickets configuration list -->
+            <div class="col s12 l5">
+                <md-card md-theme="blue-grey">
+                    <md-card-title>
+                        <div layout layout-align="center center">
+                            <md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+                            <span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+                        </div>
+                    </md-card-title>
+                    <md-divider></md-divider>
+                    <md-card-content>
+                        <p ng-style="{'color':'white'}">
+                            En la Lista de configuraciones se muestran todos las configuraciones de los paramantros de las solicitudes existentes.<br/>
+                	        Para editar una configuración, haga click en <i class="material-icons">keyboard_arrow_down</i> de la configuración de su elección.
+                	        Para eliminar, click en <i class="material-icons">delete</i>.<br/>
+                	        Para cambiar de configuración, click en el switch.<br/>
+                	        Para crear una  nueva configuración, haga click en "nuevo" al final de  Detalles de la configuración.
+                        </p>
+                    </md-card-content>
+                </md-card>
         	</div>
             <div class="col l1"></div>
             <div class="col s12 l6 card" style="float:right">
@@ -96,13 +108,25 @@
     <h5 class="container" style="font-weight:300">Configuración Seleccionada</h5>
 <br/>
 <div ng-show="$parent.helpers" class="row container">
-    <div class="col s12 card-panel blue-grey darken-1">
-        <p class="white-text">
-            En el panel de abajo se mostrarán los detalles de la configuración seleccionada.<br/>
-            Para crear una nueva configuración, hacer click en "nuevo" al final del panel. Inmediatamente podrá comenzar a editar.<br/>
-            En los campos que corresponda, puede proporcionar varios valores presionando la tecla "comma" ó "enter".
-            El campo Estados tendrá dos valores por defectos: En espera y Cerrado, pero debe proveer más estados.
-        </p>
+    <!-- Help for selected ticket configuration -->
+    <div class="col s12">
+        <md-card md-theme="blue-grey">
+            <md-card-title>
+                <div layout layout-align="center center">
+                    <md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+                    <span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+                </div>
+            </md-card-title>
+            <md-divider></md-divider>
+            <md-card-content>
+                <p ng-style="{'color':'white'}">
+                    En el panel de abajo se mostrarán los detalles de la configuración seleccionada.<br/>
+                    Para crear una nueva configuración, hacer click en "nuevo" al final del panel. Inmediatamente podrá comenzar a editar.<br/>
+                    En los campos que corresponda, puede proporcionar varios valores presionando la tecla "comma" ó "enter".
+                    El campo Estados tendrá dos valores por defectos: En espera y Cerrado, pero debe proveer más estados.
+                </p>
+            </md-card-content>
+        </md-card>
     </div>
 </div>
 <div class="ticket-config-card container card-panel" ng-cloack>
@@ -218,10 +242,10 @@
             </div>
         </div>
         <div layout="row" layout-align="end center">
-            <md-button ng-click="newTicketType()" ng-hide="edit" class="md-primary md-raised">Nuevo</md-button>
-            <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
-            <md-button ng-click="save()" ng-show="edit" class="md-primary">Guardar</md-button>
-            <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
+            <md-button ng-click="newTicketType()" ng-hide="edit" class="md-accent md-raised">Nuevo</md-button>
+            <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-accent md-raised">Editar</md-button>
+            <md-button ng-click="save()" ng-show="edit" class="md-accent">Guardar</md-button>
+            <md-button ng-click="viewMode()" ng-show="edit" class="md-accent md-raised">Cancelar</md-button>
         </div>
     </div>
 </div>

@@ -42,11 +42,11 @@
 								      </div>
 								    </div>
 								</div>
-							</div>	
+							</div>
 					       	<a class="btn col s6 offset-s3 waves-effect waves-light center"  name="login" ng-click="login()">Iniciar sesión</a>
 						</form>
 			        </div>
-			        <h6 class="center-align"><a href="" ng-click="recoveryPass()">¿Haz olvidado tu contraseña?</a></h6><br><br>
+			        <h6 class="center-align"><a href="" ng-click="recoveryPass()">¿Has olvidado tu contraseña?</a></h6><br><br>
 				</div>
 				<div ng-show="recovery.recoveryView">
 					<div ng-show="!recovery.showQuestion && !recovery.showSetPass">

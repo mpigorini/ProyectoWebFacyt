@@ -11,11 +11,23 @@
         <md-tab label="Todas" md-on-select="clearModel()">
             <md-content class="md-padding">
                 <br/>
-                <p class="card-admin-ticket">
-                    En la siguiente tabla encontrará <b>todas</b> las solicitudes generadas por usted.
-                    Seleccione alguna para consultar más detalles y enviar una evaluación de nuestro servicio si así lo desea.
-                </p>
-                <br/>
+                <!-- HELP for tab "todas" -->
+                <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
+                    <md-card-title>
+    					<div layout layout-align="center center">
+    						<md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+    						<span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+    					</div>
+    				</md-card-title>
+    				<md-divider></md-divider>
+                    <md-card-content>
+                        <p ng-style="{'color':'white'}">
+                            En la siguiente tabla encontrará <b>todas</b> las solicitudes generadas por usted.</br>
+                            Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles
+                            y podrá, al final del panel de detalles, realizar evaluaciones a dicha solicitud.
+                        </p>
+                    </md-card-content>
+                </md-card>
                 <!-- Load Table for tabs todos-->
                 <md-card class="card-admin-ticket">
                     <md-card-tittle>
@@ -32,22 +44,18 @@
                               <tr md-row>
                                 <th md-column><span>ID</span></th>
                                 <th md-column><span>Asunto</span></th>
-                                <th md-column ><span>Descripción</span></th>
                                 <th md-column ><span>Estado</span></th>
                                 <th md-column >Tipo</th>
                                 <th md-column >Prioridad</th>
-                                <th md-column >Tiempo de Respuesta</th>
                               </tr>
                             </thead>
                             <tbody md-body>
                               <tr md-row md-select="ticket"  md-on-select="selectItem" md-on-deselect="deselectItem" ng-repeat="ticket in tickets | orderBy: ticket.subject | limitTo: query.limit: (query.page - 1) * query.limit">
                                 <td md-cell>{{ticket.paddedId}}</td>
                                 <td md-cell>{{ticket.subject}}</td>
-                                <td md-cell>{{ticket.description}}</td>
                                 <td md-cell>{{ticket.state}}</td>
                                 <td md-cell>{{ticket.type}}</td>
                                 <td md-cell>{{ticket.priority}}</td>
-                                <td md-cell>{{ticket.answerTime}}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -175,9 +183,9 @@
                         </form>
                     </md-card-content>
                     <md-card-actions layout="row" layout-align="end center">
-                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
-                         <md-button ng-click="save()" ng-show="edit" class="md-primary">Enviar</md-button>
-                         <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
+                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-accent md-raised">Editar</md-button>
+                         <md-button ng-click="save()" ng-show="edit" class="md-accent">Enviar</md-button>
+                         <md-button ng-click="viewMode()" ng-show="edit" class="md-accent md-raised">Cancelar</md-button>
                      </md-card-actions>
                 </md-card>
             </md-content>
@@ -187,11 +195,24 @@
         <md-tab ng-repeat="(keyState, state) in states" label="{{state.name}}" md-on-select="clearModel()">
             <md-content class="md-padding">
                 <br/>
-                <p class="card-admin-ticket">
-                    En la siguiente tabla encontrará las solicitudes generadas por usted, actualmente en estado "{{state.name}}".
-                    Seleccione alguna para consultar más detalles y enviar una evaluación de nuestro servicio si así lo desea
-                </p>
-                <br/>
+                <!-- Help for dynamic tabs -->
+                <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
+                    <md-card-title>
+                        <div layout layout-align="center center">
+                            <md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+                            <span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+                        </div>
+                    </md-card-title>
+                    <md-divider></md-divider>
+                    <md-card-content>
+                        <p ng-style="{'color':'white'}">
+                            En la siguiente tabla encontrará las solicitudes generadas por usted, actualmente en estado "{{state.name}}".</br>
+                            Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles
+                            y podrá, al final del panel de detalles, realizar evaluaciones a dicha solicitud.
+                        </p>
+                    </md-card-content>
+                    <md-divider></md-divider>
+                </md-card>
                 <!-- Table for dynamic tabs-->
                 <md-card class="card-admin-ticket">
                     <md-card-tittle>
@@ -350,9 +371,9 @@
                         </form>
                     </md-card-content>
                     <md-card-actions layout="row" layout-align="end center">
-                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
-                         <md-button ng-click="save()" ng-show="edit" class="md-primary">Enviar</md-button>
-                         <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
+                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-accent md-raised">Editar</md-button>
+                         <md-button ng-click="save()" ng-show="edit" class="md-accent">Enviar</md-button>
+                         <md-button ng-click="viewMode()" ng-show="edit" class="md-accent md-raised">Cancelar</md-button>
                      </md-card-actions>
                 </md-card>
             </md-content>

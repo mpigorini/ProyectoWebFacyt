@@ -18,6 +18,8 @@ listTicket.$inject=['$scope','$http', '$rootScope'];
 	
     // show administration option as active
     $rootScope.select(6);
+    // close mobile sideNav
+    $('.button-collapse').sideNav('hide');
     $scope.loading = true;
     $scope.ticketSelected = false;
     $scope.edit = false;
@@ -59,17 +61,17 @@ listTicket.$inject=['$scope','$http', '$rootScope'];
             $scope.model.level = item.level;
             $scope.model.priority = item.priority;
             $scope.model.state = item.state;
-            $scope.model.answerTime = item.maxAnswerTime ? item.maxAnswerTime + "d" : null;
+            $scope.model.answerTime = item.answerTime;
             $scope.model.qualityOfService = item.qualityOfService;
             $scope.model.evaluation = item.evaluation;
             if(typeof item.userAssigned != 'undefined') {
-                $scope.model.userAssigned = item.userAssigned;    
+                $scope.model.userAssigned = item.userAssigned;
             } else {
                $scope.model.userAssigned = null;
             }
-            
+
             $scope.searchText = "";
-    
+
             if(item.submitDate != null) {
               var  date =  new Date(item.submitDate.date);
               $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
@@ -84,7 +86,7 @@ listTicket.$inject=['$scope','$http', '$rootScope'];
             $scope.model.userReporter = item.userReporter
             $scope.ticketSelected = true;
     }
-     
+
 
     $scope.clearModel = function() {
         $scope.ticketSelected = false;
@@ -103,5 +105,5 @@ listTicket.$inject=['$scope','$http', '$rootScope'];
     }
 
 
-   
+
   }

@@ -8,6 +8,7 @@
  * Controller of the reportesApp
  */
 angular.module('helpDesk')
+
   .controller('ListtimeanalystCtrl',['$scope','$http', '$rootScope', function ($scope,$http, $rootScope) {
 
  'use strict';
@@ -126,6 +127,4 @@ angular.module('helpDesk')
       $('#mainContent').css('padding-bottom', '0px');
     }
 
-  	
-    
 }]);

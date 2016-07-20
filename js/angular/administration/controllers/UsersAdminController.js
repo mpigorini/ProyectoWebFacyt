@@ -6,6 +6,8 @@ usersAdministration.$inject = ['$scope', '$rootScope', '$http', '$cookies', 'aut
 
 function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
     'use strict';
+    //cerramos automáticamente el mobile sideNav
+    $('.button-collapse').sideNav('hide');
     // show administration option as active
     $rootScope.select(2);
     $scope.user = {};
@@ -42,7 +44,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
                 // console.log("$scope.departments[0].positions[0].name:" + $scope.departments[0].positions[0].name)
                 // console.log("$scope.departments[0].positions[1].name:" + $scope.departments[0].positions[1].name)
             }
-        });	
+        });
 
     $scope.loadUser = function(id) {
     	console.log("id: " + id);
@@ -232,20 +234,20 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
     		saveOrUpdate = "El perfil se ha actualizado exitosamente.";
     	}
     	swal({
-        	title: message,   
-        	text: "Si es así, ingresa tu contraseña...",   
+        	title: message,
+        	text: "Si es así, ingresa tu contraseña...",
         	type: "input",
-        	inputType: "password",   
-        	showCancelButton: true,   
-        	closeOnConfirm: false,   
-        	animation: "slide-from-top",   
+        	inputType: "password",
+        	showCancelButton: true,
+        	closeOnConfirm: false,
+        	animation: "slide-from-top",
         	inputPlaceholder: "Contraseña"
-        }, 
+        },
         	function(inputValue){
-        		if (inputValue === false) return false;      
-        		if (inputValue === "") {     
-        			swal.showInputError("Debes ingresar tu contraseña");     
-        			return false   
+        		if (inputValue === false) return false;
+        		if (inputValue === "") {
+        			swal.showInputError("Debes ingresar tu contraseña");
+        			return false
         		}else if (inputValue!=$cookies.getObject("session").password){
         			console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
         			swal.showInputError("Contraseña incorrecta");
@@ -256,7 +258,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
 								console.log("response.data.message: " + response.data.message)
 								$scope.labelName = $scope.user.name;
 								$scope.labelLastname = $scope.user.lastname;
-								// Esta linea se ejecuta si el usuario se edita a si mismo	
+								// Esta linea se ejecuta si el usuario se edita a si mismo
 								if ( $scope.user.id == $cookies.getObject("session").id ){
 									$cookies.putObject('session', {username: $scope.user.login , password:$scope.user.password, id:$scope.user.id});
 									console.log("$cookies.getObject('session').login: " + $cookies.getObject("session").username)
@@ -270,7 +272,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
 		                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
 		                    }
 		                }, function (response){
-		                    
+
 		                })
 	           }
         	})
@@ -286,7 +288,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
         		flagUser = false;
         	}
         }
-        
+
         $scope.user.deleteId = $scope.users[i].id;
         console.log("$scope.user.deleteId: " + $scope.user.deleteId);
         var message, logout;
@@ -298,20 +300,20 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
         	logout = false;
         }
     	swal({
-        	title: message,   
-        	text: "Si es así, ingresa tu contraseña...",   
+        	title: message,
+        	text: "Si es así, ingresa tu contraseña...",
         	type: "input",
-        	inputType: "password",   
-        	showCancelButton: true,   
-        	closeOnConfirm: false,   
-        	animation: "slide-from-top",   
+        	inputType: "password",
+        	showCancelButton: true,
+        	closeOnConfirm: false,
+        	animation: "slide-from-top",
         	inputPlaceholder: "Contraseña"
-        }, 
+        },
         	function(inputValue){
-        		if (inputValue === false) return false;      
-        		if (inputValue === "") {     
-        			swal.showInputError("Debes ingresar tu contraseña");     
-        			return false   
+        		if (inputValue === false) return false;
+        		if (inputValue === "") {
+        			swal.showInputError("Debes ingresar tu contraseña");
+        			return false
         		}else if (inputValue!=$cookies.getObject("session").password){
         			console.log("$cookies.getObject('session').password: " + $cookies.getObject("session").password)
         			swal.showInputError("Contraseña incorrecta");
@@ -333,7 +335,7 @@ function usersAdministration($scope, $rootScope, $http, $cookies, auth) {
 		                    	swal("ERROR!", "Ha ocurrido un evento inesperado al tratar de realizar los cambios.", "error");
 		                    }
 		                }, function (response){
-		                    
+
 		                })
 	           }
         	})

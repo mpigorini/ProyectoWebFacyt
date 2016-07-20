@@ -10,7 +10,8 @@
 angular.module('helpDesk')
   .controller('ListdepartamentCtrl',['$scope','$http','$rootScope', function ($scope,$http,$rootScope) {
     'use strict';
-    
+    // close mobile sideNav
+    $('.button-collapse').sideNav('hide');
     $rootScope.select(6);
     $scope.ticketSelected = false;
     $scope.selected = [];
@@ -21,7 +22,7 @@ angular.module('helpDesk')
         limit: 5,
         page: 1
     };
-    
+
     $http.get('index.php/reportes/ListdepartamentController/getDepartments')
     .then(function (response){
         if (response.data.message== "success") {
@@ -47,7 +48,7 @@ angular.module('helpDesk')
     $scope.selectItem = function(item) {
         setTimeout(prueba(item), 1000);
     }
-    
+
     function prueba(item) {
         $scope.model.id = item.id;
             $scope.model.paddedId = item.paddedId;
@@ -61,13 +62,13 @@ angular.module('helpDesk')
             $scope.model.qualityOfService = item.qualityOfService;
             $scope.model.evaluation = item.evaluation;
             if(typeof item.userAssigned != 'undefined') {
-                $scope.model.userAssigned = item.userAssigned;    
+                $scope.model.userAssigned = item.userAssigned;
             } else {
                $scope.model.userAssigned = null;
             }
-            
+
             $scope.searchText = "";
-    
+
             if(item.submitDate != null) {
               var  date =  new Date(item.submitDate.date);
               $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
@@ -91,6 +92,5 @@ angular.module('helpDesk')
         $scope.ticketSelected = false;
     }
 
-	
 
 }]);

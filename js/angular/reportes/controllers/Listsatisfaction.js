@@ -7,6 +7,7 @@
  * Controller of the reportesApp
  */
 angular.module('helpDesk')
+
   .controller('ListsatisfactionCtrl', listTicket);
 
 
