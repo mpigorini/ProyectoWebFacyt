@@ -55,6 +55,7 @@ angular.module('helpDesk')
                 $scope.tickets = response.data.tickets;
                 $scope.todas = response.data.todas;
                 $scope.enEspera = response.data.enEspera;
+                console.log($scope.enEspera);
                 $scope.atendidas = response.data.atendidas;
                 $scope.excedidas = response.data.excedidas;
                 console.log(response);
@@ -63,6 +64,33 @@ angular.module('helpDesk')
             }
         })
     }
+    // The higer the better
+    $scope.goodProgressTheme = function(value) {
+        var porcentage = parseInt(value, 10);
+        if (isNaN(porcentage)) {
+            return 'inactive-bar';
+        } else if (porcentage <= 20) {
+            return 'red-bar';
+        }else if (porcentage <= 70) {
+            return 'orange-bar';
+        } else {
+            return 'teal-bar';
+        }
+    }
+    // The higer the badder
+    $scope.badProgressTheme = function (value){
+        var porcentage = parseInt(value, 10);
+        if (isNaN(porcentage)) {
+            return 'inactive-bar';
+        } else if (porcentage <= 20) {
+            return 'teal-bar';
+        }else if (porcentage <= 70) {
+            return 'orange-bar';
+        } else {
+            return 'red-bar';
+        }
+    }
+
     $scope.selectItem = function(item) {
         setTimeout(prueba(item), 1000);
     }

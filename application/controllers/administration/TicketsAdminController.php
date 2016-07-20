@@ -14,10 +14,6 @@ class TicketsAdminController extends CI_Controller {
 	}
 
 	public function getStates() {
-		if (!$this->input->is_ajax_request()) {
-			ChromePhp::log("NOT AN AJAX REQUEST");
-		   exit('No direct script access allowed');
-		}
 		try{
             $em = $this->doctrine->em;
             $config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));
@@ -144,11 +140,6 @@ class TicketsAdminController extends CI_Controller {
 
 	public function getConfiguration() {
 
-		if (!$this->input->is_ajax_request()) {
-			ChromePhp::log("NOT AN AJAX REQUEST");
-		   exit('No direct script access allowed');
-		}
-		
         try{
             $em = $this->doctrine->em;
             $config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));

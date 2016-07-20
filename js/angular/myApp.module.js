@@ -139,10 +139,20 @@ helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider)
         .accentPalette('deep-orange', {
             'default': '500',
         }); // deep-orange
-        $mdThemingProvider.theme('dark-blue-grey').backgroundPalette('blue-grey').dark();
-        $mdThemingProvider.theme('blue-grey').backgroundPalette('blue-grey', {
+    $mdThemingProvider.theme('blue-grey').backgroundPalette('blue-grey', {
           'default': '600',
     });
+    // Progress bars themes for reports
+    $mdThemingProvider.theme('red-bar')
+        .primaryPalette('red');
+    $mdThemingProvider.theme('orange-bar')
+        .primaryPalette('orange');
+    $mdThemingProvider.theme('teal-bar')
+        .primaryPalette('teal');
+    $mdThemingProvider.theme('inactive-bar')
+        .primaryPalette('grey', {
+            'default': '300'
+        });
 });
 
 // $routeChangeStart changed for $locationChangeStart because event.preventDefault was

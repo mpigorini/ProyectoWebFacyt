@@ -18,7 +18,7 @@
         <md-card-content>
           <div layout="row">
             <div flex="30">
-                <input input-date type="text" id="inputCreated" placeholder="Fecha de inicio" ng-model="model.from" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}" 
+                <input input-date type="text" id="inputCreated" placeholder="Fecha de inicio" ng-model="model.from" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}"
                   weekdays-short="{{ weekdaysShort }}"
                   weekdays-letter="{{ weekdaysLetter }}"
                   min="{{ minDate }}"
@@ -32,7 +32,7 @@
                 />
             </div>
              <div flex="30" flex-offset="5" >
-                <input input-date type="text" id="inputCreated" placeholder="Fecha de fin" ng-model="model.to" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}" 
+                <input input-date type="text" id="inputCreated" placeholder="Fecha de fin" ng-model="model.to" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}"
                   weekdays-short="{{ weekdaysShort }}"
                   weekdays-letter="{{ weekdaysLetter }}"
                   min="{{ minDate }}"
@@ -57,7 +57,7 @@
             </div>
             <div layout="row">
                 <div flex="40" layout-align="center">
-                    <md-progress-linear md-mode="determinate" value="{{(enEspera * 100) / todas}}"></md-progress-linear>    
+                    <md-progress-linear md-theme="{{badProgressTheme(enEspera * 100 / todas)}}" md-mode="determinate" value="{{(enEspera * 100) / todas}}" md-theme-watch></md-progress-linear>
                 </div>
             </div>
             <br/>
@@ -69,7 +69,7 @@
             </div>
             <div layout="row">
                 <div flex="40" layout-align="center">
-                    <md-progress-linear md-mode="determinate" value="{{(atendidas * 100) / todas}}"></md-progress-linear>    
+                    <md-progress-linear md-theme="{{goodProgressTheme(atendidas * 100 / todas)}}" md-mode="determinate" value="{{(atendidas * 100) / todas}}" md-theme-watch></md-progress-linear>
                 </div>
             </div>
             <br/>
@@ -81,10 +81,10 @@
             </div>
             <div layout="row">
                 <div flex="40" layout-align="center">
-                    <md-progress-linear md-mode="determinate" value="{{(excedidas * 100) / todas}}"></md-progress-linear>    
+                    <md-progress-linear  md-theme="{{badProgressTheme(excedidas * 100 / todas)}}"md-mode="determinate" value="{{(excedidas * 100) / todas}}" md-theme-watch></md-progress-linear>
                 </div>
             </div>
-            
+
             <br/>
             <br/>
             <md-toolbar ng-show="result" class="md-table-toolbar md-default">
@@ -120,7 +120,7 @@
                 </tbody>
               </table>
             </md-table-container>
-  
+
             <md-table-pagination ng-show="result" md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{tickets.length}}" md-page-select></md-table-pagination>
         </md-card-content>
     </md-card>
@@ -246,7 +246,7 @@
                 </div>
             </div>
        </md-card-content>
-        
+
     </md-card>
     <br/>
   </md-content>
