@@ -9,26 +9,89 @@
  */
 angular.module('helpDesk')
   .controller('ListdepartamentCtrl',['$scope','$http', function ($scope,$http) {
+    'use strict';
     
-    $scope.loader=true;
-    console.log($scope.loader);
-    	//data de prrueba, este scope sera cambiando por lo que retorne el controlador reportes.php
-  	/*	$scope.miembros=[ 	
-	    {id:"1",subject:"subject1",description:"d1",type:"atendida",level:"l1",priority:"1",answerTime:"1",qualityOfService:"exelente",userReporter:"asdasd",departament:"fisica",submitDate:"28-06-2016",closeDate:"",state:"",solutionDescription:"asd",evaluation:"eva1",observations:"obsr1"},
-	    {id:"2",subject:"subject2",description:"d2",type:"espera",level:"l2",priority:"2",answerTime:"2",qualityOfService:"bueno",userReporter:"asdf",departament:"quimica",submitDate:"29-06-2016",closeDate:"",state:"",solutionDescription:"asdf",evaluation:"eva2",observations:"obsr2"},
-	    {id:"3",subject:"subject3",description:"d3",type:"excedieron",level:"l3",priority:"3",answerTime:"3",qualityOfService:"aceptable",userReporter:"asdf",departament:"computacion",submitDate:"30-06-2016",closeDate:"",state:"asdf",solutionDescription:"eva3",evaluation:"",observations:"obsr3"},
-	    {id:"4",subject:"subject4",description:"d4",type:"atendida",level:"l4",priority:"1",answerTime:"4",qualityOfService:"regular",userReporter:"adsf",departament:"quimica",submitDate:"01-07-2016",closeDate:"01-07-2016",state:"",solutionDescription:"asdf",evaluation:"eva4",observations:"obsr4"},
-	    {id:"5",subject:"subject5",description:"d5",type:"espera",level:"l5",priority:"2",answerTime:"6",qualityOfService:"exelente",userReporter:"asdf",departament:"fisica",submitDate:"02-07-2016",closeDate:"02-07-2016",state:"",solutionDescription:"adf",evaluation:"eva5",observations:"obsr5"},
-	    {id:"6",subject:"subject6",description:"d6",type:"excedieron",level:"l6",priority:"3",answerTime:"3",qualityOfService:"bueno",userReporter:"asdf",departament:"computacion",submitDate:"03-07-2016",closeDate:"",state:"",solutionDescription:"adsf",evaluation:"eva6",observations:"obsr6"},
-	    {id:"7",subject:"subject7",description:"d7",type:"atendida",level:"l7",priority:"1",answerTime:"1",qualityOfService:"aceptable",userReporter:"asdf",departament:"quimica",submitDate:"04-07-2016",closeDate:"04-07-2016",state:"",solutionDescription:"adsf",evaluation:"eva7",observations:"obsr7"},
-	    {id:"8",subject:"subject8",description:"d8",type:"espera",level:"l8",priority:"2",answerTime:"2",qualityOfService:"regular",userReporter:"asdfa",departament:"fisica",submitDate:"05-07-2016",closeDate:"05-07-2016",state:"",solutionDescription:"asdf",evaluation:"eva8",observations:"obsr8"},
-	    {id:"9",subject:"subject9",description:"d9",type:"excedieron",level:"l9",priority:"3",answerTime:"3",qualityOfService:"exelente",userReporter:"asdfa",departament:"computacion",submitDate:"06-07-2016",closeDate:"",state:"",solutionDescription:"asdf",evaluation:"eva9",observations:"obsr9"},
-	    {id:"10",subject:"subject10",description:"d10",type:"atendida",level:"l10",priority:"1",answerTime:"3",qualityOfService:"bueno",userReporter:"asdfa",departament:"quimica",submitDate:"07-07-2016",closeDate:"",state:"",solutionDescription:"asdf",evaluation:"eva10",observations:"obsr10"}
-    ];
-    */
+    $rootScope.select(6);
+    $scope.ticketSelected = false;
+    $scope.selected = [];
+    $scope.result = false;
+
+    $scope.query = {
+        order: 'subject',
+        limit: 5,
+        page: 1
+    };
+    
+    $http.get('index.php/reportes/ListdepartamentController/getDepartments')
+    .then(function (response){
+        if (response.data.message== "success") {
+            $scope.departments =  response.data.departments
+        }
+    })
+    $scope.getTicketsForDepartment = function () {
+      $http.get('index.php/reportes/ListdepartamentController/getTicketsForDepartment' , {params : $scope.department})
+        .then(function (response){
+            if (response.data.message== "success") {
+                $scope.tickets = response.data.tickets;
+                $scope.todas = response.data.todas;
+                $scope.enEspera = response.data.enEspera;
+                $scope.atendidas = response.data.atendidas;
+                $scope.excedidas = response.data.excedidas;
+                console.log(response);
+                console.log($scope.tickets);
+                $scope.result = true;
+            }
+        })
+    }
+    $scope.selectItem = function(item) {
+        setTimeout(prueba(item), 1000);
+    }
+    
+    function prueba(item) {
+        $scope.model.id = item.id;
+            $scope.model.paddedId = item.paddedId;
+            $scope.model.subject = item.subject;
+            $scope.model.description =item.description;
+            $scope.model.type = item.type;
+            $scope.model.level = item.level;
+            $scope.model.priority = item.priority;
+            $scope.model.state = item.state;
+            $scope.model.answerTime = item.maxAnswerTime ? item.maxAnswerTime + "d" : null;
+            $scope.model.qualityOfService = item.qualityOfService;
+            $scope.model.evaluation = item.evaluation;
+            if(typeof item.userAssigned != 'undefined') {
+                $scope.model.userAssigned = item.userAssigned;    
+            } else {
+               $scope.model.userAssigned = null;
+            }
+            
+            $scope.searchText = "";
+    
+            if(item.submitDate != null) {
+              var  date =  new Date(item.submitDate.date);
+              $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
+            }
+            if(item.closeDate != null) {
+              var  date =  new Date(item.closeDate.date);
+               $scope.model.closeDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
+            }else {
+                $scope.model.closeDate = "";
+            }
+            $scope.model.department = item.department;
+            $scope.model.userReporter = item.userReporter
+            $scope.ticketSelected = true;
+    }
+
+    $scope.clearModel = function() {
+        $scope.ticketSelected = false;
+        $scope.selected = [];
+    }
+    $scope.deselectItem = function() {
+        $scope.ticketSelected = false;
+    }
 
 
-    
+
     $http.get('index.php/reportes/ListdepartamentController/listTicket')
       .then(function(response) {
           if(response.data.message === "success") {
@@ -44,25 +107,10 @@ angular.module('helpDesk')
         console.log($scope.loader);
     });
     
-    $scope.gridOptions={
-//defincion de las propiedades del ng-Grid
+
     
-    jqueryUITheme: true,
-    showGroupPanel: true,
-    showGridFooter: true,
-    showColumnFooter: true,
-    columnDefs:[
-    { name:'id' , displayName:'NumberTicket' },
-    { name:'subject' },
-    { name:'type', displayName:'StateTicket' },
-    { name:'answerTime' },
-    { name:'qualityOfService' },
-    { name:'department' },
-   ],
-	  data : 'miembros'
 
-	};
 	
 	
 
-  }]);
+}]);

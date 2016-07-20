@@ -32,6 +32,11 @@ angular.module('helpDesk')
     $scope.ticketSelected = false;
     $scope.edit = false;
     $scope.selected = [];
+    $scope.result = false;
+    $scope.todas = '-';
+    $scope.enEspera = '-';
+    $scope.atendidas = '-';
+    $scope.excedidas = '-';
 
     $scope.query = {
         order: 'subject',
@@ -41,39 +46,18 @@ angular.module('helpDesk')
     
    
     
-     var data = {
-        labels: [
-            "Red",
-            "Blue",
-            "Yellow"
-        ],
-        datasets: [
-            {
-                data: [300, 50, 100],
-                backgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56"
-                ],
-                hoverBackgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56"
-                ]
-            }]
-    };
-  var myPieChart = new Chart($('#chart'),{
-    type: 'pie',
-    data: data,
-});
     $scope.getTicketsForDate = function () {
       $http.get('index.php/reportes/ListtimeController/getTicketsForDate' , {params : {from:$scope.model.from , to:$scope.model.to}})
         .then(function (response){
             if (response.data.message== "success") {
                 $scope.tickets = response.data.tickets;
+                $scope.todas = response.data.todas;
+                $scope.enEspera = response.data.enEspera;
+                $scope.atendidas = response.data.atendidas;
+                $scope.excedidas = response.data.excedidas;
                 console.log(response);
                 console.log($scope.tickets);
-                $scope.loading = false;
+                $scope.result = true;
             }
         })
     }
@@ -121,7 +105,6 @@ angular.module('helpDesk')
             $scope.model.userReporter = item.userReporter
             $scope.ticketSelected = true;
     }
-     
 
     $scope.clearModel = function() {
         $scope.ticketSelected = false;

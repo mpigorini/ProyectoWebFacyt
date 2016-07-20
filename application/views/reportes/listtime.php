@@ -18,8 +18,21 @@
         <md-card-content>
           <div layout="row">
             <div flex="30">
-              <div layout="row">
-                <input input-date type="text" id="inputCreated" placeholder="fecha de inicio" ng-model="model.from" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}" 
+                <input input-date type="text" id="inputCreated" placeholder="Fecha de inicio" ng-model="model.from" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}" 
+                  weekdays-short="{{ weekdaysShort }}"
+                  weekdays-letter="{{ weekdaysLetter }}"
+                  min="{{ minDate }}"
+                  max="{{ maxDate }}"
+                  today="today"
+                  clear="clear"
+                  close="close"
+                  select-years="15"
+                  on-open="onOpenDatePicker()"
+                  on-close="onCloseDatePicker()"
+                />
+            </div>
+             <div flex="30" flex-offset="5" >
+                <input input-date type="text" id="inputCreated" placeholder="Fecha de fin" ng-model="model.to" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}" 
                   weekdays-short="{{ weekdaysShort }}"
                   weekdays-letter="{{ weekdaysLetter }}"
                   min="{{ minDate }}"
@@ -32,37 +45,54 @@
                   on-close="onCloseDatePicker()"
                 />
               </div>
-              <div layout="row">
-                <input input-date type="text" id="inputCreated" placeholder="fecha de fin" ng-model="model.to" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}" 
-                  weekdays-short="{{ weekdaysShort }}"
-                  weekdays-letter="{{ weekdaysLetter }}"
-                  min="{{ minDate }}"
-                  max="{{ maxDate }}"
-                  today="today"
-                  clear="clear"
-                  close="close"
-                  select-years="15"
-                  on-open="onOpenDatePicker()"
-                  on-close="onCloseDatePicker()"
-                />
-              </div>
-              <div layout="row">
+              <div flex="30" flex-offset="5" layout-align="center center">
                 <md-button ng-click= "getTicketsForDate()" class="md-primary md-raised" >Consultar</md-button>
               </div>
             </div>
-            <div flex="70" flex-offset="5">
-              <canvas id="chart" width="100" height="100"></canvas>  
+            <p>Solicitudes en espera</p>
+              <div layout="row" >
+                <div flex="40" flex-offset="35" >
+                    {{enEspera}} / {{todas}} <span ng-show="result">({{(enEspera * 100) / todas | number:2}}%)</span>
+                </div>
             </div>
-           
+            <div layout="row">
+                <div flex="40" layout-align="center">
+                    <md-progress-linear md-mode="determinate" value="{{(enEspera * 100) / todas}}"></md-progress-linear>    
+                </div>
+            </div>
+            <br/>
+             <p>Solicitudes atendias</p>
+              <div layout="row" >
+                <div flex="40" flex-offset="35" >
+                    {{atendidas}} / {{todas}} <span ng-show="result">({{(atendidas * 100) / todas | number:2}}%)</span>
+                </div>
+            </div>
+            <div layout="row">
+                <div flex="40" layout-align="center">
+                    <md-progress-linear md-mode="determinate" value="{{(atendidas * 100) / todas}}"></md-progress-linear>    
+                </div>
+            </div>
+            <br/>
+             <p>Solicitudes que excedieron el tiempo de respuesta</p>
+              <div layout="row" >
+                <div flex="40" flex-offset="35" >
+                    {{excedidas}} / {{todas}} <span ng-show="result">({{(excedidas * 100) / todas | number:2}}%)</span>
+                </div>
+            </div>
+            <div layout="row">
+                <div flex="40" layout-align="center">
+                    <md-progress-linear md-mode="determinate" value="{{(excedidas * 100) / todas}}"></md-progress-linear>    
+                </div>
+            </div>
             
-          </div>
-        
-            <md-toolbar class="md-table-toolbar md-default">
+            <br/>
+            <br/>
+            <md-toolbar ng-show="result" class="md-table-toolbar md-default">
               <div class="md-toolbar-tools">
                 <span>Tickets</span>
               </div>
             </md-toolbar>
-            <md-table-container>
+            <md-table-container ng-show="result">
               <table md-table md-row-select ng-model="selected">
                 <thead md-head md-order="query.order">
                   <tr md-row>
@@ -91,7 +121,7 @@
               </table>
             </md-table-container>
   
-            <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{tickets.length}}" md-page-select></md-table-pagination>
+            <md-table-pagination ng-show="result" md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{tickets.length}}" md-page-select></md-table-pagination>
         </md-card-content>
     </md-card>
     <br/>
