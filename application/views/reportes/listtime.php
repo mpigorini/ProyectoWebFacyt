@@ -89,7 +89,9 @@
                     <md-progress-linear  md-theme="{{badProgressTheme(excedidas * 100 / todas)}}" md-mode="determinate" value="{{(excedidas * 100) / todas}}" md-theme-watch></md-progress-linear>
                 </div>
             </div>
-
+            <br/>
+            <br/>
+            <p ng-show="noData" ng-style="{'color':'red'}">No se encontraron solicitudes para el rango de fecha seleccionado</p>
             <br/>
             <br/>
             <md-toolbar ng-show="result" class="md-table-toolbar md-default">

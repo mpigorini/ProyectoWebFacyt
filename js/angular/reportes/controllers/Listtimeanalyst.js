@@ -60,7 +60,6 @@ angular.module('helpDesk')
                 $scope.enEspera = response.data.enEspera;
                 $scope.atendidas = response.data.atendidas;
                 $scope.excedidas = response.data.excedidas;
-                console.log("succeded");
                 if(typeof $scope.tickets !== 'undefined'){
                   $scope.result = true;
                   $scope.noData = false;
@@ -69,8 +68,6 @@ angular.module('helpDesk')
                   $scope.noData = true;
                 }
 
-            } else {
-                console.log("Failed");
             }
         })
     }

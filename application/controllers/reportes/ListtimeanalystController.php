@@ -34,7 +34,7 @@ class ListtimeanalystController extends CI_Controller {
 		    $endTime = date_create_from_format('d/m/Y',$_GET['to'] );
 		    $result['atendidas'] = 0;
 		    $result['enEspera'] = 0;
-		    $result['excedidas'] =0;
+		    $result['excedidas'] = 0;
 		    $em = $this->doctrine->em;
 		    $analyst = $em->find('\Entity\Users', $_GET['id']);
 
@@ -42,7 +42,7 @@ class ListtimeanalystController extends CI_Controller {
             $query->setParameter(1, $startTime);
             $query->setParameter(2, $endTime);
             $tickets = $query->getResult();
-            
+
 			if($tickets != null) {
             	foreach($tickets as $key => $ticket) {
                     if ($ticket->getUserAssigned() === $analyst) {
@@ -102,7 +102,7 @@ class ListtimeanalystController extends CI_Controller {
                         }
                     }
                 }
-            	$result['todas'] = count($result['tickets']);
+            	$result['todas'] = isset($result['tickets']) ? count($result['tickets']) : '-';
 			}
 			$result['message'] = "success";
 		} catch(Exception $e){

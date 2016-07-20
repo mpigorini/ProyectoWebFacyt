@@ -58,7 +58,13 @@ angular.module('helpDesk')
                 $scope.excedidas = response.data.excedidas;
                 console.log(response);
                 console.log($scope.tickets);
-                $scope.result = true;
+                if(typeof $scope.tickets !== 'undefined'){
+                  $scope.result = true;
+                  $scope.noData = false;
+                }else {
+                  $scope.result = false;
+                  $scope.noData = true;
+                }
             }
         })
     }

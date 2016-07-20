@@ -31,7 +31,7 @@
             </div>
           </div>
           <br/>
-            <h3 ng-show="noData">No se encontraron tickets asociados al departamento {{model.departmentSelect.name}}</h3>
+            <p ng-show="noData" ng-style="{'color':'red'}">>No se encontraron tickets asociados al departamento {{model.departmentSelect.name}}</p>
             <md-toolbar ng-show="result" class="md-table-toolbar md-default">
               <div class="md-toolbar-tools">
                 <span>Tickets del departamento {{model.departmentSelect.name}}</span>
