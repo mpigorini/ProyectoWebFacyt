@@ -192,10 +192,10 @@
             <ul class="left">
 
                 <li ng-class="{active:isSelected(1)}"><a href="#/tickets">Tickets</a></li>
-                <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu">Administración</a></li>
-                <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu">Configuración</a></li>
-                <li ng-class="{active:isSelected(6)}"><a class="dropdown-button" href="#" data-activates="reportesMenu">Reportes</a></li>
-                <li ng-class="{active:isSelected(7)}"><a href="#/solve-tickets">Atender</a></li>
+                <li ng-class="{active:isSelected(2)}"><a class="dropdown-button" href="#" data-activates="administrationMenu"  ng-show="isGerente() || isCoordinador()">Administración</a></li>
+                <li ng-class="{active:isSelected(3)}"><a class="dropdown-button" href="#" data-activates="configMenu"  ng-show="isGerente() || isCoordinador()">Configuración</a></li>
+                <li ng-class="{active:isSelected(6)}"><a class="dropdown-button" href="#" data-activates="reportesMenu"  ng-show="isGerente()">Reportes</a></li>
+                <li ng-class="{active:isSelected(7)}"><a href="#/solve-tickets"  ng-show="isTecnico()">Atender</a></li>
             </ul>
         </div>
     </nav>

@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+include (APPPATH. '/libraries/ChromePhp.php');
 class TicketsAdminController extends CI_Controller {
 
 
@@ -176,7 +177,6 @@ class TicketsAdminController extends CI_Controller {
     public function save() {
 
         try {
-            \ChromePhp::log($_GET);
             $em = $this->doctrine->em;
 
             $ticket = $em->find('\Entity\Ticket' , $_GET['id']);
@@ -191,13 +191,12 @@ class TicketsAdminController extends CI_Controller {
 					// Closing ticket!
 					// Set answer time (in days) for ticket resolution.
 					$today = new \DateTime('now');
-					\ChromePhp::log($today->diff($ticket->getSubmitDate())->format("%a"));
 					$ticket->setAnswerTime($today->diff($ticket->getSubmitDate())->format("%a"));
 					// Set closing date
 					$ticket->setCloseDate($today);
 					// TODO: SENT EMAIL TO USER - TICKET CLOSED!
 					// the message
-                    $msg = "First line of text\nSecond line of text";
+                    $msg = "Su solicitud ha sido cerrada";
 
                     // use wordwrap() if lines are longer than 70 characters
                     $msg = wordwrap($msg,70);
@@ -205,11 +204,7 @@ class TicketsAdminController extends CI_Controller {
                     // send email
                     try {
                         $verify = mail("mpigorini@gmail.com","My subject",$msg);
-                        \ChromePhp::log("Envio de email");
-                        \ChromePhp::log($verify);
-                        \ChromePhp::log("Finde envio de email");
                     }catch(Exception $e){
-                        \ChromePhp::log("Excepcion");
                         \ChromePhp::log($e);
                     }
 
@@ -234,4 +229,5 @@ class TicketsAdminController extends CI_Controller {
 
         echo json_encode($result);
     }
+    
 }

@@ -84,7 +84,7 @@ class ListdepartamentController extends CI_Controller {
 	         		$result['tickets'][$key]['type'] = $ticket->getType();
 	         		$result['tickets'][$key]['level'] = $ticket->getLevel();
 	         		$result['tickets'][$key]['priority'] = $ticket->getPriority();
-	         		$result['tickets'][$key]['answerTime'] = $ticket->getAnswerTime();
+	         		$result['tickets'][$key]['answerTime'] = $result['tickets'][$key]['answerTime'] = $ticket->getAnswerTime() !== null ? $ticket->getAnswerTime() . "d / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d" : "- / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d";
 	         		$result['tickets'][$key]['qualityOfService'] = $ticket->getQualityOfService();
 	         		// Load user
 	     			$result['tickets'][$key]['userReporter']['id'] = $ticket->getUserReporter()->getId();

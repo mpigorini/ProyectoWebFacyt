@@ -47,9 +47,7 @@ angular.module('helpDesk')
     $http.get('index.php/reportes/ListtimeanalystController/getAnalysts')
     .then(function (response){
         if (response.data.message== "success") {
-            console.log(response);
             $scope.analysts =  response.data.data
-            console.log($scope.departments);
         }
     })
     $scope.getTicketsForAnalyst = function () {
@@ -87,7 +85,7 @@ angular.module('helpDesk')
             $scope.model.level = item.level;
             $scope.model.priority = item.priority;
             $scope.model.state = item.state;
-            $scope.model.answerTime = item.maxAnswerTime ? item.maxAnswerTime + "d" : null;
+            $scope.model.answerTime = item.answerTime;
             $scope.model.qualityOfService = item.qualityOfService;
             $scope.model.evaluation = item.evaluation;
             if(typeof item.userAssigned != 'undefined') {

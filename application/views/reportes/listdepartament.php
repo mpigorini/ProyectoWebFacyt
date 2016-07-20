@@ -8,10 +8,21 @@
   <md-content id="mainContent">
     <br/>
         <!-- Load Table for tabs todos-->
-    <p class="card-admin-ticket">
-        En la siguiente tabla encontrará <b>todas</b> las solicitudes generadas.
-        Seleccione alguna para consultar más detalles.
-    </p>
+     <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
+                    <md-card-title>
+    					<div layout layout-align="center center">
+    						<md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+    						<span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+    					</div>
+    				</md-card-title>
+    				<md-divider></md-divider>
+              <md-card-content>
+                  <p ng-style="{'color':'white'}">
+                      Selccione un <b>departamento</b> y luego haga click en consultar para ver todos los tickets,  correspondientes al departamento seleccionado.</br>
+                      Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles.
+                  </p>
+              </md-card-content>
+    </md-card>
     <md-card class="card-admin-ticket">
         <md-card-tittle>
         </md-card-tittle>
@@ -76,16 +87,22 @@
             </div>
             <form name="adminTicket">
                 <div layout="row">
-                    <div flex="45">
+                    <div flex="30">
                         <md-input-container class="md-block">
                             <label>Asunto</label>
                             <textarea readonly ng-model="model.subject"></textarea>
                         </md-input-container>
                     </div>
-                    <div flex="45" flex-offset="10">
+                    <div flex="30" flex-offset="5">
                           <md-input-container  class="md-block">
                             <label>Descripción</label>
                             <textarea  readonly ng-model="model.description"></textarea>
+                        </md-input-container>
+                    </div>
+                    <div flex="30" flex-offset="5">
+                        <md-input-container class="md-block">
+                            <label>Tecnico/Analista Asignado</label>
+                            <textarea readonly ng-model="model.userAssigned.showName"></textarea>
                         </md-input-container>
                     </div>
                 </div>
@@ -119,14 +136,13 @@
                     <div flex="30" flex-offset="5">
                         <md-input-container  class="md-block">
                            <label>Departamento</label>
-                            <textarea readonly ng-model="model.department"></textarea>
+                           <textarea readonly ng-model="model.department"></textarea>
                         </md-input-container>
                     </div>
                     <div flex="30" flex-offset="5">
                           <md-input-container  class="md-block">
                              <label>Estado</label>
-                            <md-select ng-disabled="!edit"  placeholder="Estados" ng-model="model.state"  style="min-width: 200px;">
-                            <md-option ng-value="state" ng-repeat="state in config.states">{{state}}</md-option>
+                            <textarea readonly ng-model="model.state"></textarea>
                         </md-input-container>
                     </div>
                 </div>
@@ -139,7 +155,7 @@
                     </div>
                     <div flex="30" flex-offset="5">
                         <md-input-container  class="md-block">
-                           <label>Tiempo estimado de respuesta</label>
+                           <label>Tiempo de respuesta</label>
                             <textarea readonly ng-model="model.answerTime"></textarea>
                         </md-input-container>
                     </div>
@@ -151,44 +167,29 @@
                     </div>
                 </div>
                  <div layout="row">
-                    <div flex="45">
+                    <div flex="30">
                         <md-input-container class="md-block">
                             <label>Calidad del servicio</label>
                             <textarea readonly ng-model="model.qualityOfService"></textarea>
                         </md-input-container>
                     </div>
-                    <div flex="45" flex-offset="10">
+                    <div flex="30" flex-offset="5">
                           <md-input-container  class="md-block">
                             <label>Evaluación</label>
                             <textarea  readonly ng-model="model.evaluation"></textarea>
                         </md-input-container>
                     </div>
-                </div>
-                <div layout="row">
-                    <div flex="45">
+                    <div flex="30" flex-offset="5">
                         <md-input-container class="md-block">
                             <label>Descripción de la solución</label>
-                            <textarea ng-disabled="!edit" ng-model="model.solutionDescription"></textarea>
+                            <textarea readonly ng-model="model.solutionDescription"></textarea>
                         </md-input-container>
                     </div>
                 </div>
             </form>
             <br/>
-                <md-divider class="teal"></md-divider>
-            <br/>
-            <div class="md-toolbar-tools">
-                <span>Solicitud asignada a </span>
-            </div>
-            <div layout="row">
-                <div flex="45">
-                    <md-input-container class="md-block">
-                        <label>Tecnico/Analista Asignado</label>
-                        <textarea ng-disabled="!edit" ng-model="model.userAssigned.showName"></textarea>
-                    </md-input-container>
-                </div>
-            </div>
        </md-card-content>
-        
+
     </md-card>
     <br/>
   </md-content>

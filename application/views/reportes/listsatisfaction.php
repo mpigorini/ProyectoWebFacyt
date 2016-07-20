@@ -23,7 +23,7 @@
                 </div>
                 <div layout="row">
                     <div flex="40" layout-align="center">
-                        <md-progress-linear md-mode="determinate" value="{{(qualityOfServices.value * 100) / todas}}"></md-progress-linear>    
+                        <md-progress-linear  md-mode="determinate" value="{{(qualityOfServices.value * 100) / todas}}"></md-progress-linear>    
                     </div>
                 </div>
                 <br/>

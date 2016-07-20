@@ -8,10 +8,21 @@
   <md-content id="mainContent">
     <br/>
         <!-- Load Table for tabs todos-->
-    <p class="card-admin-ticket">
-        En la siguiente tabla encontrará <b>todas</b> las solicitudes generadas.
-        Seleccione alguna para consultar más detalles.
-    </p>
+    <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
+        <md-card-title>
+			<div layout layout-align="center center">
+				<md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+				<span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+			</div>
+		</md-card-title>
+		<md-divider></md-divider>
+        <md-card-content>
+            <p ng-style="{'color':'white'}">
+                Seleccione un <b>Tecnico/Analista</b> y un rango de <b>fecha</b>, luego presione el boton <b>Consultar</b> para ver las solicitudes generadas en ese rango.</br>
+                Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles.
+            </p>
+        </md-card-content>
+    </md-card>
     <md-card class="card-admin-ticket">
         <md-card-tittle>
         </md-card-tittle>

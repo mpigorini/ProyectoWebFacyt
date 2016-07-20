@@ -30,7 +30,6 @@ class ListtimeanalystController extends CI_Controller {
 	
 	public function getTicketsForAnalyst() {
 		try {
-			\ChromePhp::log($_GET);
 		    $startTime = date_create_from_format('d/m/Y',$_GET['from'] );
 		    $endTime = date_create_from_format('d/m/Y',$_GET['to'] );
 		    $result['atendidas'] = 0;
@@ -78,7 +77,7 @@ class ListtimeanalystController extends CI_Controller {
 	         		$result['tickets'][$key]['type'] = $ticket->getType();
 	         		$result['tickets'][$key]['level'] = $ticket->getLevel();
 	         		$result['tickets'][$key]['priority'] = $ticket->getPriority();
-	         		$result['tickets'][$key]['answerTime'] = $ticket->getAnswerTime();
+	         		$result['tickets'][$key]['answerTime'] = $result['tickets'][$key]['answerTime'] = $ticket->getAnswerTime() !== null ? $ticket->getAnswerTime() . "d / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d" : "- / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d";
 	         		$result['tickets'][$key]['qualityOfService'] = $ticket->getQualityOfService();
 	         		// Load user
 	     			$result['tickets'][$key]['userReporter']['id'] = $ticket->getUserReporter()->getId();
@@ -106,7 +105,7 @@ class ListtimeanalystController extends CI_Controller {
 					$result['tickets'][$key]['daysLeft'] = $daysLeft < 0 ? 0 : $daysLeft;
 					$result['tickets'][$key]['maxAnswerTime'] = $hashedTimes[$ticket->getType()][$ticket->getPriority()];
 					
-					if($ticket->getState() == "En espera") {
+					if($ticket->getState() == "Cerrado") {
 	         			$result['enEspera'] = $result['enEspera'] + 1 ; 
 	         		}else if($ticket->getState() == "Cerrado") {
 	         			$result['atendidas'] = $result['atendidas'] + 1;
