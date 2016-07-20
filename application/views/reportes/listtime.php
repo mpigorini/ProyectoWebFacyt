@@ -12,7 +12,7 @@
 		<md-divider></md-divider>
         <md-card-content>
             <p ng-style="{'color':'white'}">
-                Seleccione una fecha de <b>inicio</b> y una de <b>fin</b> y luego presione el boton <b>Consultar</b> para ver las solicitudes generadas en ese rango.</br>
+                Seleccione una fecha de <b>inicio</b> y una de <b>fin</b> y luego presione el botón <b>Consultar</b> para ver las solicitudes generadas en ese rango.</br>
                 Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles.
             </p>
         </md-card-content>
