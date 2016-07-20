@@ -16,7 +16,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
     $scope.states="";
     $scope.tabs=[];
     $scope.selected = [];
-    $http.get('index.php/administration/TicketsAdminController/getStates')
+    $http.get('index.php/administration/TicketsAdminController/getStates', { headers:{'X-Requested-With': 'XMLHttpRequest'}})
         .then(function (response){
             if (response.data.message== "success") {
                 $scope.states = response.data.states;
@@ -27,7 +27,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
             }
         })
 
-    $http.get('index.php/administration/TicketsAdminController/getConfiguration')
+    $http.get('index.php/administration/TicketsAdminController/getConfiguration', { headers:{'X-Requested-With': 'XMLHttpRequest'}})
         .then(function(response) {
             if(response.data.message=="success") {
                 $scope.config = response.data;

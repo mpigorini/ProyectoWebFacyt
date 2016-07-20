@@ -8,11 +8,13 @@
             <!-- Help for Tickets configuration list -->
             <div class="col s12 l5">
                 <md-card md-theme="blue-grey">
-                    <md-card-title layout layout-align="center center">
-                        <md-card-title-media>
-                            <div class="md-media-sm"><img  ng-src="{{helpImagePath}}" class="md-card-image" alt="Help"></div>
-                        </md-card-title-media>
+                    <md-card-title>
+                        <div layout layout-align="center center">
+                            <md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+                            <span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+                        </div>
                     </md-card-title>
+                    <md-divider></md-divider>
                     <md-card-content>
                         <p ng-style="{'color':'white'}">
                             En la Lista de configuraciones se muestran todos las configuraciones de los paramantros de las solicitudes existentes.<br/>
@@ -109,19 +111,21 @@
     <!-- Help for selected ticket configuration -->
     <div class="col s12">
         <md-card md-theme="blue-grey">
-            <md-card-title layout layout-align="center center">
-                <md-card-title-media>
-                    <div class="md-media-sm"><img  ng-src="{{helpImagePath}}" class="md-card-image" alt="Help"></div>
-                </md-card-title-media>
-                <md-card-content>
-                    <p ng-style="{'color':'white'}">
-                        En el panel de abajo se mostrarán los detalles de la configuración seleccionada.<br/>
-                        Para crear una nueva configuración, hacer click en "nuevo" al final del panel. Inmediatamente podrá comenzar a editar.<br/>
-                        En los campos que corresponda, puede proporcionar varios valores presionando la tecla "comma" ó "enter".
-                        El campo Estados tendrá dos valores por defectos: En espera y Cerrado, pero debe proveer más estados.
-                    </p>
-                </md-card-content>
+            <md-card-title>
+                <div layout layout-align="center center">
+                    <md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+                    <span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+                </div>
             </md-card-title>
+            <md-divider></md-divider>
+            <md-card-content>
+                <p ng-style="{'color':'white'}">
+                    En el panel de abajo se mostrarán los detalles de la configuración seleccionada.<br/>
+                    Para crear una nueva configuración, hacer click en "nuevo" al final del panel. Inmediatamente podrá comenzar a editar.<br/>
+                    En los campos que corresponda, puede proporcionar varios valores presionando la tecla "comma" ó "enter".
+                    El campo Estados tendrá dos valores por defectos: En espera y Cerrado, pero debe proveer más estados.
+                </p>
+            </md-card-content>
         </md-card>
     </div>
 </div>

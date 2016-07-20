@@ -20,8 +20,6 @@ angular.module('helpDesk').controller('MainController',
             $rootScope.isSelected = function(selection) {
               return ($rootScope.choice == selection);
             }
-            $rootScope.helpImagePath = 'images/ic_info.png';
-
             $scope.helpers = function () {
                 if($rootScope.helpers){
                     $rootScope.helpers=false;

@@ -11,11 +11,13 @@
                 <span ng-show="$parent.helpers">
             	    <div class="col s12 m5">
                         <md-card md-theme="blue-grey">
-                            <md-card-title layout layout-align="center center">
-                                <md-card-title-media>
-                                    <div class="md-media-sm"><img  ng-src="{{helpImagePath}}" class="md-card-image" alt="Help"></div>
-                                </md-card-title-media>
+                            <md-card-title>
+                                <div layout layout-align="center center">
+                                    <md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+                                    <span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+                                </div>
                             </md-card-title>
+                            <md-divider></md-divider>
                             <md-card-content>
                                 <p ng-style="{'color':'white'}">
                                     En la Lista de departamentos se muestran todos los departamentos existentes.<br/>
@@ -133,13 +135,15 @@
                     <!-- HELP for positions -->
             	    <div class="col s12 m5 offset-m1">
                         <md-card md-theme="blue-grey">
-                            <md-card-title layout layout-align="center center">
-                                <md-card-title-media>
-                                    <div class="md-media-sm"><img  ng-src="{{helpImagePath}}" class="md-card-image" alt="Help"></div>
-                                </md-card-title-media>
+                            <md-card-title layout layout-align="end center">
+                                <div layout layout-align="center center">
+                                    <span ng-style="{'color':'white', 'margin-right':'10px'}">INFORMACIÓN</span>
+                                    <md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+                                </div>
                             </md-card-title>
+                            <md-divider></md-divider>
                             <md-card-content>
-                                <p ng-style="{'color':'white'}">
+                                <p ng-style="{'color':'white', 'text-align':'right'}">
                                     En la Lista de cargos se muestran todos los cargos existentes dentro del departamento {{department.name}}.<br/>
                         	        Para editar un cargo, haga click en <i class="material-icons">keyboard_arrow_down</i> del cargo de su elección.
                         	        Para eliminarlo, haga click en <i class="material-icons">delete</i><br/>
