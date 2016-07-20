@@ -37,71 +37,57 @@
 </div>
 <br>
 <div class="container row">
-<div ng-show="$parent.helpers">
-
-    <div class="card-panel col s9">
-    	<span ng-show="loading" style="margin-left: 45%;">
-        	<div class="preloader-wrapper big active">
-			    <div class="spinner-layer">
-				      <div class="circle-clipper left">
-				        <div class="circle"></div>
-				      </div><div class="gap-patch">
-				        <div class="circle"></div>
-				      </div><div class="circle-clipper right">
-				        <div class="circle"></div>
-				      </div>
-			    </div>
-		  	</div>
-        </span>
-        <span ng-show="!loading">
-	        <h5 class="center" style="cursor: default;">Lista de usuarios del sistema</h5>
-	        <table class="bordered striped" style="display: block; height: 550px; overflow-y: auto;">
-	            <thead>
-	                <th>Nombre</th>
-	                <th>Apellido</th>
-	                <th>Cédula</th>
-	                <th>Teléfono</th>
-	                <th>Tipo de usuario</th>
-	                <th>Departamento</th>
-	                <th>Cargo</th>
-	                <th>Editar</th>
-	                <th style="width: 4% !important;">Eliminar</th>
-	            </thead>
-	            <tbody>
-	                <tr ng-repeat="user in users | filter:search">
-	                    <td>{{user.name}}</td>
-	                    <td>{{user.lastname}}</td>
-	                    <td>{{user.cedula}}</td>
-	                    <td>{{user.phone}}</td>
-	                    <td>{{user.type}}</td>
-	                    <td>{{user.department}}</td>
-	                    <td>{{user.position}}</td>
-	                    <td><a class="btn-floating waves-effect waves-light tale" title="Editar usuario {{user.name}}" ng-click="userEditMode(user.id)"><i class="material-icons">mode_edit</i></a></td>
-	                    <td><a class="btn-floating waves-effect waves-light red" title="Eliminar usuario {{user.name}}" ng-click="deleteUser(user.id)"><i class="material-icons">delete</i></a></td>
-	                </tr>
-	            </tbody>
-	        </table>
-        </span>
-    </div>
-    <div class="col s3 center-align">
-   		<span ng-show="$parent.helpers">
-			<md-card md-theme="blue-grey">
-				<md-card-title>
-					<div layout layout-align="center center">
-						<md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
-						<span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
-					</div>
-				</md-card-title>
-				<md-divider></md-divider>
-				<md-card-content>
-					<p ng-style="{'color':'white'}">
-						Al presionar sobre <i class="material-icons prefix small">mode_edit</i>
-						para editar un usuario, se mostrara una nueva sección debajo que le permitirá realizar los cambios que desee.
-						<br><br>
-						También se mostrara una nueva sección debajo si presiona "Nuevo usuario", donde se le solicitaran los datos del usuario que desea agregar.
-					</p>
-				</md-card-content>
-			</md-card>
+	<div ng-show="$parent.helpers">
+	    <div class="card-panel col s9">
+	    	<span ng-if="loading" style="margin-left: 45%;">
+	        	<div class="preloader-wrapper big active">
+				    <div class="spinner-layer">
+					      <div class="circle-clipper left">
+					        <div class="circle"></div>
+					      </div><div class="gap-patch">
+					        <div class="circle"></div>
+					      </div><div class="circle-clipper right">
+					        <div class="circle"></div>
+					      </div>
+				    </div>
+			  	</div>
+	        </span>
+	        <span ng-if="!loading">
+		        <h5 class="center" style="cursor: default;">Lista de usuarios del sistema</h5>
+		        <table class="bordered striped" style="display: block; height: 550px; overflow-y: auto;">
+		            <thead>
+		                <th>Nombre</th>
+		                <th>Apellido</th>
+		                <th>Cédula</th>
+		                <th>Teléfono</th>
+		                <th>Tipo de usuario</th>
+		                <th>Departamento</th>
+		                <th>Cargo</th>
+		                <th style="width: 4% !important;">Editar</th>
+		            </thead>
+		            <tbody>
+		                <tr ng-repeat="user in users | filter:search">
+		                    <td>{{user.name}}</td>
+		                    <td>{{user.lastname}}</td>
+		                    <td>{{user.cedula}}</td>
+		                    <td>{{user.phone}}</td>
+		                    <td>{{user.type}}</td>
+		                    <td>{{user.department}}</td>
+		                    <td>{{user.position}}</td>
+		                    <td><a class="btn-floating waves-effect waves-light tale" title="Editar usuario {{user.name}}" ng-click="userEditMode(user.id)"><i class="material-icons">mode_edit</i></a></td>
+		                </tr>
+		            </tbody>
+		        </table>
+	        </span>
+	    </div>
+	    <div class="col s3 center-align">
+	    	<div class="card-panel blue-grey darken-1">
+	    		<span class="white-text" style="text-align: justify; cursor: default; font-size: 17px;">Al presionar sobre <i class="material-icons prefix small">mode_edit</i>
+	    			para editar un usuario, se mostrara una nueva sección debajo que le permitirá realizar los cambios que desee.
+					<br><br>
+					También se mostrara una nueva sección debajo si presiona "Nuevo usuario", donde se le solicitaran los datos del usuario que desea agregar.
+	    		</span>
+	    	</div>
 	    	<button class="btn waves-effect waves-light  orange accent-4 "  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
 	    </div>
     </div>
@@ -132,8 +118,7 @@
 		                <th>Tipo de usuario</th>
 		                <th>Departamento</th>
 		                <th>Cargo</th>
-		                <th>Editar</th>
-		                <th style="width: 4% !important;">Eliminar</th>
+		                <th style="width: 4% !important;">Editar</th>
 		            </thead>
 		            <tbody>
 		                <tr ng-repeat="user in users | filter:search2">
@@ -146,7 +131,6 @@
 		                    <td>{{user.department}}</td>
 		                    <td>{{user.position}}</td>
 		                    <td><a class="btn-floating waves-effect waves-light tale" title="Editar usuario {{user.name}}" ng-click="userEditMode(user.id)"><i class="material-icons">mode_edit</i></a></td>
-		                    <td><a class="btn-floating waves-effect waves-light red" title="Eliminar usuario {{user.name}}" ng-click="deleteUser(user.id)"><i class="material-icons">delete</i></a></td>
 		                </tr>
 		            </tbody>
 		        </table>
