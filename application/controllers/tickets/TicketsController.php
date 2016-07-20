@@ -21,24 +21,6 @@ class TicketsController extends CI_Controller {
             $config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));
 
             if($config != null) {
-				// Get current config types and priorities
-				$types = explode(',', $config->getTypes());
-				$priorities = explode(',', $config->getPriorities());
-				// Get all max answer times
-				$maxAnswerTimes = $config->getMaxAnswerTimes();
-				// Pre-process max answer times: Put all of em into a single array
-				$temp = array();
-				foreach ($maxAnswerTimes as $maxAnswerTime) {
-					array_push($temp, $maxAnswerTime->getMaxTime());
-				}
-				// Store each max time in a hashed max answer time structures
-				$counter = 0;
-				foreach($types as $tKey => $type) {
-					 foreach($priorities as $pKey => $priority) {
-						$hashedTimes[$type][$priority] = $temp[$counter];
-						$counter++;
-					}
-				}
 				// for each current config's state
                 foreach(explode(',', $config->getStates()) as $key=>$state) {
 					// save state value
@@ -57,7 +39,7 @@ class TicketsController extends CI_Controller {
 			        		$result['states'][$key]['table'][$keyTicket]['level'] = $ticket->getLevel();
 							$result['states'][$key]['table'][$keyTicket]['state'] = $ticket->getState();
 			        		$result['states'][$key]['table'][$keyTicket]['priority'] = $ticket->getPriority();
-							$result['states'][$key]['table'][$keyTicket]['answerTime'] = $ticket->getAnswerTime() !== null ? $ticket->getAnswerTime() . "d / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d" : "- / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d";
+							$result['states'][$key]['table'][$keyTicket]['answerTime'] = $ticket->getAnswerTime() !== null ? $ticket->getAnswerTime() . "d / " . $ticket->getMaxAnswerTime() . "d" : "- / " . $ticket->getMaxAnswerTime() . "d";
 			        		$result['states'][$key]['table'][$keyTicket]['qualityOfService'] = $ticket->getQualityOfService();
 			        	    // Load assigned user
 			        	    if($ticket->getUserAssigned() != null ) {

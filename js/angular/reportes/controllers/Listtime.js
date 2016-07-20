@@ -46,8 +46,6 @@ angular.module('helpDesk')
         page: 1
     };
 
-
-
     $scope.getTicketsForDate = function () {
       $http.get('index.php/reportes/ListtimeController/getTicketsForDate' , {params : {from:$scope.model.from , to:$scope.model.to}})
         .then(function (response){
@@ -151,9 +149,5 @@ angular.module('helpDesk')
     $scope.editMode = function(){
         $scope.edit =true;
     }
-
-
-
-
 
   }]);

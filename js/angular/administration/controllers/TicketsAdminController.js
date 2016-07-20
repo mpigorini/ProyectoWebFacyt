@@ -21,6 +21,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
             if (response.data.message== "success") {
                 $scope.states = response.data.states;
                 $scope.tickets = response.data.tickets;
+                $scope.otherTickets = response.data.otherTickets;
                 console.log($scope.states);
                 console.log($scope.tickets);
                 $scope.loading = false;

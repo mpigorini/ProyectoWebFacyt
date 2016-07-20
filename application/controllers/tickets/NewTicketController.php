@@ -61,6 +61,25 @@ class NewTicketController extends CI_Controller {
         // dont forget to add date and user reporter (with associations)
         try {
             $em = $this->doctrine->em;
+            // Get current config types and priorities
+            $config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));
+            $types = explode(',', $config->getTypes());
+            $priorities = explode(',', $config->getPriorities());
+            // Get all max answer times
+            $maxAnswerTimes = $config->getMaxAnswerTimes();
+            // Pre-process max answer times: Put all of em into a single array
+            $temp = array();
+            foreach ($maxAnswerTimes as $maxAnswerTime) {
+                array_push($temp, $maxAnswerTime->getMaxTime());
+            }
+            // Store each max time in a hashed max answer times structure
+            $counter = 0;
+            foreach($types as $tKey => $type) {
+                 foreach($priorities as $pKey => $priority) {
+                    $hashedTimes[$type][$priority] = $temp[$counter];
+                    $counter++;
+                }
+            }
 
             $ticket = new \Entity\Ticket();
             $user = $em->getRepository('\Entity\Users')->findOneBy(array("id"=>$_GET['user']));
@@ -73,6 +92,7 @@ class NewTicketController extends CI_Controller {
             $ticket->setPriority($_GET['priority']);
             $ticket->setUserReporter($user);
             $ticket->setDepartment($_GET['department']);
+            $ticket->setMaxAnswerTime($hashedTimes[$_GET['type']][$_GET['priority']]);
             // Set submit date as today
             $ticket->setSubmitDate(new \DateTime('now'));
 

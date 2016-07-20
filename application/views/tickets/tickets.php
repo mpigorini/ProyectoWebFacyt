@@ -50,7 +50,7 @@
                               </tr>
                             </thead>
                             <tbody md-body>
-                              <tr md-row md-select="ticket"  md-on-select="selectItem" md-on-deselect="deselectItem" ng-repeat="ticket in tickets | orderBy: ticket.subject | limitTo: query.limit: (query.page - 1) * query.limit">
+                              <tr md-row md-select="ticket"  md-on-select="selectItem" md-on-deselect="deselectItem" ng-repeat="ticket in tickets | orderBy: ticket.id | limitTo: query.limit: (query.page - 1) * query.limit">
                                 <td md-cell>{{ticket.paddedId}}</td>
                                 <td md-cell>{{ticket.subject}}</td>
                                 <td md-cell>{{ticket.state}}</td>

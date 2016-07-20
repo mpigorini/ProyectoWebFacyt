@@ -19,24 +19,6 @@ class TicketsAdminController extends CI_Controller {
             $config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));
 
             if($config != null) {
-				// Get current config types and priorities
-				$types = explode(',', $config->getTypes());
-				$priorities = explode(',', $config->getPriorities());
-				// Get all max answer times
-				$maxAnswerTimes = $config->getMaxAnswerTimes();
-				// Pre-process max answer times: Put all of em into a single array
-				$temp = array();
-				foreach ($maxAnswerTimes as $maxAnswerTime) {
-					array_push($temp, $maxAnswerTime->getMaxTime());
-				}
-				// Store each max time in a hashed max answer times structure
-				$counter = 0;
-				foreach($types as $tKey => $type) {
-					 foreach($priorities as $pKey => $priority) {
-						$hashedTimes[$type][$priority] = $temp[$counter];
-						$counter++;
-					}
-				}
 				// Store current config created tickets for each state
                 foreach(explode(',', $config->getStates()) as $key=>$state) {
                     $result['states'][$key]['name'] = $state;
@@ -49,7 +31,7 @@ class TicketsAdminController extends CI_Controller {
 		        		$result['states'][$key]['table'][$keyTicket]['type'] = $ticket->getType();
 		        		$result['states'][$key]['table'][$keyTicket]['level'] = $ticket->getLevel();
 		        		$result['states'][$key]['table'][$keyTicket]['priority'] = $ticket->getPriority();
-						$result['states'][$key]['table'][$keyTicket]['answerTime'] = $ticket->getAnswerTime() !== null ? $ticket->getAnswerTime() . "d / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d" : "- / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d";
+						$result['states'][$key]['table'][$keyTicket]['answerTime'] = $ticket->getAnswerTime() !== null ? $ticket->getAnswerTime() . "d / " . $ticket->getMaxAnswerTime() . "d" : "- / " . $ticket->getMaxAnswerTime() . "d";
 		        		$result['states'][$key]['table'][$keyTicket]['qualityOfService'] = $ticket->getQualityOfService();
 		        		//Load user
 	        			$result['states'][$key]['table'][$keyTicket]['userReporter']['id'] = $ticket->getUserReporter()->getId();
@@ -69,7 +51,7 @@ class TicketsAdminController extends CI_Controller {
 						$currentDate = new \DateTime('now');
 						$interval = $ticket->getSubmitDate()->diff($currentDate);
 						$daysPassed = $interval->format("%a");
-						$daysLeft = $hashedTimes[$ticket->getType()][$ticket->getPriority()] - $daysPassed;
+						$daysLeft = $ticket->getMaxAnswerTime() - $daysPassed;
 						// If days left is three or less and it has not been closed yet, we must warn user.
 						$result['states'][$key]['table'][$keyTicket]['warn'] = $daysLeft <= 3  && $ticket->getState() != "Cerrado" ? true : false;
 						$result['states'][$key]['table'][$keyTicket]['daysLeft'] = $daysLeft < 0 ? 0 : $daysLeft;
@@ -85,6 +67,57 @@ class TicketsAdminController extends CI_Controller {
 						}
 					}
 				}
+				// Get other configuration tickets
+				$tickets = $em->getRepository('\Entity\Ticket')->findAll();
+				$counter = 0;
+				foreach ($tickets as $ticket) {
+					$otherConfig = true;
+					foreach(explode(',', $config->getStates()) as $state) {
+						if ($ticket->getState() === $state) {
+							// This ticket's state was found in current configuration
+							$otherConfig = false;
+						}
+					}
+					if ($otherConfig) {
+						// Found ticket with other configuration
+						$result['otherTickets'][$counter]['id'] = $ticket->getId();
+						$result['otherTickets'][$counter]['paddedId'] = sprintf('%06d', $ticket->getId());
+						$result['otherTickets'][$counter]['subject'] = $ticket->getSubject();
+						$result['otherTickets'][$counter]['description'] = $ticket->getDescription();
+						$result['otherTickets'][$counter]['type'] = $ticket->getType();
+						$result['otherTickets'][$counter]['level'] = $ticket->getLevel();
+						$result['otherTickets'][$counter]['priority'] = $ticket->getPriority();
+						$result['otherTickets'][$counter]['answerTime'] = $ticket->getAnswerTime() !== null ? $ticket->getAnswerTime() . "d / " . $ticket->getMaxAnswerTime() . "d" : "- / " . $ticket->getMaxAnswerTime() . "d";
+						$result['otherTickets'][$counter]['qualityOfService'] = $ticket->getQualityOfService();
+						// Load user
+						$result['otherTickets'][$counter]['userReporter']['id'] = $ticket->getUserReporter()->getId();
+						$result['otherTickets'][$counter]['userReporter']['name'] = $ticket->getUserReporter()->getName();
+						// Load user assigned
+						if($ticket->getUserAssigned() != null ) {
+						   $result['otherTickets'][$counter]['userAssigned']['id'] = $ticket->getUserAssigned()->getId();
+						   $result['otherTickets'][$counter]['userAssigned']['showName'] = $ticket->getUserAssigned()->getName() ." " . $ticket->getUserAssigned()->getLastName();
+						}
+						$result['otherTickets'][$counter]['department'] = $ticket->getDepartment();
+						$result['otherTickets'][$counter]['submitDate'] =$ticket->getSubmitDate();
+						$result['otherTickets'][$counter]['closeDate'] = $ticket->getCloseDate();
+						$result['otherTickets'][$counter]['state'] = $ticket->getState();
+						$result['otherTickets'][$counter]['solutionDescription'] = $ticket->getSolutionDescription();
+						$result['otherTickets'][$counter]['evaluation'] = $ticket->getEvaluation();
+						// Determine how many days are left and whether we should warn user about it
+						$currentDate = new \DateTime('now');
+						$interval = $ticket->getSubmitDate()->diff($currentDate);
+						$daysPassed = $interval->format("%a");
+						$daysLeft = $ticket->getMaxAnswerTime() - $daysPassed;
+						// If days left is three or less and it has not been closed yet, we must warn user.
+						$result['otherTickets'][$counter]['warn'] = $daysLeft <= 3  && $ticket->getState() != "Cerrado" ? true : false;
+						$result['otherTickets'][$counter]['daysLeft'] = $daysLeft < 0 ? 0 : $daysLeft;
+
+						\ChromePhp::log($result['otherTickets'][$counter]);
+						$counter++;
+					}
+				}
+
+
                 $result['message'] = "success";
 
             }
