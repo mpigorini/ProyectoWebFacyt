@@ -6,6 +6,7 @@ class ListtimeController extends CI_Controller {
     public function index() {
        $this->load->view('reportes/listtime');
     }
+    
     public function getTicketsForDate()
 	{   
 		try {
@@ -90,7 +91,6 @@ class ListtimeController extends CI_Controller {
 	         		if($ticket->getCloseDate() != null) {
 	         			$closeDate = $ticket->getCloseDate();
 						$interval = $ticket->getSubmitDate()->diff($closeDate); 
-						\ChromePhp::log($interval->format("%a"));
 						if($interval->format("%a") >  $result['tickets'][$key]['maxAnswerTime'] ) {
 							$result['excedidas'] = $result['excedidas'] + 1 ;
 						}

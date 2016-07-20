@@ -16,7 +16,6 @@ listTicket.$inject=['$scope','$http', '$rootScope'];
 
   function listTicket ($scope,$http, $rootScope) {
 	
-  'use strict';
     // show administration option as active
     $rootScope.select(6);
     $scope.loading = true;
