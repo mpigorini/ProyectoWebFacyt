@@ -183,9 +183,9 @@
                         </form>
                     </md-card-content>
                     <md-card-actions layout="row" layout-align="end center">
-                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-accent md-raised">Editar</md-button>
-                         <md-button ng-click="save()" ng-show="edit" class="md-accent">Enviar</md-button>
-                         <md-button ng-click="viewMode()" ng-show="edit" class="md-accent md-raised">Cancelar</md-button>
+                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
+                         <md-button ng-click="save()" ng-show="edit" class="md-primary">Enviar</md-button>
+                         <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
                      </md-card-actions>
                 </md-card>
             </md-content>
@@ -371,9 +371,9 @@
                         </form>
                     </md-card-content>
                     <md-card-actions layout="row" layout-align="end center">
-                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-accent md-raised">Editar</md-button>
-                         <md-button ng-click="save()" ng-show="edit" class="md-accent">Enviar</md-button>
-                         <md-button ng-click="viewMode()" ng-show="edit" class="md-accent md-raised">Cancelar</md-button>
+                         <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
+                         <md-button ng-click="save()" ng-show="edit" class="md-primary">Enviar</md-button>
+                         <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
                      </md-card-actions>
                 </md-card>
             </md-content>

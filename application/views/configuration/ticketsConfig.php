@@ -4,6 +4,7 @@
 <br>
 <div class="ticket-config-card container">
    <div class="row" style="width:100%;margin:auto;">
+
         <span ng-show="$parent.helpers">
             <!-- Help for Tickets configuration list -->
             <div class="col s12 l5">
@@ -63,7 +64,7 @@
                 </table>
             </div>
         </span>
-        <span ng-show="!$parent.helpers">
+        <span ng-if="!$parent.helpers">
             <div class="col s12 m6 offset-m3 card">
                 <p class="center">Lista de configuraciones</p>
                 <table style="width:80%;margin:auto">
@@ -107,6 +108,7 @@
 <br/>
     <h5 class="container" style="font-weight:300">Configuración Seleccionada</h5>
 <br/>
+
 <div ng-show="$parent.helpers" class="row container">
     <!-- Help for selected ticket configuration -->
     <div class="col s12">
@@ -242,10 +244,10 @@
             </div>
         </div>
         <div layout="row" layout-align="end center">
-            <md-button ng-click="newTicketType()" ng-hide="edit" class="md-accent md-raised">Nuevo</md-button>
-            <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-accent md-raised">Editar</md-button>
-            <md-button ng-click="save()" ng-show="edit" class="md-accent">Guardar</md-button>
-            <md-button ng-click="viewMode()" ng-show="edit" class="md-accent md-raised">Cancelar</md-button>
+            <md-button ng-click="newTicketType()" ng-hide="edit" class="md-primary md-raised">Nuevo</md-button>
+            <md-button ng-click="editMode()" ng-hide="edit || noUserInput()" class="md-primary md-raised">Editar</md-button>
+            <md-button ng-click="save()" ng-show="edit" class="md-primary">Guardar</md-button>
+            <md-button ng-click="viewMode()" ng-show="edit" class="md-primary md-raised">Cancelar</md-button>
         </div>
     </div>
 </div>

@@ -94,10 +94,10 @@
                             <label for="description" ng-class="{active:isDepartmentLoaded()}">Descripción del departamento</label>
                         </div>
                         <div class="row right-align">
-                            <md-button class="md-accent md-raised" ng-click="newDepartment()" ng-hide="editDepartment">Nuevo</md-button>
-                            <md-button class="md-accent md-raised" ng-click="departmentEditMode()" ng-hide="editDepartment || noDepartmentUserInput()">Editar</md-button>
-                            <md-button class="md-accent" ng-click="saveDepartment()" ng-show="editDepartment">Guardar</md-button>
-                            <md-button class="md-accent md-raised" ng-click="departmentViewMode()" ng-show="editDepartment">Cancelar</md-button>
+                            <md-button class="md-primary md-raised" ng-click="newDepartment()" ng-hide="editDepartment">Nuevo</md-button>
+                            <md-button class="md-primary md-raised" ng-click="departmentEditMode()" ng-hide="editDepartment || noDepartmentUserInput()">Editar</md-button>
+                            <md-button class="md-primary" ng-click="saveDepartment()" ng-show="editDepartment">Guardar</md-button>
+                            <md-button class="md-primary md-raised" ng-click="departmentViewMode()" ng-show="editDepartment">Cancelar</md-button>
                         </div>
                     </div>
                 </form>
@@ -199,10 +199,10 @@
                             <label for="description" ng-class="{active:isPositionLoaded()}">Descripción del cargo</label>
                         </div>
                         <div class="row right-align">
-                            <md-button ng-click="newPosition()" ng-hide="editPosition" class="md-accent md-raised">Nuevo</md-button>
-                            <md-button ng-click="positionEditMode()" ng-hide="editPosition || noPositionUserInput()" class="md-accent md-raised">Editar</md-button>
-                            <md-button ng-click="savePosition()" ng-show="editPosition" class="md-accent">Guardar</md-button>
-                            <md-button ng-click="positionViewMode()" ng-show="editPosition" class="md-accent md-raised">Cancelar</md-button>
+                            <md-button ng-click="newPosition()" ng-hide="editPosition" class="md-primary md-raised">Nuevo</md-button>
+                            <md-button ng-click="positionEditMode()" ng-hide="editPosition || noPositionUserInput()" class="md-primary md-raised">Editar</md-button>
+                            <md-button ng-click="savePosition()" ng-show="editPosition" class="md-primary">Guardar</md-button>
+                            <md-button ng-click="positionViewMode()" ng-show="editPosition" class="md-primary md-raised">Cancelar</md-button>
                         </div>
                 	</div>
                 </form>

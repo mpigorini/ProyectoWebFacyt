@@ -8,7 +8,7 @@
  * Controller of the reportesApp
  */
 angular.module('helpDesk')
-  .controller('ListdepartamentCtrl',['$scope','$http', function ($scope,$http) {
+  .controller('ListdepartamentCtrl',['$scope','$http','$rootScope', function ($scope,$http,$rootScope) {
     'use strict';
     // close mobile sideNav
     $('.button-collapse').sideNav('hide');
@@ -16,7 +16,7 @@ angular.module('helpDesk')
     $scope.ticketSelected = false;
     $scope.selected = [];
     $scope.result = false;
-
+    $scope.noData = false;
     $scope.query = {
         order: 'subject',
         limit: 5,
@@ -26,21 +26,22 @@ angular.module('helpDesk')
     $http.get('index.php/reportes/ListdepartamentController/getDepartments')
     .then(function (response){
         if (response.data.message== "success") {
-            $scope.departments =  response.data.departments
+            $scope.departments =  response.data.data
+            console.log($scope.departments);
         }
     })
     $scope.getTicketsForDepartment = function () {
-      $http.get('index.php/reportes/ListdepartamentController/getTicketsForDepartment' , {params : $scope.department})
+      $http.get('index.php/reportes/ListdepartamentController/getTicketsForDepartment' , {params : $scope.model.departmentSelect})
         .then(function (response){
             if (response.data.message== "success") {
                 $scope.tickets = response.data.tickets;
-                $scope.todas = response.data.todas;
-                $scope.enEspera = response.data.enEspera;
-                $scope.atendidas = response.data.atendidas;
-                $scope.excedidas = response.data.excedidas;
-                console.log(response);
-                console.log($scope.tickets);
-                $scope.result = true;
+                 if(typeof $scope.tickets !== 'undefined'){
+                  $scope.result = true;  
+                  $scope.noData = false;
+                }else {
+                  $scope.result = false; 
+                  $scope.noData = true;
+                }
             }
         })
     }
@@ -57,7 +58,7 @@ angular.module('helpDesk')
             $scope.model.level = item.level;
             $scope.model.priority = item.priority;
             $scope.model.state = item.state;
-            $scope.model.answerTime = item.maxAnswerTime ? item.maxAnswerTime + "d" : null;
+            $scope.model.answerTime = item.answerTime;
             $scope.model.qualityOfService = item.qualityOfService;
             $scope.model.evaluation = item.evaluation;
             if(typeof item.userAssigned != 'undefined') {
@@ -91,41 +92,5 @@ angular.module('helpDesk')
         $scope.ticketSelected = false;
     }
 
-
-
-    $http.get('index.php/reportes/ListdepartamentController/listTicket')
-      .then(function(response) {
-          if(response.data.message === "success") {
-            $scope.miembros = response.data.tickets;
-
-            $scope.loader=false;
-            console.log($scope.loader);
-          }
-        }, function (response){
-
-          console.log(response.data);
-          $scope.loader=false;
-        console.log($scope.loader);
-    });
-
-
-//     $scope.gridOptions={
-// //defincion de las propiedades del ng-Grid
-//
-//     jqueryUITheme: true,
-//     showGroupPanel: true,
-//     showGridFooter: true,
-//     showColumnFooter: true,
-//     columnDefs:[
-//     { name:'id' , displayName:'NumberTicket' },
-//     { name:'subject' },
-//     { name:'type', displayName:'StateTicket' },
-//     { name:'answerTime' },
-//     { name:'qualityOfService' },
-//     { name:'department' },
-//    ],
-// 	  data : 'miembros'
-//
-// 	};
 
 }]);

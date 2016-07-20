@@ -7,11 +7,22 @@
 <div ng-cloak ng-if="!loading">
   <md-content>
     <br/>
+      <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
+                <md-card-title>
+					<div layout layout-align="center center">
+						<md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+						<span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+					</div>
+				</md-card-title>
+				<md-divider></md-divider>
+          <md-card-content>
+              <p ng-style="{'color':'white'}">
+                  En la siguiente tabla encontrará <b>todas</b> las solicitudes generadas en el sistema.</br>
+                Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles.
+              </p>
+          </md-card-content>
+    </md-card>
         <!-- Load Table for tabs todos-->
-    <p class="card-admin-ticket">
-        En la siguiente tabla encontrará <b>todas</b> las solicitudes generadas.
-        Seleccione alguna para consultar más detalles.
-    </p>
     <md-card class="card-admin-ticket">
         <md-card-tittle>
         </md-card-tittle>
@@ -32,7 +43,6 @@
                     <th md-column>Prioridad</th>
                     <th md-column>Tipo</th>
                     <th md-column>Estado</th>
-                    <th md-column>Días restantes</th>
                   </tr>
                 </thead>
                 <tbody md-body>
@@ -44,7 +54,6 @@
                     <td md-cell>{{ticket.priority}}</td>
                     <td md-cell>{{ticket.type}}</td>
                     <td md-cell>{{ticket.state}}</td>
-                    <td md-cell>{{ticket.daysLeft}} <md-icon ng-if="ticket.warn" ng-style="{'color':'#F44336'}">warning</md-icon></td>
                   </tr>
                 </tbody>
               </table>

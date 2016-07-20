@@ -20,7 +20,7 @@
                 <label for="description">Descripción del incidente</label>
         </div>
     </div>
-    
+
     <div class ="row">
         <div class="input-field col s12 m3">
             <select ng-model="ticket.type" material-select watch>

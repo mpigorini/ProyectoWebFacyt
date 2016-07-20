@@ -27,8 +27,9 @@
 	    </div>
     </span>
     <span ng-show="!$parent.helpers"><br>
-    	<div class="input-field col s2 offset-s4">
+    	<div class="container input-field col s4 offset-s4">
 	    	<i class="material-icons prefix small">search</i>
+
 	        <input id="filter2" type="text" ng-model="search">
 	    	<label for="filter2">Buscar usuarios...</label>
 	    </div><br>
@@ -36,6 +37,8 @@
 </div>
 <br>
 <div class="container row">
+<div ng-show="$parent.helpers">
+
     <div class="card-panel col s9">
     	<span ng-show="loading" style="margin-left: 45%;">
         	<div class="preloader-wrapper big active">
@@ -100,11 +103,60 @@
 				</md-card-content>
 			</md-card>
 	    	<button class="btn waves-effect waves-light  orange accent-4 "  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
-    	</span>
-    	<span ng-show="!$parent.helpers">
-    		<button class="btn waves-effect waves-light  orange accent-4 "  name="new_user" title="Agregar nuevo usuario" style="top: 100px;" ng-click="userNewMode()">Nuevo usuario</button>
-    	</span>
+	    </div>
     </div>
+    <div ng-show="!$parent.helpers">
+    	<div class="card-panel col s12">
+	    	<span ng-if="loading" style="margin-left: 45%;">
+	        	<div class="preloader-wrapper big active">
+				    <div class="spinner-layer">
+					      <div class="circle-clipper left">
+					        <div class="circle"></div>
+					      </div><div class="gap-patch">
+					        <div class="circle"></div>
+					      </div><div class="circle-clipper right">
+					        <div class="circle"></div>
+					      </div>
+				    </div>
+			  	</div>
+	        </span>
+	        <span ng-if="!loading">
+		        <h5 class="center" style="cursor: default;">Lista de usuarios del sistema</h5>
+		        <table class="bordered striped" style="display: block; height: 550px; overflow-y: auto;">
+		            <thead>
+		                <th>Nombre</th>
+		                <th>Apellido</th>
+		                <th>Login</th>
+		                <th>Cédula</th>
+		                <th>Teléfono</th>
+		                <th>Tipo de usuario</th>
+		                <th>Departamento</th>
+		                <th>Cargo</th>
+		                <th>Editar</th>
+		                <th style="width: 4% !important;">Eliminar</th>
+		            </thead>
+		            <tbody>
+		                <tr ng-repeat="user in users | filter:search2">
+		                    <td>{{user.name}}</td>
+		                    <td>{{user.lastname}}</td>
+		                    <td>{{user.login}}</td>
+		                    <td>{{user.cedula}}</td>
+		                    <td>{{user.phone}}</td>
+		                    <td>{{user.type}}</td>
+		                    <td>{{user.department}}</td>
+		                    <td>{{user.position}}</td>
+		                    <td><a class="btn-floating waves-effect waves-light tale" title="Editar usuario {{user.name}}" ng-click="userEditMode(user.id)"><i class="material-icons">mode_edit</i></a></td>
+		                    <td><a class="btn-floating waves-effect waves-light red" title="Eliminar usuario {{user.name}}" ng-click="deleteUser(user.id)"><i class="material-icons">delete</i></a></td>
+		                </tr>
+		            </tbody>
+		        </table>
+	        </span>
+	    </div>
+	    <div ng-if="!loading" class="row col s12 offset-s5" style="margin-bottom: 2%; margin-top: 1%;">
+        	<md-button class="md-raised md-primary"  name="new_user" title="Agregar nuevo usuario" ng-click="userNewMode()"> Nuevo usuario</md-button>
+        </div>
+
+	</div>
 </div>
 <br>
 <div class="container" ng-show="editUser">

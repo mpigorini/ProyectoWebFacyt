@@ -27,15 +27,30 @@ angular.module('helpDesk').controller('MainController',
                     $rootScope.helpers=true;
                 }
             };
+            $scope.isLoggedIn = function() {
+              return(auth.isLoggedIn());
+            };
+            if(auth.isLoggedIn()){
+              console.log(auth.perfil());
+            }
+            $scope.isGerente = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '1');
+              }
+            };
+            $scope.isCoordinador = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '2');
+              }
+            };
+            $scope.isTecnico = function(){
+              if(auth.isLoggedIn()){
+                return(auth.perfil() == '3');
+              }
+            };
         }
     ]
 );
-
-angular.module('helpDesk').controller('Navbar',function($rootScope, $scope,auth){
-  $scope.isLoggedIn = function() {
-    return(auth.isLoggedIn());
-  };
-});
 
 helpDesk.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
   $urlRouterProvider
@@ -174,7 +189,7 @@ angular.module('helpDesk')
             // send to home page (tickets)
             e.preventDefault();
             $state.go('tickets');
-        } else if (auth.isLoggedIn() && !userHasPermission($cookies.getObject("session").type, $location.url())) {
+        } else if (auth.isLoggedIn() && !userHasPermission(auth.perfil(), $location.url())) {
             // check if user actually has access permission to intended url
 
             e.preventDefault();

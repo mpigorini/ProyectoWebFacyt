@@ -6,6 +6,7 @@ class ListtimeController extends CI_Controller {
     public function index() {
        $this->load->view('reportes/listtime');
     }
+    
     public function getTicketsForDate()
 	{
 		try {
@@ -81,7 +82,7 @@ class ListtimeController extends CI_Controller {
 					$result['tickets'][$key]['daysLeft'] = $daysLeft < 0 ? 0 : $daysLeft;
 					$result['tickets'][$key]['maxAnswerTime'] = $hashedTimes[$ticket->getType()][$ticket->getPriority()];
 
-					if($ticket->getState() == "En espera") {
+					if($ticket->getState() != "Cerrado") {
 	         			$result['enEspera'] = $result['enEspera'] + 1 ;
 	         		}else if($ticket->getState() == "Cerrado") {
 	         			$result['atendidas'] = $result['atendidas'] + 1;
@@ -89,8 +90,8 @@ class ListtimeController extends CI_Controller {
 
 	         		if($ticket->getCloseDate() != null) {
 	         			$closeDate = $ticket->getCloseDate();
-						$interval = $ticket->getSubmitDate()->diff($closeDate);
-						\ChromePhp::log($interval->format("%a"));
+						$interval = $ticket->getSubmitDate()->diff($closeDate); 
+
 						if($interval->format("%a") >  $result['tickets'][$key]['maxAnswerTime'] ) {
 							$result['excedidas'] = $result['excedidas'] + 1 ;
 						}

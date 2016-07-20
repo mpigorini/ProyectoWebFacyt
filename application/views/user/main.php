@@ -1,4 +1,4 @@
-<div ng-show="loading" style="margin-left: 45%; margin-top: 10%;">
+<div ng-if="loading" style="margin-left: 45%; margin-top: 10%;">
     <div class="preloader-wrapper big active">
         <div class="spinner-layer">
               <div class="circle-clipper left">
@@ -11,7 +11,7 @@
         </div>
     </div>
 </div>
-<div ng-show="!loading">
+<div ng-if="!loading">
     <div id="profile-card" class="container">
         <div class="row">
             <div class="left">

@@ -47,36 +47,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
 
 
     $scope.selectItem = function(item) {
-        console.log(item);
-        $scope.model.id = item.id;
-        $scope.model.paddedId = item.paddedId;
-        $scope.model.subject = item.subject;
-        $scope.model.description =item.description;
-        $scope.model.type = item.type;
-        $scope.model.level = item.level;
-        $scope.model.priority = item.priority;
-        $scope.model.state = item.state;
-        $scope.model.answerTime = item.answerTime;
-        $scope.model.qualityOfService = item.qualityOfService;
-        console.log($scope.model.qualityOfService);
-        $scope.model.evaluation = item.evaluation;
-        $scope.model.userAssigned = item.userAssigned ? item.userAssigned : null;
-        $scope.searchText = "";
-
-        if(item.submitDate != null) {
-          var  date =  new Date(item.submitDate.date);
-          $scope.model.submitDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
-        }
-        if(item.closeDate != null) {
-          var  date =  new Date(item.closeDate.date);
-           $scope.model.closeDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
-        }else {
-            $scope.model.closeDate = "";
-        }
-        $scope.model.department = item.department;
-        $scope.model.userReporter = item.userReporter
-        $scope.ticketSelected = true;
-
+         setTimeout(prueba(item), 1000);
     }
 
     function prueba(item) {
@@ -95,6 +66,7 @@ function ticketsAdministration($scope, $rootScope, $http) {
             $http.get('index.php/administration/UsersAdminController/getUsersExcept', {params : item.userReporter})
             	.then(function(response) {
                     if(response.data.message == "success") {
+                        console.log("what")
                         $scope.users = response.data.data;
                     }
                 });
@@ -187,7 +159,8 @@ function ticketsAdministration($scope, $rootScope, $http) {
 
         $scope.filter = filter;
         var result = filter ? $scope.users.filter(filterForName) : $scope.users;
-
+        console.log("uer");
+        console.log($scope.users);
         return result;
 
     }
