@@ -93,20 +93,6 @@ class UsersAdminController extends CI_Controller {
         }
         echo json_encode($result);
 	}
-
-    public function deleteUser () {
-    	try {
-            $em = $this->doctrine->em;
-            $user = $em->find('\Entity\Users', $_GET['deleteId']);
-            $em->remove($user);
-            $em->flush();
-            $result['message'] = "success";
-        } catch (Exception $e) {
-            $result['message'] = "error";
-            \ChromePhp::log($e);
-        }
-        echo json_encode($result);
-    }
     
     public function getUsersExcept() {
         
