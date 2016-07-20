@@ -1,21 +1,31 @@
-'use strict';
 
 /**
  * @ngdoc function
- * @name reportesApp.controller:ListsatisfactionCtrl
+ * @name reportesApp.controller:MainCtrl
  * @description
- * # ListsatisfactionCtrl
+ * # MainCtrl
  * Controller of the reportesApp
  */
 angular.module('helpDesk')
-  .controller('ListsatisfactionCtrl', function () {
-  //cerramos automáticamente el mobile sideNav
-  $('.button-collapse').sideNav('hide');
-  // show reports option as active
-  $rootScope.select(6);
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+
+  .controller('ListsatisfactionCtrl', listTicket);
+
+
+listTicket.$inject=['$scope','$http', '$rootScope'];
+
+
+  function listTicket ($scope,$http, $rootScope) {
+	
+    $http.get('index.php/reportes/ListsatisfactionController/getStatics')
+      .then(function (response){
+        if(response.data.message ="suceess") {
+          console.log(response);
+          $scope.static = response.data.static;
+          $scope.todas = response.data.todas;
+          $scope.undf = response.data.undf;
+        }
+      })
+
+
+   
+  }

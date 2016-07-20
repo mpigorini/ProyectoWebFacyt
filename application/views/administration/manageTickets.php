@@ -14,17 +14,19 @@
                 <!-- HELP for tab "todas" -->
                 <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
                     <md-card-title>
-                        <md-card-title-media>
-                            <div class="md-media-md"><img  ng-src="{{helpImagePath}}" class="md-card-image" alt="Help"></div>
-                        </md-card-title-media>
-                        <md-card-content>
-                            <p ng-style="{'color':'white'}">
-                                En la siguiente tabla encontrará <b>todas</b> las solicitudes.</br>
-                                Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles
-                                y podrá, al final del panel de detalles, administrar dicha solicitud.
-                            </p>
-                        </md-card-content>
-                    </md-card-title>
+    					<div layout layout-align="center center">
+    						<md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+    						<span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+    					</div>
+    				</md-card-title>
+                    <md-divider></md-divider>
+                    <md-card-content>
+                        <p ng-style="{'color':'white'}">
+                            En la siguiente tabla encontrará <b>todas</b> las solicitudes.</br>
+                            Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles
+                            y podrá, al final del panel de detalles, administrar dicha solicitud.
+                        </p>
+                    </md-card-content>
                 </md-card>
                 <!-- Load Table for tabs todos-->
                 <md-card class="card-admin-ticket">
@@ -202,17 +204,19 @@
                 <!-- HELP for dynamic tabs -->
                 <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
                     <md-card-title>
-                        <md-card-title-media>
-                            <div class="md-media-md"><img  ng-src="{{helpImagePath}}" class="md-card-image" alt="Help"></div>
-                        </md-card-title-media>
-                        <md-card-content>
-                            <p ng-style="{'color':'white'}">
-                                En la siguiente tabla encontrará las solicitudes que se encuentran en estado {{state.name}}.</br>
-                                Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles
-                                y podrá, al final del panel de detalles, administrar dicha solicitud.
-                            </p>
-                        </md-card-content>
+                        <div layout layout-align="center center">
+                            <md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+                            <span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+                        </div>
                     </md-card-title>
+                    <md-divider></md-divider>
+                    <md-card-content>
+                        <p ng-style="{'color':'white'}">
+                            En la siguiente tabla encontrará las solicitudes que se encuentran en estado {{state.name}}.</br>
+                            Al hacer click sobre una casilla correspondiente a algún ticket, se mostrarán sus detalles
+                            y podrá, al final del panel de detalles, administrar dicha solicitud.
+                        </p>
+                    </md-card-content>
                 </md-card>
                 <!-- Table for dynamic tabs-->
                 <md-card class="card-admin-ticket">

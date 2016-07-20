@@ -13,7 +13,6 @@ class TicketsAdminController extends CI_Controller {
 	}
 
 	public function getStates() {
-
 		try{
             $em = $this->doctrine->em;
             $config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));
@@ -96,6 +95,7 @@ class TicketsAdminController extends CI_Controller {
 
         echo json_encode($result);
 	}
+
 	// public function getTickets() {
 	//      try {
 	//
@@ -198,13 +198,13 @@ class TicketsAdminController extends CI_Controller {
 					// TODO: SENT EMAIL TO USER - TICKET CLOSED!
 					// the message
                     $msg = "First line of text\nSecond line of text";
-                    
+
                     // use wordwrap() if lines are longer than 70 characters
                     $msg = wordwrap($msg,70);
-                    
+
                     // send email
                     try {
-                        $verify = mail("mpigorini@gmail.com","My subject",$msg);    
+                        $verify = mail("mpigorini@gmail.com","My subject",$msg);
                         \ChromePhp::log("Envio de email");
                         \ChromePhp::log($verify);
                         \ChromePhp::log("Finde envio de email");
@@ -212,7 +212,7 @@ class TicketsAdminController extends CI_Controller {
                         \ChromePhp::log("Excepcion");
                         \ChromePhp::log($e);
                     }
-                    
+
 				}
                 $ticket->setState($_GET['state']);
                 $ticket->setSolutionDescription(isset($_GET['solutionDescription']) ? $_GET['solutionDescription'] : "" );

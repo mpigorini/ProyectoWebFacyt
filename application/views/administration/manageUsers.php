@@ -5,11 +5,13 @@
 		<!-- Help for SEARCH -->
 		<div class="col s3 offset-s2">
 			<md-card md-theme="blue-grey">
-				<md-card-title layout layout-align="center center">
-					<md-card-title-media>
-						<div class="md-media-sm"><img  ng-src="{{helpImagePath}}" class="md-card-image" alt="Help"></div>
-					</md-card-title-media>
+				<md-card-title>
+					<div layout layout-align="center center">
+						<md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+						<span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+					</div>
 				</md-card-title>
+				<md-divider></md-divider>
 				<md-card-content>
 					<p ng-style="{'color':'white'}">
 						Puede utilizar la herramienta <i class="material-icons prefix small">search</i>
@@ -84,11 +86,13 @@
     <div class="col s3 center-align">
    		<span ng-show="$parent.helpers">
 			<md-card md-theme="blue-grey">
-				<md-card-title layout layout-align="center center">
-					<md-card-title-media>
-						<div class="md-media-sm"><img  ng-src="{{helpImagePath}}" class="md-card-image" alt="Help"></div>
-					</md-card-title-media>
+				<md-card-title>
+					<div layout layout-align="center center">
+						<md-icon ng-style="{'color':'yellow'}">info_outline</md-icon>
+						<span ng-style="{'color':'white', 'margin-left':'10px'}">INFORMACIÓN</span>
+					</div>
 				</md-card-title>
+				<md-divider></md-divider>
 				<md-card-content>
 					<p ng-style="{'color':'white'}">
 						Al presionar sobre <i class="material-icons prefix small">mode_edit</i>

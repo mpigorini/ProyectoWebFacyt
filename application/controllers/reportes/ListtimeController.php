@@ -1,73 +1,119 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+include (APPPATH. '/libraries/ChromePhp.php');
 class ListtimeController extends CI_Controller {
-    
+
     public function index() {
        $this->load->view('reportes/listtime');
     }
-    public function TicketsFiltered()
-		{   
-		    try {
+    
+    public function getTicketsForDate()
+	{
+		try {
+
+		    \ChromePhp::log($_GET);
+			$startTime = date_create_from_format('d/m/Y',$_GET['from'] );
+		    $endTime = date_create_from_format('d/m/Y',$_GET['to'] );
+		    \ChromePhp::log($startTime);
+		    \ChromePhp::log($endTime);
+		    $result['atendidas'] = 0;
+		    $result['enEspera'] = 0;
+		    $result['excedidas'] =0;
 		    $em = $this->doctrine->em;
-		    $query = $em->createQuery('SELECT COUNT(t.id) FROM \Entity\Ticket t WHERE t.submitDate BETWEEN ?1 AND ?2');
-            $query->setParameter(1, $_GET['StartTime']);
-            $query->setParameter(2, $_GET['EndTime']);
-            $countTickets = $query->getResult();
-            $countTickets2=array_shift($countTickets);
-			$result['message'] = "success";
-		    $result['tickets'] = $countTickets2[1];
-			}catch(Exception $e){
-				\ChromePhp::log($e);
-					$result['message'] = "Error";
-			}
-			if($result['tickets']!=0){
-					try {
-				    $em = $this->doctrine->em;
-				    $query = $em->createQuery('SELECT COUNT(t.id) FROM \Entity\Ticket t WHERE t.submitDate BETWEEN ?1 AND ?2 AND t.state= :status');
-		            $query->setParameter(1, $_GET['StartTime']);
-		            $query->setParameter(2, $_GET['EndTime']);
-		            $query->setParameter('status','atendido');
-		            $countTickets = $query->getResult();
-		            $countTickets2=array_shift($countTickets);
-					$result['message'] = "success";
-				    $result['atendidas'] = $countTickets2[1];
-					}catch(Exception $e){
-						\ChromePhp::log($e);
-							$result['message'] = "Error";
+		    $query = $em->createQuery('SELECT t FROM \Entity\Ticket t WHERE t.submitDate BETWEEN ?1 AND ?2');
+            $query->setParameter(1, $startTime);
+            $query->setParameter(2, $endTime);
+            $tickets = $query->getResult();
+        	$config = $em->getRepository('\Entity\TicketType')->findOneBy(array("active"=>true));
+
+            if($config != null) {
+				// Get current config types and priorities
+				$types = explode(',', $config->getTypes());
+				$priorities = explode(',', $config->getPriorities());
+				// Get all max answer times
+				$maxAnswerTimes = $config->getMaxAnswerTimes();
+				// Pre-process max answer times: Put all of em into a single array
+				$temp = array();
+				foreach ($maxAnswerTimes as $maxAnswerTime) {
+					array_push($temp, $maxAnswerTime->getMaxTime());
+				}
+				// Store each max time in a hashed max answer time structure
+				$counter = 0;
+				foreach($types as $tKey => $type) {
+					 foreach($priorities as $pKey => $priority) {
+						$hashedTimes[$type][$priority] = $temp[$counter];
+						$counter++;
 					}
-					try {
-				    $em = $this->doctrine->em;
-				    $query = $em->createQuery('SELECT COUNT(t.id) FROM \Entity\Ticket t WHERE t.submitDate BETWEEN ?1 AND ?2 AND t.state= :status');
-		            $query->setParameter(1, $_GET['StartTime']);
-		            $query->setParameter(2, $_GET['EndTime']);
-		            $query->setParameter('status','espera');
-		            $countTickets = $query->getResult();
-		            $countTickets2=array_shift($countTickets);
-					$result['message'] = "success";
-				    $result['En_espera'] = $countTickets2[1];
-					}catch(Exception $e){
-						\ChromePhp::log($e);
-							$result['message'] = "Error";
-					}
-					try {
-				    $em = $this->doctrine->em;
-				    $query = $em->createQuery('SELECT COUNT(t.id) FROM \Entity\Ticket t WHERE t.submitDate BETWEEN ?1 AND ?2 AND t.state= :status');
-		            $query->setParameter(1, $_GET['StartTime']);
-		            $query->setParameter(2, $_GET['EndTime']);
-		            $query->setParameter('status','exedido');
-		            $countTickets = $query->getResult();
-		            $countTickets2=array_shift($countTickets);
-					$result['message'] = "success";
-				    $result['exedidos'] = $countTickets2[1];
-					}catch(Exception $e){
-						\ChromePhp::log($e);
-							$result['message'] = "Error";
-					}
-			}
-			else{
-				$result['message']="Error, no existen tickets en esas fechas seleccionadas";
-			}
-			echo json_encode($result);
-			
+				}
+	            foreach($tickets as $key => $ticket) {
+
+	         		$result['tickets'][$key]['id'] = $ticket->getId();
+	         		$result['tickets'][$key]['paddedId'] = sprintf('%06d', $ticket->getId());
+	         		$result['tickets'][$key]['subject'] = $ticket->getSubject();
+	         		$result['tickets'][$key]['description'] = $ticket->getDescription();
+	         		$result['tickets'][$key]['type'] = $ticket->getType();
+	         		$result['tickets'][$key]['level'] = $ticket->getLevel();
+	         		$result['tickets'][$key]['priority'] = $ticket->getPriority();
+                    $result['tickets'][$key]['answerTime'] = $ticket->getAnswerTime() !== null ? $ticket->getAnswerTime() . "d / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d" : "- / " . $hashedTimes[$ticket->getType()][$ticket->getPriority()] . "d";
+	         		$result['tickets'][$key]['qualityOfService'] = $ticket->getQualityOfService();
+	         		// Load user
+	     			$result['tickets'][$key]['userReporter']['id'] = $ticket->getUserReporter()->getId();
+	     			$result['tickets'][$key]['userReporter']['name'] = $ticket->getUserReporter()->getName();
+		 		   // Load user assigned
+	         	    if($ticket->getUserAssigned() != null ) {
+	         	        $result['tickets'][$key]['userAssigned']['id'] = $ticket->getUserAssigned()->getId();
+	         	        $result['tickets'][$key]['userAssigned']['showName'] =$ticket->getUserAssigned()->getName() ." " .$ticket->getUserAssigned()->getLastName() ;
+	         	    }
+	         		$result['tickets'][$key]['department'] = $ticket->getDepartment();
+	         		$result['tickets'][$key]['submitDate'] =$ticket->getSubmitDate();
+	         		$result['tickets'][$key]['closeDate'] = $ticket->getCloseDate();
+	         		$result['tickets'][$key]['state'] = $ticket->getState();
+
+
+	         		$result['tickets'][$key]['solutionDescription'] = $ticket->getSolutionDescription();
+	         		$result['tickets'][$key]['evaluation'] = $ticket->getEvaluation();
+	 				// Determine how many days are left and whether we should warn user about it
+					$currentDate = new \DateTime('now');
+					$interval = $ticket->getSubmitDate()->diff($currentDate);
+					$daysPassed = $interval->format("%a");
+					$daysLeft = $hashedTimes[$ticket->getType()][$ticket->getPriority()] - $daysPassed;
+					// If days left is three or less and it has not been closed yet, we must warn user.
+					$result['tickets'][$key]['warn'] = $daysLeft <= 3  && $ticket->getState() != "Cerrado" ? true : false;
+					$result['tickets'][$key]['daysLeft'] = $daysLeft < 0 ? 0 : $daysLeft;
+					$result['tickets'][$key]['maxAnswerTime'] = $hashedTimes[$ticket->getType()][$ticket->getPriority()];
+
+					if($ticket->getState() == "En espera") {
+	         			$result['enEspera'] = $result['enEspera'] + 1 ;
+	         		}else if($ticket->getState() == "Cerrado") {
+	         			$result['atendidas'] = $result['atendidas'] + 1;
+	         		}
+
+	         		if($ticket->getCloseDate() != null) {
+	         			$closeDate = $ticket->getCloseDate();
+						$interval = $ticket->getSubmitDate()->diff($closeDate); 
+
+						if($interval->format("%a") >  $result['tickets'][$key]['maxAnswerTime'] ) {
+							$result['excedidas'] = $result['excedidas'] + 1 ;
+						}
+	         		}else {
+						$interval = $ticket->getSubmitDate()->diff($currentDate);
+						$daysPassed = $interval->format("%a");
+						if($interval->format("%a") >  $result['tickets'][$key]['maxAnswerTime'] ) {
+							$result['excedidas'] = $result['excedidas'] + 1 ;
+						}
+	         		}
+
+	            }
+	            $result['todas'] = count($result['tickets']);
+				$result['message'] = "success";
+            }
+		}catch(Exception $e){
+			\ChromePhp::log($e);
+				$result['message'] = "Error";
 		}
+
+
+			echo json_encode($result);
+
+	}
 }
