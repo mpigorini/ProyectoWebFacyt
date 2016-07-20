@@ -22,4 +22,19 @@ class ListdepartamentController extends CI_Controller {
 			echo json_encode($result);
 	}
     
+    public function getDepartments() {
+    	
+    	try {
+    		
+    		$em = $this->doctrine->em;
+    		$departments = $em->getRepository('\Entity\Department')->findAll();
+    		foreach($departments as $key=>$department) {
+    			$result['data'][$key]['id'] = $department->getId();
+    			$result['data'][$key]['name'] = $department->getName();
+    		}
+    		$result['message'] = "success";
+    	}catch(Exception $e){
+    		\ChromePhp::log($e);
+    	}
+    }
 }
