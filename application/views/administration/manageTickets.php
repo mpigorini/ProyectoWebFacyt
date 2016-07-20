@@ -390,7 +390,7 @@
         <md-tab label="Otros" md-on-select="clearModel()">
             <md-content >
                 <br/>
-                <!-- HELP for tab "todas" -->
+                <!-- HELP for tab "Otros" -->
                 <md-card ng-show="$parent.helpers" class="card-admin-ticket" md-theme="blue-grey">
                     <md-card-title>
                         <div layout layout-align="center center">
@@ -407,7 +407,7 @@
                         </p>
                     </md-card-content>
                 </md-card>
-                <!-- Load Table for tabs todos-->
+                <!-- Load Table for tabs Otros -->
                 <md-card class="card-admin-ticket">
                     <md-card-tittle>
                     </md-card-tittle>

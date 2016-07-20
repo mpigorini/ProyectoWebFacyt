@@ -23,6 +23,7 @@ function solveTickets($scope, $rootScope, $http, $cookies) {
             if (response.data.message== "success") {
                 $scope.states = response.data.states;
                 $scope.tickets = response.data.tickets;
+                $scope.otherTickets = response.data.otherTickets;
                 console.log($scope.states);
                 console.log($scope.tickets);
                 $scope.loading = false;
